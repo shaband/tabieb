@@ -20,11 +20,11 @@
             <td>{!! $admin->phone !!}</td>
             <td>
                 <a href="{!! route('admin.admins.edit',$admin->id) !!}" class="btn btn-primary">
-                    <i class="fas fa-pencil-alt"></i>
+                    <i class="fas fa-pencil-alt text-white"></i>
                 </a>
 
 
-                <a {{--href="{!! route('admin.admins.destroy',$admin->id) !!}"--}} class="btn btn-warning" onclick="
+                <a {{--href="{!! route('admin.admins.destroy',$admin->id) !!}"--}} class="btn btn-warning  text-white" onclick="
                     Swal.fire({
                     title: '{!! __('Are you sure?') !!}',
                     text: '{!! __('You Will Not be able to revert this!') !!}',

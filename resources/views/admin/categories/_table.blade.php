@@ -31,11 +31,11 @@
             @endif
             <td>
                 <a href="{!! route('admin.categories.edit',$category->id) !!}" class="btn btn-primary">
-                    <i class="fas fa-pencil-alt"></i>
+                    <i class="fas fa-pencil-alt text-white"></i>
                 </a>
 
 
-                <a class="btn btn-warning"
+                <a class="btn btn-warning text-white"
                    onclick="
                        Swal.fire({
                        title: '{!! __('Are you sure?') !!}',

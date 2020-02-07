@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>{!! env('APP_NAME') !!}-@yield('title')</title>
+    <title>{!! env('APP_NAME') !!}- @yield('title') </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -111,7 +111,9 @@
 
 
 <!-- Dashboard init js-->
+{{--
 <script src="{!! asset('dashboard/dark/assets/js/pages/dashboard.init.js') !!}"></script>
+--}}
 
 
 <!-- Validation js (Parsleyjs) -->

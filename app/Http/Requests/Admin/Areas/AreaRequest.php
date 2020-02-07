@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin\Areas;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserUpdateRequest extends FormRequest
+class AreaRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class UserUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class UserUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name_ar' => 'required|string|unique:areas,name_ar' ,
+            'name_en' => 'required|string|unique:areas,name_en' ,
+            'district_id' => 'nullable|integer|exists:districts,id',
+
         ];
     }
 }

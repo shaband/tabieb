@@ -9,9 +9,9 @@ class CreateSocialSecuritiesTable extends Migration {
 	{
 		Schema::create('social_securities', function(Blueprint $table) {
 			$table->bigIncrements('id');
-			$table->timestamps();
 			$table->string('name_ar');
 			$table->string('name_en');
+            $table->timestamps();
 		});
 	}
 

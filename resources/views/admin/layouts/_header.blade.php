@@ -99,7 +99,7 @@
 
     <!-- LOGO -->
     <div class="logo-box">
-        <a href="index.html" class="logo text-center">
+        <a href="{!! url('admins.dashboard') !!}" class="logo text-center">
                         <span class="logo-lg">
                             <img src="{!! asset('dashboard/dark') !!}/assets/images/logo-light.png" alt="" height="16">
                             <!-- <span class="logo-lg-text-light">Xeria</span> -->
@@ -119,7 +119,7 @@
         </li>
 
         <li>
-            <h4 class="page-title-main">Dashboard</h4>
+            <h4 class="page-title-main"> @yield('title') </h4>
         </li>
 
     </ul>

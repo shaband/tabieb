@@ -3,6 +3,9 @@
 namespace App\Repositories\SQL;
 
 use App\Models\Attachment;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Prettus\Repository\Eloquent\BaseRepository as MainRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
@@ -31,7 +34,7 @@ abstract class BaseRepository extends MainRepository implements BaseInterface
      * @param string $path
      * @return iterable
      */
-    public function saveFile(UploadedFile $file,string $path=''): iterable
+    public function saveFile(UploadedFile $file, string $path = ''): iterable
     {
 
 
@@ -46,6 +49,21 @@ abstract class BaseRepository extends MainRepository implements BaseInterface
 
         return $data;
 
+    }
+
+    /**
+     * @param Request $request
+     * @param int $id
+     * @return Model
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
+     */
+    public function Block(Request $request, int $id)
+    {
+        $fields = [
+            'blocked_at' => $request->block ? Carbon::now() : null
+        ];
+        $model = $this->update($fields, $id);
+        return $model;
     }
 
 }

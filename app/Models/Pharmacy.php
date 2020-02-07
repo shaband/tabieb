@@ -23,7 +23,7 @@ class Pharmacy extends Model
 
     public function block()
     {
-        return $this->belongsTo('App\Models\Blocks');
+        return $this->belongsTo('App\Models\Block');
     }
 
     public function reps()

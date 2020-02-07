@@ -22,5 +22,12 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
         Route::get('/', 'HomeController@index')->name('dashboard');
         Route::resource('admins', 'AdminController');
         Route::resource('categories', 'CategoryController');
+        Route::resource('districts', 'DistrictController');
+        Route::post('districts/{district}/block', 'DistrictController@blockDistrict')->name('districts.block');
+        Route::resource('areas', 'AreaController');
+        Route::resource('blocks', 'BlockController');
+        Route::resource('questions', 'QuestionController');
+        Route::resource('patient-questions', 'PatientQuestionController');
+        Route::resource('social-securities', 'SocialSecurityController');
     });
 });

@@ -1,9 +1,12 @@
 @extends('admin.layouts.app')
+
+@section('title') {!! __("Edit Category") !!} : {!! $category->name !!} @endsection
+
 @section('content')
     <div class="col-xl-12">
         <div class="card-box">
 
-            <h4 class="header-title mt-0 mb-3">{!! __("Edit Category") !!} : {!! $category->name !!}</h4>
+            <h4 class="header-title mt-0 mb-3">@yield('title')</h4>
             {!! Form::model($category,['route'=>['admin.categories.update',$category->id],'method'=>'put','data-parsley-validate','novalidate','files'=>'true']) !!}
 
             @include('admin.categories._form')

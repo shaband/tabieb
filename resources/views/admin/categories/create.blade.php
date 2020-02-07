@@ -1,9 +1,11 @@
 @extends('admin.layouts.app')
+@section('title') {!! __("Create Category") !!} @endsection
+
 @section('content')
     <div class="col-xl-12">
         <div class="card-box">
 
-            <h4 class="header-title mt-0 mb-3">{!! __("Create Category") !!}</h4>
+            <h4 class="header-title mt-0 mb-3">@yield('title')</h4>
             {!! Form::open(['route'=>'admin.categories.store','method'=>'post','data-parsley-validate','novalidate','files'=>'true']) !!}
 
             @include('admin.categories._form')

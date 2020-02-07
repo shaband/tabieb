@@ -48,41 +48,75 @@
 
 
                 <li>
-                    <a href="javascript: void(0);">
-                        <i class="mdi mdi-invert-colors"></i>
-                        <span> {!! __("Admins") !!} </span>
-                        <span class="menu-arrow"></span>
-                        {{--
-                                                <span class="badge badge-warning float-right">7</span>
-                        --}}
-
+                <li>
+                    <a href="{!! route('admin.admins.index') !!}">
+                        <i class="fab fa-black-tie"></i>
+                        <span> {!! __('Admins') !!} </span>
                     </a>
-                    <ul class="nav-second-level" aria-expanded="false">
-                        <li><a href="{!! route('admin.admins.index') !!}">{!! __("Admins List") !!}</a></li>
-                        <li><a href="{!! route('admin.admins.create') !!}">{!! __("Add New") !!}</a></li>
-
-                    </ul>
                 </li>
-
+                <li>
+                    <a href="{!! route('admin.categories.index') !!}">
+                        <i class=" fas fa-boxes"></i>
+                        <span> {!! __('Categories') !!} </span>
+                    </a>
+                </li>
 
                 <li>
                     <a href="javascript: void(0);">
-                        <i class="mdi mdi-invert-colors"></i>
-                        <span> {!! __("Categories") !!} </span>
+                        <i class="fas fa-users-cog"></i>
+                        <span>{!! __("Student Settings") !!}</span>
                         <span class="menu-arrow"></span>
-                        {{--
-                                                <span class="badge badge-warning float-right">7</span>
-                        --}}
-
                     </a>
-                    <ul class="nav-second-level" aria-expanded="false">
-                        <li><a href="{!! route('admin.categories.index') !!}">{!! __("Categories List") !!}</a></li>
-                        <li><a href="{!! route('admin.categories.create') !!}">{!! __("Add New") !!}</a></li>
+                    <ul class="nav-second-level nav" aria-expanded="false">
+                        {{--   <li>
+                               <a href="javascript: void(0);">{!! __("Students") !!}</a>
+                           </li>--}}
 
+
+                        <li>
+                            <a href="{!! route('admin.questions.index') !!}">
+                                <i class="fas fa-question pr-1"></i>
+
+                                {!! __("Question") !!}</a>
+
+
+                            <a href="{!! route('admin.social-securities.index') !!}">
+                                <i class=" fas fa-user-shield pr-1"></i>
+
+                                {!! __("Social Securities") !!}</a>
+
+                            <a href="{!! route('admin.patient-questions.index') !!}">
+
+                                <i class=" fas fa-question-circle pr-1"></i>
+
+                                {!! __("Patient Question") !!}</a>
+                        </li>
+                        <li>
+
+                            <a href="javascript: void(0);" aria-expanded="false">
+
+                                <i class=" fas fa-archway pr-1"></i>
+
+                                {!! __("Places") !!}
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-third-level nav" aria-expanded="false">
+
+
+                                <li>
+                                    <a href="{!! route('admin.districts.index') !!}">{!! __("Districts") !!}</a>
+                                </li>
+                                <li>
+                                    <a href="{!! route('admin.areas.index') !!}">{!! __("Areas") !!}</a>
+                                </li>
+                                <li>
+                                    <a href="{!! route('admin.blocks.index') !!}">{!! __("Blocks") !!}</a>
+                                </li>
+
+                            </ul>
+                        </li>
                     </ul>
                 </li>
-
-
             </ul>
 
         </div>

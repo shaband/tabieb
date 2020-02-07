@@ -29,7 +29,6 @@ class CategoryRequest extends FormRequest
             'description_ar' => 'nullable|string',
             'description_en' => 'nullable|string',
             'category_id' => 'nullable|integer|exists:categories,id',
-
         ];
     }
 }

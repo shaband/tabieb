@@ -38,7 +38,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * @param AdminRequest $request
+     * @param CategoryRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(CategoryRequest $request)
@@ -67,17 +67,20 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = $this->repo->find($id);
-        return view('admin.categories.edit', compact('category'));
+
+        $main_categories = $this->repo->getMainCategory()->pluck('name', 'id');
+
+        return view('admin.categories.edit', compact('category', 'main_categories'));
     }
 
     /**
-     * @param AdminRequest $request
+     * @param CategoryRequest $request
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(CategoryRequest $request, $id)
     {
-        $category = $this->repo->UpdateAdmin($request, $id);
+        $category = $this->repo->update($request->all(), $id);
 
         toast(__("Updated successfully"), 'success');
 

@@ -2,23 +2,24 @@
 
 namespace App\Models;
 
+use App\Traits\ColumnTranslation;
 use Illuminate\Database\Eloquent\Model;
 
 class Area extends Model
 {
-
+    use ColumnTranslation;
     protected $table = 'areas';
     public $timestamps = true;
-    protected $fillable = array('district_id', 'blocked_at');
+    protected $fillable = array('name_ar', 'name_en', 'district_id', 'blocked_at');
 
     public function blocks()
     {
-        return $this->hasMany(Blocks::class);
+        return $this->hasMany(Block::class);
     }
 
     public function district()
     {
-        return $this->belongsTo(Distrcit::class);
+        return $this->belongsTo(District::class);
     }
 
 }
