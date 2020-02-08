@@ -46,4 +46,15 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
         return $this->sub()->get();
 
     }
+
+    /**
+     * @param int $category_id
+     * @return Collection
+     */
+    public function getSubCategoriesForMainCategory(int $category_id): Collection
+    {
+        return $this->findWhere(['category_id' => $category_id])->each->append('name');
+
+    }
+
 }

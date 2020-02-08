@@ -27,6 +27,9 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
         Route::resource('areas', 'AreaController');
         Route::resource('blocks', 'BlockController');
         Route::resource('questions', 'QuestionController');
+        Route::resource('doctors', 'DoctorController');
+        Route::resource('schedules', 'ScheduleController');
+        Route::post('doctors/{doctor}/block', 'DoctorController@blockDoctor')->name('doctors.block');
         Route::resource('patient-questions', 'PatientQuestionController');
         Route::resource('social-securities', 'SocialSecurityController');
     });

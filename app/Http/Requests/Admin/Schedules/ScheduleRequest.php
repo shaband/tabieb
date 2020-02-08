@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Admin\Schedules;
 
+use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ScheduleRequest extends FormRequest
@@ -13,8 +14,10 @@ class ScheduleRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
+
+
 
     /**
      * Get the validation rules that apply to the request.
@@ -24,7 +27,10 @@ class ScheduleRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'doctor_id' => 'required|integer|exists:doctors,id',
+            'day' => 'required|integer|between:1,7',
+            'from_time' => 'required|string',
+            'to_time' => 'required|string',
         ];
     }
 }

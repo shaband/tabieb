@@ -12,7 +12,16 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="{!!asset('dashboard/dark/assets/images/favicon.ico')  !!}">
 
+
     <!-- third party css -->
+    <link href=" {!! asset('dashboard/animate.css') !!}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{!! asset('dashboard/dark/assets/libs/bootstrap-timepicker/bootstrap-timepicker.min.css') !!}"
+          rel="stylesheet">
+
+    <link href="{!! asset('dashboard/dark/assets/libs/bootstrap-datepicker/bootstrap-datepicker.css')!!}"
+          rel="stylesheet">
+
     <link href="{!!asset('dashboard/dark/assets/libs/select2/select2.min.css')  !!}" rel="stylesheet"
           type="text/css"/>
     <link href="{!!asset('dashboard/dark/assets/libs/datatables/dataTables.bootstrap4.css')  !!}" rel="stylesheet"
@@ -80,7 +89,7 @@
 </div>
 <!-- END wrapper -->
 
-
+@routes
 <!-- Vendor js -->
 <script src="{!! asset('dashboard/dark/assets/js/vendor.min.js') !!}"></script>
 
@@ -110,10 +119,8 @@
 <script src="{!! asset('dashboard/dark/assets/libs/select2/select2.min.js') !!}"></script>
 
 
-<!-- Dashboard init js-->
-{{--
-<script src="{!! asset('dashboard/dark/assets/js/pages/dashboard.init.js') !!}"></script>
---}}
+<script src="{!! asset('dashboard/dark/assets/libs/bootstrap-timepicker/bootstrap-timepicker.min.js')!!}"></script>
+<script src="{!! asset('dashboard/dark/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.js')!!}"></script>
 
 
 <!-- Validation js (Parsleyjs) -->

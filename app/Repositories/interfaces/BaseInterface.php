@@ -15,6 +15,11 @@ use Prettus\Repository\Contracts\RepositoryInterface;
 interface BaseInterface extends RepositoryInterface
 {
     /**
+     * @return mixed
+     */
+    public function cursor();
+
+    /**
      * @param UploadedFile $file
      * @param string $path
      * @return iterable

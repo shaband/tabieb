@@ -4,15 +4,16 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Admins\AdminRequest;
-use App\Http\Requests\Admin\Districts\DistrictRequest;
-use App\Repositories\interfaces\DistrictRepository;
+use App\Http\Requests\Admin\Schedules\ScheduleRequest;
+use App\Repositories\interfaces\DoctorRepository;
+use App\Repositories\interfaces\ScheduleRepository;
 use Illuminate\Http\Request;
 
-class DistrictController extends Controller
+class ScheduleController extends Controller
 {
     private $repo;
 
-    public function __construct(DistrictRepository $repo)
+    public function __construct(ScheduleRepository $repo)
     {
         $this->repo = $repo;
     }
@@ -23,31 +24,32 @@ class DistrictController extends Controller
     public function index()
     {
 
-        $open_districts = $this->repo->findWhere(['blocked_at' => null]);
-        $blocked_districts = $this->repo->findWhere([['blocked_at', '!=', null]]);
+        $schedules = $this->repo->all();
 
-        return view('admin.districts.index', compact('open_districts', 'blocked_districts'));
+        return view('admin.schedules.index', compact('schedules'));
     }
 
     /**
+     * @param DoctorRepository $doctorRepository
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create()
+    public function create(DoctorRepository $doctorRepository)
     {
+        $doctors = $doctorRepository->cursor()->pluck('name', 'id');
 
-        return view('admin.districts.create');
+        return view('admin.schedules.create', compact('doctors'));
     }
 
     /**
-     * @param AdminRequest $request
+     * @param ScheduleRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(DistrictRequest $request)
+    public function store(ScheduleRequest $request)
     {
-        $district = $this->repo->create($request->all());
+        $schedule = $this->repo->create($request->all());
         toast(__("Added successfully"), 'success');
 
-        return redirect()->route('admin.districts.index');
+        return redirect()->route('admin.schedules.index');
     }
 
     /**
@@ -63,12 +65,14 @@ class DistrictController extends Controller
 
     /**
      * @param $id
+     * @param DoctorRepository $doctorRepository
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit($id)
+    public function edit($id, DoctorRepository $doctorRepository)
     {
-        $district = $this->repo->find($id);
-        return view('admin.districts.edit', compact('district'));
+        $schedule = $this->repo->find($id);
+        $doctors = $doctorRepository->all()->pluck('name', 'id');
+        return view('admin.schedules.edit', compact('schedule', 'doctors'));
     }
 
     /**
@@ -76,13 +80,13 @@ class DistrictController extends Controller
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(DistrictRequest $request, $id)
+    public function update(ScheduleRequest $request, $id)
     {
-        $district = $this->repo->update($request->all(), $id);
+        $schedule = $this->repo->update($request->all(), $id);
 
         toast(__("Updated successfully"), 'success');
 
-        return redirect()->route('admin.districts.index');
+        return redirect()->route('admin.schedules.index');
     }
 
     /**
@@ -93,14 +97,7 @@ class DistrictController extends Controller
     {
         $this->repo->delete($id);
         toast(__("Updated successfully"), 'success');
-        return back();
-    }
 
-    public function blockDistrict($id, Request $request)
-    {
-
-        $district = $this->repo->block($request, $id);
-        toast(__("Updated successfully"), 'success');
         return back();
 
     }

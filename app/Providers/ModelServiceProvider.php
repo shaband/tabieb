@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Admin;
+use App\Models\Doctor;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
 
@@ -15,7 +16,7 @@ class ModelServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+
     }
 
     /**
@@ -27,6 +28,7 @@ class ModelServiceProvider extends ServiceProvider
     {
         Relation::morphMap([
             'admins' => Admin::class,
+            'doctors' => Doctor::class,
 
         ]);
     }

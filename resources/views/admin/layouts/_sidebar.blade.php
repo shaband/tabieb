@@ -117,6 +117,20 @@
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a href="{!! route('admin.doctors.index') !!}">
+                        <i class="fas fa-stethoscope"></i>
+                        <span> {!! __('Doctors') !!} </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{!! route('admin.schedules.index') !!}">
+                        <i class="fas fa-calendar-week"></i>
+                        <span> {!! __('Schedules') !!} </span>
+                    </a>
+                </li>
+
+
             </ul>
 
         </div>

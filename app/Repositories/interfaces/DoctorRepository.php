@@ -2,7 +2,9 @@
 
 namespace App\Repositories\interfaces;
 
+use App\Models\Doctor;
 use App\Repositories\interfaces\BaseInterface;
+use Illuminate\Http\Request;
 
 /**
  * Interface DoctorRepository.
@@ -11,5 +13,8 @@ use App\Repositories\interfaces\BaseInterface;
  */
 interface DoctorRepository extends BaseInterface
 {
-    //
+    public function store(Request $request): Doctor;
+
+    public function UpdateDoctor(Request $request, int $id): Doctor;
+
 }

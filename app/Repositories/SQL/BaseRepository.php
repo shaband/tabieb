@@ -4,6 +4,7 @@ namespace App\Repositories\SQL;
 
 use App\Models\Attachment;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
@@ -27,6 +28,27 @@ abstract class BaseRepository extends MainRepository implements BaseInterface
     public function boot()
     {
         $this->pushCriteria(app(RequestCriteria::class));
+    }
+
+    /**
+     * @return mixed
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
+     */
+    public function cursor()
+    {
+        $this->applyCriteria();
+        $this->applyScope();
+
+        if ($this->model instanceof Builder) {
+            $results = $this->model->get();
+        } else {
+            $results = $this->model->cursor();
+        }
+
+        $this->resetModel();
+        $this->resetScope();
+
+        return $this->parserResult($results);
     }
 
     /**
@@ -60,7 +82,8 @@ abstract class BaseRepository extends MainRepository implements BaseInterface
     public function Block(Request $request, int $id)
     {
         $fields = [
-            'blocked_at' => $request->block ? Carbon::now() : null
+            'blocked_at' => $request->block ? Carbon::now() : null,
+            'block_reason' => $request->block_reason
         ];
         $model = $this->update($fields, $id);
         return $model;
