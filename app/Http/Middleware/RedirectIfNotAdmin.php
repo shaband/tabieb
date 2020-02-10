@@ -23,7 +23,7 @@ class RedirectIfNotAdmin
 
         if (Auth::guard($guard)->check()) {
 
-                 auth()->setDefaultDriver($guard);
+            auth()->setDefaultDriver($guard);
             return $next($request);
         }
 

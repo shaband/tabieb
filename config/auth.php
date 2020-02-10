@@ -78,7 +78,7 @@ return [
         ],
 
         'patient_api' => [
-            'driver' => 'token',
+            'driver' => 'jwt',
             'provider' => 'patients',
         ],
         /*api guards*/
@@ -153,24 +153,32 @@ return [
             'provider' => 'pharamacy_reps',
             'table' => 'pharamacy_rep_password_resets',
             'expire' => 60,
+            'throttle' => 60,
+
         ],
 
         'doctors' => [
             'provider' => 'doctors',
             'table' => 'doctor_password_resets',
             'expire' => 60,
+            'throttle' => 60,
+
         ],
 
         'patients' => [
             'provider' => 'patients',
             'table' => 'patient_password_resets',
             'expire' => 60,
+            'throttle' => 60,
+
         ],
 
         'admins' => [
             'provider' => 'admins',
             'table' => 'admin_password_resets',
             'expire' => 60,
+            'throttle' => 60,
+
         ],
 
         'users' => [

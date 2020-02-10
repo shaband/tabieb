@@ -10,7 +10,8 @@ class CreatePatientsTable extends Migration
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('first_name');
+            $table->string('last_name');
             $table->string('email')->unique();
             $table->string('phone')->unique();
             $table->string('password');
@@ -19,18 +20,18 @@ class CreatePatientsTable extends Migration
             $table->timestamp('blocked_at')->nullable();
             $table->longText('blocked_reason')->nullable();
             $table->date('birthdate')->nullable();
-            $table->date('social_security_expired_id')->nullable();
+            $table->date('social_security_at')->nullable();
             $table->bigInteger('district_id')->unsigned()->nullable()->index();
             $table->bigInteger('area_id')->unsigned()->nullable()->index();
             $table->bigInteger('block_id')->unsigned()->nullable()->index();
-            $table->rememberToken();
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamp('phone_verified_at')->nullable();
             $table->mediumInteger('verification_code')->unique();
             $table->timestamp('last_login')->nullable();
             $table->tinyInteger('gender')->nullable()->default('0');
             $table->longText('fb_token')->nullable();
-            $table->longText('google_token');
+            $table->longText('google_token')->nullable();
+            $table->rememberToken();
             $table->timestamps();
         });
     }

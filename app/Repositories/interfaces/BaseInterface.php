@@ -14,6 +14,11 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  */
 interface BaseInterface extends RepositoryInterface
 {
+
+    // public function firstWhere(array $where, $columns = ['*']);
+
+    // public function firstByField($field, $value, $columns = ['*']);
+
     /**
      * @return mixed
      */

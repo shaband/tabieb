@@ -16,6 +16,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected $namespace = 'App\Http\Controllers';
 
+
     /**
      * The path to the "home" route for your application.
      *
@@ -42,17 +43,18 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
+
+        //api
         $this->mapApiRoutes();
+        $this->mapPatientApiRoutes();
 
+        //web
         $this->mapWebRoutes();
-
         $this->mapPharamacyRepRoutes();
-
         $this->mapDoctorRoutes();
-
         $this->mapPatientRoutes();
-
         $this->mapAdminRoutes();
+
 
         //
     }
@@ -64,12 +66,12 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function mapAdminRoutes()
+    protected function mapAdminRoutes(): void
     {
         Route::prefix('admin')
             ->middleware('web')
             ->namespace($this->namespace)
-            ->group(base_path('routes/admin.php'));
+            ->group(base_path('routes/web/admin.php'));
     }
 
     /**
@@ -79,12 +81,12 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function mapPatientRoutes()
+    protected function mapPatientRoutes(): void
     {
         Route::prefix('patient')
             ->middleware('web')
             ->namespace($this->namespace)
-            ->group(base_path('routes/patient.php'));
+            ->group(base_path('routes/web/patient.php'));
     }
 
     /**
@@ -94,12 +96,12 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function mapDoctorRoutes()
+    protected function mapDoctorRoutes(): void
     {
         Route::prefix('doctor')
             ->middleware('web')
             ->namespace($this->namespace)
-            ->group(base_path('routes/doctor.php'));
+            ->group(base_path('routes/web/doctor.php'));
     }
 
     /**
@@ -109,12 +111,12 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function mapPharamacyRepRoutes()
+    protected function mapPharamacyRepRoutes(): void
     {
         Route::prefix('pharamacyrep')
             ->middleware('web')
             ->namespace($this->namespace)
-            ->group(base_path('routes/pharamacyrep.php'));
+            ->group(base_path('routes/web/pharamacyrep.php'));
     }
 
     /**
@@ -124,11 +126,11 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function mapWebRoutes()
+    protected function mapWebRoutes(): void
     {
         Route::middleware('web')
             ->namespace($this->namespace)
-            ->group(base_path('routes/web.php'));
+            ->group(base_path('routes/web/web.php'));
     }
 
     /**
@@ -138,12 +140,28 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function mapApiRoutes()
+    protected function mapApiRoutes(): void
     {
-        Route::prefix('api')
+        Route::prefix('api/v1')
             ->middleware('api')
-            ->namespace($this->namespace.'\Api')
+            ->namespace($this->namespace . '\Api\v1')
             ->as('api.')
-            ->group(base_path('routes/api.php'));
+            ->group(base_path('routes/api/api.php'));
+    }
+
+    /**
+     * Define the "api patient" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapPatientApiRoutes(): void
+    {
+        Route::prefix('api/v1/patient')
+            ->middleware(['api', 'apiLocalization'])
+            ->namespace($this->namespace . '\Api\v1\patient')
+            ->as('api.patient.')
+            ->group(base_path('routes/api/patient.php'));
     }
 }

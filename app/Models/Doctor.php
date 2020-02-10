@@ -9,9 +9,10 @@ use App\Traits\HashPassword;
 use App\Traits\ModelHasImage;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Models\Schedule;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class Doctor extends Authenticatable
+
+class Doctor extends Authenticatable implements JWTSubject
 {
     use Notifiable, ColumnTranslation, ModelHasImage, HashPassword;
 
@@ -20,6 +21,7 @@ class Doctor extends Authenticatable
     protected $table = 'doctors';
     public $timestamps = true;
     protected $fillable = array('first_name_en', 'last_name_en', 'last_name_ar', 'first_name_ar', 'description_ar', 'description_en', 'title_ar', 'title_en', 'email', 'password', 'phone', 'category_id', 'price', 'last_login', 'email_verified_at', 'phone_verified_at', 'civil_id', 'verification_code', 'remember_token', 'gender', 'blocked_at', 'blocked_reason',);
+
 
     /**
      * The attributes that should be hidden for arrays.
@@ -37,6 +39,7 @@ class Doctor extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'price'=>'integer',
     ];
 
     /**
@@ -45,9 +48,31 @@ class Doctor extends Authenticatable
      * @param string $token
      * @return void
      */
+
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPassword($token));
+    }
+    // Rest omitted for brevity
+
+    /**
+     * Get the identifier that will be stored in the subject claim of the JWT.
+     *
+     * @return mixed
+     */
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 
     /**

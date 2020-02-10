@@ -4,16 +4,23 @@ namespace App\Models;
 
 use App\Notifications\Patient\Auth\ResetPassword;
 use App\Notifications\Patient\Auth\VerifyEmail;
+use App\Traits\HashPassword;
+use App\Traits\HasVerificationCode;
+use App\Traits\ModelHasImage;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class Patient extends Authenticatable
+
+class Patient extends Authenticatable implements JWTSubject
 {
+    use Notifiable, HasVerificationCode, HashPassword, ModelHasImage;
 
-    use Notifiable;
     protected $table = 'patients';
+
     public $timestamps = true;
-    protected $fillable = array('name', 'email', 'phone', 'password', 'civil_id', 'social_security_id', 'blocked_at', 'blocked_reason', 'birthdate', 'district_id', 'area_id', 'block_id', 'phone_verified_at', 'verification_code', 'last_login', 'gender', 'fb_token', 'google_token');
+
+    protected $fillable = array('first_name', 'last_name', 'email', 'phone', 'password', 'civil_id', 'social_security_id', 'blocked_at', 'blocked_reason', 'birthdate', 'social_security_expired_at', 'district_id', 'area_id', 'block_id', 'email_verified_at', 'phone_verified_at', 'verification_code', 'last_login', 'gender', 'fb_token', 'google_token',);
 
 
     /**
@@ -31,13 +38,13 @@ class Patient extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'phone_verified_at' => 'datetime',
     ];
 
     /**
      * Send the password reset notification.
      *
-     * @param  string  $token
+     * @param string $token
      * @return void
      */
     public function sendPasswordResetNotification($token)
@@ -55,64 +62,96 @@ class Patient extends Authenticatable
         $this->notify(new VerifyEmail);
     }
 
+    // Rest omitted for brevity
+
+    /**
+     * Get the identifier that will be stored in the subject claim of the JWT.
+     *
+     * @return mixed
+     */
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
+
     public function district()
     {
-        return $this->belongsTo('Models\Distrcit', 'district_id');
+        return $this->belongsTo(District::class, 'district_id');
     }
 
     public function area()
     {
-        return $this->belongsTo('Models\Area', 'area_id');
+        return $this->belongsTo(Area::class, 'area_id');
     }
 
     public function block()
     {
-        return $this->belongsTo('Models\Blocks', 'block_id');
+        return $this->belongsTo(Block::class, 'block_id');
     }
 
     public function image()
     {
-        return $this->morphOne('Models\Attachment')->where('type',1);
+        return $this->morphOne(Attachment::class, 'model')->where('type', 1);
     }
 
     public function files()
     {
-        return $this->morphMany('Models\Attachment')->where('type',2);
+        return $this->morphMany(Attachment::class, 'model')->where('type', 2);
     }
 
     public function reservations()
     {
-        return $this->hasMany('Models\Reservation');
+        return $this->hasMany(Reservation::class);
     }
 
     public function ratings()
     {
-        return $this->hasMany('Models\Rating');
+        return $this->hasMany(Rating::class);
     }
 
     public function chats()
     {
-        return $this->hasMany('Models\Chat');
+        return $this->hasMany(Chat::class);
     }
 
     public function invoices()
     {
-        return $this->hasMany('Models\Invoice');
+        return $this->hasMany(Invoice::class);
     }
 
     public function patient_answers()
     {
-        return $this->hasMany('Models\PatientAnswer');
+        return $this->hasMany(PatientAnswer::class);
     }
 
     public function prescription()
     {
-        return $this->hasOne('Models\Prescription');
+        return $this->hasOne(Prescription::class);
     }
 
     public function social_security()
     {
-        return $this->belongsTo('Models\SocialSecurity');
+        return $this->belongsTo(SocialSecurity::class);
+    }
+
+    public function fcm_tokens()
+    {
+        return $this->morphMany(Device::class, 'model')->where('device_type', Device::TOKEN_TYPE_FCM);
+    }
+
+    public function getNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
     }
 
 }
