@@ -4,6 +4,9 @@ namespace App\Repositories\SQL;
 
 use App\Models\Doctor;
 use App\Repositories\SQL\BaseRepository;
+use Carbon\CarbonImmutable;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Prettus\Repository\Criteria\RequestCriteria;
@@ -17,6 +20,7 @@ use App\Repositories\interfaces\DoctorRepository;
  * @package namespace App\Repositories\SQL;
  */
 class DoctorRepositoryEloquent extends BaseRepository implements DoctorRepository
+
 {
     /**
      * Specify Model class name
@@ -76,4 +80,51 @@ class DoctorRepositoryEloquent extends BaseRepository implements DoctorRepositor
 
     }
 
+    /**
+     * @param Request $request
+     * @return Collection
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
+     */
+    public function doctorsInCategory(Request $request): Collection
+    {
+        $doctors = $this->makeModel()
+            ->where('blocked_at', null)
+            ->where('category_id', $request->category_id)
+            ->get();
+        return $doctors;
+    }
+
+    public function searchInDoctors(Request $request): Collection
+    {
+        $model = $this->repo->makeModel();
+
+        $model = $model->when($request->category_id, function (Builder $builder) use ($request) {
+            $builder->where('category_id', $request->category_id);
+        });
+        $model = $model->when($request->min_price, function (Builder $builder) use ($request) {
+            $builder->where('price', '>=', $request->min_price);
+        });
+        $model = $model->when($request->max_price, function (Builder $builder) use ($request) {
+            $builder->where('price', '<=', $request->max_price);
+        });
+
+        $model = $model->when($request->date, function (Builder $builder) use ($request) {
+            $day = CarbonImmutable::parse($request->date)->weekday();;
+            $builder->whereHas('schedules', function (Builder $schedule) use ($request, $day) {
+                $schedule->where('day', $day + 1);
+                $schedule->when(($request->from_time != null), function (Builder $builder) use ($request) {
+                    $builder->whereTime('from_time', '<=', CarbonImmutable::parse($request->from_time));
+                    $builder->whereTime('to_time', '>=', CarbonImmutable::parse($request->from_time));
+                });
+                $schedule->when($request->to_time != null, function (Builder $builder) use ($request) {
+                    $builder->whereTime('from_time', '<=', CarbonImmutable::parse($request->to_time));
+                    $builder->whereTime('to_time', '>=', CarbonImmutable::parse($request->to_time));
+                });
+            });
+        });
+        $doctors = $model->get()->sortBy(function (Doctor $doctor) {
+            return $doctor->ratings()->avg('rate');
+        });
+        return $doctors;
+    }
 }

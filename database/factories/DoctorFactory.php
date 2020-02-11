@@ -1,26 +1,27 @@
 <?php
 
-use App\Doctor;;
-use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
-/*
-|--------------------------------------------------------------------------
-| Model Factories
-|--------------------------------------------------------------------------
-|
-| This directory should contain each of the model factory definitions for
-| your application. Factories provide a convenient way to generate new
-| model instances for testing / seeding your application's database.
-|
-*/
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-$factory->define(Doctor::class, function (Faker $faker) {
+$factory->define(\App\Models\Doctor::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
+        'category_id' => 1,
+        'first_name_en' => $faker->text(63),
+        'last_name_en' => $faker->text(63),
+        'last_name_ar' => $faker->text(63),
+        'first_name_ar' => $faker->text(63),
+
+        'title_ar' => $faker->text(63),
+        'title_en' => $faker->text(63),
         'email' => $faker->unique()->safeEmail,
-        'email_verified_at' => now(),
-        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-        'remember_token' => Str::random(10),
+        'password' => '$2y$10$uTDnsRa0h7wLppc8/vB9C.YqsrAZwhjCgLWjcmpbndTmyo1k5tbRC',
+        'phone' => $faker->phoneNumber,
+        'price' => $faker->numberBetween(1, 100),
+        //  'last_login' => $faker->dateTime,
+        // 'email_verified_at' => $faker->dateTime,
+        // 'phone_verified_at' => $faker->dateTime,
+        'civil_id' => $faker->numerify(),
+        'gender' => $faker->numberBetween(1, 2),
     ];
 });

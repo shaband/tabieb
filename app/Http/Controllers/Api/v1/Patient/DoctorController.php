@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Api\v1\Patient;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Doctor\doctorResource;
+use App\Http\Resources\Doctor\DoctorResource;
 use App\Models\Doctor;
 use App\Repositories\interfaces\DoctorRepository;
+use Carbon\CarbonImmutable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class DoctorController extends Controller
@@ -29,18 +31,28 @@ class DoctorController extends Controller
             ->whereNotIn('id', $popular_doctors->pluck('id'))
             ->get();
 
-        $popular_doctors = doctorResource::collection($popular_doctors);
-        $doctors_you_may_call = doctorResource::collection($doctors_you_may_call);
+        $popular_doctors = DoctorResource::collection($popular_doctors);
+        $doctors_you_may_call = DoctorResource::collection($doctors_you_may_call);
         return responseJson(compact('popular_doctors', 'doctors_you_may_call'), __("Loaded Successfully"));
     }
 
     public function doctorsInCategory(Request $request)
     {
-        $doctors = $this->repo->makeModel()
-            ->where('blocked_at', null)
-            ->where('category_id', $request->category_id)
-            ->get();
-        $doctors = doctorResource::collection($doctors);
+        $doctors = $this->repo->doctorsInCategory($request);
+        $doctors = DoctorResource::collection($doctors);
         return responseJson(compact('doctors'), __("Loaded Successfully"));
+    }
+
+    public function search(Request $request)
+    {
+        $doctors = $this->repo->searchInDoctors($request);
+        $doctors = DoctorResource::collection($doctors);
+
+        return responseJson(compact('doctors'), __("Loaded Successfully"));
+    }
+
+    public  function doctorProfile(Request $request){
+
+        $this->repo->with(['ratings','']);
     }
 }

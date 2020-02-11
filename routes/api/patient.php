@@ -31,6 +31,7 @@ Route::post('social-securities', 'SocialSecurityController@index');
 
 Route::post('home', 'DoctorController@index');
 Route::post('category/doctors', 'DoctorController@doctorsInCategory');
+Route::post('doctors/search', 'DoctorController@search');
 Route::get('categories', 'CategoryController@index');
 
 Route::middleware(['auth:auth:patient_api'])->group(function () {
