@@ -11,6 +11,7 @@ use Illuminate\Http\UploadedFile;
 use Prettus\Repository\Eloquent\BaseRepository as MainRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\interfaces\BaseInterface;
+use ReflectionClass;
 
 
 /**
@@ -88,5 +89,40 @@ abstract class BaseRepository extends MainRepository implements BaseInterface
         $model = $this->update($fields, $id);
         return $model;
     }
+
+    /**
+     * @return ReflectionClass
+     * @throws \ReflectionException
+     */
+    public static function getReflection(): ReflectionClass
+    {
+        $model = app(get_called_class())->model();
+
+        return new ReflectionClass($model);
+    }
+
+    /**
+     * @param null $keyContains
+     * @param bool $returnCount
+     * @return array|int
+     * @throws \ReflectionException
+     */
+    public static function getConstants($keyContains = null, $returnCount = false)
+    {
+        // Get all constants
+        $constants = self::getReflection()->getConstants();
+        // Return filtered constants based on constants names filter
+        if (!empty($keyContains)) {
+            $constants = array_filter($constants, function ($k) use ($keyContains) {
+                return strpos($k, $keyContains) === 0;
+            }, ARRAY_FILTER_USE_KEY);
+        }
+
+        if ($returnCount) {
+            return count($constants);
+        }
+        return $constants;
+    }
+
 
 }

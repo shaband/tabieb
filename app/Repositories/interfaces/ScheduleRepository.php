@@ -2,6 +2,7 @@
 
 namespace App\Repositories\interfaces;
 
+use App\Models\Schedule;
 use App\Repositories\interfaces\BaseInterface;
 
 /**
@@ -11,5 +12,6 @@ use App\Repositories\interfaces\BaseInterface;
  */
 interface ScheduleRepository extends BaseInterface
 {
-    //
+    public function FindByFromAndToDate(int $doctor_id,string $date,string $from,string $to):?Schedule;
+
 }

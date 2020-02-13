@@ -3,9 +3,11 @@
 namespace App\Repositories\SQL;
 
 use App\Repositories\SQL\BaseRepository;
+use Carbon\CarbonImmutable;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\interfaces\ScheduleRepository;
 use App\Models\Schedule;
+
 // use App\Validators\ScheduleValidator;
 
 /**
@@ -25,7 +27,6 @@ class ScheduleRepositoryEloquent extends BaseRepository implements ScheduleRepos
         return Schedule::class;
     }
 
-    
 
     /**
      * Boot up the repository, pushing criteria
@@ -34,5 +35,20 @@ class ScheduleRepositoryEloquent extends BaseRepository implements ScheduleRepos
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
+
+    public function FindByFromAndToDate(int $doctor_id, string $date, string $from, string $to): ?Schedule
+    {
+
+        $day = CarbonImmutable::parse($date)->weekday();
+
+        $schedule = $this->makeModel()
+            ->OfDateInPeriod(CarbonImmutable::parse($from))
+            ->OfDateInPeriod(CarbonImmutable::parse($to))
+            ->where('day', $day + 1)
+            ->where('doctor_id', $doctor_id)
+            ->first();
+        return $schedule;
+    }
+
 
 }

@@ -39,4 +39,8 @@ interface BaseInterface extends RepositoryInterface
      */
     public function Block(Request $request, int $id);
 
+    public static function getReflection(): \ReflectionClass;
+
+    public static function getConstants($keyContains = null, $returnCount = false);
+
 }

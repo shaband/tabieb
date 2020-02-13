@@ -34,8 +34,15 @@ Route::post('category/doctors', 'DoctorController@doctorsInCategory');
 Route::post('doctors/search', 'DoctorController@search');
 Route::get('categories', 'CategoryController@index');
 
-Route::middleware(['auth:auth:patient_api'])->group(function () {
+Route::middleware(['auth:patient_api'])->group(function () {
 
+    Route::post('reservations/create', 'ReservationController@create');
+    Route::post('reservations/cancel', 'ReservationController@cancel');
+
+    Route::post('reservations/upcoming', 'ReservationController@upcoming');
+    Route::post('reservations/previous', 'ReservationController@previous');
+    Route::post('reservation', 'ReservationController@reservation');
+    Route::post('reservation/rate', 'RatingController@create');
 
 });
 

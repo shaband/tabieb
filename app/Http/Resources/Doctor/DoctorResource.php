@@ -3,10 +3,11 @@
 namespace App\Http\Resources\Doctor;
 
 use App\Http\Resources\Category\CategoryResource;
+use App\Http\Resources\Schedule\ScheduleResource;
 use App\Models\Doctor;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class doctorResource extends JsonResource
+class DoctorResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -26,12 +27,12 @@ class doctorResource extends JsonResource
             'price' => $this->price,
             'civil_id' => $this->civil_id,
             'gender' => $this->gender == Doctor::GENDER_MALE ? __("Male") : __("Female"),
-         //   'category' => new CategoryResource($this->whenLoaded($this->category)),
+            //   'category' => new CategoryResource($this->whenLoaded($this->category)),
             'email_verified_at' => $this->email_verified_at,
             'phone_verified_at' => $this->phone_verified_at,
             'rating' => $this->ratings->avg('rate') ?? 0,
             'img' => $this->img,
-            'schedules' => $this->schedules
+            'schedules' => ScheduleResource::collection($this->whenLoaded('schedules'))
 
         ];
     }

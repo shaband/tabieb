@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Carbon\CarbonImmutable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Schedule extends Model
@@ -40,4 +42,10 @@ class Schedule extends Model
         $this->attributes['to_time'] = Carbon::parse($value);
     }
 
+    public function scopeOfDateInPeriod(Builder $builder, $value): void
+    {
+        $builder->whereTime('from_time', '<=', $value);
+        $builder->whereTime('to_time', '>=', $value);
+
+    }
 }

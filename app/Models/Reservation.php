@@ -2,14 +2,26 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Reservation extends Model
 {
 
+    public const AUDIO_TYPE_COMMUNICATION = 1;
+    public const VIDEO_TYPE_COMMUNICATION = 1;
+
+    public const STATUS_ACTIVE = 1;
+    public const STATUS_CANCELED = 1;
+    public const STATUS_FINISHED = 1;
+
     protected $table = 'reservations';
     public $timestamps = true;
-    protected $fillable = array('doctor_id', 'patient_id', 'schedule_id', 'from_time', 'to_time', 'comunication_type', 'canceled_at', 'status', 'description');
+    protected $fillable = array('doctor_id', 'patient_id', 'schedule_id', 'date', 'from_time', 'to_time', 'communication_type', 'canceled_at', 'status', 'description');
+
+    protected $casts = [
+        'communication_type' => 'integer'
+    ];
 
     public function doctor()
     {
@@ -44,6 +56,16 @@ class Reservation extends Model
     public function chat()
     {
         return $this->hasOne('App\Models\Chat');
+    }
+
+    public function setFromTimeAttribute($value): void
+    {
+        $this->attributes['from_time'] = Carbon::parse($value);
+    }
+
+    public function setToTimeAttribute($value): void
+    {
+        $this->attributes['to_time'] = Carbon::parse($value);
     }
 
 }

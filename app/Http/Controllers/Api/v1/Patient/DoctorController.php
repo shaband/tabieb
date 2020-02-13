@@ -51,8 +51,5 @@ class DoctorController extends Controller
         return responseJson(compact('doctors'), __("Loaded Successfully"));
     }
 
-    public  function doctorProfile(Request $request){
 
-        $this->repo->with(['ratings','']);
-    }
 }
