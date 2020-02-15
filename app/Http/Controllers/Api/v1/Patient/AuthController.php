@@ -4,10 +4,8 @@ namespace App\Http\Controllers\Api\v1\Patient;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\patients\PatientResource;
-use App\Models\Patient;
 use App\Repositories\interfaces\PatientRepository;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -35,6 +33,7 @@ class AuthController extends Controller
     {
 
         $rules = [
+            'username' => 'nullable|string|max:191',
             'first_name' => 'required|string|max:191',
             'last_name' => 'required|string|max:191',
             'email' => 'required|email|unique:patients,email',
@@ -75,6 +74,7 @@ class AuthController extends Controller
     public function profile(Request $request)
     {
         $rules = [
+            'username' => 'nullable|string|max:191',
             'first_name' => 'nullable|string|max:191',
             'last_name' => 'nullable|string|max:191',
             'email' => 'nullable|email|unique:patients,email,' . auth()->id(),
@@ -88,7 +88,6 @@ class AuthController extends Controller
             'gender' => 'nullable|integer|min:1|max:2',
             'fb_token' => 'nullable|string',
             'google_token' => 'nullable|string',
-
         ];
 
         \Validator::make($request->all(), $rules)->validate();

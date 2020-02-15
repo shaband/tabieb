@@ -22,11 +22,11 @@ class DoctorController extends Controller
 
     public function index()
     {
-        $popular_doctors = $this->repo->makeModel()->where('blocked_at', null)->limit(10)->get()->sortBy(function (Doctor $doctor) {
+        $popular_doctors = $this->repo->makeModel()->with('category','sub_categories')->where('blocked_at', null)->limit(10)->get()->sortBy(function (Doctor $doctor) {
             return $doctor->reservation()->count();
         });
 
-        $doctors_you_may_call = $this->repo->makeModel()
+        $doctors_you_may_call = $this->repo->makeModel()->with('category','sub_categories')
             ->where('blocked_at', null)
             ->whereNotIn('id', $popular_doctors->pluck('id'))
             ->get();

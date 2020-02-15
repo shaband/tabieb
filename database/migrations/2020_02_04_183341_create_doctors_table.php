@@ -29,6 +29,7 @@ class CreateDoctorsTable extends Migration
             $table->timestamp('blocked_at')->nullable();
             $table->longText('blocked_reason')->nullable();
             $table->string('civil_id')->unique()->nullable();
+            $table->tinyInteger('period')->unsigned()->nullable();
             $table->smallInteger('verification_code')->unique()->unsigned()->nullable();
             $table->rememberToken();
             $table->tinyInteger('gender')->default('0');

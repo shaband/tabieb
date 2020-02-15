@@ -88,6 +88,7 @@ class DoctorRepositoryEloquent extends BaseRepository implements DoctorRepositor
     public function doctorsInCategory(Request $request): Collection
     {
         $doctors = $this->makeModel()
+            ->with('category','sub_categories')
             ->where('blocked_at', null)
             ->where('category_id', $request->category_id)
             ->get();
@@ -96,7 +97,7 @@ class DoctorRepositoryEloquent extends BaseRepository implements DoctorRepositor
 
     public function searchInDoctors(Request $request): Collection
     {
-        $model = $this->repo->makeModel();
+        $model = $this->repo->makeModel()->with('category','sub_categories');
 
         $model = $model->when($request->category_id, function (Builder $builder) use ($request) {
             $builder->where('category_id', $request->category_id);

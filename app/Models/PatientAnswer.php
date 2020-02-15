@@ -7,18 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 class PatientAnswer extends Model
 {
 
+    const  STATUS_NO = 0;
+    const  STATUS_YES = 1;
     protected $table = 'patient_answers';
     public $timestamps = true;
-    protected $fillable = array('patient_id', 'question_id', 'answer');
+
+    protected $fillable = array('patient_id', 'question_id', 'answer', 'status');
 
     public function question()
     {
-        return $this->belongsTo('App\Models\PatientQuestion', 'question_id');
+        return $this->belongsTo(PatientQuestion::class, 'question_id');
     }
 
-    public function patient_id()
+    public function patient()
     {
-        return $this->hasOne('App\Models\Patient');
+        return $this->hasOne(Patient::class);
     }
 
 }

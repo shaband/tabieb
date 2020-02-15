@@ -12,7 +12,7 @@ class CreateSettingsTable extends Migration {
 			$table->string('name');
 			$table->string('slug_ar');
 			$table->string('slug_en');
-			$table->string('value');
+			$table->longText('value');
 			$table->tinyInteger('input_type');
 			$table->tinyInteger('category');
 			$table->timestamps();

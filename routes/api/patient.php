@@ -34,6 +34,12 @@ Route::post('category/doctors', 'DoctorController@doctorsInCategory');
 Route::post('doctors/search', 'DoctorController@search');
 Route::get('categories', 'CategoryController@index');
 
+
+Route::post('contact', 'ContactController@send');
+
+Route::post('setting/{name}', 'SettingController@index');
+
+
 Route::middleware(['auth:patient_api'])->group(function () {
 
     Route::post('reservations/create', 'ReservationController@create');
@@ -49,5 +55,13 @@ Route::middleware(['auth:patient_api'])->group(function () {
     Route::post('chats', 'ChatController@inbox');
     Route::post('chats/create', 'ChatController@create');
     Route::post('chat/messages', 'ChatController@addMessage');
+
+
+    Route::post('patient-questions', 'PatientQuestionController@questions');
+    Route::post('patient-questions/create', 'PatientQuestionController@answers');
+    Route::post('patient-questions/answers', 'PatientQuestionController@patientAnswers');
+
+
+
 });
 

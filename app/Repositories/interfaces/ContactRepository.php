@@ -2,6 +2,7 @@
 
 namespace App\Repositories\interfaces;
 
+use App\Models\Contact;
 use App\Repositories\interfaces\BaseInterface;
 
 /**
@@ -11,5 +12,9 @@ use App\Repositories\interfaces\BaseInterface;
  */
 interface ContactRepository extends BaseInterface
 {
-    //
+    /**
+     * @param array $attributes
+     * @return Contact
+     */
+    public function store(array $attributes): Contact;
 }

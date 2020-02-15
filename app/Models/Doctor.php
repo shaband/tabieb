@@ -20,7 +20,7 @@ class Doctor extends Authenticatable implements JWTSubject
     const  GENDER_FEMALE = 2;
     protected $table = 'doctors';
     public $timestamps = true;
-    protected $fillable = array('first_name_en', 'last_name_en', 'last_name_ar', 'first_name_ar', 'description_ar', 'description_en', 'title_ar', 'title_en', 'email', 'password', 'phone', 'category_id', 'price', 'last_login', 'email_verified_at', 'phone_verified_at', 'civil_id', 'verification_code', 'remember_token', 'gender', 'blocked_at', 'blocked_reason',);
+    protected $fillable = array('first_name_en', 'last_name_en', 'last_name_ar', 'first_name_ar', 'description_ar', 'description_en', 'title_ar', 'title_en', 'email', 'password', 'phone', 'category_id', 'price', 'period', 'last_login', 'email_verified_at', 'phone_verified_at', 'civil_id', 'verification_code', 'remember_token', 'gender', 'blocked_at', 'blocked_reason',);
 
 
     /**
@@ -39,7 +39,7 @@ class Doctor extends Authenticatable implements JWTSubject
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'price'=>'integer',
+        'price' => 'integer',
     ];
 
     /**

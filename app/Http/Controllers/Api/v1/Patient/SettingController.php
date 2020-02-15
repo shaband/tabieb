@@ -1,0 +1,38 @@
+<?php
+
+namespace App\Http\Controllers\Api\v1\Patient;
+
+use App\Http\Controllers\Controller;
+use App\Http\Resources\Setting\SettingResource;
+use App\Repositories\interfaces\SettingRepository;
+use Illuminate\Http\Request;
+
+class SettingController extends Controller
+{
+    private $repo;
+
+    public function __construct(SettingRepository $repo)
+    {
+        $this->repo = $repo;
+    }
+
+    public function index($name, Request $request)
+    {
+        $language = $request->header('Accept-Language');
+        $setting = $this->repo->findByField('name', "{$name}_{$language}")->first();
+
+
+        $setting = new SettingResource($setting);
+
+        return responseJson(compact('setting'), __("Loaded Successfully"));
+    }
+    /*    public function policy(Request $request)
+        {
+            $language = $request->header('Accept-Language');
+            $policy = $this->repo->findByField('name', "policy_$language}")->first();
+
+            $policy = new SettingResource($policy);
+
+            return responseJson(compact('policy', __("Loaded Successfully")));
+        }*/
+}

@@ -98,6 +98,16 @@
     @enderror
 
 </div>
+<div class="form-group">
+    <label for="period">{!! __("Period In Minutes") !!} *</label>
+    {!! Form::number('period',null,['class'=>'form-control','parsley-trigger'=>'change','id'=>'period',"data-parsley-type"=>"integer",'required','placeholder'=>__('Enter Price')]) !!}
+    @error('period')
+    <span class="invalid-feedback d-block" role="alert">
+      <strong>{{ $message }}</strong>
+    </span>
+    @enderror
+
+</div>
 
 <div class="form-group">
     <label for="gender">{!! __("Gender") !!} *</label>

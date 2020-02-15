@@ -20,7 +20,7 @@ class Patient extends Authenticatable implements JWTSubject
 
     public $timestamps = true;
 
-    protected $fillable = array('first_name', 'last_name', 'email', 'phone', 'password', 'civil_id', 'social_security_id', 'blocked_at', 'blocked_reason', 'birthdate', 'social_security_expired_at', 'district_id', 'area_id', 'block_id', 'email_verified_at', 'phone_verified_at', 'verification_code', 'last_login', 'gender', 'fb_token', 'google_token',);
+    protected $fillable = array('username', 'first_name', 'last_name', 'email', 'phone', 'password', 'civil_id', 'social_security_id', 'blocked_at', 'blocked_reason', 'birthdate', 'social_security_expired_at', 'district_id', 'area_id', 'block_id', 'email_verified_at', 'phone_verified_at', 'verification_code', 'last_login', 'gender', 'fb_token', 'google_token',);
 
 
     /**
@@ -137,6 +137,10 @@ class Patient extends Authenticatable implements JWTSubject
     public function prescription()
     {
         return $this->hasOne(Prescription::class);
+    }
+    public function contacts()
+    {
+        return $this->morphMany(Contact::class,'model');
     }
 
     public function social_security()
