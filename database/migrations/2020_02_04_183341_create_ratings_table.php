@@ -13,7 +13,7 @@ class CreateRatingsTable extends Migration {
 			$table->bigInteger('reservation_id')->unsigned()->index();
 			$table->bigInteger('doctor_id')->unsigned()->nullable()->index();
 			$table->bigInteger('patient_id')->unsigned()->index();
-			$table->text('description');
+			$table->text('description')->nullable();
 			$table->timestamps();
 		});
 	}

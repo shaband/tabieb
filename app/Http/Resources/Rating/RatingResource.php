@@ -4,6 +4,7 @@ namespace App\Http\Resources\Rating;
 
 use App\Http\Resources\Doctor\DoctorResource;
 use App\Http\Resources\patients\PatientResource;
+use App\Http\Resources\Reservation\ReservationResource;
 use App\Models\Reservation;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -24,9 +25,9 @@ class RatingResource extends JsonResource
 
             //relashions
 
-            'reservation_id' => new Reservation($this->reservation),
-            'doctor_id' => new DoctorResource($this->doctor),
-            'patient_id' => new PatientResource($this->patient),
+            'reservation' => new ReservationResource($this->whenLoaded('reservation')),
+            'doctor' => new DoctorResource($this->whenLoaded('doctor')),
+            'patient' => new PatientResource($this->whenLoaded('patient')),
         ];
 
     }

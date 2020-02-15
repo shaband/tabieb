@@ -28,7 +28,7 @@ class RatingController extends Controller
             'description' => 'nullable|string',
             'rate' => 'required|integer|min:0|max:5'
         ]);
-        $rate = $this->repo->store($request);
+        $rate = $this->repo->store($request)->fresh()->load('patient');
         $rate = new RatingResource($rate);
         return responseJson(compact('rate'), __("Rated Successfully"));
     }

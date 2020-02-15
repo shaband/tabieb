@@ -13,17 +13,17 @@ class Rating extends Model
 
     public function doctor()
     {
-        return $this->belongsTo('App\Models\Doctor');
+        return $this->belongsTo(Doctor::class);
     }
 
     public function patient()
     {
-        return $this->belongsTo('App\Models\Patient');
+        return $this->belongsTo(Patient::class);
     }
 
     public function reservation()
     {
-        return $this->belongsTo('App\Models\Reservation');
+        return $this->belongsTo(Reservation::class);
     }
 
 }

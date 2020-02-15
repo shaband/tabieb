@@ -2,6 +2,7 @@
 
 namespace App\Repositories\SQL;
 
+use App\Repositories\interfaces\ReservationRepository;
 use App\Repositories\SQL\BaseRepository;
 use Illuminate\Http\Request;
 use Prettus\Repository\Criteria\RequestCriteria;
@@ -45,7 +46,18 @@ class RatingRepositoryEloquent extends BaseRepository implements RatingRepositor
     {
         $inputs = $request->all();
         $inputs['patient_id'] = auth()->id();
-        $rate = $this->create($inputs);
+        $reservation = app(ReservationRepository::class)
+            ->findWhere([
+                'id' => $request->reservation_id,
+                'patient_id' => auth()->id(),
+            ])->first();
+        $inputs['doctor_id'] = $reservation->doctor_id;
+        $rate = $this->updateOrCreate(
+            [
+                'patient_id' => $request->patient_id,
+                'reservation_id' => $request->reservation_id,
+            ]
+            , $inputs);
 
         return $rate;
     }
