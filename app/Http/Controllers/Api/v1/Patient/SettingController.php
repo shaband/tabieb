@@ -26,13 +26,5 @@ class SettingController extends Controller
 
         return responseJson(compact('setting'), __("Loaded Successfully"));
     }
-    /*    public function policy(Request $request)
-        {
-            $language = $request->header('Accept-Language');
-            $policy = $this->repo->findByField('name', "policy_$language}")->first();
 
-            $policy = new SettingResource($policy);
-
-            return responseJson(compact('policy', __("Loaded Successfully")));
-        }*/
 }

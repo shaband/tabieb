@@ -30,4 +30,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'tokbox' => [
+        'key' => env('TOKBOX_KEY', null),
+        'secret' => env('TOKBOX_SECRET', null),
+    ]
 ];
