@@ -10,3 +10,11 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+/etc
+/logs
+/mail
+/public_ftp
+/ssl
+/tmp
+/access-logs
+/www
