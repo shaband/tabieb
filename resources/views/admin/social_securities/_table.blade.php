@@ -3,7 +3,6 @@
     <tr>
         <th>{!! __("Name In Arabic") !!}</th>
         <th>{!! __("Name In English ") !!}</th>
-
         <th>{!! __('Actions') !!}</th>
 
     </tr>
@@ -13,32 +12,8 @@
             <td>{!! $social_security->name_ar !!}</td>
             <td>{!! $social_security->name_en !!}</td>
             <td>
-                <a href="{!! route('admin.social-securities.edit',$social_security->id) !!}" class="btn btn-primary">
-                    <i class="fas fa-pencil-alt text-white"></i>
-                </a>
-
-
-                <a class="btn btn-warning text-white"
-                   onclick="
-                       Swal.fire({
-                       title: '{!! __('Are you sure?') !!}',
-                       text: '{!! __('You Will Not be able to revert this!') !!}',
-                       icon: 'warning',
-                       showCancelButton: true,
-                       confirmButtonColor: '#3085d6',
-                       cancelButtonColor: '#d33',
-                       confirmButtonText: '{!! __('Yes, delete it!') !!}'
-                       }).then((result) => {
-                       if (result.value) {document.getElementById('destroy-{!! $social_security->id !!}').submit();}
-                       });event.preventDefault()">
-                    <i class=" fas fa-times"></i>
-                </a>
-                <form action="{{ route('admin.social-securities.destroy',$social_security->id) }}" method="POST"
-                      style="display: none;"
-                      id="destroy-{!! $social_security->id !!}">
-                    @csrf
-                    @method('delete')
-                </form>
+                @component('admin.partials._action_buttons',['routeName'=>'social-securities','id'=>$social_security->id])
+                @endcomponent
             </td>
         </tr>
     @endforeach

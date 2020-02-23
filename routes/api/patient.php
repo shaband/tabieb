@@ -23,9 +23,9 @@ Route::post('auth/profile', 'AuthController@Profile');
 
 Route::post('districts', 'DistrictController@index');
 Route::post('areas', 'AreaController@index');
-Route::post('district/areas', 'AreaController@areasInDistrict');
+Route::post('district/areas', 'AreaController@areasInDistrict')->name('district.areas');
 Route::post('blocks', 'BlockController@index');
-Route::post('area/blocks', 'BlockController@blocksInArea');
+Route::post('area/blocks', 'BlockController@blocksInArea')->name('area.blocks');
 Route::post('social-securities', 'SocialSecurityController@index');
 
 
@@ -60,7 +60,6 @@ Route::middleware(['auth:patient_api'])->group(function () {
     Route::post('patient-questions', 'PatientQuestionController@questions');
     Route::post('patient-questions/create', 'PatientQuestionController@answers');
     Route::post('patient-questions/answers', 'PatientQuestionController@patientAnswers');
-
 
 
 });

@@ -100,7 +100,7 @@ class DistrictController extends Controller
     {
 
         $district = $this->repo->block($request, $id);
-        toast(__("Updated successfully"), 'success');
+        toast(__("Deleted successfully"), 'success');
         return back();
 
     }

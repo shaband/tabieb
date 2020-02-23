@@ -28,8 +28,11 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
         Route::resource('blocks', 'BlockController');
         Route::resource('questions', 'QuestionController');
         Route::resource('doctors', 'DoctorController');
-        Route::resource('schedules', 'ScheduleController');
+
         Route::post('doctors/{doctor}/block', 'DoctorController@blockDoctor')->name('doctors.block');
+        Route::resource('patients', 'PatientController');
+        Route::post('patients/{patient}/block', 'PatientController@block')->name('patients.block');
+        Route::resource('schedules', 'ScheduleController');
         Route::resource('patient-questions', 'PatientQuestionController');
         Route::resource('social-securities', 'SocialSecurityController');
     });

@@ -93,6 +93,10 @@ class AuthController extends Controller
         \Validator::make($request->all(), $rules)->validate();
 
         $patient = $this->repo->update(array_filter($request->all()), auth()->id());
+        if ($request->image != null) {
+            $image_data = $this->saveFile($request->file('image'), 'patients');
+            $patient->image()->updateOrCreate(['type' => $image_data['type']], $image_data);
+        }
 
         $response = (new PatientResource($patient));
         return responseJson(['patient' => $response]);

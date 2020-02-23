@@ -13,9 +13,24 @@ use Illuminate\Http\Request;
  */
 interface PatientRepository extends BaseInterface
 {
+    /**
+     * @param Request $request
+     * @return Patient
+     */
     public function store(Request $request): Patient;
 
+    /**
+     * @param Request $request
+     * @return Patient
+     */
     public function verify(Request $request): Patient;
+
+    /**
+     * @param Request $request
+     * @param int $id
+     * @return Patient
+     */
+    public function UpdatePatient(Request $request, int $id): Patient;
 
 
 }

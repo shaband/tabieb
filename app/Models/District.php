@@ -13,7 +13,7 @@ class District extends Model
     public $timestamps = true;
     protected $fillable = array('name_ar', 'name_en', 'blocked_at');
 
-    public function area()
+    public function areas()
     {
         return $this->hasMany(Area::class);
     }

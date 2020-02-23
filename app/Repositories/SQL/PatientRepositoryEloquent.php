@@ -2,6 +2,7 @@
 
 namespace App\Repositories\SQL;
 
+use App\Models\Doctor;
 use App\Repositories\SQL\BaseRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -38,7 +39,11 @@ class PatientRepositoryEloquent extends BaseRepository implements PatientReposit
         $this->pushCriteria(app(RequestCriteria::class));
     }
 
-
+    /**
+     * @param Request $request
+     * @return Patient
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
+     */
     public function store(Request $request): Patient
     {
 
@@ -59,6 +64,10 @@ class PatientRepositoryEloquent extends BaseRepository implements PatientReposit
         return $patient->fresh();
     }
 
+    /**
+     * @param Request $request
+     * @return Patient
+     */
     public function verify(Request $request): Patient
     {
 
@@ -71,6 +80,31 @@ class PatientRepositoryEloquent extends BaseRepository implements PatientReposit
 
         $patient->save();
         return $patient;
+    }
+
+
+    /**
+     * @param Request $request
+     * @param int $id
+     * @return Patient
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
+     */
+    public function UpdatePatient(Request $request, int $id): Patient
+    {
+        DB::beginTransaction();
+        $inputs = $request->except('password');
+        if ($request->password != null) $inputs['password'] = $request->password;
+        $patient = $this->update($inputs, $id);
+
+        if ($request->image != null) {
+
+            $image_data = $this->saveFile($request->file('image'), 'patients');
+            $patient->image()->updateOrCreate(['type' => $image_data['type']], $image_data);
+        }
+
+        DB::commit();
+        return $patient->fresh();
+
     }
 
 

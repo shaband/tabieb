@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\v1\Patient;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\area\AreaResource;
 use App\Repositories\interfaces\AreaRepository;
 use Illuminate\Http\Request;
 
@@ -18,12 +19,12 @@ class AreaController extends Controller
     public function index()
     {
         $areas = $this->repo->all();
-        return responseJson(['ares' => $areas]);
+        return responseJson(['ares' => AreaResource::collection($areas) ]);
     }
 
     public function areasInDistrict(Request $request)
     {
         $areas = $this->repo->findWhere(['district_id' => $request->district_id]);
-        return responseJson(['areas' => $areas], __("Loaded successfully"));
+        return responseJson(['areas' => AreaResource::collection($areas)], __("Loaded successfully"));
     }
 }

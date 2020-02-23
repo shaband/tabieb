@@ -86,7 +86,7 @@ class Patient extends Authenticatable implements JWTSubject
 
     public function district()
     {
-        return $this->belongsTo(District::class, 'district_id');
+        return $this->belongsTo(District::class);
     }
 
     public function area()
@@ -138,9 +138,10 @@ class Patient extends Authenticatable implements JWTSubject
     {
         return $this->hasOne(Prescription::class);
     }
+
     public function contacts()
     {
-        return $this->morphMany(Contact::class,'model');
+        return $this->morphMany(Contact::class, 'model');
     }
 
     public function social_security()

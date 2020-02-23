@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\v1\Patient;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\block\BlockResource;
 use App\Repositories\interfaces\BlockRepository;
 use Illuminate\Http\Request;
 
@@ -19,12 +20,12 @@ class BlockController extends Controller
     public function index()
     {
         $blocks = $this->repo->all();
-        return responseJson(['block' => $blocks]);
+        return responseJson(['block' => BlockResource::collection($blocks)]);
     }
 
     public function blocksInArea(Request $request)
     {
         $blocks = $this->repo->findByField('area_id', $request->area_id);
-        return responseJson(['blocks' => $blocks], __("Loaded successfully"));
+        return responseJson(['blocks' => BlockResource::collection($blocks)], __("Loaded successfully"));
     }
 }

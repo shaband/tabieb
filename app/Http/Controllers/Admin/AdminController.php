@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\MainController as Controller;
 use App\Http\Requests\Admin\Admins\AdminRequest;
 use App\Repositories\interfaces\AdminRepository;
+
 
 class AdminController extends Controller
 {
     private $repo;
+    public $routeName = 'admin.admins.';
+    public $viewPath = 'admin.admins.';
 
     public function __construct(AdminRepository $repo)
     {
@@ -23,7 +26,7 @@ class AdminController extends Controller
 
         $admins = $this->repo->all();
 
-        return view('admin.admins.index', compact('admins'));
+        return view($this->viewPath.'index', compact('admins'));
     }
 
     /**
@@ -32,7 +35,7 @@ class AdminController extends Controller
     public function create()
     {
 
-        return view('admin.admins.create');
+        return view($this->viewPath.'create');
     }
 
     /**
@@ -44,19 +47,9 @@ class AdminController extends Controller
         $admin = $this->repo->store($request);
         toast(__("Added successfully"), 'success');
 
-        return redirect()->route('admin.admins.index');
+        return redirect()->route($this->routeName.'index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * @param $id
@@ -65,7 +58,7 @@ class AdminController extends Controller
     public function edit($id)
     {
         $admin = $this->repo->find($id);
-        return view('admin.admins.edit', compact('admin'));
+        return view($this->viewPath.'edit', compact('admin'));
     }
 
     /**
@@ -79,19 +72,8 @@ class AdminController extends Controller
 
         toast(__("Updated successfully"), 'success');
 
-        return redirect()->route('admin.admins.index');
+        return redirect()->route($this->routeName.'index');
     }
 
-    /**
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function destroy($id)
-    {
-        $this->repo->delete($id);
-        toast(__("Updated successfully"), 'success');
 
-        return back();
-
-    }
 }

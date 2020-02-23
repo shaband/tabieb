@@ -2,36 +2,35 @@
     <thead>
     <tr>
         <th>{!! __("Name ") !!}</th>
-        <th>{!! __("Title") !!}</th>
         <th>{!! __("Email") !!}</th>
         <th>{!! __("Phone") !!}</th>
-        <th>{!! __("Price") !!}</th>
+
         <th>{!! __("Status") !!}</th>
 
         <th>{!! __('Actions') !!}</th>
 
     </tr>
     </thead>
-    @foreach($doctors as $doctor)
+    @foreach($patients as $patient)
         <tr>
-            <td>{!! $doctor->name !!}</td>
-            <td>{!! $doctor->title !!}</td>
-            <td>{!! $doctor->email !!}</td>
-            <td>{!! $doctor->phone !!}</td>
-            <td>{!! $doctor->price !!}</td>
+            <td>{!! $patient->name !!}</td>
+            <td>{!! $patient->title !!}</td>
+            <td>{!! $patient->email !!}</td>
+            <td>{!! $patient->phone !!}</td>
+            <td>{!! $patient->price !!}</td>
             <td>
                 @component('admin.partials._block',
                             [
-                             'id'=>$doctor->id,
-                             'blocked_at'=>$doctor->blocked_at,
-                             'routeName'=>'doctors',
+                             'id'=>$patient->id,
+                             'blocked_at'=>$patient->blocked_at,
+                             'routeName'=>'patients',
                              'textMessage'=>__('This Doctor Would Not Be Available For Patients')
                              ])
                 @endcomponent
 
             </td>
             <td>
-                @component('admin.partials._action_buttons',['routeName'=>'doctors','id'=>$doctor->id])
+                @component('admin.partials._action_buttons',['routeName'=>'patients','id'=>$patient->id])
                 @endcomponent
             </td>
         </tr>

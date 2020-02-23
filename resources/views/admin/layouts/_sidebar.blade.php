@@ -64,13 +64,17 @@
                 <li>
                     <a href="javascript: void(0);">
                         <i class="fas fa-users-cog"></i>
-                        <span>{!! __("Student Settings") !!}</span>
+                        <span>{!! __("Patient Settings") !!}</span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul class="nav-second-level nav" aria-expanded="false">
-                        {{--   <li>
-                               <a href="javascript: void(0);">{!! __("Students") !!}</a>
-                           </li>--}}
+                        <li>
+
+                            <a href="{!! route('admin.patients.index') !!}">
+
+                                <i class="fas fa-heartbeat pr-1"></i>
+                                {!! __("Patients") !!}</a>
+                        </li>
 
 
                         <li>

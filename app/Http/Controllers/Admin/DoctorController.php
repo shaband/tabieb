@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\MainController as Controller;
 use App\Http\Requests\Admin\Admins\AdminRequest;
 use App\Http\Requests\Admin\Doctors\DoctorRequest;
 use App\Models\Doctor;
@@ -13,7 +13,8 @@ use Illuminate\Http\Request;
 class DoctorController extends Controller
 {
     private $repo;
-
+    private $routeName='admin.doctors.';
+    private $viewPath='admin.doctors.';
     public function __construct(DoctorRepository $repo)
     {
         $this->repo = $repo;
@@ -27,7 +28,7 @@ class DoctorController extends Controller
         $open_doctors = $this->repo->findWhere(['blocked_at' => null]);
         $blocked_doctors = $this->repo->findWhere([['blocked_at', '!=', null]]);
 
-        return view('admin.doctors.index', compact('open_doctors', 'blocked_doctors'));
+        return view($this->viewPath.'index', compact('open_doctors', 'blocked_doctors'));
     }
 
     /**
@@ -37,7 +38,7 @@ class DoctorController extends Controller
     {
 
         $main_categories = $categoryRepository->cursor()->pluck('name', 'id');
-        return view('admin.doctors.create', compact('main_categories'));
+        return view($this->viewPath.'create', compact('main_categories'));
     }
 
     /**
@@ -50,19 +51,9 @@ class DoctorController extends Controller
         $doctor = $this->repo->store($request);
         toast(__("Added successfully"), 'success');
 
-        return redirect()->route('admin.doctors.index');
+        return redirect()->route($this->routeName.'index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * @param $id
@@ -74,7 +65,7 @@ class DoctorController extends Controller
         $main_categories = $categoryRepository->cursor()->pluck('name', 'id');
         $sub_categories = $categoryRepository->getSubCategoriesForMainCategory($doctor->category_id)->pluck('name', 'id');
         $doctor->sub_category_ids = $doctor->sub_categories->pluck('id');
-        return view('admin.doctors.edit', compact('doctor', 'main_categories', 'sub_categories'));
+        return view($this->viewPath.'edit', compact('doctor', 'main_categories', 'sub_categories'));
     }
 
     /**
@@ -88,24 +79,14 @@ class DoctorController extends Controller
 
         toast(__("Updated successfully"), 'success');
 
-        return redirect()->route('admin.doctors.index');
+        return redirect()->route($this->routeName.'index');
     }
 
-    /**
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function destroy($id)
-    {
-        $this->repo->delete($id);
-        toast(__("Updated successfully"), 'success');
-        return back();
-    }
 
     public function blockDoctor($id, Request $request)
     {
         $doctor = $this->repo->block($request, $id);
-        toast(__("Updated successfully"), 'success');
+        toast(__("Blocked successfully"), 'success');
         return back();
     }
 

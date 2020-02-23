@@ -13,7 +13,7 @@ class PatientRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,21 @@ class PatientRequest extends FormRequest
      */
     public function rules()
     {
+
         return [
-            //
+            'username' => 'nullable|string|max:191',
+            'first_name' => 'required|string|max:191',
+            'last_name' => 'required|string|max:191',
+            'email' => 'required|email|unique:patients,email,' . $this->patient,
+            'phone' => 'required|numeric|unique:patients,phone,' . $this->patient,
+            'password' => 'nullable|required_without:_method|string|max:191|confirmed',
+            'civil_id' => 'required|numeric|unique:patients,civil_id,' . $this->patient,
+            'social_security_id' => 'nullable|integer|exists:social_securities,id',
+            'birthdate' => 'nullable|date|date_format:Y-m-d',
+            'district_id' => 'nullable|integer|exists:districts,id',
+            'area_id' => 'nullable|integer|exists:areas,id',
+            'block_id' => 'nullable|integer|exists:blocks,id',
+            'gender' => 'nullable|integer|min:1|max:2',
         ];
     }
 }

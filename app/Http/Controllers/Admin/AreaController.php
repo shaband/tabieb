@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\MainController as Controller;
 use App\Http\Requests\Admin\Admins\AdminRequest;
 use App\Http\Requests\Admin\areas\AreaRequest;
 use App\Repositories\interfaces\AreaRepository;
@@ -11,6 +11,9 @@ use App\Repositories\interfaces\DistrictRepository;
 class AreaController extends Controller
 {
     private $repo;
+
+    public $viewPath = 'admin.areas.';
+    public $routePath = 'admin.areas.';
 
     public function __construct(AreaRepository $repo)
     {
@@ -25,7 +28,7 @@ class AreaController extends Controller
 
         $areas = $this->repo->all();
 
-        return view('admin.areas.index', compact('areas'));
+        return view($this->viewPath . 'index', compact('areas'));
     }
 
     /**
@@ -35,7 +38,7 @@ class AreaController extends Controller
     public function create(DistrictRepository $districtRepository)
     {
         $districts = $districtRepository->all()->pluck('name', 'id');
-        return view('admin.areas.create', compact('districts'));
+        return view($this->viewPath . 'create', compact('districts'));
     }
 
     /**
@@ -47,19 +50,9 @@ class AreaController extends Controller
         $area = $this->repo->create($request->all());
         toast(__("Added successfully"), 'success');
 
-        return redirect()->route('admin.areas.index');
+        return redirect()->route($this->routeName . 'index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * @param $id
@@ -70,7 +63,7 @@ class AreaController extends Controller
     {
         $area = $this->repo->find($id);
         $districts = $districtRepository->all()->pluck('name', 'id');
-        return view('admin.areas.edit', compact('area', 'districts'));
+        return view($this->viewPath . 'edit', compact('area', 'districts'));
     }
 
     /**
@@ -84,19 +77,8 @@ class AreaController extends Controller
 
         toast(__("Updated successfully"), 'success');
 
-        return redirect()->route('admin.areas.index');
+        return redirect()->route($this->routeName . 'index');
     }
 
-    /**
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function destroy($id)
-    {
-        $this->repo->delete($id);
-        toast(__("Updated successfully"), 'success');
 
-        return back();
-
-    }
 }

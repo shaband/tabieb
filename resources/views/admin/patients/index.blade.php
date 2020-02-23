@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title') {!! __("Doctors") !!} @endsection
+@section('title') {!! __("Patients") !!} @endsection
 
 @section('content')
 
@@ -9,33 +9,33 @@
                 <h4 class="mt-0 header-title d-inline">@yield('title')</h4>
                 <div class="mt-0 header-title float-right  d-inline">
 
-                    <a class="btn btn-info text-white" href="{!! route('admin.doctors.create') !!}">
+                    <a class="btn btn-info text-white" href="{!! route('admin.patients.create') !!}">
                         <i class="fas fa-plus"></i> {!! __("New")!!}</a>
                 </div>
                 <div class="pt-4">
 
 
                     <nav>
-                        <div class="nav nav-tabs" id="doctors-tab" role="tablist">
-                            <a class="nav-item nav-link active" id="open-doctors-tab" data-toggle="tab"
-                               href="#open-doctor" role="tab" aria-controls="open-doctor"
-                               aria-selected="true">{!! __("Open Doctors") !!}</a>
-                            <a class="nav-item nav-link" id="sub-cat-tab" data-toggle="tab" href="#blocked-doctor"
-                               role="tab" aria-controls="blocked-doctor"
-                               aria-selected="false">{!! __("Blocked Doctors") !!}</a>
+                        <div class="nav nav-tabs" id="patients-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="open-patients-tab" data-toggle="tab"
+                               href="#open-patient" role="tab" aria-controls="open-patient"
+                               aria-selected="true">{!! __("Open Patients") !!}</a>
+                            <a class="nav-item nav-link" id="sub-cat-tab" data-toggle="tab" href="#blocked-patient"
+                               role="tab" aria-controls="blocked-patient"
+                               aria-selected="false">{!! __("Blocked Patients") !!}</a>
                         </div>
                     </nav>
-                    <div class="tab-content" id="doctors-tabContent">
-                        <div class="tab-pane fade show active" id="open-doctor" role="tabpanel"
-                             aria-labelledby="open-doctors-tab">
+                    <div class="tab-content" id="patients-tabContent">
+                        <div class="tab-pane fade show active" id="open-patient" role="tabpanel"
+                             aria-labelledby="open-patients-tab">
 
-                            @include('admin.doctors._table',['doctors'=>$open_doctors])
+                            @include('admin.patients._table',['patients'=>$open_patients])
 
 
                         </div>
-                        <div class="tab-pane fade" id="blocked-doctor" role="tabpanel" aria-labelledby="sub-cat-tab">
+                        <div class="tab-pane fade" id="blocked-patient" role="tabpanel" aria-labelledby="sub-cat-tab">
 
-                            @include('admin.doctors._table',['doctors'=>$blocked_doctors])
+                            @include('admin.patients._table',['patients'=>$blocked_patients])
 
                         </div>
                     </div>

@@ -89,7 +89,7 @@ class SocialSecurityController extends Controller
     public function destroy($id)
     {
         $this->repo->delete($id);
-        toast(__("Updated successfully"), 'success');
+        toast(__("Deleted successfully"), 'success');
 
         return back();
 

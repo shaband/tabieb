@@ -1,7 +1,16 @@
 <div class="form-group">
-    <label for="first_name_ar">{!! __("First Name In Arabic") !!} *</label>
-    {!! Form::text('first_name_ar',null,['class'=>'form-control','parsley-trigger'=>'change','id'=>'first_name_ar','required','placeholder'=>__('Enter First Name In Arabic')]) !!}
-    @error('first_name_ar')
+    <label for="username">{!! __("Username") !!} *</label>
+    {!! Form::text('username',null,['class'=>'form-control','parsley-trigger'=>'change','id'=>'username','required','placeholder'=>__('Enter Username')]) !!}
+    @error('username')
+    <span class="invalid-feedback d-block" role="alert">
+      <strong>{{ $message }}</strong>
+    </span>
+    @enderror
+</div>
+<div class="form-group">
+    <label for="first_name">{!! __("First Name") !!} *</label>
+    {!! Form::text('first_name',null,['class'=>'form-control','parsley-trigger'=>'change','id'=>'first_name','required','placeholder'=>__('Enter First Name')]) !!}
+    @error('first_name')
     <span class="invalid-feedback d-block" role="alert">
       <strong>{{ $message }}</strong>
     </span>
@@ -9,72 +18,12 @@
 </div>
 
 <div class="form-group">
-    <label for="last_name_ar">{!! __("Last Name In Arabic") !!} *</label>
-    {!! Form::text('last_name_ar',null,['class'=>'form-control','parsley-trigger'=>'change','id'=>'last_name_ar','required','placeholder'=>__('Enter Last Name In Arabic')]) !!}
-    @error('last_name_ar')
+    <label for="last_name">{!! __("Last Name") !!} *</label>
+    {!! Form::text('last_name',null,['class'=>'form-control','parsley-trigger'=>'change','id'=>'last_name','required','placeholder'=>__('Enter Last Name')]) !!}
+    @error('last_name')
     <span class="invalid-feedback d-block" role="alert">
       <strong>{{ $message }}</strong>
     </span>
-    @enderror
-</div>
-<div class="form-group">
-    <label for="first_name_en">{!! __("First Name In English") !!} *</label>
-    {!! Form::text('first_name_en',null,['class'=>'form-control','parsley-trigger'=>'change','id'=>'first_name_en','required','placeholder'=>__('Enter First Name In English')]) !!}
-    @error('first_name_en')
-    <span class="invalid-feedback d-block" role="alert">
-      <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-</div>
-
-<div class="form-group">
-    <label for="last_name_en">{!! __("Last Name In English") !!} *</label>
-    {!! Form::text('last_name_en',null,['class'=>'form-control','parsley-trigger'=>'change','id'=>'last_name_en','required','placeholder'=>__('Enter Last Name In English')]) !!}
-    @error('last_name_en')
-    <span class="invalid-feedback d-block" role="alert">
-       <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-</div>
-
-
-<div class="form-group">
-    <label for="description_ar">{!! __("Description In Arabic") !!} </label>
-    {!! Form::textarea('description_ar',null,['class'=>'form-control','parsley-trigger'=>'change','id'=>'description_ar','required','placeholder'=>__('Enter Description In Arabic')]) !!}
-    @error('description_ar')
-    <span class="invalid-feedback d-block" role="alert">
-      <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-</div>
-<div class="form-group">
-    <label for="description_en">{!! __("Description In English") !!} </label>
-    {!! Form::textarea('description_en',null,['class'=>'form-control','parsley-trigger'=>'change','id'=>'description_en','required','placeholder'=>__('Enter Description In English')]) !!}
-    @error('description_en')
-    <span class="invalid-feedback d-block" role="alert">
-      <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-</div>
-
-
-<div class="form-group">
-    <label for="title_ar">{!! __("Title In Arabic") !!} *</label>
-    {!! Form::text('title_ar',null,['class'=>'form-control','parsley-trigger'=>'change','id'=>'title_ar','required','placeholder'=>__('Enter Title In Arabic')]) !!}
-    @error('title_ar')
-    <span class="invalid-feedback d-block" role="alert">
-       <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-</div>
-
-<div class="form-group">
-    <label for="title_en">{!! __("Title In English") !!} *</label>
-    {!! Form::text('title_en',null,['class'=>'form-control','parsley-trigger'=>'change','id'=>'title_en','required','placeholder'=>__('Enter Title In English')]) !!}
-    @error('title_en')
-    <span class="invalid-feedback d-block" role="alert">
-       <strong>{{ $message }}</strong>
-     <span>
     @enderror
 </div>
 
@@ -88,25 +37,16 @@
     @enderror
 </div>
 
+
 <div class="form-group">
-    <label for="price">{!! __("Price") !!} *</label>
-    {!! Form::number('price',null,['class'=>'form-control','parsley-trigger'=>'change','id'=>'price',"data-parsley-type"=>"integer",'required','placeholder'=>__('Enter Price')]) !!}
-    @error('price')
+    <label for="birthdate">{!! __("Birthdate") !!}  </label>
+    {!! Form::text('birthdate',null,['class'=>'form-control datepicker','parsley-trigger'=>'change','id'=>'birthdate','parsley-trigger'=>'change',
+'required','placeholder'=>__('Birthdate')]) !!}
+    @error('birthdate')
     <span class="invalid-feedback d-block" role="alert">
-      <strong>{{ $message }}</strong>
+     <strong>{{ $message }}</strong>
     </span>
     @enderror
-
-</div>
-<div class="form-group">
-    <label for="period">{!! __("Period In Minutes") !!} *</label>
-    {!! Form::number('period',null,['class'=>'form-control','parsley-trigger'=>'change','id'=>'period',"data-parsley-type"=>"integer",'required','placeholder'=>__('Enter Price')]) !!}
-    @error('period')
-    <span class="invalid-feedback d-block" role="alert">
-      <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-
 </div>
 
 <div class="form-group">
@@ -122,23 +62,53 @@
 
 
 <div class="form-group">
-    <label for="category_id">{!! __("Select Main Category ") !!} </label>
-    {!! Form::select('category_id',$main_categories??[],null,['class'=>'form-control select2','parsley-trigger'=>'change','id'=>'category_id','placeholder'=>__('Main Category'),'onChange'=>'getSubCategoriesOptions(this.value)']) !!}
-    @error('category_id')
+    <label for="social_security_id">{!! __("Select Social Security ") !!} </label>
+    {!! Form::select('social_security_id',$social_securities??[],null,['class'=>'form-control select2','parsley-trigger'=>'change','id'=>'social_security_id','placeholder'=>__('Social Security'),]) !!}
+    @error('social_security_id')
     <span class="invalid-feedback d-block" role="alert">
      <strong>{{ $message }}</strong>
     </span>
     @enderror
 </div>
+
 <div class="form-group">
-    <label for="sub_category_ids">{!! __("Select Sub Categories") !!} </label>
-    {!! Form::select('sub_category_ids[]',$sub_categories??[],null,['class'=>'form-control select2','parsley-trigger'=>'change','id'=>'sub_category_ids','placeholder'=>__('Main Sub Categories'),'multiple']) !!}
-    @error('sub_category_ids')
+    <label for="birthdate">{!! __("Social Security Expiration Date") !!}  </label>
+    {!! Form::text('social_security_expired_at',null,['class'=>'form-control datepicker','parsley-trigger'=>'change','id'=>'social_security_expired_at','parsley-trigger'=>'change',
+'required','placeholder'=>__('Social Security Expiration Date')]) !!}
+    @error('social_security_expired_at')
     <span class="invalid-feedback d-block" role="alert">
      <strong>{{ $message }}</strong>
     </span>
     @enderror
-    @error('sub_category_ids.*')
+</div>
+
+
+<div class="form-group">
+    <label for="category_id">{!! __("Select District") !!} </label>
+    {!! Form::select('district_id',$districts??[],null,['class'=>'form-control select2','parsley-trigger'=>'change','id'=>'district_id','placeholder'=>__('Districts'),'onChange'=>'getAreasOptions(this.value)']) !!}
+    @error('district_id')
+    <span class="invalid-feedback d-block" role="alert">
+     <strong>{{ $message }}</strong>
+    </span>
+    @enderror
+</div>
+
+
+<div class="form-group">
+    <label for="area_id">{!! __("Select Area") !!} </label>
+    {!! Form::select('area_id',$areas??[],null,['class'=>'form-control select2','parsley-trigger'=>'change','id'=>'area_id','placeholder'=>__('Area'),'onChange'=>'getBlockOptions(this.value)']) !!}
+    @error('area_id')
+    <span class="invalid-feedback d-block" role="alert">
+     <strong>{{ $message }}</strong>
+    </span>
+    @enderror
+</div>
+
+
+<div class="form-group">
+    <label for="block_id">{!! __("Select Block") !!} </label>
+    {!! Form::select('block_id',$blocks??[],null,['class'=>'form-control select2','parsley-trigger'=>'change','id'=>'block_id','placeholder'=>__('Block'),'change'=>'getBlocks(this.value)']) !!}
+    @error('block_id')
     <span class="invalid-feedback d-block" role="alert">
      <strong>{{ $message }}</strong>
     </span>
@@ -166,8 +136,9 @@
 
 </div>
 <div class="form-group">
-    <label for="pass1">{!! __("Password") !!} @if(!isset($doctor)) * @endif</label>
-    <input id="pass1" name="password" type="password" placeholder="{!! __("Password") !!}" @if(!isset($doctor)) required
+    <label for="pass1">{!! __("Password") !!} @if(!isset($patient)) * @endif</label>
+    <input id="pass1" name="password" type="password" placeholder="{!! __("Password") !!}"
+           @if(!isset($patient)) required
            @endif
            class="form-control">
     @error('password')
@@ -177,15 +148,17 @@
     @enderror
 </div>
 <div class="form-group">
-    <label for="passWord2">{!! __("Confirm Password") !!} @if(!isset($doctor)) * @endif</label>
-    <input data-parsley-equalto="#pass1" name="password_confirmation" type="password" @if(!isset($doctor)) required
+    <label for="passWord2">{!! __("Confirm Password") !!} @if(!isset($patient)) * @endif</label>
+    <input data-parsley-equalto="#pass1" name="password_confirmation" type="password" @if(!isset($patient)) required
            @endif
            placeholder="{!! __("Confirm Password") !!}" class="form-control" id="passWord2">
 </div>
+
+
 <div class="form-group">
     <label for="image">{!!__("image")  !!}</label>
     <input type="file" name="image" class="dropify"
-           @if(isset($doctor))data-default-file="{!! url($doctor->img) !!}" @endif />
+           @if(isset($patient))data-default-file="{!! url($patient->img) !!}" @endif />
     @error('image')
     <span class="invalid-feedback d-block" role="alert">
       <strong>{{ $message }}</strong>
@@ -195,20 +168,34 @@
 
 <script>
 
-    function getSubCategoriesOptions(category_id) {
-
+    function getAreasOptions(district_id) {
         $.ajax({
-            method: 'get',
-            url: route('api.categories.sub-categories', category_id),
+            method: 'post',
+            url: route('api.patient.district.areas'),
+            data: {district_id: district_id},
             success: function (res) {
-                var sub_categories = res.data;
-                var selector = 'select[name="sub_category_ids[]"]';
+                var areas = res.data.areas;
+                var selector = 'select[name="area_id"]';
                 var placeholder = getPlaceholder(selector);
-                var options = placeholder + getOptions(sub_categories);
+                var options = placeholder + getOptions(areas);
                 $(selector).html(options);
-
             }
         })
+    }
+
+    function getBlockOptions(area_id) {
+        $.ajax({
+            method: 'post',
+            url: route('api.patient.area.blocks'),
+            data: {area_id: area_id},
+            success: function (res) {
+                var block = res.data.blocks;
+                var selector = 'select[name="block_id"]';
+                var placeholder = getPlaceholder(selector);
+                var options = placeholder + getOptions(block);
+                $(selector).html(options);
+            }
+        });
     }
 
 </script>

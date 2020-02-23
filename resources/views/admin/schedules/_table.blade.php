@@ -13,35 +13,12 @@
         <tr>
             <td>{!! $schedule->doctor->name !!}</td>
             <td>{!!days()[$schedule->day] ??null !!}</td>
-            <td>{!! $schedule->from_time !!}</td>
-            <td>{!! $schedule->to_time !!}</td>
+            <td>{!! \Carbon\Carbon::parse($schedule->from_time)->format('H:i A') !!}</td>
+            <td>{!! \Carbon\Carbon::parse($schedule->to_time)->format('H:i A')!!}</td>
             <td>
-                <a href="{!! route('admin.schedules.edit',$schedule->id) !!}" class="btn btn-primary">
-                    <i class="fas fa-pencil-alt text-white"></i>
-                </a>
+                @component('admin.partials._action_buttons',['id'=>$schedule->id,'routeName'=>'schedules'])
+                @endcomponent
 
-
-                <a class="btn btn-warning text-white"
-                   onclick="
-                       Swal.fire({
-                       title: '{!! __('Are you sure?') !!}',
-                       text: '{!! __('You Will Not be able to revert this!') !!}',
-                       icon: 'warning',
-                       showCancelButton: true,
-                       confirmButtonColor: '#3085d6',
-                       cancelButtonColor: '#d33',
-                       confirmButtonText: '{!! __('Yes, delete it!') !!}'
-                       }).then((result) => {
-                       if (result.value) {document.getElementById('destroy-{!! $schedule->id !!}').submit();}
-                       });event.preventDefault()">
-                    <i class=" fas fa-times"></i>
-                </a>
-                <form action="{{ route('admin.schedules.destroy',$schedule->id) }}" method="POST"
-                      style="display: none;"
-                      id="destroy-{!! $schedule->id !!}">
-                    @csrf
-                    @method('delete')
-                </form>
             </td>
         </tr>
     @endforeach
