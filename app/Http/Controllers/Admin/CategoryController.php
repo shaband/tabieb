@@ -9,7 +9,7 @@ use App\Repositories\interfaces\CategoryRepository;
 
 class CategoryController extends Controller
 {
-    private $repo;
+    protected $repo;
 
     public function __construct(CategoryRepository $repo)
     {

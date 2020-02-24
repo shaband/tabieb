@@ -8,7 +8,7 @@ use App\Repositories\interfaces\QuestionRepository;
 
 class QuestionController extends Controller
 {
-    private $repo;
+    protected $repo;
 
     public function __construct(QuestionRepository $repo)
     {

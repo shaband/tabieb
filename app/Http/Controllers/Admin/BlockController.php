@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class BlockController extends Controller
 {
-    private $repo;
+    protected $repo;
 
     public function __construct(BlockRepository $repo)
     {

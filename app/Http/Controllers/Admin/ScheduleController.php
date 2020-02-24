@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class ScheduleController extends Controller
 {
-    private $repo;
+    protected $repo;
 
     public function __construct(ScheduleRepository $repo)
     {

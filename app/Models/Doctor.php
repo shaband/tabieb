@@ -7,6 +7,7 @@ use App\Notifications\Doctor\Auth\VerifyEmail;
 use App\Traits\ColumnTranslation;
 use App\Traits\HashPassword;
 use App\Traits\ModelHasImage;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
@@ -134,4 +135,20 @@ class Doctor extends Authenticatable implements JWTSubject
 
     }
 
+
+    /*scopes*/
+
+    public function scopeBlocked(Builder $builder): void
+    {
+        $builder->where('blocked_at', '!=', null);
+    }
+
+    public function scopeAvailable(Builder $builder): void
+    {
+        $builder->where('blocked_at', null);
+    }
+
+
 }
+
+

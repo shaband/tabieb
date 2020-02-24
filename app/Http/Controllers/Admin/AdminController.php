@@ -9,9 +9,9 @@ use App\Repositories\interfaces\AdminRepository;
 
 class AdminController extends Controller
 {
-    private $repo;
-    public $routeName = 'admin.admins.';
-    public $viewPath = 'admin.admins.';
+    protected $repo;
+    protected $routeName = 'admin.admins.';
+    protected $viewPath = 'admin.admins.';
 
     public function __construct(AdminRepository $repo)
     {

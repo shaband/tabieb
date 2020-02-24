@@ -13,14 +13,15 @@ use Illuminate\Http\Request;
 class PatientController extends Controller
 {
 
-    private $repo;
-    private $routeName = 'admin.patients.';
-    private $viewPath = 'admin.patients.';
+    protected $repo;
+    protected $routeName = 'admin.patients.';
+    protected $viewPath = 'admin.patients.';
 
 
     public function __construct(PatientRepository $repo)
     {
         $this->repo = $repo;
+        parent::__construct($repo);
     }
 
     /**

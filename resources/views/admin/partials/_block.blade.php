@@ -5,7 +5,7 @@
 @params optional $textMessage
 --}}
 
-<a class="btn btn-{!! $blocked_at?'danger':'success' !!} text-white"
+<a class="btn btn-{!! !$blocked_at?'danger':'success' !!} text-white"
    onclick="
        Swal.fire({
        title: '{!! __('Are you sure?') !!}',
@@ -32,8 +32,8 @@
        form.submit();
        }
        });event.preventDefault()">
-    <i class="fas  {!! $blocked_at?'fa-ban':'fa-unlock-alt' !!} "></i>
-    {!! $blocked_at?__('blocked'):__('open') !!}
+    <i class="fas  {!! !$blocked_at?'fa-ban':'fa-unlock-alt' !!} "></i>
+    {!! $blocked_at==null?__('block'):__('open') !!}
 </a>
 <form action="{{ route("admin.$routeName.block",$id) }}" method="POST"
       style="display: none;"

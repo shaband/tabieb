@@ -8,7 +8,7 @@ use App\Repositories\interfaces\SocialSecurityRepository;
 
 class SocialSecurityController extends Controller
 {
-    private $repo;
+    protected $repo;
 
     public function __construct(SocialSecurityRepository $repo)
     {

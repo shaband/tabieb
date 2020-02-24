@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class PatientQuestionController extends Controller
 {
-    private $repo;
+    protected $repo;
 
     public function __construct(PatientQuestionRepository $repo)
     {

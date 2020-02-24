@@ -4,17 +4,23 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\interfaces\AdminRepository;
+use App\Repositories\interfaces\BaseInterface;
 use App\Repositories\SQL\BaseRepository;
 use Illuminate\Http\Request;
 
 abstract class MainController extends Controller
 {
 
-    private $repo;
-    private $routeName;
-    private $viewPath;
+    protected $repo;
+    protected $routeName;
+    protected $viewPath;
 
     //  abstract public function __construct(BaseRepository $repo);
+
+    public function __construct(BaseInterface $repo)
+    {
+        $this->repo = $repo;
+    }
 
     /**
      * @param $id

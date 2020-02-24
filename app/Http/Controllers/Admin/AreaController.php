@@ -12,12 +12,14 @@ class AreaController extends Controller
 {
     private $repo;
 
-    public $viewPath = 'admin.areas.';
-    public $routePath = 'admin.areas.';
+    private $viewPath = 'admin.areas.';
+    private $routePath = 'admin.areas.';
 
     public function __construct(AreaRepository $repo)
     {
         $this->repo = $repo;
+
+        parent::__construct($repo);
     }
 
     /**

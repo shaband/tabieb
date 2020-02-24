@@ -12,12 +12,14 @@ use Illuminate\Http\Request;
 
 class DoctorController extends Controller
 {
-    private $repo;
-    private $routeName='admin.doctors.';
-    private $viewPath='admin.doctors.';
+    protected $repo;
+    protected $routeName = 'admin.doctors.';
+    protected $viewPath = 'admin.doctors.';
+
     public function __construct(DoctorRepository $repo)
     {
         $this->repo = $repo;
+        parent::__construct($repo);
     }
 
     /**
@@ -28,7 +30,7 @@ class DoctorController extends Controller
         $open_doctors = $this->repo->findWhere(['blocked_at' => null]);
         $blocked_doctors = $this->repo->findWhere([['blocked_at', '!=', null]]);
 
-        return view($this->viewPath.'index', compact('open_doctors', 'blocked_doctors'));
+        return view($this->viewPath . 'index', compact('open_doctors', 'blocked_doctors'));
     }
 
     /**
@@ -38,7 +40,7 @@ class DoctorController extends Controller
     {
 
         $main_categories = $categoryRepository->cursor()->pluck('name', 'id');
-        return view($this->viewPath.'create', compact('main_categories'));
+        return view($this->viewPath . 'create', compact('main_categories'));
     }
 
     /**
@@ -51,7 +53,7 @@ class DoctorController extends Controller
         $doctor = $this->repo->store($request);
         toast(__("Added successfully"), 'success');
 
-        return redirect()->route($this->routeName.'index');
+        return redirect()->route($this->routeName . 'index');
     }
 
 
@@ -65,7 +67,7 @@ class DoctorController extends Controller
         $main_categories = $categoryRepository->cursor()->pluck('name', 'id');
         $sub_categories = $categoryRepository->getSubCategoriesForMainCategory($doctor->category_id)->pluck('name', 'id');
         $doctor->sub_category_ids = $doctor->sub_categories->pluck('id');
-        return view($this->viewPath.'edit', compact('doctor', 'main_categories', 'sub_categories'));
+        return view($this->viewPath . 'edit', compact('doctor', 'main_categories', 'sub_categories'));
     }
 
     /**
@@ -79,7 +81,7 @@ class DoctorController extends Controller
 
         toast(__("Updated successfully"), 'success');
 
-        return redirect()->route($this->routeName.'index');
+        return redirect()->route($this->routeName . 'index');
     }
 
 

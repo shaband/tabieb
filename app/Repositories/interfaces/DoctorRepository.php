@@ -38,4 +38,5 @@ interface DoctorRepository extends BaseInterface
      * @return Collection
      */
     public function searchInDoctors(Request $request): Collection;
+    public function Available(): Collection;
 }
