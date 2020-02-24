@@ -35,8 +35,8 @@ class ReservationController extends Controller
 
     public function create(DoctorRepository $doctorRepo)
     {
-        $doctors=$doctorRepo;
-        return view($this->viewPath . 'create', compact('districts', 'social_securities'));
+        $doctors = $doctorRepo->Available();
+        return view($this->viewPath . 'create', compact('doctors'));
     }
 
     /**
@@ -48,7 +48,6 @@ class ReservationController extends Controller
 
         $reservation = $this->repo->store($request);
         toast(__("Added successfully"), 'success');
-
         return redirect()->route($this->routeName . 'index');
     }
 
