@@ -35,5 +35,6 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
         Route::resource('schedules', 'ScheduleController');
         Route::resource('patient-questions', 'PatientQuestionController');
         Route::resource('social-securities', 'SocialSecurityController');
+        Route::resource('reservations', 'ReservationController');
     });
 });

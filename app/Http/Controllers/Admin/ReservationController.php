@@ -6,7 +6,9 @@ use App\Http\Controllers\Admin\MainController as Controller;
 use App\Http\Requests\Admin\Admins\AdminRequest;
 use App\Http\Requests\Admin\Reservations\ReservationRequest;
 use App\Repositories\interfaces\DoctorRepository;
+use App\Repositories\interfaces\PatientRepository;
 use App\Repositories\interfaces\ReservationRepository;
+use App\Repositories\interfaces\ScheduleRepository;
 use Illuminate\Http\Request;
 
 class ReservationController extends Controller
@@ -33,10 +35,12 @@ class ReservationController extends Controller
     }
 
 
-    public function create(DoctorRepository $doctorRepo)
+    public function create(DoctorRepository $doctorRepo, PatientRepository $patientRepo)
     {
         $doctors = $doctorRepo->Available();
-        return view($this->viewPath . 'create', compact('doctors'));
+        $patients = $patientRepo->findWhere(['blocked_at' => null]);
+
+        return view($this->viewPath . 'create', compact('doctors', 'patients'));
     }
 
     /**
@@ -53,19 +57,18 @@ class ReservationController extends Controller
 
     /**
      * @param $id
-     * @param SocialSecurityRepository $securityRepo
-     * @param DistrictRepository $districtRepo
+     * @param DoctorRepository $doctorRepo
+     * @param ScheduleRepository $scheduleRepo
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit($id, SocialSecurityRepository $securityRepo, DistrictRepository $districtRepo)
+    public function edit($id, DoctorRepository $doctorRepo, ScheduleRepository $scheduleRepo, PatientRepository $patientRepo)
     {
         $reservation = $this->repo->find($id);
-        $districts = $districtRepo->cursor()->pluck('name', 'id');
-        $areas = optional(optional($reservation->district)->areas)->pluck('name', 'id') ?? [];
-        $blocks = optional(optional($reservation->area)->blocks)->pluck('name', 'id') ?? [];
-        $social_securities = $securityRepo->cursor()->pluck('name', 'id');
+        $doctors = $doctorRepo->Available();
+        $patients = $patientRepo->findWhere(['blocked_at' => null]);
 
-        return view($this->viewPath . 'edit', compact('reservation', 'districts', 'social_securities', 'areas', 'blocks'));
+
+        return view($this->viewPath . 'edit', compact('reservation', 'doctors', 'patients'));
     }
 
     /**
@@ -76,23 +79,7 @@ class ReservationController extends Controller
     public function update(ReservationRequest $request, $id)
     {
         $reservation = $this->repo->updateReservation($request, $id);
-
         toast(__("Updated successfully"), 'success');
-
         return redirect()->route($this->routeName . 'index');
-    }
-
-
-    /**
-     * @param $id
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function block($id, Request $request)
-    {
-        $model = $this->repo->block($request, $id);
-
-        toast(__("Blocked successfully"), 'success');
-        return back();
     }
 }

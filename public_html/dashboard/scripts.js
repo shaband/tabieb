@@ -5,6 +5,23 @@ $.ajaxSetup({
     }
 });
 
+$(".datatable-buttons").DataTable(
+    {
+        responsive: true,
+        lengthChange: !1,
+        buttons: ["copy", "excel", "pdf"],
+        keys: !0
+    }
+);
+
+$("a[data-toggle=\"tab\"]").on("shown.bs.tab", function (e) {
+    var datatables = $($.fn.dataTable.tables(true));
+    datatables.css('width', '100%');
+    datatables.DataTable()
+        .columns.adjust()
+        .responsive.recalc()
+        .draw();
+});
 
 $(".select2").select2();
 
@@ -57,4 +74,5 @@ function getPlaceholder(selector) {
     return (select_options.length != 0) ? '<option disabled selected value="">' + select_options[0].innerHTML + '</option>' : "";
 
 }
+
 
