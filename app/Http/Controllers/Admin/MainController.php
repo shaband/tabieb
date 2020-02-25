@@ -15,7 +15,7 @@ abstract class MainController extends Controller
     protected $routeName;
     protected $viewPath;
 
-    //  abstract public function __construct(BaseRepository $repo);
+     // abstract public function __construct(BaseRepository $repo);
 
     public function __construct(BaseInterface $repo)
     {

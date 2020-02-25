@@ -14,4 +14,7 @@ use Illuminate\Http\Request;
 interface AdminRepository extends BaseInterface
 {
     public function store(Request $request): Admin;
+
+    public function UpdateAdmin(Request $request, int $id): Admin;
+
 }

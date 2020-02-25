@@ -45,6 +45,18 @@
                         <span> {!! __('Dashboard') !!} </span>
                     </a>
                 </li>
+                <li>
+                    <a href="{!! route('admin.settings.index') !!}">
+                        <i class="mdi mdi-view-dashboard"></i>
+                        <span> {!! __('Settings') !!} </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{!! route('admin.contacts.index') !!}">
+                        <i class="mdi mdi-view-dashboard"></i>
+                        <span> {!! __('Contacts') !!} </span>
+                    </a>
+                </li>
 
 
                 <li>
@@ -61,6 +73,18 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="{!! route('admin.pharmacies.index') !!}">
+                        <i class="mdi mdi-view-dashboard"></i>
+                        <span> {!! __('Pharmacies') !!} </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{!! route('admin.pharmacy-reps.index') !!}">
+                        <i class="mdi mdi-view-dashboard"></i>
+                        <span> {!! __('Pharmacy Reps') !!} </span>
+                    </a>
+                </li>
                 <li>
                     <a href="javascript: void(0);">
                         <i class="fas fa-users-cog"></i>

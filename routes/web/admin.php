@@ -35,6 +35,14 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
         Route::resource('schedules', 'ScheduleController');
         Route::resource('patient-questions', 'PatientQuestionController');
         Route::resource('social-securities', 'SocialSecurityController');
-        Route::resource('reservations', 'ReservationController');
+        Route::resource('contacts', 'ContactController')->except('create', 'store');
+        Route::resource('settings', 'SettingController')->except('create', 'store', 'destroy');
+        Route::resource('pharmacies', 'PharmacyController');
+        Route::post('pharmacies/{pharmacy}/block', 'PharmacyController@block')->name('pharmacies.block');
+
+        Route::resource('pharmacy-reps', 'PharmacyRepController');
+
+        Route::post('pharmacy-reps/{pharmacy_rep}/block', 'PharmacyController@block')->name('pharmacy-reps.block');
+        //      Route::resource('reservations', 'ReservationController');
     });
 });

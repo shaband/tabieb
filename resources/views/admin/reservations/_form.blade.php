@@ -1,30 +1,10 @@
 {{--'doctor_id', 'patient_id', 'schedule_id', 'date', 'from_time', 'to_time', 'communication_type', 'canceled_at', 'status', 'description'--}}
-<div class="form-group">
-    <label for="last_name">{!! __("Last Name") !!} *</label>
-    {!! Form::text('last_name',null,['class'=>'form-control','parsley-trigger'=>'change','id'=>'last_name','required','placeholder'=>__('Enter Last Name')]) !!}
-    @error('last_name')
-    <span class="invalid-feedback d-block" role="alert">
-      <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-</div>
-
-<div class="form-group">
-    <label for="civil_id">{!! __("Civil Id") !!} *</label>
-    {!! Form::number('civil_id',null,['class'=>'form-control','parsley-trigger'=>'change','id'=>'civil_id','required','placeholder'=>__('Enter Civil Id')]) !!}
-    @error('civil_id')
-    <span class="invalid-feedback d-block" role="alert">
-        <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-</div>
 
 
 <div class="form-group">
-    <label for="birthdate">{!! __("Birthdate") !!}  </label>
-    {!! Form::text('birthdate',null,['class'=>'form-control datepicker','parsley-trigger'=>'change','id'=>'birthdate','parsley-trigger'=>'change',
-'required','placeholder'=>__('Birthdate')]) !!}
-    @error('birthdate')
+    <label for="doctor_id">{!! __("Doctor") !!} *</label>
+    {!! Form::select('doctor_id',$doctors??[],null,['class'=>'form-control','parsley-trigger'=>'change','id'=>'doctor_id',"data-parsley-type"=>"integer",'required','placeholder'=>__('Select Doctor')]) !!}
+    @error('doctor_id')
     <span class="invalid-feedback d-block" role="alert">
      <strong>{{ $message }}</strong>
     </span>
@@ -32,20 +12,19 @@
 </div>
 
 <div class="form-group">
-    <label for="gender">{!! __("Gender") !!} *</label>
-    {!! Form::select('gender',[1=>__("Male"),2=>__("Female")],null,['class'=>'form-control','parsley-trigger'=>'change','id'=>'gender',"data-parsley-type"=>"integer",'required','placeholder'=>__('Select Gender')]) !!}
-    @error('gender')
+    <label for="doctor_id">{!! __("Patient") !!} *</label>
+    {!! Form::select('patient_id',$patients??[],null,['class'=>'form-control','parsley-trigger'=>'change','id'=>'patient_id',"data-parsley-type"=>"integer",'required','placeholder'=>__('Select Patient')]) !!}
+    @error('patient_id')
     <span class="invalid-feedback d-block" role="alert">
      <strong>{{ $message }}</strong>
     </span>
     @enderror
-
 </div>
 
 
 <div class="form-group">
-    <label for="social_security_id">{!! __("Select Social Security ") !!} </label>
-    {!! Form::select('social_security_id',$social_securities??[],null,['class'=>'form-control select2','parsley-trigger'=>'change','id'=>'social_security_id','placeholder'=>__('Social Security'),]) !!}
+    <label for="social_security_id">{!! __("Day") !!} </label>
+    {!! Form::select('social_security_id',$social_securities??[],null,['class'=>'form-control select2','parsley-trigger'=>'change','id'=>'social_security_id','placeholder'=>__('Day'),]) !!}
     @error('social_security_id')
     <span class="invalid-feedback d-block" role="alert">
      <strong>{{ $message }}</strong>

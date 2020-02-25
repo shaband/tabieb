@@ -62,5 +62,11 @@ trait ColumnTranslation
             return $this->title_ar;
         }
         return $this->title_en;
+    }public function getSlugAttribute()
+    {
+        if (app()->getLocale() == 'ar') {
+            return $this->slug_ar;
+        }
+        return $this->slug_en;
     }
 }

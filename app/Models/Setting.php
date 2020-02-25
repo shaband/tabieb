@@ -12,6 +12,7 @@ class Setting extends Model
     const INPUT_NUMBER = 1;
     const INPUT_TEXTAREA = 2;
 
+
     const CATEGORY_PAGES = 1;
 
 
