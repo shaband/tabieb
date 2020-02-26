@@ -8,6 +8,9 @@ use App\Traits\ColumnTranslation;
 use App\Traits\HashPassword;
 use App\Traits\ModelHasImage;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
@@ -86,38 +89,38 @@ class Doctor extends Authenticatable implements JWTSubject
         $this->notify(new VerifyEmail);
     }
 
-    public function category()
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'category_id');
     }
 
-    public function sub_categories()
+    public function sub_categories() :BelongsToMany
     {
         return $this->belongsToMany(Category::class, 'doctor_category');
     }
 
-    public function schedules()
+    public function schedules():HasMany
     {
         return $this->hasMany(Schedule::class);
     }
 
-    public function reservation()
+    public function reservation():HasMany
     {
         return $this->hasMany(Reservation::class);
     }
 
-    public function chats()
+    public function chats():HasMany
     {
         return $this->hasMany(Chat::class);
     }
 
-    public function ratings()
+    public function ratings():HasMany
     {
         return $this->hasMany(Rating::class);
     }
 
 
-    public function papers()
+    public function papers():HasMany
     {
         return $this->hasMany('App\Models\Attachment')->where('type', 2);
     }
@@ -149,6 +152,10 @@ class Doctor extends Authenticatable implements JWTSubject
     }
 
 
+    public function fcm_tokens()
+    {
+        return $this->morphMany(Device::class, 'model')->where('device_type', Device::TOKEN_TYPE_FCM);
+    }
 }
 
 

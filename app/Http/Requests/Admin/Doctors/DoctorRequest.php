@@ -40,7 +40,7 @@ class DoctorRequest extends FormRequest
             "sub_category_ids.*" => 'nullable|exists:categories,id,category_id,' . $this->category_id,
             'email' => 'required|email|max:191|unique:doctors,id,' . $this->doctor,
             'password' => 'nullable|required_without:_method|string|max:191|confirmed',
-            'phone' => '|required_without:_method|required|numeric|unique:doctors,phone,' . $this->doctor,
+            'phone' => 'required|numeric|unique:doctors,phone,' . $this->doctor,
             'image' => 'nullable|image',
         ];
     }

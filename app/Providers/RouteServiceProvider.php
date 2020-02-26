@@ -47,6 +47,7 @@ class RouteServiceProvider extends ServiceProvider
         //api
         $this->mapApiRoutes();
         $this->mapPatientApiRoutes();
+        $this->mapDoctorApiRoutes();
 
         //web
         $this->mapWebRoutes();
@@ -160,8 +161,24 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::prefix('api/v1/patient')
             ->middleware(['api', 'apiLocalization'])
-            ->namespace($this->namespace . '\Api\v1\patient')
+            ->namespace($this->namespace . '\Api\v1\Patient')
             ->as('api.patient.')
             ->group(base_path('routes/api/patient.php'));
+    }
+
+    /**
+     * Define the "api doctor" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapDoctorApiRoutes(): void
+    {
+        Route::prefix('api/v1/doctor')
+            ->middleware(['api', 'apiLocalization'])
+            ->namespace($this->namespace . '\Api\v1\Doctor')
+            ->as('api.doctor.')
+            ->group(base_path('routes/api/doctor.php'));
     }
 }

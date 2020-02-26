@@ -94,7 +94,7 @@ class AuthController extends Controller
 
         $patient = $this->repo->update(array_filter($request->all()), auth()->id());
         if ($request->image != null) {
-            $image_data = $this->saveFile($request->file('image'), 'patients');
+            $image_data = $this->repo->saveFile($request->file('image'), 'patients');
             $patient->image()->updateOrCreate(['type' => $image_data['type']], $image_data);
         }
 
@@ -107,14 +107,24 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function login()
+    public function login(Request $request)
     {
+
+        $roles = [
+            'email' => 'required|email|exists:patients,email',
+            'password' => 'required|string|max:191',
+            'device.device_type' => 'nullable|integer',
+            'device.token' => 'nullable|string',
+            'device.token_type' => 'nullable|integer'
+        ];
+        $this->validate($request, $roles);
         $credentials = request(['email', 'password']);
         $patient = $this->repo->findWhere(request()->only('email'))->first();
 
         if ($patient->phone_verified_at == null) {
             return response()->json(['data' => __('Please Verify Your Account')], 401);
         }
+        $this->repo->AddFCM($request, $patient);
 
         if (!$token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);

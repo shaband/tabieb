@@ -4,6 +4,7 @@ namespace App\Repositories\SQL;
 
 use App\Models\Doctor;
 use App\Repositories\SQL\BaseRepository;
+use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -50,6 +51,7 @@ class DoctorRepositoryEloquent extends BaseRepository implements DoctorRepositor
             $doctor->image()->updateOrCreate(['type' => $image_data['type']], $image_data);
         }
         $doctor->sub_categories()->sync($request->sub_category_ids);
+        $this->AddFCM($request,$doctor);
         DB::commit();
         return $doctor->fresh();
 
@@ -135,6 +137,38 @@ class DoctorRepositoryEloquent extends BaseRepository implements DoctorRepositor
         $doctors = $this->makeModel()->Available()->get();
 
         return $doctors;
+    }
+
+    /**
+     * @param Request $request
+     * @return Doctor
+     */
+    public function verify(Request $request): Doctor
+    {
+
+
+        $patient = $this->findByField('verification_code', $request->verification_code)->first();
+        $patient->fill([
+            'phone_verified_at' => Carbon::now(),
+            'email_verified_at' => Carbon::now(),
+        ]);
+
+        $patient->save();
+        return $patient;
+    }
+
+
+    /**
+     * @param Request $request
+     * @param Doctor $doctor
+     */
+    public function AddFCM(Request $request, Doctor $doctor): void
+    {
+
+        if (is_array($request->device) && isset($request->device['token'])) {
+
+            $doctor->fcm_tokens()->ceate($request->device);
+        }
     }
 
 }

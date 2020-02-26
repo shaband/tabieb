@@ -51,10 +51,7 @@ class PatientRepositoryEloquent extends BaseRepository implements PatientReposit
 
         $patient = $this->create($request->all());
 
-        if (is_array($request->device) && isset($request->device['token'])) {
-
-            $patient->fcm_tokens()->ceate($request->device);
-        }
+        $this->AddFCM($request, $patient);
         if ($request->image) {
             $image_data = $this->saveFile($request->image, 'patients');
             $patient->image()->updateOrCreate(['type' => $image_data['type']], $image_data);
@@ -107,5 +104,18 @@ class PatientRepositoryEloquent extends BaseRepository implements PatientReposit
 
     }
 
+
+    /**
+     * @param Request $request
+     * @param Patient $patient
+     */
+    public function AddFCM(Request $request, Patient $patient): void
+    {
+
+        if (is_array($request->device) && isset($request->device['token'])) {
+
+            $patient->fcm_tokens()->ceate($request->device);
+        }
+    }
 
 }

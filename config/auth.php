@@ -68,12 +68,12 @@ return [
 
 
         'pharamacy_rep_api' => [
-            'driver' => 'token',
+            'driver' => 'jwt',
             'provider' => 'pharamacy_reps',
         ],
 
         'doctor_api' => [
-            'driver' => 'token',
+            'driver' => 'jwt',
             'provider' => 'doctors',
         ],
 

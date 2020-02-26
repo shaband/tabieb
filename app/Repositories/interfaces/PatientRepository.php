@@ -33,4 +33,6 @@ interface PatientRepository extends BaseInterface
     public function UpdatePatient(Request $request, int $id): Patient;
 
 
+    public function AddFCM(Request $request,Patient $patient):void ;
+
 }

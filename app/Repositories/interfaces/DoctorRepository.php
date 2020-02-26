@@ -38,5 +38,18 @@ interface DoctorRepository extends BaseInterface
      * @return Collection
      */
     public function searchInDoctors(Request $request): Collection;
+
+    /**
+     * @return Collection
+     */
     public function Available(): Collection;
+
+    /**
+     * @param Request $request
+     * @return Doctor
+     */
+    public function verify(Request $request): Doctor;
+
+
+    public function AddFCM(Request $request,Doctor $patient):void ;
 }
