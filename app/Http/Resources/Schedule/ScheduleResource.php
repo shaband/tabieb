@@ -23,7 +23,7 @@ class ScheduleResource extends JsonResource
             'day' => days()[$this->day],
             'from_time' => CarbonImmutable::parse($this->from_time)->toTimeString(),
             'to_time' => CarbonImmutable::parse($this->to_time)->toTimeString(),
-            'reservation' => ReservationResource::collection($this->reservations)
+            'reservation' => ReservationResource::collection(/*$this->whenLoaded(*/ $this->reservations)/*)*/
         ];
     }
 }

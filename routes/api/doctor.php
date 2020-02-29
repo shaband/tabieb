@@ -21,28 +21,23 @@ Route::post('auth/verify', 'AuthController@verify');
 Route::post('auth/profile', 'AuthController@Profile');
 
 
-Route::post('districts', 'DistrictController@index');
-Route::post('areas', 'AreaController@index');
-Route::post('district/areas', 'AreaController@areasInDistrict')->name('district.areas');
-Route::post('blocks', 'BlockController@index');
-Route::post('area/blocks', 'BlockController@blocksInArea')->name('area.blocks');
-Route::post('social-securities', 'SocialSecurityController@index');
+Route::middleware(['auth:doctor_api'])->group(function () {
+Route::post('reservations/upcoming','ReservationController@upcoming');
 
 
-Route::post('home', 'DoctorController@index');
-Route::post('category/doctors', 'DoctorController@doctorsInCategory');
-Route::post('doctors/search', 'DoctorController@search');
-Route::get('categories', 'CategoryController@index');
+    Route::post('chats', 'ChatController@inbox');
+    Route::post('chats/create', 'ChatController@create');
+    Route::post('chat/messages', 'ChatController@addMessage');
 
 
-Route::post('contact', 'ContactController@send');
+    Route::post('attachments', 'AttachmentController@index');
+    Route::post('attachments/create', 'AttachmentController@create');
+    Route::post('attachments/edit', 'AttachmentController@edit');
+    Route::post('attachments/delete', 'AttachmentController@delete');
 
-Route::post('setting/{name}', 'SettingController@index');
-
-
-Route::middleware(['auth:patient_api'])->group(function () {
-
-
-
+    Route::post('schedules', 'ScheduleController@index');
+    Route::post('schedules/create', 'ScheduleController@create');
+    Route::post('schedules/edit', 'ScheduleController@edit');
+    Route::post('schedules/delete', 'ScheduleController@delete');
 });
 

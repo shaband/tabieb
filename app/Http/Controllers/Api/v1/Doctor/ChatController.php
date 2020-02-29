@@ -22,7 +22,7 @@ class ChatController extends Controller
 
     public function inbox()
     {
-        $chats = $this->repo->makeModel()->with('doctor')->Where('patient_id', auth()->id())->get();
+        $chats = $this->repo->makeModel()->with('patient')->Where('doctor_id', auth()->id())->get();
 
         $chats = ChatResource::collection($chats);
         return responseJson(compact('chats'), __("Loaded Successfully"));
@@ -31,18 +31,20 @@ class ChatController extends Controller
     public function create(Request $request, MessageRepository $messageRepo)
     {
         $this->validate($request, [
-            'reservation_id' => 'required|integer|exists:reservations,id,patient_id,' . auth()->id() . ',doctor_id,' . $request->doctor_id,
-            'doctor_id' => 'required|integer|exists:doctors,id'
+            'reservation_id' => 'required|integer|exists:reservations,id,doctor_id,' . auth()->id() . ',patient_id,' . $request->patient_id,
+            'patient_id' => 'required|integer|exists:patients,id'
         ]);
 
         $inputs = $request->all();
-        $inputs['patient_id'] = auth()->id();
+        $inputs['doctor_id'] = auth()->id();
         $chat = $this->repo->firstOrCreate($inputs);
 
-        $chat = new ChatResource($chat->load('messages', 'doctor'));
         $chat->messages()
             ->where('sender_type', 'doctors')
             ->update(['seen_at' => Carbon::now()]);
+        $chat = new ChatResource($chat->load('messages', 'doctor'));
+
+        return $chat;
         return responseJson(compact('chat'), __("Loaded Successfully"));
     }
 
@@ -50,11 +52,11 @@ class ChatController extends Controller
     {
 
         $this->validate($request, [
-            'chat_id' => 'required|integer|exists:chats,id,patient_id,' . auth()->id(),
+            'chat_id' => 'required|integer|exists:chats,id,doctor_id,' . auth()->id(),
             'message' => 'required|string',
         ]);
         $inputs = $request->all();
-        $inputs['sender_type'] = 'patients';
+        $inputs['sender_type'] = 'doctors';
         $inputs['sender_id'] = auth()->id();
         $message = $messageRepo->Create($inputs);
         $message = new MessageResource($message);

@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Api\v1\Patient;
+namespace App\Http\Controllers\Api\v1;
 
-//use App\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Resources\Chat\ChatResource;
 use App\Http\Resources\Chat\MessageResource;
 use App\Repositories\interfaces\ChatRepository;
 use App\Repositories\interfaces\MessageRepository;
-use App\Http\Controllers\Api\v1\ChatController as Controller;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -22,12 +21,11 @@ class ChatController extends Controller
     public function __construct(ChatRepository $repo)
     {
         $this->repo = $repo;
-        parent::__construct($repo);
     }
 
     public function inbox()
     {
-        $chats = $this->repo->makeModel()->with('doctor')->Where('patient_id', auth()->id())->get();
+        $chats = $this->repo->makeModel()->with('doctor')->Where($this->auth_column, auth()->id())->get();
 
         $chats = ChatResource::collection($chats);
         return responseJson(compact('chats'), __("Loaded Successfully"));
@@ -63,7 +61,7 @@ class ChatController extends Controller
     public static function ChatValidation(): array
     {
         return [
-            'reservation_id' => 'required|integer|exists:reservations,id,patient_id,' . auth()->id() . ',doctor_id,' . \request()->doctor_id,
+            'reservation_id' => "required|integer|exists:reservations,id," . app(static::class)->auth_column . "," . auth()->id() . ',doctor_id,' . \request()->doctor_id,
             'doctor_id' => 'required|integer|exists:doctors,id'
 
         ];
@@ -73,7 +71,7 @@ class ChatController extends Controller
     {
         return [
             [
-                'chat_id' => 'required|integer|exists:chats,id,patient_id,' . auth()->id(),
+                'chat_id' => 'required|integer|exists:chats,id,' . app(static::class)->auth_column . ',' . auth()->id(),
                 'message' => 'required|string',
             ]
         ];

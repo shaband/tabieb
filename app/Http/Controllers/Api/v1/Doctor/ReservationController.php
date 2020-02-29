@@ -20,50 +20,17 @@ class ReservationController extends Controller
         $this->repo = $repo;
     }
 
-    public function create(Request $request)
-    {
-
-        $this->validate($request, [
-            'doctor_id' => 'required|integer|exists:doctors,id',
-            'date' => 'required|date|date_format:Y-m-d',
-            'from_time' => ['required'],
-            'to_time' => ['required'],
-            'communication_type' => 'required|integer|min:1|max:2',
-            'description' => 'nullable|string',
-        ]);
-        $reservation = $this->repo->store($request);
-        $reservation = new ReservationResource($reservation);
-        return responseJson(compact('reservation'), __("Saved Successfully"));
-    }
-
-    public function cancel(Request $request)
-    {
-        $this->validate($request,
-            [
-                'reservation_id' => 'required|integer|exists:reservations,id,patient_id,' . auth()->user()->id
-            ]
-        );
-
-        $reservation = $this->repo->update(['canceled_at' => Carbon::now()], $request->reservation_id);
-
-        $reservation = new ReservationResource($reservation);
-
-
-        return responseJson(compact('reservation'), __('Canceled Successfully'));
-    }
-
     /**
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function upcoming(Request $request)
     {
-        $reservation = $this->repo->makeModel()->where('patient_id', auth()->id())
+        $reservation = $this->repo->makeModel()->where('doctor_id', auth()->id())
             ->whereDate('date', '>=', Carbon::now())
-            ->whereIn('status', $this->repo::status())->get();
+            ->whereIn('status', $this->repo::getConstants('STATUS_ACCEPTED'))->get();
 
-        $reservation = ReservationResource::collection($reservation->load('doctor'));
-
+        $reservation = ReservationResource::collection($reservation->load('patient'));
 
         return responseJson(compact('reservation'), __('Loaded Successfully'));
     }
@@ -76,9 +43,7 @@ class ReservationController extends Controller
     {
         $reservation = $this->repo->makeModel()
             ->whereDate('date', '<', Carbon::now())
-            //   ->whereTime('from_time', '<', Carbon::now())
-            ->get();
-
+            ->whereIn('status', $this->repo::getConstants('STATUS_ACCEPTED'))->get();
         $reservation = ReservationResource::collection($reservation);
 
         return responseJson(compact('reservation'), __('Loaded Successfully'));
@@ -92,11 +57,8 @@ class ReservationController extends Controller
                 'reservation_id' => 'required|integer|exists:reservations,id,patient_id,' . auth()->user()->id
             ]
         );
-
         $reservation = $this->repo->with('doctor')->find($request->reservation_id);
-
         $reservation = new ReservationResource($reservation);
-
         return responseJson(compact('reservation'), __("Loaded successfully"));
     }
 

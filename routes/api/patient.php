@@ -21,12 +21,6 @@ Route::post('auth/verify', 'AuthController@verify');
 Route::post('auth/profile', 'AuthController@Profile');
 
 
-Route::post('districts', 'DistrictController@index');
-Route::post('areas', 'AreaController@index');
-Route::post('district/areas', 'AreaController@areasInDistrict')->name('district.areas');
-Route::post('blocks', 'BlockController@index');
-Route::post('area/blocks', 'BlockController@blocksInArea')->name('area.blocks');
-Route::post('social-securities', 'SocialSecurityController@index');
 
 
 Route::post('home', 'DoctorController@index');

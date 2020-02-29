@@ -12,6 +12,8 @@ class Reservation extends Model
     public const VIDEO_TYPE_COMMUNICATION = 1;
 
     public const STATUS_ACTIVE = 1;
+    public const STATUS_ACCEPTED = 1;
+    public const STATUS_REFUSED = 1;
     public const STATUS_CANCELED = 1;
     public const STATUS_FINISHED = 1;
 

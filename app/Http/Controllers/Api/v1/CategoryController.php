@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Category\CategoryResource;
 use App\Repositories\interfaces\CategoryRepository;
 
 class CategoryController extends Controller
@@ -14,6 +15,12 @@ class CategoryController extends Controller
         $this->repo = $repo;
     }
 
+    public function index()
+    {
+        $categories = $this->repo->all();
+
+        return responseJson(['categories' => CategoryResource::collection($categories)], __("Loaded Successfully"));
+    }
 
     public function getSubCategoriesForMainCategory($category_id)
     {

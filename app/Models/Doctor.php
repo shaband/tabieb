@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
@@ -91,38 +92,38 @@ class Doctor extends Authenticatable implements JWTSubject
 
     public function category(): BelongsTo
     {
-        return $this->belongsTo(Category::class, 'category_id');
+        return $this->belongsTo(Category::class);
     }
 
-    public function sub_categories() :BelongsToMany
+    public function sub_categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class, 'doctor_category');
     }
 
-    public function schedules():HasMany
+    public function schedules(): HasMany
     {
         return $this->hasMany(Schedule::class);
     }
 
-    public function reservation():HasMany
+    public function reservation(): HasMany
     {
         return $this->hasMany(Reservation::class);
     }
 
-    public function chats():HasMany
+    public function chats(): HasMany
     {
         return $this->hasMany(Chat::class);
     }
 
-    public function ratings():HasMany
+    public function ratings(): HasMany
     {
         return $this->hasMany(Rating::class);
     }
 
 
-    public function papers():HasMany
+    public function papers(): MorphMany
     {
-        return $this->hasMany('App\Models\Attachment')->where('type', 2);
+        return $this->MorphMany(Attachment::class, 'model')->where('type', Attachment::DOCTOR_DOCUMENT);
     }
 
     /*attributes*/

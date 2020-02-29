@@ -20,7 +20,7 @@ class MessageResource extends JsonResource
             'chat' => new ChatResource($this->whenLoaded('chat')),
             'message' => $this->message,
             'sender_type' => $this->sender_type,
-            'sender' => $this->sender_type == 'patient' ? new PatientResource($this->sender) : new DoctorResource($this->sender),
+            'sender' => $this->sender_type == 'patients' ? new PatientResource($this->sender) : new DoctorResource($this->sender),
             'seen_at' => $this->seen_at,
 
         ];

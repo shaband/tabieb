@@ -11,9 +11,9 @@ trait ColumnTranslation
     {
         if (app()->getLocale() == 'ar') {
 
-            return $this->name_ar;
+            return $this->name_ar ?? $this->name_en;
         }
-        return $this->name_en;
+        return $this->name_en ?? $this->name_ar;
 
     }
 
@@ -56,13 +56,16 @@ trait ColumnTranslation
         }
         return $this->terms_en;
     }
+
     public function getTitleAttribute()
     {
         if (app()->getLocale() == 'ar') {
             return $this->title_ar;
         }
         return $this->title_en;
-    }public function getSlugAttribute()
+    }
+
+    public function getSlugAttribute()
     {
         if (app()->getLocale() == 'ar') {
             return $this->slug_ar;
