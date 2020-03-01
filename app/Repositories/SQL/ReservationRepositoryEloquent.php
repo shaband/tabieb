@@ -3,6 +3,7 @@
 namespace App\Repositories\SQL;
 
 use App\Repositories\interfaces\ScheduleRepository;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\interfaces\ReservationRepository;
@@ -58,4 +59,18 @@ class ReservationRepositoryEloquent extends BaseRepository implements Reservatio
 
         return $status;
     }
+
+
+    public static function updateStatus(int $reservation_id, Int $status): Reservation
+    {
+
+        $attributes = [
+            'status' => $status,
+            'status_changed_at' => Carbon::now(),
+        ];
+        $reservation = app(ReservationRepository::class)->update($attributes, $reservation_id);
+
+        return $reservation;
+    }
+
 }

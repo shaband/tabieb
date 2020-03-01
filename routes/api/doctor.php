@@ -22,7 +22,13 @@ Route::post('auth/profile', 'AuthController@Profile');
 
 
 Route::middleware(['auth:doctor_api'])->group(function () {
-Route::post('reservations/upcoming','ReservationController@upcoming');
+    Route::post('reservations/upcoming', 'ReservationController@upcoming');
+    Route::post('reservations/upcoming/type', 'ReservationController@ReservationsByType');
+    Route::post('reservations/action', 'ReservationController@changeReservationStatus');
+
+
+    Route::post('reservations/prescription/create', 'PrescriptionController@create');
+    Route::post('reservations/prescription', 'PrescriptionController@index');
 
 
     Route::post('chats', 'ChatController@inbox');

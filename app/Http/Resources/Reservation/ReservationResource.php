@@ -25,18 +25,17 @@ class ReservationResource extends JsonResource
             'from_time' => CarbonImmutable::parse($this->from_time)->toTimeString(),
             'to_time' => CarbonImmutable::parse($this->to_time)->toTimeString(),
             'communication_type' => $this->communication_type,
-            'canceled_at' => $this->canceled_at ? CarbonImmutable::parse($this->canceled_at) : null,
+            'status_changed_at' => $this->status_changed_at ? CarbonImmutable::parse($this->status_changed_at) : null,
             'status' => $this->status,
             'description' => $this->description,
 
 
             //relashions
 
+
             'doctor' => new DoctorResource($this->whenLoaded('doctor')),
             'schedule' => new DoctorResource($this->whenLoaded('schedule')),
             'patient' => new PatientResource($this->whenLoaded('patient')),
-
-
         ];
     }
 }

@@ -12,17 +12,17 @@ class Reservation extends Model
     public const VIDEO_TYPE_COMMUNICATION = 1;
 
     public const STATUS_ACTIVE = 1;
-    public const STATUS_ACCEPTED = 1;
-    public const STATUS_REFUSED = 1;
-    public const STATUS_CANCELED = 1;
-    public const STATUS_FINISHED = 1;
+    public const STATUS_ACCEPTED = 2;
+    public const STATUS_REFUSED = 3;
+    public const STATUS_CANCELED = 4;
+    public const STATUS_FINISHED = 5;
 
     protected $table = 'reservations';
     public $timestamps = true;
-    protected $fillable = array('doctor_id', 'patient_id', 'schedule_id', 'date', 'from_time', 'to_time', 'communication_type', 'canceled_at', 'status', 'description');
+    protected $fillable = array('doctor_id', 'patient_id', 'schedule_id', 'date', 'from_time', 'to_time', 'communication_type', 'status_changed_at', 'status', 'description');
 
     protected $casts = [
-        'communication_type' => 'integer'
+        'communication_type' => 'integer',
     ];
 
     public function doctor()

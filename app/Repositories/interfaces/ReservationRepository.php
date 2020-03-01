@@ -13,6 +13,9 @@ use Illuminate\Http\Request;
  */
 interface ReservationRepository extends BaseInterface
 {
-    public function store(Request $request):Reservation;
-    public static function status():iterable;
+    public function store(Request $request): Reservation;
+
+    public static function status(): iterable;
+
+    public static function updateStatus(int $reservation_id, Int $status): Reservation;
 }
