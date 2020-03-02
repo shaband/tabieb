@@ -32,7 +32,7 @@ class PrescriptionController extends Controller
         $this->validate($request, [
             'reservation_id' => [
                 'required', 'integer',
-                'exists:reservations,id,doctor_id,' . auth()->id() . ',status,' . Reservation::STATUS_ACCEPTED,
+                'exists:reservations,id,doctor_id,' . auth()->id() . ',status,' . Reservation::STATUS_FINISHED,
             ],
         ]);
 
