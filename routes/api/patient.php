@@ -28,12 +28,6 @@ Route::post('category/doctors', 'DoctorController@doctorsInCategory');
 Route::post('doctors/search', 'DoctorController@search');
 Route::get('categories', 'CategoryController@index');
 
-
-Route::post('contact', 'ContactController@send');
-
-Route::post('setting/{name}', 'SettingController@index');
-
-
 Route::middleware(['auth:patient_api'])->group(function () {
 
     Route::post('reservations/create', 'ReservationController@create');

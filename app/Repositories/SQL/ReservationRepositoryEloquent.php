@@ -41,12 +41,13 @@ class ReservationRepositoryEloquent extends BaseRepository implements Reservatio
     public function store(Request $request): Reservation
     {
         $inputs = $request->all();
-        $schedule = app(ScheduleRepository::class)->FindByFromAndToDate($request->doctor_id, $request->date, $request->from_time, $request->to_time);
-        //check for admin and api (api get from auth & admin from request)
-
-        $inputs['schedule_id'] = optional($schedule)->id;
-        //check for admin and api (api get from auth & admin from request)
-        if ($request->patient_id != null) {
+        if ($request->schedule_id == null) {
+            $schedule = app(ScheduleRepository::class)->FindByFromAndToDate($request->doctor_id, $request->date, $request->from_time, $request->to_time);
+            //check for admin and api (api get from auth & admin from request)
+            $inputs['schedule_id'] = optional($schedule)->id;
+            //check for admin and api (api get from auth & admin from request)
+        }
+        if ($request->patient_id == null) {
             $inputs['patient_id'] = auth()->user()->id;
         }
         $reservation = $this->create($inputs);

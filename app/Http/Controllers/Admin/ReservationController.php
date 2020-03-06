@@ -31,16 +31,26 @@ class ReservationController extends Controller
     {
         $reservations = $this->repo->orderBy('created_at', 'desc')->all();
 
-        return view($this->viewPath . 'index', compact('reservations',));
+        $active_reservations = $this->repo->orderBy('created_at', 'desc')->findByField('status', $this->repo::getConstants()['STATUS_ACTIVE']);
+
+        $accepted_reservations = $this->repo->orderBy('created_at', 'desc')->findByField('status', $this->repo::getConstants()['STATUS_ACCEPTED']);
+
+        $refused_reservations = $this->repo->orderBy('created_at', 'desc')->findByField('status', $this->repo::getConstants()['STATUS_REFUSED']);
+
+        $canceled_reservations = $this->repo->orderBy('created_at', 'desc')->findByField('status', $this->repo::getConstants()['STATUS_CANCELED']);
+
+        $finished_reservations = $this->repo->orderBy('created_at', 'desc')->findByField('status', $this->repo::getConstants()['STATUS_FINISHED']);
+
+        return view($this->viewPath . 'index', compact('reservations', 'accepted_reservations', 'refused_reservations', 'canceled_reservations', 'finished_reservations', 'active_reservations'));
     }
 
 
     public function create(DoctorRepository $doctorRepo, PatientRepository $patientRepo)
     {
-        $doctors = $doctorRepo->Available();
-        $patients = $patientRepo->findWhere(['blocked_at' => null]);
-
-        return view($this->viewPath . 'create', compact('doctors', 'patients'));
+        $doctors = $doctorRepo->Available()->pluck('name', 'id');
+        $patients = $patientRepo->findWhere(['blocked_at' => null])->pluck('name', 'id');
+        $communication_types = $this->repo::getConstants('COMMUNICATION');
+        return view($this->viewPath . 'create', compact('doctors', 'patients', 'communication_types'));
     }
 
     /**
@@ -50,6 +60,7 @@ class ReservationController extends Controller
     public function store(ReservationRequest $request)
     {
 
+        //  dd($request->all());
         $reservation = $this->repo->store($request);
         toast(__("Added successfully"), 'success');
         return redirect()->route($this->routeName . 'index');
@@ -64,11 +75,12 @@ class ReservationController extends Controller
     public function edit($id, DoctorRepository $doctorRepo, ScheduleRepository $scheduleRepo, PatientRepository $patientRepo)
     {
         $reservation = $this->repo->find($id);
-        $doctors = $doctorRepo->Available();
-        $patients = $patientRepo->findWhere(['blocked_at' => null]);
+        $doctors = $doctorRepo->Available()->pluck('name', 'id');
+        $patients = $patientRepo->findWhere(['blocked_at' => null])->pluck('name', 'id');
+        $communication_types = $this->repo::getConstants('COMMUNICATION');
 
 
-        return view($this->viewPath . 'edit', compact('reservation', 'doctors', 'patients'));
+        return view($this->viewPath . 'edit', compact('reservation', 'doctors', 'patients', 'communication_types'));
     }
 
     /**

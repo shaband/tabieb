@@ -1,9 +1,9 @@
-{{--'doctor_id', 'patient_id', 'schedule_id', 'date', 'from_time', 'to_time', 'communication_type', 'canceled_at', 'status', 'description'--}}
+{{--'doctor_id', 'patient_id', 'schedule_id', 'date', 'from_time', 'to_time', 'communication_type', 'status_changed_at', 'status', 'description'--}}
 
 
 <div class="form-group">
     <label for="doctor_id">{!! __("Doctor") !!} *</label>
-    {!! Form::select('doctor_id',$doctors??[],null,['class'=>'form-control','parsley-trigger'=>'change','id'=>'doctor_id',"data-parsley-type"=>"integer",'required','placeholder'=>__('Select Doctor')]) !!}
+    {!! Form::select('doctor_id',$doctors??[],null,['class'=>'form-control','parsley-trigger'=>'change','id'=>'doctor_id',"data-parsley-type"=>"integer",'required','placeholder'=>__('Select Doctor'),'onChange'=>'getSchedules()']) !!}
     @error('doctor_id')
     <span class="invalid-feedback d-block" role="alert">
      <strong>{{ $message }}</strong>
@@ -23,9 +23,9 @@
 
 
 <div class="form-group">
-    <label for="social_security_id">{!! __("Day") !!} </label>
-    {!! Form::select('social_security_id',$social_securities??[],null,['class'=>'form-control select2','parsley-trigger'=>'change','id'=>'social_security_id','placeholder'=>__('Day'),]) !!}
-    @error('social_security_id')
+    <label for="date">{!! __("Date") !!}  </label>
+    {!! Form::text('date',null,['class'=>'form-control datepicker','parsley-trigger'=>'change','id'=>'date','parsley-trigger'=>'change','required','placeholder'=>__('Select Date'),'onChange'=>'getSchedules()']) !!}
+    @error('date')
     <span class="invalid-feedback d-block" role="alert">
      <strong>{{ $message }}</strong>
     </span>
@@ -33,21 +33,9 @@
 </div>
 
 <div class="form-group">
-    <label for="birthdate">{!! __("Social Security Expiration Date") !!}  </label>
-    {!! Form::text('social_security_expired_at',null,['class'=>'form-control datepicker','parsley-trigger'=>'change','id'=>'social_security_expired_at','parsley-trigger'=>'change',
-'required','placeholder'=>__('Social Security Expiration Date')]) !!}
-    @error('social_security_expired_at')
-    <span class="invalid-feedback d-block" role="alert">
-     <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-</div>
-
-
-<div class="form-group">
-    <label for="category_id">{!! __("Select District") !!} </label>
-    {!! Form::select('district_id',$districts??[],null,['class'=>'form-control select2','parsley-trigger'=>'change','id'=>'district_id','placeholder'=>__('Districts'),'onChange'=>'getAreasOptions(this.value)']) !!}
-    @error('district_id')
+    <label for="communication_type">{!! __("Communication Type") !!} </label>
+    {!! Form::select('communication_type',array_flip($communication_types),null,['class'=>'form-control select2','parsley-trigger'=>'change','id'=>'communication_type','placeholder'=>__('Communication Type'),]) !!}
+    @error('communication_type')
     <span class="invalid-feedback d-block" role="alert">
      <strong>{{ $message }}</strong>
     </span>
@@ -56,9 +44,19 @@
 
 
 <div class="form-group">
-    <label for="area_id">{!! __("Select Area") !!} </label>
-    {!! Form::select('area_id',$areas??[],null,['class'=>'form-control select2','parsley-trigger'=>'change','id'=>'area_id','placeholder'=>__('Area'),'onChange'=>'getBlockOptions(this.value)']) !!}
-    @error('area_id')
+    <label for="from_time">{!! __("From") !!} * </label>
+    {!! Form::text('from_time',null,['class'=>'form-control timepicker','parsley-trigger'=>'change','id'=>'from_time','parsley-trigger'=>'change','required','placeholder'=>__('From')]) !!}
+    @error('from_time')
+    <span class="invalid-feedback d-block" role="alert">
+     <strong>{{ $message }}</strong>
+    </span>
+    @enderror
+</div>
+<div class="form-group">
+    <label for="to_time">{!! __("To") !!} * </label>
+    {!! Form::text('to_time',null,['class'=>'form-control timepicker','parsley-trigger'=>'change','id'=>'to_time','parsley-trigger'=>'change',
+'required','placeholder'=>__('To')]) !!}
+    @error('to_time')
     <span class="invalid-feedback d-block" role="alert">
      <strong>{{ $message }}</strong>
     </span>
@@ -67,96 +65,67 @@
 
 
 <div class="form-group">
-    <label for="block_id">{!! __("Select Block") !!} </label>
-    {!! Form::select('block_id',$blocks??[],null,['class'=>'form-control select2','parsley-trigger'=>'change','id'=>'block_id','placeholder'=>__('Block'),'change'=>'getBlocks(this.value)']) !!}
-    @error('block_id')
-    <span class="invalid-feedback d-block" role="alert">
-     <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-</div>
-
-
-<div class="form-group">
-    <label for="emailAddress">{!! __("Email address") !!} *</label>
-    {!! Form::email('email',null,['class'=>'form-control','parsley-trigger'=>'change','id'=>'emailAddress','required','placeholder'=>__('Enter Email Address')]) !!}
-    @error('email')
-    <span class="invalid-feedback d-block" role="alert">
-       <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-</div>
-<div class="form-group">
-    <label for="phone">{!! __("Phone") !!} *</label>
-    {!! Form::text('phone',null,['class'=>'form-control','parsley-trigger'=>'change','id'=>'phone',"data-parsley-type"=>"integer",'required','placeholder'=>__('Enter Phone')]) !!}
-    @error('phone')
-    <span class="invalid-feedback d-block" role="alert">
-      <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-
-</div>
-<div class="form-group">
-    <label for="pass1">{!! __("Password") !!} @if(!isset($patient)) * @endif</label>
-    <input id="pass1" name="password" type="password" placeholder="{!! __("Password") !!}"
-           @if(!isset($patient)) required
-           @endif
-           class="form-control">
-    @error('password')
-    <span class="invalid-feedback d-block" role="alert">
-       <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-</div>
-<div class="form-group">
-    <label for="passWord2">{!! __("Confirm Password") !!} @if(!isset($patient)) * @endif</label>
-    <input data-parsley-equalto="#pass1" name="password_confirmation" type="password" @if(!isset($patient)) required
-           @endif
-           placeholder="{!! __("Confirm Password") !!}" class="form-control" id="passWord2">
-</div>
-
-
-<div class="form-group">
-    <label for="image">{!!__("image")  !!}</label>
-    <input type="file" name="image" class="dropify"
-           @if(isset($patient))data-default-file="{!! url($patient->img) !!}" @endif />
-    @error('image')
+    <label for="description">{!! __("Description ") !!} </label>
+    {!! Form::textarea('description',null,['class'=>'form-control','parsley-trigger'=>'change','id'=>'description','placeholder'=>__('Enter Description')]) !!}
+    @error('description')
     <span class="invalid-feedback d-block" role="alert">
       <strong>{{ $message }}</strong>
     </span>
     @enderror
 </div>
 
-<script>
+@push('scripts')
+    {{--  <script>
+          var disabled_dates = [0, 1, 2, 3, 4, 5, 6];
 
-    function getAreasOptions(district_id) {
-        $.ajax({
-            method: 'post',
-            url: route('api.patient.district.areas'),
-            data: {district_id: district_id},
-            success: function (res) {
-                var areas = res.data.areas;
-                var selector = 'select[name="area_id"]';
-                var placeholder = getPlaceholder(selector);
-                var options = placeholder + getOptions(areas);
-                $(selector).html(options);
+
+          function EnableDay(day) {
+              var selected_day = day - 2 >= 0 ? day - 2 : 6;
+              var days = disabled_dates.slice();
+              days.splice(day, 1);
+              var date_selector = 'input[name="date"]';
+              $(date_selector).replaceWith(document.querySelector(date_selector).outerHTML);
+              $(date_selector).datepicker({
+                  autoclose: true,
+                  todayHighlight: true,
+                  format: 'yyyy-mm-dd',
+                  daysOfWeekDisabled: days
+
+              });
+          }
+
+          $(document).ready(function () {
+              var day = $('select[name="day"]').val();
+              var selected_day = day - 2 >= 0 ? day - 2 : 6;
+              var days = disabled_dates.slice();
+              days.splice(day, 1);
+              var date_selector = 'input[name="date"]';
+              $(date_selector).replaceWith(document.querySelector(date_selector));
+              $(date_selector).datepicker({
+                  autoclose: true,
+                  todayHighlight: true,
+                  format: 'yyyy-mm-dd',
+                  daysOfWeekDisabled: days
+
+              });
+          })
+      </script>
+  --}}
+{{--
+    <script>
+        function getSchedules() {
+            var date = $('input[name="date"]').val();
+            var doctor = $('select[name="doctor_id"]').val();
+            if (date != "" && doctor != "") {
+                $.ajax({
+                    method: 'post',
+                    url: route('api.doctor.timetable'),
+                    data: {
+                        doctor_id: doctor,
+                        date: date,
+                    }
+                })
             }
-        })
-    }
-
-    function getBlockOptions(area_id) {
-        $.ajax({
-            method: 'post',
-            url: route('api.patient.area.blocks'),
-            data: {area_id: area_id},
-            success: function (res) {
-                var block = res.data.blocks;
-                var selector = 'select[name="block_id"]';
-                var placeholder = getPlaceholder(selector);
-                var options = placeholder + getOptions(block);
-                $(selector).html(options);
-            }
-        });
-    }
-
-</script>
+        }
+    </script>--}}
+@endpush

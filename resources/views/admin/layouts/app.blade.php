@@ -95,6 +95,9 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js" integrity="sha256-AdQN98MVZs44Eq2yTwtoKufhnU+uZ7v2kXnD5vqzZVo=" crossorigin="anonymous"></script>
+
 <!-- third party js -->
 <script src="{!! asset('dashboard/dark/assets/libs/datatables/jquery.dataTables.min.js')!!}"></script>
 <script src="{!! asset('dashboard/dark/assets/libs/datatables/dataTables.bootstrap4.js')!!}"></script>

@@ -43,6 +43,7 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
         Route::resource('pharmacy-reps', 'PharmacyRepController');
 
         Route::post('pharmacy-reps/{pharmacy_rep}/block', 'PharmacyController@block')->name('pharmacy-reps.block');
-        //      Route::resource('reservations', 'ReservationController');
+              Route::resource('reservations', 'ReservationController');
+              Route::resource('reservation.prescription', 'PrescriptionController');
     });
 });

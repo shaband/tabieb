@@ -43,16 +43,18 @@ $('.timepicker').timepicker({
 ///select helpers
 
 function getOptionsForSelect(select_name, route_name, data, res_key, method) {
+    data = data || {};
     method = method || 'post';
     $.ajax({
         method: method,
         url: route(route_name),
         data: data,
         success: function (res) {
-            var areas = res.data[res_key];
+
+            var data = res.data[res_key];
             var selector = 'select[name="' + select_name + '"]';
             var placeholder = getPlaceholder(selector);
-            var options = placeholder + getOptions(areas);
+            var options = placeholder + getOptions(data);
             $(selector).html(options);
         }
     })
@@ -62,7 +64,9 @@ function getOptionsForSelect(select_name, route_name, data, res_key, method) {
 function getOptions(list) {
     var options = '';
     list.forEach(function (val) {
-        options += '<option value="' + val.id + '">' + val.name + ' </option>'
+
+        var obj_string = JSON.stringify(val);
+        options += '<option value="' + val.id + '" data-attrs=\'' + obj_string + ' \'>' + val.name + ' </option>'
     });
 
     return options;

@@ -49,7 +49,7 @@ class PrescriptionController extends Controller
      * @return \Illuminate\Http\JsonResponse
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function create(Request $request)
+    public function create(Request $request, ReservationRepository $reservationRepo)
     {
 
         $this->validate($request, [
@@ -68,12 +68,13 @@ class PrescriptionController extends Controller
 
         DB::beginTransaction();
 
-        $reservation = app(ReservationRepository::class)->updateStatus($request->reservation_id, 5);
+        $reservation = $reservationRepo->updateStatus($request->reservation_id, Reservation::STATUS_FINISHED);
 
         $data = $this->handleRequest($reservation->patient_id, $request);
 
         $prescription = $this->repo->create($data);
 
+        $prescription->items()->delete();
         $items = $prescription->items()->createMany($request->items);
 
         DB::commit();

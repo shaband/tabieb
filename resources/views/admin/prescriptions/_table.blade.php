@@ -6,7 +6,6 @@
         <th>{!! __("Day") !!}</th>
         <th>{!! __("From") !!}</th>
         <th>{!! __("To") !!}</th>
-        <th>{!! __("prescription") !!}</th>
         <th>{!! __('Actions') !!}</th>
 
     </tr>
@@ -19,7 +18,6 @@
             <td>{!! Carbon\Carbon::parse($reservation->from_time)->format('H:i A') !!}</td>
             <td>{!! Carbon\Carbon::parse($reservation->to_time)->format('H:i A')!!}</td>
             <td>{!! $reservation->description !!}</td>
-            <td><a class="btn btn-info" href="{!! route('admin.reservation.prescription.create',$reservation->id) !!}"> {!! __("Prescription") !!} </a></td>
             <td>
                 @component('admin.partials._action_buttons',['routeName'=>'reservations','id'=>$reservation->id])
                 @endcomponent

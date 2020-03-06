@@ -17,12 +17,18 @@ class ScheduleResource extends JsonResource
      */
     public function toArray($request)
     {
+
+        $name = days()[$this->day]
+            . '-' . CarbonImmutable::parse($this->from_time)->format('h:i A') .
+            ':'
+            . CarbonImmutable::parse($this->to_time)->format('h:i A');
         return [
             'id' => $this->id,
+            'name' => $name,
             'doctor' => new DoctorResource($this->whenLoaded('doctor')),
             'day' => days()[$this->day],
-            'from_time' => CarbonImmutable::parse($this->from_time)->toTimeString(),
-            'to_time' => CarbonImmutable::parse($this->to_time)->toTimeString(),
+            'from_time' => CarbonImmutable::parse($this->from_time)->format('H:i A'),
+            'to_time' => CarbonImmutable::parse($this->to_time)->format('H:i A'),
             'reservation' => ReservationResource::collection(/*$this->whenLoaded(*/ $this->reservations)/*)*/
         ];
     }

@@ -18,6 +18,10 @@ class Schedule extends Model
     const DAY_THR = 6;
     const DAY_FRI = 7;
 
+    const COMMUNICATION_AUDIO=1;
+    const COMMUNICATION_VIDEO=2;
+    const COMMUNICATION_BOTH=3;
+
     protected $table = 'schedules';
     public $timestamps = true;
     protected $fillable = array('doctor_id', 'day', 'from_time', 'to_time');

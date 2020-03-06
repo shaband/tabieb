@@ -10,10 +10,10 @@ use App\Repositories\interfaces\DistrictRepository;
 
 class AreaController extends Controller
 {
-    private $repo;
+    protected $repo;
 
-    private $viewPath = 'admin.areas.';
-    private $routePath = 'admin.areas.';
+    protected $viewPath = 'admin.areas.';
+    protected $routePath = 'admin.areas.';
 
     public function __construct(AreaRepository $repo)
     {

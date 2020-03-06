@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 */
 Route::get('categories/{category}/sub-categories', 'CategoryController@getSubCategoriesForMainCategory')->name('categories.sub-categories');
 
+Route::post('doctor/schedule', 'DoctorController@getSchedules')->name('doctor.schedule');
 
 
 Route::post('districts', 'DistrictController@index');
@@ -33,3 +34,6 @@ Route::get('categories', 'CategoryController@index');
 Route::post('contact', 'ContactController@send');
 
 Route::post('setting/{name}', 'SettingController@index');
+
+
+Route::post('doctors/timetable','DoctorController@getDoctorTimetable')->name('doctor.timetable');

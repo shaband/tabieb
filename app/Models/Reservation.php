@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Reservation extends Model
 {
 
-    public const AUDIO_TYPE_COMMUNICATION = 1;
-    public const VIDEO_TYPE_COMMUNICATION = 1;
+    public const COMMUNICATION_TYPE_AUDIO = 1;
+    public const COMMUNICATION_TYPE_VIDEO = 2;
+    public const COMMUNICATION_TYPE_BOTH = 3;
 
     public const STATUS_ACTIVE = 1;
     public const STATUS_ACCEPTED = 2;
@@ -42,7 +43,7 @@ class Reservation extends Model
 
     public function prescription()
     {
-        return $this->hasOne('App\Models\Prescription');
+        return $this->hasOne(Prescription::class)->withDefault(new Prescription(['reservation_id' => $this->id, 'doctor_id' => $this->doctor_id, 'patient_id' => $this->patient_id,]));
     }
 
     public function invoices()

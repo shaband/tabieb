@@ -5,11 +5,9 @@ namespace App\Http\Controllers\Api\v1\Patient;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Reservation\ReservationResource;
 use App\Repositories\interfaces\ReservationRepository;
-use App\Repositories\interfaces\ScheduleRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Validation\Rule;
+
 
 class ReservationController extends Controller
 {
