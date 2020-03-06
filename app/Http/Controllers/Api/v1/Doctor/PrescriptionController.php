@@ -72,7 +72,7 @@ class PrescriptionController extends Controller
 
         $data = $this->handleRequest($reservation->patient_id, $request);
 
-        $prescription = $this->repo->create($data);
+        $prescription = $this->repo->updateOrCreate(['reservation_id' => $request->reservation_id], $data);
 
         $prescription->items()->delete();
         $items = $prescription->items()->createMany($request->items);
