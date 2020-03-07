@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\ModelHasLogs;
 use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Builder;
@@ -9,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Schedule extends Model
 {
-
+    use  ModelHasLogs;
     const DAY_SAT = 1;
     const DAY_SUN = 2;
     const DAY_MON = 3;
@@ -18,9 +19,9 @@ class Schedule extends Model
     const DAY_THR = 6;
     const DAY_FRI = 7;
 
-    const COMMUNICATION_AUDIO=1;
-    const COMMUNICATION_VIDEO=2;
-    const COMMUNICATION_BOTH=3;
+    const COMMUNICATION_AUDIO = 1;
+    const COMMUNICATION_VIDEO = 2;
+    const COMMUNICATION_BOTH = 3;
 
     protected $table = 'schedules';
     public $timestamps = true;

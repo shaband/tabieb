@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use App\Traits\ModelHasLogs;
 use Illuminate\Database\Eloquent\Model;
 
 class Chat extends Model
 {
-
+use ModelHasLogs;
     protected $table = 'chats';
     public $timestamps = true;
     protected $fillable = array('doctor_id', 'patient_id', 'reservation_id');

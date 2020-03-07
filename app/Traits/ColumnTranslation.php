@@ -72,4 +72,11 @@ trait ColumnTranslation
         }
         return $this->slug_en;
     }
+    public function getLabelAttribute()
+    {
+        if (app()->getLocale() == 'ar') {
+            return $this->label_ar;
+        }
+        return $this->label_en;
+    }
 }

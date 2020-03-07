@@ -3,11 +3,13 @@
 namespace App\Models;
 
 use App\Traits\ColumnTranslation;
+use App\Traits\ModelHasLogs;
 use Illuminate\Database\Eloquent\Model;
 
 class Setting extends Model
 {
-    use  ColumnTranslation;
+
+    use  ColumnTranslation,ModelHasLogs;
     const INPUT_TEXT = 0;
     const INPUT_NUMBER = 1;
     const INPUT_TEXTAREA = 2;

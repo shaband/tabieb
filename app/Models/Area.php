@@ -3,11 +3,12 @@
 namespace App\Models;
 
 use App\Traits\ColumnTranslation;
+use App\Traits\ModelHasLogs;
 use Illuminate\Database\Eloquent\Model;
 
 class Area extends Model
 {
-    use ColumnTranslation;
+    use ColumnTranslation,ModelHasLogs;
     protected $table = 'areas';
     public $timestamps = true;
     protected $fillable = array('name_ar', 'name_en', 'district_id', 'blocked_at');

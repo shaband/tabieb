@@ -3,10 +3,12 @@
 namespace App\Models;
 
 use App\Traits\ColumnTranslation;
+use App\Traits\ModelHasLogs;
 use Illuminate\Database\Eloquent\Model;
 
 class Attachment extends Model
 {
+    use ModelHasLogs;
     const  PROFILE_PICTURE = 1;
     const  DOCTOR_DOCUMENT = 2;
     protected $table = 'attachments';

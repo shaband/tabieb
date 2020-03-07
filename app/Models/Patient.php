@@ -7,14 +7,16 @@ use App\Notifications\Patient\Auth\VerifyEmail;
 use App\Traits\HashPassword;
 use App\Traits\HasVerificationCode;
 use App\Traits\ModelHasImage;
+use App\Traits\ModelHasLogs;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Activitylog\Traits\CausesActivity;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 
 class Patient extends Authenticatable implements JWTSubject
 {
-    use Notifiable, HasVerificationCode, HashPassword, ModelHasImage;
+    use Notifiable, HasVerificationCode, HashPassword, ModelHasImage,ModelHasLogs,CausesActivity;
 
     protected $table = 'patients';
 

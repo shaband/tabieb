@@ -65,6 +65,11 @@
                         <i class="fab fa-black-tie"></i>
                         <span> {!! __('Admins') !!} </span>
                     </a>
+                </li> <li>
+                    <a href="{!! route('admin.roles.index') !!}">
+                        <i class="fab fa-black-tie"></i>
+                        <span> {!! __('Roles') !!} </span>
+                    </a>
                 </li>
                 <li>
                     <a href="{!! route('admin.categories.index') !!}">

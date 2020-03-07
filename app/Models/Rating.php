@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use App\Traits\ModelHasLogs;
 use Illuminate\Database\Eloquent\Model;
 
 class Rating extends Model
 {
-
+use  ModelHasLogs;
     protected $table = 'ratings';
     public $timestamps = true;
     protected $fillable = array('rate', 'reservation_id', 'doctor_id', 'patient_id', 'description');

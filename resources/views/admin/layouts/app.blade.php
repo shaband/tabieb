@@ -36,9 +36,12 @@
 
     <link href="{!! asset('dashboard/dark/assets/libs/dropify/dropify.min.css')!!}" rel="stylesheet" type="text/css"/>
 
+    <link href="{!! asset('dashboard/dark/assets/libs/multiselect/multi-select.css') !!}" rel="stylesheet"
+          type="text/css"/>
     <!-- App css -->
     <link href="{!! asset('dashboard/dark/assets/css/bootstrap.min.css') !!}" rel="stylesheet" type="text/css"/>
     <link href="{!! asset('dashboard/dark/assets/css/icons.min.css') !!}" rel="stylesheet" type="text/css"/>
+
     <link href="{!! asset('dashboard/dark/assets/css/app-rtl.min.css') !!}" rel="stylesheet" type="text/css"/>
     @stack('header')
 
@@ -96,7 +99,8 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js" integrity="sha256-AdQN98MVZs44Eq2yTwtoKufhnU+uZ7v2kXnD5vqzZVo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"
+        integrity="sha256-AdQN98MVZs44Eq2yTwtoKufhnU+uZ7v2kXnD5vqzZVo=" crossorigin="anonymous"></script>
 
 <!-- third party js -->
 <script src="{!! asset('dashboard/dark/assets/libs/datatables/jquery.dataTables.min.js')!!}"></script>
@@ -128,6 +132,10 @@
 
 <!-- Validation js (Parsleyjs) -->
 <script src="{!! asset('dashboard/dark/assets/libs/parsleyjs/parsley.min.js')!!}"></script>
+
+
+<script src="{!! asset('dashboard/dark/assets/libs/jquery-quicksearch/jquery.quicksearch.min.js')!!}"></script>
+<script src="{!! asset('dashboard/dark/assets/libs/multiselect/jquery.multi-select.js')!!}"></script>
 
 <!-- validation init -->
 <script src="{!! asset('dashboard/dark/assets/js/pages/form-validation.init.js')!!}"></script>

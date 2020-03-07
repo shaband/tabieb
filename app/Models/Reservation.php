@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\ModelHasLogs;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Reservation extends Model
 {
-
+use  ModelHasLogs;
     public const COMMUNICATION_TYPE_AUDIO = 1;
     public const COMMUNICATION_TYPE_VIDEO = 2;
     public const COMMUNICATION_TYPE_BOTH = 3;

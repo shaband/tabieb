@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use App\Traits\ModelHasLogs;
 use Illuminate\Database\Eloquent\Model;
 
 class Prescription extends Model
 {
-
+use ModelHasLogs;
     protected $table = 'prescriptions';
     public $timestamps = true;
     protected $fillable = array('reservation_id', 'doctor_id', 'code', 'diagnosis', 'description', 'phramacy_id', 'patient_id', 'phramacy_rep_id', 'phramacy_took_at');

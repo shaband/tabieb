@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use App\Traits\ModelHasLogs;
 use Illuminate\Database\Eloquent\Model;
 
 class PatientAnswer extends Model
 {
-
+use ModelHasLogs;
     const  STATUS_NO = 0;
     const  STATUS_YES = 1;
     protected $table = 'patient_answers';

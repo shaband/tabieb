@@ -7,6 +7,7 @@ use App\Notifications\Doctor\Auth\VerifyEmail;
 use App\Traits\ColumnTranslation;
 use App\Traits\HashPassword;
 use App\Traits\ModelHasImage;
+use App\Traits\ModelHasLogs;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -14,12 +15,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Activitylog\Traits\CausesActivity;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 
 class Doctor extends Authenticatable implements JWTSubject
 {
-    use Notifiable, ColumnTranslation, ModelHasImage, HashPassword;
+    use Notifiable, ColumnTranslation, ModelHasImage, HashPassword,ModelHasLogs,CausesActivity;
 
     const  GENDER_MALE = 1;
     const  GENDER_FEMALE = 2;

@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 6.18.0 on 2020-03-06 13:05:36.
+ * Generated for Laravel 6.18.0 on 2020-03-07 09:54:19.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -15284,6 +15284,18 @@ namespace Facade\Ignition\Facades {
  
 }
 
+namespace Fruitcake\TelescopeToolbar { 
+
+    /**
+     * 
+     *
+     */ 
+    class Toolbar {
+         
+    }
+ 
+}
+
 namespace Collective\Html { 
 
     /**
@@ -21104,6 +21116,8 @@ namespace  {
     class View extends \Illuminate\Support\Facades\View {}
 
     class Flare extends \Facade\Ignition\Facades\Flare {}
+
+    class Toolbar extends \Fruitcake\TelescopeToolbar\Toolbar {}
 
     class Form extends \Collective\Html\FormFacade {}
 

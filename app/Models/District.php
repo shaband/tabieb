@@ -3,11 +3,12 @@
 namespace App\Models;
 
 use App\Traits\ColumnTranslation;
+use App\Traits\ModelHasLogs;
 use Illuminate\Database\Eloquent\Model;
 
 class District extends Model
 {
-
+use ModelHasLogs;
     use ColumnTranslation;
     protected $table = 'districts';
     public $timestamps = true;

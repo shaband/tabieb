@@ -3,13 +3,15 @@
 namespace App\Models;
 
 use App\Traits\ColumnTranslation;
+use App\Traits\ModelHasLogs;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
 
-    use ColumnTranslation;
+
+    use ColumnTranslation,ModelHasLogs;
     protected $table = 'categories';
     public $timestamps = true;
     protected $fillable = array('name_ar', 'name_en', 'category_id', 'description_ar', 'description_en', 'blocked_at');
