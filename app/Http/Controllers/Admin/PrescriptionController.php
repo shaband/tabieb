@@ -15,7 +15,7 @@ class PrescriptionController extends Controller
     protected $repo;
     protected $routeName = '';
     protected $viewPath = 'admin.reservations.';
-
+    protected $roleName = 'Prescription';
     protected $reservation_repo;
 
     public function __construct(PresciptionRepository $repo, ReservationRepository $reservation_repo)
@@ -23,11 +23,13 @@ class PrescriptionController extends Controller
         $this->repo = $repo;
 
         $this->reservation_repo = $reservation_repo;
-        parent::__construct($repo);
+        parent::__construct($repo,$this->roleName);
     }
 
     public function index($reservation_id)
     {
+
+        $this->authorize('View ' . $this->roleName);
 
         $prescriptions = $this->repo->findWhere(['id' => $reservation_id]);
         return view('admin.prescriptions.index', compact('prescriptions'));
@@ -35,6 +37,8 @@ class PrescriptionController extends Controller
 
     public function create($reservation_id)
     {
+        $this->authorize('Create ' . $this->roleName);
+
         $reservation = $this->reservation_repo->find($reservation_id);
         $prescription = $reservation->prescription;
         return view('admin.prescriptions.create', compact('prescription'));
@@ -42,6 +46,7 @@ class PrescriptionController extends Controller
 
     public function store(PrescriptionRequest $request)
     {
+        $this->authorize('Create ' . $this->roleName);
 
 
         DB::beginTransaction();

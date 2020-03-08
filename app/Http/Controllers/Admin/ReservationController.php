@@ -16,12 +16,12 @@ class ReservationController extends Controller
     protected $repo;
     protected $routeName = 'admin.reservations.';
     protected $viewPath = 'admin.reservations.';
-
+    protected $roleName = 'Reservation';
 
     public function __construct(ReservationRepository $repo)
     {
         $this->repo = $repo;
-        parent::__construct($repo);
+        parent::__construct($repo,$this->roleName);
     }
 
     /**
@@ -29,6 +29,8 @@ class ReservationController extends Controller
      */
     public function index()
     {
+        $this->authorize('View ' . $this->roleName);
+
         $reservations = $this->repo->orderBy('created_at', 'desc')->all();
 
         $active_reservations = $this->repo->orderBy('created_at', 'desc')->findByField('status', $this->repo::getConstants()['STATUS_ACTIVE']);
@@ -47,6 +49,8 @@ class ReservationController extends Controller
 
     public function create(DoctorRepository $doctorRepo, PatientRepository $patientRepo)
     {
+        $this->authorize('Create ' . $this->roleName);
+
         $doctors = $doctorRepo->Available()->pluck('name', 'id');
         $patients = $patientRepo->findWhere(['blocked_at' => null])->pluck('name', 'id');
         $communication_types = $this->repo::getConstants('COMMUNICATION');
@@ -59,6 +63,7 @@ class ReservationController extends Controller
      */
     public function store(ReservationRequest $request)
     {
+        $this->authorize('Create ' . $this->roleName);
 
         //  dd($request->all());
         $reservation = $this->repo->store($request);
@@ -73,7 +78,8 @@ class ReservationController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id, DoctorRepository $doctorRepo, ScheduleRepository $scheduleRepo, PatientRepository $patientRepo)
-    {
+    {        $this->authorize('Edit ' . $this->roleName);
+
         $reservation = $this->repo->find($id);
         $doctors = $doctorRepo->Available()->pluck('name', 'id');
         $patients = $patientRepo->findWhere(['blocked_at' => null])->pluck('name', 'id');
@@ -90,6 +96,8 @@ class ReservationController extends Controller
      */
     public function update(ReservationRequest $request, $id)
     {
+        $this->authorize('Edit ' . $this->roleName);
+
         $reservation = $this->repo->updateReservation($request, $id);
         toast(__("Updated successfully"), 'success');
         return redirect()->route($this->routeName . 'index');

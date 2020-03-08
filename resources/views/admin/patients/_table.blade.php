@@ -2,9 +2,10 @@
     <thead>
     <tr>
         <th>{!! __("Name ") !!}</th>
+        <th>{!! __("Title") !!}</th>
         <th>{!! __("Email") !!}</th>
         <th>{!! __("Phone") !!}</th>
-
+        <th>{!! __("Price") !!}</th>
         <th>{!! __("Status") !!}</th>
 
         <th>{!! __('Actions') !!}</th>
@@ -24,13 +25,21 @@
                              'id'=>$patient->id,
                              'blocked_at'=>$patient->blocked_at,
                              'routeName'=>'patients',
-                             'textMessage'=>__('This Doctor Would Not Be Available For Patients')
+                             'textMessage'=>__('This Doctor Would Not Be Available For Patients'),
+                             'permission'=>'Patient'
+
                              ])
                 @endcomponent
 
             </td>
             <td>
-                @component('admin.partials._action_buttons',['routeName'=>'patients','id'=>$patient->id])
+                @component('admin.partials._action_buttons',
+                [
+                'routeName'=>'patients',
+                'id'=>$patient->id ,
+                'permission'=>'Patient'
+
+                ])
                 @endcomponent
             </td>
         </tr>

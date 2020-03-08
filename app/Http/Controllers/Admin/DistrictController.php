@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 class DistrictController extends Controller
 {
     protected $repo;
+    protected $roleName='District';
 
     public function __construct(DistrictRepository $repo)
     {
@@ -23,6 +24,8 @@ class DistrictController extends Controller
     public function index()
     {
 
+        $this->authorize('View ' . $this->roleName);
+
         $open_districts = $this->repo->findWhere(['blocked_at' => null]);
         $blocked_districts = $this->repo->findWhere([['blocked_at', '!=', null]]);
 
@@ -34,6 +37,7 @@ class DistrictController extends Controller
      */
     public function create()
     {
+        $this->authorize('Create ' . $this->roleName);
 
         return view('admin.districts.create');
     }
@@ -44,6 +48,8 @@ class DistrictController extends Controller
      */
     public function store(DistrictRequest $request)
     {
+        $this->authorize('Create ' . $this->roleName);
+
         $district = $this->repo->create($request->all());
         toast(__("Added successfully"), 'success');
 
@@ -58,6 +64,8 @@ class DistrictController extends Controller
      */
     public function show($id)
     {
+        $this->authorize('View ' . $this->roleName);
+
         //
     }
 
@@ -67,6 +75,8 @@ class DistrictController extends Controller
      */
     public function edit($id)
     {
+        $this->authorize('Edit ' . $this->roleName);
+
         $district = $this->repo->find($id);
         return view('admin.districts.edit', compact('district'));
     }
@@ -78,6 +88,8 @@ class DistrictController extends Controller
      */
     public function update(DistrictRequest $request, $id)
     {
+        $this->authorize('Edit ' . $this->roleName);
+
         $district = $this->repo->update($request->all(), $id);
 
         toast(__("Updated successfully"), 'success');
@@ -91,6 +103,8 @@ class DistrictController extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('Delete ' . $this->roleName);
+
         $this->repo->delete($id);
         toast(__("Updated successfully"), 'success');
         return back();
@@ -98,6 +112,8 @@ class DistrictController extends Controller
 
     public function blockDistrict($id, Request $request)
     {
+
+        $this->authorize('Edit ' . $this->roleName);
 
         $district = $this->repo->block($request, $id);
         toast(__("Deleted successfully"), 'success');

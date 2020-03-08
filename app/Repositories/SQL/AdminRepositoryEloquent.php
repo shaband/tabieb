@@ -47,6 +47,8 @@ class AdminRepositoryEloquent extends BaseRepository implements AdminRepository
             $image_data = $this->saveFile($request->file('image'), 'admins');
             $admin->image()->updateOrCreate(['type' => $image_data['type']], $image_data);
         }
+        $role = $admin->syncRoles($request->role_id);
+
         DB::commit();
         return $admin->fresh();
 
@@ -64,6 +66,8 @@ class AdminRepositoryEloquent extends BaseRepository implements AdminRepository
             $image_data = $this->saveFile($request->file('image'), 'admins');
             $admin->image()->updateOrCreate(['type' => $image_data['type']], $image_data);
         }
+        $role = $admin->syncRoles($request->role_id);
+
         DB::commit();
         return $admin->fresh();
 

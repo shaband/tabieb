@@ -31,7 +31,12 @@
             @endif
             <td>
 
-                @component('admin.partials._action_buttons',['routeName'=>'categories','id'=>$category->id])
+                @component('admin.partials._action_buttons',
+                ['routeName'=>'categories',
+                'id'=>$category->id,
+                'permission'=>'Category'
+
+                ])
                 @endcomponent
             </td>
         </tr>

@@ -17,12 +17,13 @@ class ContactController extends MainController
     protected $repo;
     protected $routeName = 'admin.contacts.';
     protected $viewPath = 'admin.contacts.';
+    protected $roleName='Contact';
 
 
     public function __construct(ContactRepository $repo)
     {
         $this->repo = $repo;
-        parent::__construct($repo);
+        parent::__construct($repo,$this->roleName);
     }
 
     /**
@@ -30,6 +31,8 @@ class ContactController extends MainController
      */
     public function index()
     {
+        $this->authorize('View ' . $this->roleName);
+
         $this->repo->makeModel()->where('seen_at', null)->update(['seen_at' => Carbon::now(), 'seen_by' => auth()->id()]);
         $contacts = $this->repo->orderBy('seen_at', 'desc')->all();
 
@@ -43,6 +46,8 @@ class ContactController extends MainController
      */
     public function edit($id)
     {
+        $this->authorize('Edit ' . $this->roleName);
+
         $contact = $this->repo->find($id);
 
         return view($this->viewPath . 'edit', compact('contact'));
@@ -55,6 +60,8 @@ class ContactController extends MainController
      */
     public function update(ContactRequest $request, $id)
     {
+        $this->authorize('Edit ' . $this->roleName);
+
         $contact = $this->repo->update($request->all(), $id);
 
         toast(__("Updated successfully"), 'success');

@@ -18,6 +18,7 @@ class RoleController extends Controller
     protected $permissionRepo;
     protected $routeName = 'admin.roles.';
     protected $viewPath = 'admin.roles.';
+    protected $roleName='Role';
 
     /**
      * RoleController constructor.
@@ -26,7 +27,7 @@ class RoleController extends Controller
      */
     public function __construct(RoleRepository $repo, PermissionRepository $permissionRepo)
     {
-        parent::__construct($repo);
+        parent::__construct($repo,$this->roleName);
 
         $this->repo = $repo;
         $this->permissionRepo = $permissionRepo;
@@ -37,6 +38,7 @@ class RoleController extends Controller
      */
     public function index()
     {
+        $this->authorize('View ' . $this->roleName);
 
         $roles = $this->repo->all();
 
@@ -49,6 +51,8 @@ class RoleController extends Controller
      */
     public function create()
     {
+        $this->authorize('Create ' . $this->roleName);
+
         $permissions_groups = $this->permissionRepo->all()->groupBy('group_name');
         return view($this->viewPath . 'create', compact('permissions_groups'));
     }
@@ -59,6 +63,8 @@ class RoleController extends Controller
      */
     public function store(RoleRequest $request)
     {
+
+        $this->authorize('Create ' . $this->roleName);
 
         DB::beginTransaction();
         $role = $this->repo->create($request->except('permissions', '_token', '_method'));
@@ -78,6 +84,9 @@ class RoleController extends Controller
      */
     public function edit($id, DistrictRepository $districtRepository)
     {
+
+        $this->authorize('Edit ' . $this->roleName);
+
         $role = $this->repo->find($id);
         $role_permissions = $role->permissions->pluck('id')->toArray();
         $permissions_groups = $this->permissionRepo->all()->groupBy('group_name');
@@ -93,6 +102,9 @@ class RoleController extends Controller
      */
     public function update(RoleRequest $request, $id)
     {
+
+        $this->authorize('Edit ' . $this->roleName);
+
         DB::beginTransaction();
         $role = $this->repo->update($request->except('permissions', '_token', '_method'), $id);
         $permissions = $role->syncPermissions($request->permissions);

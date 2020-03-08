@@ -19,7 +19,11 @@
             <td>{!! $admin->email !!}</td>
             <td>{!! $admin->phone !!}</td>
             <td>
-                @component('admin.partials._action_buttons',['routeName'=>'admins','id'=>$admin->id])
+                @component('admin.partials._action_buttons',
+['routeName'=>'admins',
+'id'=>$admin->id,
+'permission'=>'Admin'
+])
                 @endcomponent
             </td>
         </tr>

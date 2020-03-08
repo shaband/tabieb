@@ -28,7 +28,11 @@
             </td>
 
             <td>
-                @component('admin.partials._action_buttons',['routeName'=>'reservations','id'=>$reservation->id])
+                @component('admin.partials._action_buttons',
+                ['routeName'=>'reservations',
+                'id'=>$reservation->id,
+                'permission'=>'Reservation'
+                ])
                 @endcomponent
             </td>
         </tr>

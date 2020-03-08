@@ -14,12 +14,13 @@ class SettingController extends Controller
     protected $repo;
     protected $routeName = 'admin.settings.';
     protected $viewPath = 'admin.settings.';
+    protected $roleName='Setting';
 
 
     public function __construct(SettingRepository $repo)
     {
         $this->repo = $repo;
-        parent::__construct($repo);
+        parent::__construct($repo,$this->roleName);
     }
 
     /**
@@ -27,6 +28,8 @@ class SettingController extends Controller
      */
     public function index()
     {
+
+        $this->authorize('View '.$this->roleName);
 
         $settings = $this->repo->findByField('category', '1');
 
@@ -40,6 +43,9 @@ class SettingController extends Controller
      */
     public function edit($id)
     {
+
+        $this->authorize('Edit '.$this->roleName);
+
         $setting = $this->repo->find($id);
         if ($setting->input_type == $setting::INPUT_TEXT) {
 
@@ -59,6 +65,9 @@ class SettingController extends Controller
      */
     public function update(SettingRequest $request, $id)
     {
+
+        $this->authorize('Edit '.$this->roleName);
+
         $setting = $this->repo->update($request->all(), $id);
 
         toast(__("Updated successfully"), 'success');

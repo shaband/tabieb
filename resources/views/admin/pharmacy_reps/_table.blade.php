@@ -31,7 +31,11 @@
 
             </td>
            --}} <td>
-                @component('admin.partials._action_buttons',['routeName'=>'pharmacy-reps','id'=>$pharmacy_rep->id])
+                @component('admin.partials._action_buttons',
+                ['routeName'=>'pharmacy-reps',
+                'id'=>$pharmacy_rep->id,
+                'permission'=>'Pharmacyrep'
+                ])
                 @endcomponent
             </td>
         </tr>

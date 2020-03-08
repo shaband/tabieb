@@ -15,7 +15,11 @@
             <td>{!! $area->name_en !!}</td>
             <td>{!! optional($area->district)->name !!}</td>
             <td>
-                @component('admin.partials._action_buttons',['routeName'=>'areas','id'=>$area->id])
+                @component('admin.partials._action_buttons',[
+                'routeName'=>'areas',
+                'id'=>$area->id,
+                'permission'=>'Area'
+                ])
                 @endcomponent
             </td>
         </tr>

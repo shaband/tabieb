@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 class PatientQuestionController extends Controller
 {
     protected $repo;
+    protected $roleName='Patientquestion';
 
     public function __construct(PatientQuestionRepository $repo)
     {
@@ -22,6 +23,7 @@ class PatientQuestionController extends Controller
      */
     public function index()
     {
+        $this->authorize('View ' . $this->roleName);
 
         $patient_questions = $this->repo->all();
 
@@ -33,6 +35,7 @@ class PatientQuestionController extends Controller
      */
     public function create()
     {
+        $this->authorize('Create ' . $this->roleName);
 
         return view('admin.patient_questions.create');
     }
@@ -43,6 +46,8 @@ class PatientQuestionController extends Controller
      */
     public function store(PatientQuestionRequest $request)
     {
+        $this->authorize('Create ' . $this->roleName);
+
         $patient_question = $this->repo->create($request->all());
         toast(__("Added successfully"), 'success');
 
@@ -57,7 +62,8 @@ class PatientQuestionController extends Controller
      */
     public function show($id)
     {
-        //
+        $this->authorize('View ' . $this->roleName);
+
     }
 
     /**
@@ -66,6 +72,8 @@ class PatientQuestionController extends Controller
      */
     public function edit($id)
     {
+        $this->authorize('Edit ' . $this->roleName);
+
         $patient_question = $this->repo->find($id);
         return view('admin.patient_questions.edit', compact('patient_question'));
     }
@@ -77,6 +85,8 @@ class PatientQuestionController extends Controller
      */
     public function update(PatientQuestionRequest $request, $id)
     {
+        $this->authorize('Edit ' . $this->roleName);
+
         $patient_question = $this->repo->update($request->all(), $id);
 
         toast(__("Updated successfully"), 'success');
@@ -89,7 +99,8 @@ class PatientQuestionController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
-    {
+    {        $this->authorize('Delete ' . $this->roleName);
+
         $this->repo->delete($id);
         toast(__("Deleted successfully"), 'success');
 

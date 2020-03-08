@@ -25,13 +25,19 @@
                              'id'=>$doctor->id,
                              'blocked_at'=>$doctor->blocked_at,
                              'routeName'=>'doctors',
-                             'textMessage'=>__('This Doctor Would Not Be Available For Patients')
+                             'textMessage'=>__('This Doctor Would Not Be Available For Patients'),
+                             'permission'=>'Doctor'
+
                              ])
                 @endcomponent
 
             </td>
             <td>
-                @component('admin.partials._action_buttons',['routeName'=>'doctors','id'=>$doctor->id])
+                @component('admin.partials._action_buttons',[
+                'routeName'=>'doctors',
+                'id'=>$doctor->id,
+                'permission'=>'Doctor'
+                ])
                 @endcomponent
             </td>
         </tr>

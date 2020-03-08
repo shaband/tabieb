@@ -20,12 +20,17 @@
              'id'=>$district->id,
              'blocked_at'=>$district->blocked_at,
              'routeName'=>'districts',
-             'textMessage'=>__('This District Would Not Be Available For Patients')
+             'textMessage'=>__('This District Would Not Be Available For Patients'),
+             'permission'=>'District'
              ])
                 @endcomponent
             </td>
             <td>
-                @component('admin.partials._action_buttons',['routeName'=>'districts','id'=>$district->id])
+                @component('admin.partials._action_buttons',[
+                'routeName'=>'districts',
+                'id'=>$district->id,
+                'permission'=>'District'
+                ])
                 @endcomponent
             </td>
         </tr>

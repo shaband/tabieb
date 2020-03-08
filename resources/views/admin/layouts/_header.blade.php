@@ -25,7 +25,7 @@
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item active">
                         <div class="notify-icon">
-                            <img src="{!! auth()->guard('admin')->user()->img !!}"
+                            <img src="{!! asset(auth()->guard('admin')->user()->img) !!}"
                                  class="img-fluid rounded-circle" alt=""/></div>
                         <p class="notify-details">Cristina Pride</p>
                         <p class="text-muted mb-0 user-msg">
@@ -60,7 +60,7 @@
         <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#"
                role="button" aria-haspopup="false" aria-expanded="false">
-                <img src="{!! auth()->guard('admin')->user()->img !!}" alt="user-image"
+                <img src="{!! asset(auth()->guard('admin')->user()->img) !!}" alt="user-image"
                      class="rounded-circle">
                 <span class="pro-user-name ml-1">
                                 {!! auth()->guard('admin')->user()->name !!} <i class="mdi mdi-chevron-down"></i>
@@ -73,7 +73,7 @@
                 </div>
 
                 <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                <a href="{!! route('admin.admins.edit',auth()->id()) !!}" class="dropdown-item notify-item">
                     <i class="fe-user"></i>
                     <span> {!! __("My Account") !!}</span>
                 </a>
@@ -99,7 +99,7 @@
 
     <!-- LOGO -->
     <div class="logo-box">
-        <a href="{!! url('admins.dashboard') !!}" class="logo text-center">
+        <a href="{!! route('admin.dashboard') !!}" class="logo text-center">
                         <span class="logo-lg">
                             <img src="{!! asset('dashboard/dark') !!}/assets/images/logo-light.png" alt="" height="16">
                             <!-- <span class="logo-lg-text-light">Xeria</span> -->

@@ -19,7 +19,10 @@
             <td>{!! Carbon\Carbon::parse($reservation->to_time)->format('H:i A')!!}</td>
             <td>{!! $reservation->description !!}</td>
             <td>
-                @component('admin.partials._action_buttons',['routeName'=>'reservations','id'=>$reservation->id])
+                @component('admin.partials._action_buttons',
+                ['routeName'=>'reservations',
+                'id'=>$reservation->id,
+                'permission'=>'Reservation'])
                 @endcomponent
             </td>
         </tr>

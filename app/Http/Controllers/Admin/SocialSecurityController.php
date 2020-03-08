@@ -9,6 +9,7 @@ use App\Repositories\interfaces\SocialSecurityRepository;
 class SocialSecurityController extends Controller
 {
     protected $repo;
+    protected $roleName = 'Socialsecurity';
 
     public function __construct(SocialSecurityRepository $repo)
     {
@@ -21,6 +22,8 @@ class SocialSecurityController extends Controller
     public function index()
     {
 
+        $this->authorize('View ' . $this->roleName);
+
         $social_securities = $this->repo->all();
 
         return view('admin.social_securities.index', compact('social_securities'));
@@ -31,6 +34,7 @@ class SocialSecurityController extends Controller
      */
     public function create()
     {
+        $this->authorize('Create ' . $this->roleName);
 
         return view('admin.social_securities.create');
     }
@@ -41,6 +45,8 @@ class SocialSecurityController extends Controller
      */
     public function store(SocialSecurityRequest $request)
     {
+        $this->authorize('Create ' . $this->roleName);
+
         $social_security = $this->repo->create($request->all());
         toast(__("Added successfully"), 'success');
 
@@ -55,7 +61,8 @@ class SocialSecurityController extends Controller
      */
     public function show($id)
     {
-        //
+        $this->authorize('View ' . $this->roleName);
+
     }
 
     /**
@@ -64,6 +71,8 @@ class SocialSecurityController extends Controller
      */
     public function edit($id)
     {
+        $this->authorize('Edit ' . $this->roleName);
+
         $social_security = $this->repo->find($id);
         return view('admin.social_securities.edit', compact('social_security'));
     }
@@ -75,6 +84,8 @@ class SocialSecurityController extends Controller
      */
     public function update(SocialSecurityRequest $request, $id)
     {
+        $this->authorize('Edit ' . $this->roleName);
+
         $social_security = $this->repo->update($request->all(), $id);
 
         toast(__("Updated successfully"), 'success');
@@ -88,6 +99,8 @@ class SocialSecurityController extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('Delete ' . $this->roleName);
+
         $this->repo->delete($id);
         toast(__("Deleted successfully"), 'success');
 

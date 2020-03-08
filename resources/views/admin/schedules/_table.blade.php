@@ -16,7 +16,10 @@
             <td>{!! \Carbon\Carbon::parse($schedule->from_time)->format('H:i A') !!}</td>
             <td>{!! \Carbon\Carbon::parse($schedule->to_time)->format('H:i A')!!}</td>
             <td>
-                @component('admin.partials._action_buttons',['id'=>$schedule->id,'routeName'=>'schedules'])
+                @component('admin.partials._action_buttons',
+                ['id'=>$schedule->id,
+                'routeName'=>'schedules',
+                'permission'=>'Schedule'])
                 @endcomponent
 
             </td>

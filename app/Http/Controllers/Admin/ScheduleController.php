@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 class ScheduleController extends Controller
 {
     protected $repo;
+    protected $roleName = 'Schedule';
 
     public function __construct(ScheduleRepository $repo)
     {
@@ -23,6 +24,7 @@ class ScheduleController extends Controller
      */
     public function index()
     {
+        $this->authorize('View ' . $this->roleName);
 
         $schedules = $this->repo->all();
 
@@ -35,6 +37,9 @@ class ScheduleController extends Controller
      */
     public function create(DoctorRepository $doctorRepository)
     {
+
+        $this->authorize('Create '.$this->roleName);
+
         $doctors = $doctorRepository->cursor()->pluck('name', 'id');
 
         return view('admin.schedules.create', compact('doctors'));
@@ -46,6 +51,8 @@ class ScheduleController extends Controller
      */
     public function store(ScheduleRequest $request)
     {
+        $this->authorize('Create '.$this->roleName);
+
         $schedule = $this->repo->create($request->all());
         toast(__("Added successfully"), 'success');
 
@@ -60,7 +67,10 @@ class ScheduleController extends Controller
      */
     public function show($id)
     {
-        //
+
+        $this->authorize('View '.$this->roleName);
+
+
     }
 
     /**
@@ -70,6 +80,9 @@ class ScheduleController extends Controller
      */
     public function edit($id, DoctorRepository $doctorRepository)
     {
+
+        $this->authorize('Edit '.$this->roleName);
+
         $schedule = $this->repo->find($id);
         $doctors = $doctorRepository->all()->pluck('name', 'id');
         return view('admin.schedules.edit', compact('schedule', 'doctors'));
@@ -82,6 +95,9 @@ class ScheduleController extends Controller
      */
     public function update(ScheduleRequest $request, $id)
     {
+
+        $this->authorize('Edit '.$this->roleName);
+
         $schedule = $this->repo->update($request->all(), $id);
 
         toast(__("Updated successfully"), 'success');
@@ -95,6 +111,9 @@ class ScheduleController extends Controller
      */
     public function destroy($id)
     {
+
+        $this->authorize('Delete '.$this->roleName);
+
         $this->repo->delete($id);
         toast(__("Deleted successfully"), 'success');
 

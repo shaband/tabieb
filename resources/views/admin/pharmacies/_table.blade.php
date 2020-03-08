@@ -23,13 +23,18 @@
                              'id'=>$pharmacy->id,
                              'blocked_at'=>$pharmacy->blocked_at,
                              'routeName'=>'pharmacies',
-                             'textMessage'=>__('This Pharmacy Would Not Be Available On System')
+                             'textMessage'=>__('This Pharmacy Would Not Be Available On System'),
+                             'permission'=>'Pharmacy'
                              ])
                 @endcomponent
 
             </td>
             <td>
-                @component('admin.partials._action_buttons',['routeName'=>'pharmacies','id'=>$pharmacy->id])
+                @component('admin.partials._action_buttons',
+                [
+                'routeName'=>'pharmacies',
+                'id'=>$pharmacy->id,
+                'permission'=>'Pharmacy'])
                 @endcomponent
             </td>
         </tr>

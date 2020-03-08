@@ -14,7 +14,11 @@
             <td>{!! $patient_question->name_en !!}</td>
             <td>
 
-                @component('admin.partials._action_buttons',['routeName'=>'patient-questions','id'=>$patient_question->id])
+                @component('admin.partials._action_buttons',
+                ['routeName'=>'patient-questions',
+                'id'=>$patient_question->id,
+                'permission'=>'Patientquestions'
+                ])
                 @endcomponent
             </td>
         </tr>

@@ -43,6 +43,18 @@
            @endif
            placeholder="{!! __("Confirm Password") !!}" class="form-control" id="passWord2">
 </div>
+
+<div class="form-group">
+    <label for="role_id">{!! __("Select Role") !!} *</label>
+    {!! Form::select('role_id',$roles??[],isset($admin)?optional($admin->role)->id:null ,['class'=>'form-control select2','parsley-trigger'=>'change','id'=>'role_id','required','parsley-trigger'=>'change','placeholder'=>__("Select Role")]) !!}
+    @error('role_id')
+    <span class="invalid-feedback d-block" role="alert">
+     <strong>{{ $message }}</strong>
+    </span>
+    @enderror
+</div>
+
+
 <div class="form-group">
     <label for="image">{!!__("image")  !!}</label>
     <input type="file" name="image" class="dropify"

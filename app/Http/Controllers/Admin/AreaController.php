@@ -14,12 +14,13 @@ class AreaController extends Controller
 
     protected $viewPath = 'admin.areas.';
     protected $routePath = 'admin.areas.';
+    protected $roleName = 'Area';
 
     public function __construct(AreaRepository $repo)
     {
         $this->repo = $repo;
 
-        parent::__construct($repo);
+        parent::__construct($repo, $this->roleName);
     }
 
     /**
@@ -27,6 +28,7 @@ class AreaController extends Controller
      */
     public function index()
     {
+        $this->authorize('View ' . $this->roleName);
 
         $areas = $this->repo->all();
 
@@ -39,6 +41,8 @@ class AreaController extends Controller
      */
     public function create(DistrictRepository $districtRepository)
     {
+        $this->authorize('Create ' . $this->roleName);
+
         $districts = $districtRepository->all()->pluck('name', 'id');
         return view($this->viewPath . 'create', compact('districts'));
     }
@@ -49,6 +53,8 @@ class AreaController extends Controller
      */
     public function store(AreaRequest $request)
     {
+        $this->authorize('Create ' . $this->roleName);
+
         $area = $this->repo->create($request->all());
         toast(__("Added successfully"), 'success');
 
@@ -63,6 +69,8 @@ class AreaController extends Controller
      */
     public function edit($id, DistrictRepository $districtRepository)
     {
+        $this->authorize('Edit ' . $this->roleName);
+
         $area = $this->repo->find($id);
         $districts = $districtRepository->all()->pluck('name', 'id');
         return view($this->viewPath . 'edit', compact('area', 'districts'));
@@ -75,6 +83,8 @@ class AreaController extends Controller
      */
     public function update(AreaRequest $request, $id)
     {
+        $this->authorize('Edit ' . $this->roleName);
+
         $area = $this->repo->update($request->all(), $id);
 
         toast(__("Updated successfully"), 'success');

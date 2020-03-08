@@ -13,7 +13,10 @@
             <td>{!! $question->name !!}</td>
             <td>{!! $question->answer !!}</td>
             <td>
-                @component('admin.partials._action_buttons',['routeName'=>'questions','id'=>$question->id])
+                @component('admin.partials._action_buttons',
+                ['routeName'=>'questions',
+                'id'=>$question->id,
+                'permission'=>'Question'])
                 @endcomponent
             </td>
         </tr>

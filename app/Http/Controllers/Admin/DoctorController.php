@@ -15,11 +15,12 @@ class DoctorController extends Controller
     protected $repo;
     protected $routeName = 'admin.doctors.';
     protected $viewPath = 'admin.doctors.';
+    protected $roleName = 'Doctor';
 
     public function __construct(DoctorRepository $repo)
     {
         $this->repo = $repo;
-        parent::__construct($repo);
+        parent::__construct($repo,$this->roleName);
     }
 
     /**
@@ -27,6 +28,8 @@ class DoctorController extends Controller
      */
     public function index()
     {
+        $this->authorize('View ' . $this->roleName);
+
         $open_doctors = $this->repo->findWhere(['blocked_at' => null]);
         $blocked_doctors = $this->repo->findWhere([['blocked_at', '!=', null]]);
 
@@ -39,6 +42,8 @@ class DoctorController extends Controller
     public function create(CategoryRepository $categoryRepository)
     {
 
+        $this->authorize('Create ' . $this->roleName);
+
         $main_categories = $categoryRepository->cursor()->pluck('name', 'id');
         return view($this->viewPath . 'create', compact('main_categories'));
     }
@@ -49,6 +54,8 @@ class DoctorController extends Controller
      */
     public function store(DoctorRequest $request)
     {
+
+        $this->authorize('Create ' . $this->roleName);
 
         $doctor = $this->repo->store($request);
         toast(__("Added successfully"), 'success');
@@ -63,6 +70,9 @@ class DoctorController extends Controller
      */
     public function edit($id, CategoryRepository $categoryRepository)
     {
+
+        $this->authorize('Edit ' . $this->roleName);
+
         $doctor = $this->repo->find($id);
         $main_categories = $categoryRepository->cursor()->pluck('name', 'id');
         $sub_categories = $categoryRepository->getSubCategoriesForMainCategory($doctor->category_id)->pluck('name', 'id');
@@ -77,6 +87,8 @@ class DoctorController extends Controller
      */
     public function update(DoctorRequest $request, $id)
     {
+        $this->authorize('Edit ' . $this->roleName);
+
         $doctor = $this->repo->updateDoctor($request, $id);
 
         toast(__("Updated successfully"), 'success');
@@ -87,6 +99,8 @@ class DoctorController extends Controller
 
     public function blockDoctor($id, Request $request)
     {
+        $this->authorize('Edit ' . $this->roleName);
+
         $doctor = $this->repo->block($request, $id);
         toast(__("Blocked successfully"), 'success');
         return back();

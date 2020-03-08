@@ -9,5 +9,14 @@ use Spatie\Permission\Models\Permission as Model;
 class Permission extends Model
 {
 
-    use ModelHasLogs, ColumnTranslation;
+    use ModelHasLogs ;
+
+    public function getLabelAttribute()
+    {
+        if (app()->getLocale() == 'ar') {
+            return $this->label_ar;
+        }
+        return $this->label_en;
+    }
+
 }

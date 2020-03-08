@@ -10,6 +10,7 @@ use App\Repositories\interfaces\CategoryRepository;
 class CategoryController extends Controller
 {
     protected $repo;
+    protected $roleName='Category';
 
     public function __construct(CategoryRepository $repo)
     {
@@ -21,6 +22,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $this->authorize('View ' . $this->roleName);
 
         $categories = $this->repo->all();
 
@@ -32,6 +34,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
+        $this->authorize('Create ' . $this->roleName);
 
         $main_categories = $this->repo->getMainCategory()->pluck('name', 'id');
         return view('admin.categories.create', compact('main_categories'));
@@ -43,6 +46,8 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
+        $this->authorize('Create ' . $this->roleName);
+
         $category = $this->repo->create($request->all());
         toast(__("Added successfully"), 'success');
 
@@ -57,7 +62,8 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $this->authorize('View ' . $this->roleName);
+
     }
 
     /**
@@ -66,6 +72,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
+        $this->authorize('Edit ' . $this->roleName);
+
         $category = $this->repo->find($id);
 
         $main_categories = $this->repo->getMainCategory()->pluck('name', 'id');
@@ -80,6 +88,8 @@ class CategoryController extends Controller
      */
     public function update(CategoryRequest $request, $id)
     {
+        $this->authorize('Edit ' . $this->roleName);
+
         $category = $this->repo->update($request->all(), $id);
 
         toast(__("Updated successfully"), 'success');
@@ -93,6 +103,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('Delete ' . $this->roleName);
+
         $this->repo->delete($id);
         toast(__("Deleted successfully"), 'success');
 

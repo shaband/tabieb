@@ -9,6 +9,7 @@ use App\Repositories\interfaces\QuestionRepository;
 class QuestionController extends Controller
 {
     protected $repo;
+    protected $roleName = 'Question';
 
     public function __construct(QuestionRepository $repo)
     {
@@ -20,6 +21,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
+        $this->authorize('View ' . $this->roleName);
 
         $questions = $this->repo->all();
 
@@ -31,6 +33,7 @@ class QuestionController extends Controller
      */
     public function create()
     {
+        $this->authorize('Create ' . $this->roleName);
 
         return view('admin.questions.create');
     }
@@ -41,6 +44,8 @@ class QuestionController extends Controller
      */
     public function store(QuestionRequest $request)
     {
+        $this->authorize('Create ' . $this->roleName);
+
         $question = $this->repo->create($request->all());
         toast(__("Added successfully"), 'success');
 
@@ -55,7 +60,8 @@ class QuestionController extends Controller
      */
     public function show($id)
     {
-        //
+        $this->authorize('View ' . $this->roleName);
+
     }
 
     /**
@@ -64,6 +70,8 @@ class QuestionController extends Controller
      */
     public function edit($id)
     {
+        $this->authorize('Edit ' . $this->roleName);
+
         $question = $this->repo->find($id);
         return view('admin.questions.edit', compact('question'));
     }
@@ -75,6 +83,8 @@ class QuestionController extends Controller
      */
     public function update(QuestionRequest $request, $id)
     {
+        $this->authorize('Edit ' . $this->roleName);
+
         $question = $this->repo->update($request->all(), $id);
 
         toast(__("Updated successfully"), 'success');
@@ -88,6 +98,8 @@ class QuestionController extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('Delete ' . $this->roleName);
+
         $this->repo->delete($id);
         toast(__("Deleted successfully"), 'success');
 

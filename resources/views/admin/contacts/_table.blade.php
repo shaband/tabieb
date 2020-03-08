@@ -23,7 +23,12 @@
             <td>{!! optional($contact->seen_at)->format('Y-m-d H:i A') !!}</td>
             <td>{!! optional($contact->admin)->name !!}</td>
             <td>
-                @component('admin.partials._action_buttons',['id'=>$contact->id,'routeName'=>'contacts'])
+                @component('admin.partials._action_buttons',
+                [
+                'id'=>$contact->id,
+                'routeName'=>'contacts',
+                'permission'=>'Contact'
+                ])
                 @endcomponent
             </td>
 

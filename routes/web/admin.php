@@ -18,7 +18,7 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
     Route::post('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
     Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
     Route::get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->name('verification.verify');
-    Route::middleware(['admin.auth:admin'])->group(function () {
+    Route::middleware(['admin.auth:admin', 'auth:admin'])->group(function () {
         Route::get('/', 'HomeController@index')->name('dashboard');
         Route::resource('admins', 'AdminController');
         Route::resource('categories', 'CategoryController');

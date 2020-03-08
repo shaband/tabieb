@@ -14,12 +14,14 @@ abstract class MainController extends Controller
     protected $repo;
     protected $routeName;
     protected $viewPath;
+    protected $roleName;
 
-     // abstract public function __construct(BaseRepository $repo);
+    // abstract public function __construct(BaseRepository $repo);
 
-    public function __construct(BaseInterface $repo)
+    public function __construct(BaseInterface $repo, string $roleName)
     {
         $this->repo = $repo;
+        $this->roleName = $roleName;
     }
 
     /**
@@ -28,6 +30,7 @@ abstract class MainController extends Controller
      */
     public function show($id)
     {
+        $this->authorize('View '.$this->roleName);
         $model = $this->repo->find($id);
         return view($this->viewPath . 'show', compact('model'));
 
@@ -40,6 +43,7 @@ abstract class MainController extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('Delete ' . $this->roleName);
         $this->repo->delete($id);
         toast(__("Deleted successfully"), 'success');
 
@@ -54,6 +58,7 @@ abstract class MainController extends Controller
      */
     public function block($id, Request $request)
     {
+        $this->authorize('Edit ' . $this->roleName);
         $model = $this->repo->block($request, $id);
 
         toast(__("Blocked successfully"), 'success');

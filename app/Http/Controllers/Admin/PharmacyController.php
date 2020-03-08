@@ -15,12 +15,13 @@ class PharmacyController extends Controller
     protected $repo;
     protected $routeName = 'admin.pharmacies.';
     protected $viewPath = 'admin.pharmacies.';
+    protected $roleName = 'Pharmacy';
 
 
     public function __construct(PharmacyRepository $repo)
     {
         $this->repo = $repo;
-        parent::__construct($repo);
+        parent::__construct($repo, $this->roleName);
     }
 
     /**
@@ -28,6 +29,8 @@ class PharmacyController extends Controller
      */
     public function index()
     {
+        $this->authorize('View ' . $this->roleName);
+
         $open_pharmacies = $this->repo->findWhere(['blocked_at' => null]);
         $blocked_pharmacies = $this->repo->findWhere([['blocked_at', '!=', null]]);
 
@@ -41,6 +44,8 @@ class PharmacyController extends Controller
      */
     public function create(SocialSecurityRepository $securityRepo, DistrictRepository $districtRepo)
     {
+        $this->authorize('Create ' . $this->roleName);
+
         $districts = $districtRepo->cursor()->pluck('name', 'id');
 
         $social_securities = $securityRepo->cursor()->pluck('name', 'id');
@@ -53,6 +58,8 @@ class PharmacyController extends Controller
      */
     public function store(PharmacyRequest $request)
     {
+        $this->authorize('Create ' . $this->roleName);
+
 
         $pharmacy = $this->repo->store($request);
         toast(__("Added successfully"), 'success');
@@ -68,6 +75,8 @@ class PharmacyController extends Controller
      */
     public function edit($id, SocialSecurityRepository $securityRepo, DistrictRepository $districtRepo)
     {
+        $this->authorize('Edit ' . $this->roleName);
+
         $pharmacy = $this->repo->find($id);
         $districts = $districtRepo->cursor()->pluck('name', 'id');
         $areas = optional(optional($pharmacy->district)->areas)->pluck('name', 'id') ?? [];
@@ -84,6 +93,8 @@ class PharmacyController extends Controller
      */
     public function update(PharmacyRequest $request, $id)
     {
+        $this->authorize('Edit ' . $this->roleName);
+
         $pharmacy = $this->repo->updatePharmacy($request, $id);
 
         toast(__("Updated successfully"), 'success');
@@ -99,6 +110,8 @@ class PharmacyController extends Controller
      */
     public function block($id, Request $request)
     {
+        $this->authorize('Edit ' . $this->roleName);
+
         $model = $this->repo->block($request, $id);
 
         toast(__("Blocked successfully"), 'success');

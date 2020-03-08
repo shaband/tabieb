@@ -13,6 +13,8 @@ class BlockController extends Controller
 {
     protected $repo;
 
+    protected $roleName = 'Area';
+
     public function __construct(BlockRepository $repo)
     {
         $this->repo = $repo;
@@ -24,6 +26,7 @@ class BlockController extends Controller
     public function index()
     {
 
+        $this->authorize('View ' . $this->roleName);
         $blocks = $this->repo->all();
 
         return view('admin.blocks.index', compact('blocks'));
@@ -35,9 +38,11 @@ class BlockController extends Controller
      */
     public function create(AreaRepository $areaRepository)
     {
-        $areas=$areaRepository->all()->pluck('name','id');
+        $this->authorize('Create ' . $this->roleName);
 
-        return view('admin.blocks.create',compact('areas'));
+        $areas = $areaRepository->all()->pluck('name', 'id');
+
+        return view('admin.blocks.create', compact('areas'));
     }
 
     /**
@@ -46,6 +51,8 @@ class BlockController extends Controller
      */
     public function store(BlockRequest $request)
     {
+        $this->authorize('Create ' . $this->roleName);
+
         $block = $this->repo->create($request->all());
         toast(__("Added successfully"), 'success');
 
@@ -60,18 +67,21 @@ class BlockController extends Controller
      */
     public function show($id)
     {
-        //
+        $this->authorize('View ' . $this->roleName);
+
     }
 
     /**
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit($id,AreaRepository $areaRepository)
+    public function edit($id, AreaRepository $areaRepository)
     {
+        $this->authorize('Edit ' . $this->roleName);
+
         $block = $this->repo->find($id);
-        $areas=$areaRepository->all()->pluck('name','id');
-        return view('admin.blocks.edit', compact('block','areas'));
+        $areas = $areaRepository->all()->pluck('name', 'id');
+        return view('admin.blocks.edit', compact('block', 'areas'));
     }
 
     /**
@@ -81,6 +91,8 @@ class BlockController extends Controller
      */
     public function update(BlockRequest $request, $id)
     {
+        $this->authorize('Edit ' . $this->roleName);
+
         $block = $this->repo->update($request->all(), $id);
 
         toast(__("Updated successfully"), 'success');
@@ -94,6 +106,8 @@ class BlockController extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('Delete ' . $this->roleName);
+
         $this->repo->delete($id);
         toast(__("Deleted successfully"), 'success');
 

@@ -14,7 +14,10 @@
             <td>{!! $role->label_ar !!}</td>
             <td>{!! $role->label_en !!}</td>
             <td>
-                @component('admin.partials._action_buttons',['routeName'=>'roles','id'=>$role->id])
+                @component('admin.partials._action_buttons',[
+                'routeName'=>'roles'
+                ,'id'=>$role->id,
+                'permission'=>'Role'])
                 @endcomponent
             </td>
         </tr>

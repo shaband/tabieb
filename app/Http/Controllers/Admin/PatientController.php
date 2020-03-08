@@ -16,12 +16,13 @@ class PatientController extends Controller
     protected $repo;
     protected $routeName = 'admin.patients.';
     protected $viewPath = 'admin.patients.';
+    protected $roleName = 'Patient';
 
 
     public function __construct(PatientRepository $repo)
     {
         $this->repo = $repo;
-        parent::__construct($repo);
+        parent::__construct($repo,$this->roleName);
     }
 
     /**
@@ -29,6 +30,8 @@ class PatientController extends Controller
      */
     public function index()
     {
+        $this->authorize('View ' . $this->roleName);
+
         $open_patients = $this->repo->findWhere(['blocked_at' => null]);
         $blocked_patients = $this->repo->findWhere([['blocked_at', '!=', null]]);
 
@@ -42,6 +45,8 @@ class PatientController extends Controller
      */
     public function create(SocialSecurityRepository $securityRepo, DistrictRepository $districtRepo)
     {
+        $this->authorize('Create ' . $this->roleName);
+
         $districts = $districtRepo->cursor()->pluck('name', 'id');
 
         $social_securities = $securityRepo->cursor()->pluck('name', 'id');
@@ -54,6 +59,7 @@ class PatientController extends Controller
      */
     public function store(PatientRequest $request)
     {
+        $this->authorize('Create ' . $this->roleName);
 
         $patient = $this->repo->store($request);
         toast(__("Added successfully"), 'success');
@@ -69,6 +75,8 @@ class PatientController extends Controller
      */
     public function edit($id, SocialSecurityRepository $securityRepo, DistrictRepository $districtRepo)
     {
+        $this->authorize('Edit ' . $this->roleName);
+
         $patient = $this->repo->find($id);
         $districts = $districtRepo->cursor()->pluck('name', 'id');
         $areas = optional(optional($patient->district)->areas)->pluck('name', 'id') ?? [];
@@ -85,6 +93,8 @@ class PatientController extends Controller
      */
     public function update(PatientRequest $request, $id)
     {
+        $this->authorize('Edit ' . $this->roleName);
+
         $patient = $this->repo->updatePatient($request, $id);
 
         toast(__("Updated successfully"), 'success');
@@ -100,6 +110,8 @@ class PatientController extends Controller
      */
     public function block($id, Request $request)
     {
+        $this->authorize('Edit ' . $this->roleName);
+
         $model = $this->repo->block($request, $id);
 
         toast(__("Blocked successfully"), 'success');

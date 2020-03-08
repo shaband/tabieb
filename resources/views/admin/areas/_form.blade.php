@@ -19,8 +19,8 @@
 
 
 <div class="form-group">
-    <label for="category_id">{!! __("Select District") !!} *</label>
-    {!! Form::select('district_id',$districts??[],null,['class'=>'form-control select2','parsley-trigger'=>'change','id'=>'category_id','required','parsley-trigger'=>'change','placeholder'=>__('Main District')]) !!}
+    <label for="district_id">{!! __("Select District") !!} *</label>
+    {!! Form::select('district_id',$districts??[],null,['class'=>'form-control select2','parsley-trigger'=>'change','id'=>'district','required','parsley-trigger'=>'change','placeholder'=>__('Main District')]) !!}
     @error('district_id')
     <span class="invalid-feedback d-block" role="alert">
      <strong>{{ $message }}</strong>

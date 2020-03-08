@@ -15,7 +15,10 @@
             <td>{!! $block->name_en !!}</td>
             <td>{!! optional($block->area)->name !!}</td>
             <td>
-                @component('admin.partials._action_buttons',['routeName'=>'blocks','id'=>$block->id])
+                @component('admin.partials._action_buttons',
+                ['routeName'=>'blocks',
+                'id'=>$block->id,
+                'permission'=>'Block'])
                 @endcomponent
             </td>
         </tr>

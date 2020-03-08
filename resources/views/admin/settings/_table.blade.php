@@ -12,7 +12,12 @@
             <td>{!! $setting->slug !!}</td>
             <td>{!! $setting->value !!}</td>
             <td>
-                @component('admin.partials._edit_button',['id'=>$setting->id,'routeName'=>'settings'])
+                @component('admin.partials._edit_button',
+                            [
+                                'id'=>$setting->id,
+                                'routeName'=>'settings',
+                                'permission'=>"Setting"
+                            ])
                 @endcomponent
             </td>
 
