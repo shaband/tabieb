@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['namespace' => 'Doctor'], function() {
+Route::group(['namespace' => 'Website\Doctor'], function() {
 
     Route::get('/', 'HomeController@index')->name('doctor.dashboard');
 

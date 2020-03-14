@@ -1,7 +1,6 @@
 <div class="form-group">
     <label for="username">{!! __("Username") !!} *</label>
-    {!!
-    Form::text('username',null,['class'=>'form-control','parsley-trigger'=>'change','id'=>'username','required','placeholder'=>__('Enter
+    {!! Form::text('username',null,['class'=>'form-control','parsley-trigger'=>'change','id'=>'username','required','placeholder'=>__('Enter
     Username')]) !!}
     @error('username')
     <span class="invalid-feedback d-block" role="alert">

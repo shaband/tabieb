@@ -29,8 +29,7 @@
             <div class="col-md-8 col-lg-6 col-xl-5">
                 <div class="text-center">
                     <a href="{!! url('/') !!}">
-                        <span><img src="{!! asset('dashboard/dark/assets/images/logo-light.png') !!}" alt=""
-                                   height="22"></span>
+                        <span><img src="{!! asset('dashboard/logo.png') !!}" alt=""></span>
                     </a>
                     <p class="text-muted mt-2 mb-4">{!! env("APP_NAME") !!}</p>
                 </div>
@@ -73,7 +72,9 @@
 
                             <div class="form-group mb-3">
                                 <label for="password">Password</label>
-                                <input  id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                <input id="password" type="password"
+                                       class="form-control @error('password') is-invalid @enderror" name="password"
+                                       required autocomplete="current-password">
                                 @error('password')
                                 <span class="invalid-feedback d-block" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -83,8 +84,10 @@
 
                             <div class="form-group mb-3">
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="checkbox-signin" checked  name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                    <label class="custom-control-label" for="checkbox-signin"> {!! __('Remember me')!!}</label>
+                                    <input type="checkbox" class="custom-control-input" id="checkbox-signin" checked
+                                           name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                    <label class="custom-control-label"
+                                           for="checkbox-signin"> {!! __('Remember me')!!}</label>
                                 </div>
                             </div>
 

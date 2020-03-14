@@ -18,7 +18,7 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
     Route::post('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
     Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
     Route::get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->name('verification.verify');
-    Route::middleware(['admin.auth:admin', 'auth:admin'])->group(function () {
+    Route::middleware(['admin.auth:admin'])->group(function () {
         Route::get('/', 'HomeController@index')->name('dashboard');
         Route::resource('admins', 'AdminController');
         Route::resource('categories', 'CategoryController');
@@ -36,17 +36,15 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
         Route::resource('patient-questions', 'PatientQuestionController');
         Route::resource('social-securities', 'SocialSecurityController');
         Route::resource('contacts', 'ContactController')->except('create', 'store');
-        Route::resource('settings', 'SettingController')->except('create', 'store', 'destroy');
+        Route::resource('settings', 'SettingController')->only('index', 'edit', 'update');
+
         Route::resource('pharmacies', 'PharmacyController');
         Route::post('pharmacies/{pharmacy}/block', 'PharmacyController@block')->name('pharmacies.block');
-
         Route::resource('pharmacy-reps', 'PharmacyRepController');
-
         Route::post('pharmacy-reps/{pharmacy_rep}/block', 'PharmacyController@block')->name('pharmacy-reps.block');
+
         Route::resource('reservations', 'ReservationController');
         Route::resource('reservation.prescription', 'PrescriptionController');
-
-
         Route::resource('roles', 'RoleController');
     });
 

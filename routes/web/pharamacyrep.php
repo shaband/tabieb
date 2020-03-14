@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['namespace' => 'PharamacyRep'], function() {
+Route::group(['namespace' => 'Website\PharamacyRep'], function() {
 
     Route::get('/', 'HomeController@index')->name('pharamacyrep.dashboard');
 

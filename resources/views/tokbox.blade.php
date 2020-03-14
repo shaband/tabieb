@@ -111,7 +111,7 @@
     // set these values to OpenTok API key, a valid session ID, and a token for the session.
     // For test purposes, you can obtain these from https://tokbox.com/account.
 
-    var API_KEY = '{!! $key !!}';
+    var API_KEY = '{!!config('services.tokbox.key') !!}';
     var SESSION_ID = '{!! $sessionId !!}';
     var TOKEN = '{!! $token !!}';
 

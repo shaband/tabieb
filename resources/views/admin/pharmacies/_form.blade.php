@@ -1,7 +1,6 @@
 <div class="form-group">
     <label for="name_ar">{!! __("Name In Arabic") !!} *</label>
-    {!!
-    Form::text('name_ar',null,['class'=>'form-control','parsley-trigger'=>'change','id'=>'name_ar','required','placeholder'=>__('Enter
+    {!!  Form::text('name_ar',null,['class'=>'form-control','parsley-trigger'=>'change','id'=>'name_ar','required','placeholder'=>__('Enter
     Name In Arabic')]) !!}
     @error('name_ar')
     <span class="invalid-feedback d-block" role="alert">

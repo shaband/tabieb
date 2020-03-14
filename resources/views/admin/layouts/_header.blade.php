@@ -101,12 +101,11 @@
     <div class="logo-box">
         <a href="{!! route('admin.dashboard') !!}" class="logo text-center">
                         <span class="logo-lg">
-                            <img src="{!! asset('dashboard/dark') !!}/assets/images/logo-light.png" alt="" height="16">
-                            <!-- <span class="logo-lg-text-light">Xeria</span> -->
+                            <img src="{!! asset('dashboard/logo.png') !!}" alt="" >
                         </span>
             <span class="logo-sm">
                             <!-- <span class="logo-sm-text-dark">X</span> -->
-                            <img src="{!! asset('dashboard/dark') !!}/assets/images/logo-sm.png" alt="" height="24">
+                            <img src="{!! asset('dashboard/logo.png') !!}" alt="" >
                         </span>
         </a>
     </div>
