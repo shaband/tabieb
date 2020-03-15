@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{!! app()->getLocale() !!}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,13 +11,11 @@
     <link rel="stylesheet" href="{!! asset('design/css/all.css')!!}">
     <link rel="stylesheet" href="{!! asset('design/css/jquery-ui.css')!!}">
     <link rel="stylesheet" href="{!! asset('design/css/owl.carousel.min.css')!!}">
-
-
     <link rel="stylesheet" href="{!! asset('design/css/styles.css')!!}">
-{{--    @if(app()->getLocale()=='ar')--}}
+    @if(app()->getLocale()=='ar')
         <link rel="stylesheet" href="{!! asset('design/css/styles-ar.css')!!}">
 
-{{--    @endif--}}
+    @endif
     <link rel="stylesheet" href="{!! asset('design/css/colors.css')!!}">
     <script src="{!! asset('design/js/jquery.min.js')!!}"></script>
     <script src="{!! asset('design/js/jquery-ui.js')!!}"></script>
@@ -28,7 +26,10 @@
     <script src="{!! asset('design/js/scripts.js')!!}"></script>
     @yield('header')
 </head>
-<body>
+<body @if(app()->getLocale()=='ar')
+      class="rtl" dir="rtl"
+    @endif >
+
 <div class="main-wrapper">
 
     @include('website.layouts._header')

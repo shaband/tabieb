@@ -10,10 +10,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['prefix' => LaravelLocalization::setLocale(),
+    'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+], function () {
 
-Route::get('/','Website\HomeController@index');
+    Route::get('/', 'Website\HomeController@index');
 
-Auth::routes();
+    try {
+        view()->share('settings', \App\Models\Setting::pluck('value', 'name'));
+    } catch (Exception $e) {
 
-Route::get('/test','HomeController@test');
-Route::get('/home', 'HomeController@index')->name('home');
+    }
+    Route::get('/home', 'HomeController@index')->name('home');
+});
+Route::get('/test', 'HomeController@test');
+

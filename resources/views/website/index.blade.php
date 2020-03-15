@@ -99,7 +99,7 @@
                                             @endfor
                                         </div>
                                         <div class="doc-extra-dets">
-                                            <div><img src="{!! asset('design /images/icons/time-date.png')!!}">
+                                            <div><img src="{!! asset('design/images/icons/time-date.png')!!}">
                                                 {{ __('Available on')}}: 23 sep
                                             </div>
                                             <div><img src="{!! asset('design/images/icons/clock.png') !!}">
@@ -145,34 +145,26 @@
                             <div class="features-blk text-white py-5">
                                 <!-- START Feature Item -->
                                 <div class="feature-item" data-aos="fade-in">
-                                    <div class="feature-icon"><img src="{!! asset('design') !!}/images/icons/doctor.png"
+                                    <div class="feature-icon"><img src="{!! asset('design/images/icons/doctor.png')!!}"
                                                                    alt=""></div>
-                                    <h5 class="feature-tit">best doctors</h5>
-                                    <div class="feature-desc">Lorem Ipsum has been the industry's standard dummy text
-                                        ever since the 1500s, when an unknown printer took a galley of type and
-                                        scrambled it to make a type specimen book.
-                                    </div>
+                                    <h5 class="feature-tit">{!! __("Our Vision") !!}</h5>
+
+                                    <div class="feature-desc">{!! $settings["vision_".app()->getLocale()] !!}</div>
                                 </div>
                                 <!-- END Feature Item -->
                                 <!-- START Feature Item -->
                                 <div class="feature-item" data-aos="fade-in">
                                     <div class="feature-icon"><i class="fas fa-user-md"></i></div>
-                                    <h5 class="feature-tit">best doctors</h5>
-                                    <div class="feature-desc">Lorem Ipsum has been the industry's standard dummy text
-                                        ever since the 1500s, when an unknown printer took a galley of type and
-                                        scrambled it to make a type specimen book.
-                                    </div>
+                                    <h5 class="feature-tit">{!! __("Our Idea") !!}</h5>
+                                    <div class="feature-desc">{!! $settings["idea_".app()->getLocale()] !!} </div>
                                 </div>
                                 <!-- END Feature Item -->
                                 <!-- START Feature Item -->
                                 <div class="feature-item" data-aos="fade-in">
                                     <div class="feature-icon"><img src="{!! asset('design') !!}/images/icons/doctor.png"
                                                                    alt=""></div>
-                                    <h5 class="feature-tit">best doctors</h5>
-                                    <div class="feature-desc">Lorem Ipsum has been the industry's standard dummy text
-                                        ever since the 1500s, when an unknown printer took a galley of type and
-                                        scrambled it to make a type specimen book.
-                                    </div>
+                                    <h5 class="feature-tit">{!! __("Our Goal") !!}</h5>
+                                    <div class="feature-desc">{!! $settings["goal_".app()->getLocale()] !!}</div>
                                 </div>
                                 <!-- END Feature Item -->
                             </div>
@@ -183,17 +175,16 @@
                         <div class="col-md-6">
                             <div class="desc-blk py-5">
                                 <div class="heading-blk mb-4" data-aos="fade-down">
-                                    <h3 class="heading-tit-wz-after font-weight-bold">why you have to choose, <br> trust
-                                        our services <img src="{!! asset('design') !!}/images/heading-after.png"></h3>
+                                    <h3 class="heading-tit-wz-after font-weight-bold">{{ __('why you have to choose')}},
+                                        <br> {{ __('trust
+                                        our services')}} <img src="{!! asset('design/images/heading-after.png') !!}">
+                                    </h3>
                                 </div>
-                                <p class="font-reg-sm text-justify mb-4" data-aos="fade-in">Lorem Ipsum is simply dummy
-                                    text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-                                    standard dummy text ever since the 1500s, when an unknown printer took a galley of
-                                    type and scrambled it to make a type specimen book. It has survived not only five
-                                    centuries, but also the leap into electronic typesetting, remaining essentially
-                                    unchanged.</p>
-                                <a href="#" class="text-capitalize link-secondary link-wz-icon" data-aos="fade-up">more
-                                    about us <i class="fas fa-arrow-right"></i></a>
+                                <p class="font-reg-sm text-justify mb-4"
+                                   data-aos="fade-in">{!! substr($settings['about_'.app()->getLocale()],0,500) !!}</p>
+                                <a href="{{--{!! route('about') !!}--}}"
+                                   class="text-capitalize link-secondary link-wz-icon" data-aos="fade-up">{{ __('more
+                                    about us')}} <i class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
                         <!-- END Why To choose us Block -->
@@ -208,8 +199,8 @@
             <div class="container">
                 <!-- START Block Heading -->
                 <div class="heading-blk text-center mb-5" data-aos="fade-down">
-                    <h3 class="heading-tit-wz-after font-weight-bold">how to book with tabaieb?<br><img
-                            src="{!! asset('design') !!}/images/heading-after.png"></h3>
+                    <h3 class="heading-tit-wz-after font-weight-bold">{!! __("how to book with tabaieb?") !!}<br><img
+                            src="{!! asset('design/images/heading-after.png') !!}"></h3>
                 </div>
                 <!-- END Block Heading -->
                 <!-- START Booking Steps -->
@@ -222,8 +213,10 @@
                                 <div class="feature-icon"><img class="w-100"
                                                                src="{!! asset('design') !!}/images/icons/search.png">
                                 </div>
-                                <h5 class="feature-tit">search</h5>
-                                <div class="feature-desc">By speciatilty doctor name or fees</div>
+                                <h5 class="feature-tit">{{ __('search')}}</h5>
+                                <div class="feature-desc">
+                                    {!! substr($settings['search_box_'.app()->getLocale()],0,34)!!}
+                                </div>
                             </div>
                         </div>
                         <!-- END Booking Step item -->
@@ -234,8 +227,9 @@
                                 <div class="feature-icon"><img class="w-100"
                                                                src="{!! asset('design') !!}/images/icons/value.png">
                                 </div>
-                                <h5 class="feature-tit">compare & choose</h5>
-                                <div class="feature-desc">Based on real patients reviews</div>
+                                <h5 class="feature-tit">{{ __('compare & choose')}}</h5>
+                                <div
+                                    class="feature-desc">{!! substr($settings['compare_box_'.app()->getLocale()],0,34)!!}</div>
                             </div>
                         </div>
                         <!-- END Booking Step item -->
@@ -246,8 +240,9 @@
                                 <div class="feature-icon"><img class="w-100"
                                                                src="{!! asset('design') !!}/images/icons/calendar.png">
                                 </div>
-                                <h5 class="feature-tit">booking</h5>
-                                <div class="feature-desc">pay at the clinic at no extra cost</div>
+                                <h5 class="feature-tit">{{ __('booking')}}</h5>
+                                <div
+                                    class="feature-desc">{!! substr($settings['book_box_'.app()->getLocale()],0,34)  !!}</div>
                             </div>
                         </div>
                         <!-- END Booking Step item -->
@@ -268,14 +263,13 @@
                                 easily <img src="{!! asset('design') !!}/images/heading-after.png"></h3>
                         </div>
                         <!-- END Block Heading -->
-                        <p class="font-reg-sm text-justify mb-4" data-aos="fade-in">Lorem Ipsum is simply dummy text of
-                            the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-                            text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
-                            make a type specimen book. It has survived not only five centuries, but also the leap into
-                            electronic typesetting, remaining essentially unchanged.</p>
+                        <p class="font-reg-sm text-justify mb-4" data-aos="fade-in">
+
+                            {!! substr($settings['download_description_'.app()->getLocale()],0,732)  !!}
+                        </p>
                         <div class="apps-blk" data-aos="fade-in">
-                            <a href="#"><img src="{!! asset('design') !!}/images/btn-apple.png" alt=""></a>
-                            <a href="#"><img src="{!! asset('design') !!}/images/btn-google.png" alt=""></a>
+                            <a href="{!! $settings['andriod_link'] !!}"><img src="{!! asset('design') !!}/images/btn-apple.png" alt=""></a>
+                            <a href="{!! $settings['ios_link'] !!}"><img src="{!! asset('design') !!}/images/btn-google.png" alt=""></a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-4 app-img">

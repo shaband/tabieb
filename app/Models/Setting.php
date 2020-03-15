@@ -9,13 +9,16 @@ use Illuminate\Database\Eloquent\Model;
 class Setting extends Model
 {
 
-    use  ColumnTranslation,ModelHasLogs;
+    use  ColumnTranslation, ModelHasLogs;
     const INPUT_TEXT = 0;
     const INPUT_NUMBER = 1;
     const INPUT_TEXTAREA = 2;
+    const INPUT_TYPE_EMAIL = 3;
 
 
     const CATEGORY_PAGES = 1;
+    const CATEGORY_HOME_SECTIONS = 2;
+    const CATEGORY_FOOTER = 3;
 
 
     protected $table = 'settings';

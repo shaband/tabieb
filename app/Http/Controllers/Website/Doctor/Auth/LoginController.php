@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/doctor';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -72,7 +72,7 @@ class LoginController extends Controller
 
         $request->session()->invalidate();
 
-        return $this->loggedOut($request) ?: redirect()->route('doctor.dashboard');
+        return $this->loggedOut($request) ?: redirect('/');
     }
 
 }

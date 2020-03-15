@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/patient';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -50,9 +50,7 @@ class LoginController extends Controller
     }
 
     /**
-     * Show the application's login form.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function showLoginForm()
     {
@@ -62,7 +60,7 @@ class LoginController extends Controller
     /**
      * Log the user out of the application.
      *
-     * @param \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function logout(Request $request)
@@ -72,7 +70,7 @@ class LoginController extends Controller
 
         $request->session()->invalidate();
 
-        return $this->loggedOut($request) ?: redirect()->route('patient.dashboard');
+        return $this->loggedOut($request) ?: redirect('/');
     }
 
 }

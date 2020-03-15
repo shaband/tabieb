@@ -6,15 +6,15 @@
                 <div class="footer-logo"><img src=" {!! asset('design/images/logo-word.png') !!}" alt="Tabaieb Logo">
                 </div>
                 <div class="footer-menu">
-                    <a href="#">about tabaieb</a>
-                    <a href="#">contact us</a>
-                    <a href="#">terms & conditions</a>
+                    <a href="#">{{ __('about tabaieb')}}</a>
+                    <a href="#">{{ __('contact us')}}</a>
+                    <a href="#">{{ __('terms & conditions')}}</a>
                 </div>
             </div>
             <div class="footer-social">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-snapchat-ghost"></i></a>
+                <a href="{!! $settings['facebook Link'] !!}"><i class="fab fa-facebook-f"></i></a>
+                <a href="{!! $settings['twitter Link'] !!}"><i class="fab fa-twitter"></i></a>
+                <a href=" {!! $settings['snapchat Link'] !!}"><i class="fab fa-snapchat-ghost"></i></a>
             </div>
 
         </div>
