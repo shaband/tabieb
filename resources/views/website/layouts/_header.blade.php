@@ -10,7 +10,7 @@
                         <span></span>
                         <span></span>
                     </a>
-                    <a class="navbar-brand" href="{!! url('/') !!}"><img src="{!! asset('design/images/logo.png') !!}"
+                    <a class="navbar-brand" href="{!! route('home') !!}"><img src="{!! asset('design/images/logo.png') !!}"
                                                                          alt="Tabaieb Logo"></a>
                 </div>
 
@@ -18,25 +18,25 @@
                     <a id="navbar-close-lnk" onclick="mobCloseMainMenu()"><i class="fas fa-times-circle"></i></a>
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="{!! url('/') !!}">Home</a>
+                            <a class="nav-link" href="{!! url('/') !!}">{!! __("Home") !!}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="appointments.html">my appointments</a>
+                            <a class="nav-link" {{--href="appointments.html"--}}>{{ __('My Appointments')}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">about tabaieb</a>
+                            <a class="nav-link" href="{{route('about')}}">{{ __('about tabaieb')}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">contact us</a>
+                            <a class="nav-link" href="{!! route("contact.show") !!}">{{ __('contact us')}}</a>
                         </li>
                     </ul>
                 </div>
 
                 <div class="extra-links">
                     <ul class="navbar-nav">
-                        <li class="nav-item">
+                        {{--<li class="nav-item">
                             <a class="nav-link" href="search.html"><i class="fas fa-search"></i> search</a>
-                        </li>
+                        </li>--}}
                         <li class="nav-item">
                             <ul>
                                 @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)

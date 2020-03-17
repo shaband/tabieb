@@ -23,7 +23,7 @@ class HomePageSettingsSeeder extends Seeder
         )->delete();
         \App\Models\Setting::create(
             [
-                'name' => 'vision_ar ',
+                'name' => 'vision_ar',
                 'slug_ar' => 'رويتنا بالعربية',
                 'slug_en' => 'our vision in arabic',
                 'value' => ' when an unknown printer took a galley of type and scrambled it to make a type specimen book.',

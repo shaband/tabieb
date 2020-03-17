@@ -211,8 +211,8 @@
                     <div class="col-lg-6 col-md-6 col-sm-8">
                         <!-- START Block Heading -->
                         <div class="heading-blk mb-4" data-aos="fade-down">
-                            <h3 class="heading-tit-wz-after font-weight-bold">download our application <br> to book
-                                easily <img src="{!! asset('design') !!}/images/heading-after.png"></h3>
+                            <h3 class="heading-tit-wz-after font-weight-bold">{{ __('download our application')}} <br> {{ __('to book
+                                easily')}} <img src="{!! asset('design') !!}/images/heading-after.png"></h3>
                         </div>
                         <!-- END Block Heading -->
                         <p class="font-reg-sm text-justify mb-4" data-aos="fade-in">

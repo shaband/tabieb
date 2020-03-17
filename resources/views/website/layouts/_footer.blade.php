@@ -6,9 +6,9 @@
                 <div class="footer-logo"><img src=" {!! asset('design/images/logo-word.png') !!}" alt="Tabaieb Logo">
                 </div>
                 <div class="footer-menu">
-                    <a href="#">{{ __('about tabaieb')}}</a>
-                    <a href="#">{{ __('contact us')}}</a>
-                    <a href="#">{{ __('terms & conditions')}}</a>
+                    <a href="{{route('about')}}">{{ __('about tabaieb')}}</a>
+                    <a href="{{route('contact.show')}}">{{ __('contact us')}}</a>
+                    <a href="{{route('policy')}}">{{ __('terms & conditions')}}</a>
                 </div>
             </div>
             <div class="footer-social">

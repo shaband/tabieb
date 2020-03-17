@@ -24,7 +24,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     }
     Route::get('/home', 'HomeController@index')->name('home');
     Route::view('/about', 'website.about')->name('about');
-    Route::view('/policy', 'website.policy')->name('about');
+    Route::view('/policy', 'website.policy')->name('policy');
     Route::view('/contact', 'website.contact')->name('contact.show');
     Route::post('/contact', 'ContactController@send')->name('contact.send');
 
