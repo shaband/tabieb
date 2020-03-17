@@ -57,177 +57,67 @@
                                 <a class="login-btn nav-link" href="javascript:void(0)">{!! __("Login") !!}</a>
                             </li>
                         @elseif(auth()->guard('patient')->check())
-
-                            <li class="nav-item nav-item-wz-sub">
-                                <a class="nav-link" href="javascript:void(0)"><i
-                                        class="fas fa-user"></i> {!! auth()->guard('patient')->user_name !!}</a>
-                                <ul>
-                                    <li class="active"><a
-                                            href="profile-personal-info.html">{{ __('personal information')}}</a>
-                                    </li>
-                                    <li><a href="profile-appointments.html">{{ __('appointments')}}</a></li>
-                                    <li><a href="profile-history.html">{{ __('history')}}</a></li>
-                                    <li><a href="profile-password.html">{{ __("change password")}}</a></li>
-                                    <li><a href="{{ route('patient.logout') }}" class="text-danger" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">{{ __('logout') }}</a>
-                                    </li>
-
-
-                                    <form id="logout-form" action="{{ route('patient.logout') }}" method="POST"
-                                          style="display: none;">
-                                        @csrf
-                                    </form>
-
-                                </ul>
-                            </li>
-                            <li class="nav-item nav-item-wz-sub">
-                                <a class="nav-link user-self" href="javascript:void(0)"><i class="fas fa-bell"></i></a>
-                                <ul>
-                                    <li>
-                                        <a href="#">
-                                            <div class="notif-item">
-                                                <div class="notif-icon"><img src="images/notification1.png"></div>
-                                                <div class="notif-dets">
-                                                    <p>you have an appointment today at <span class="text-secondary">09:00PM</span>
-                                                    </p>
-                                                    <p><i class="far fa-clock"></i> 12:00AM</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="notif-item">
-                                                <div class="notif-icon"><img src="images/notification2.png"></div>
-                                                <div class="notif-dets">
-                                                    <p>you have a new important notification from tabaieb</p>
-                                                    <p><i class="far fa-clock"></i> 12:00AM</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="notif-item">
-                                                <div class="notif-icon"><img src="images/notification3.png"></div>
-                                                <div class="notif-dets">
-                                                    <p>Dr. Mohamed Omar accepted your booking</p>
-                                                    <p><i class="far fa-clock"></i> 12:00AM</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="notif-item">
-                                                <div class="notif-icon"><img src="images/notification4.png"></div>
-                                                <div class="notif-dets">
-                                                    <p>you have a new important notification from tabaieb</p>
-                                                    <p><i class="far fa-clock"></i> 12:00AM</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link user-self active" href="inbox.html"><i
-                                        class="fas fa-envelope"></i></a>
-                            </li>
+                            @include('website.layouts._patient_dropdown')
                         @elseif(auth()->guard('doctor')->check())
 
-                            <li class="nav-item nav-item-wz-sub">
-                                <a class="nav-link" href="javascript:void(0)"><i
-                                        class="fas fa-user"></i> {!! auth()->guard('doctor')->user()->name !!}</a>
-                                <ul>
-                                    <li><a href="profile-doctor-information.html">{{ __('personal information')}}</a>
-                                    </li>
-                                    <li class="active"><a
-                                            href="profile-doctor-appointments.html">{{ __('my appointments')}}</a></li>
-                                    <li><a href="profile-doctor-documents.html">{{ __('medical documents')}}</a></li>
-                                    <li><a href="profile-history.html">{{ __('my history')}}</a></li>
-                                    <li><a href="profile-password.html">{{ __('change password')}}</a></li>
-                                    <li><a href="javascript:void(0)">
-                                            <div class="prof-doc-stat">
-                                                <div><span class="text-primary">{{ __('status')}}:</span> <span
-                                                        class="doc-stat">{{ __('Not Active')}}</span></div>
-                                                <div class="custom-control custom-switch">
-                                                    <input type="checkbox" class="custom-control-input"
-                                                           id="doctorStatusSwitch2">
-                                                    <label class="custom-control-label"
-                                                           for="doctorStatusSwitch2"></label>
-                                                </div>
-                                            </div>
-                                        </a></li>
-                                    <li>
-                                        <a href="{{ route('doctor.logout') }}" class="text-danger" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">{{ __('logout') }}</a>
-                                    </li>
-                                    <li>
-
-                                        <form id="logout-form" action="{{ route('doctor.logout') }}" method="POST"
-                                              style="display: none;">
-                                            @csrf
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item nav-item-wz-sub">
-                                <a class="nav-link user-self" href="javascript:void(0)"><i class="fas fa-bell"></i></a>
-                                <ul>
-                                    <li>
-                                        <a href="#">
-                                            <div class="notif-item">
-                                                <div class="notif-icon"><img src="images/notification1.png"></div>
-                                                <div class="notif-dets">
-                                                    <p>you have an appointment today at <span class="text-secondary">09:00PM</span>
-                                                    </p>
-                                                    <p><i class="far fa-clock"></i> 12:00AM</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="notif-item">
-                                                <div class="notif-icon"><img src="images/notification2.png"></div>
-                                                <div class="notif-dets">
-                                                    <p>you have a new important notification from tabaieb</p>
-                                                    <p><i class="far fa-clock"></i> 12:00AM</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="notif-item">
-                                                <div class="notif-icon"><img src="images/notification3.png"></div>
-                                                <div class="notif-dets">
-                                                    <p>Dr. Mohamed Omar accepted your booking</p>
-                                                    <p><i class="far fa-clock"></i> 12:00AM</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="notif-item">
-                                                <div class="notif-icon"><img src="images/notification4.png"></div>
-                                                <div class="notif-dets">
-                                                    <p>you have a new important notification from tabaieb</p>
-                                                    <p><i class="far fa-clock"></i> 12:00AM</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link user-self active" href="inbox.html"><i
-                                        class="fas fa-envelope"></i></a>
-                            </li>
-
+                            @include('website.layouts._doctor_dropdown')
                         @endif
+                        <li class="nav-item nav-item-wz-sub">
+                            <a class="nav-link user-self" href="javascript:void(0)"><i class="fas fa-bell"></i></a>
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <div class="notif-item">
+                                            <div class="notif-icon"><img src="images/notification1.png"></div>
+                                            <div class="notif-dets">
+                                                <p>you have an appointment today at <span
+                                                        class="text-secondary">09:00PM</span>
+                                                </p>
+                                                <p><i class="far fa-clock"></i> 12:00AM</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="notif-item">
+                                            <div class="notif-icon"><img src="images/notification2.png"></div>
+                                            <div class="notif-dets">
+                                                <p>you have a new important notification from tabaieb</p>
+                                                <p><i class="far fa-clock"></i> 12:00AM</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="notif-item">
+                                            <div class="notif-icon"><img src="images/notification3.png"></div>
+                                            <div class="notif-dets">
+                                                <p>Dr. Mohamed Omar accepted your booking</p>
+                                                <p><i class="far fa-clock"></i> 12:00AM</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="notif-item">
+                                            <div class="notif-icon"><img src="images/notification4.png"></div>
+                                            <div class="notif-dets">
+                                                <p>you have a new important notification from tabaieb</p>
+                                                <p><i class="far fa-clock"></i> 12:00AM</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link user-self active" href="inbox.html"><i
+                                    class="fas fa-envelope"></i></a>
+                        </li>
+
                     </ul>
                 </div>
             </nav>
@@ -364,42 +254,73 @@
                                    aria-label="Close"><i class="far fa-times-circle"></i></a>
                             </div>
                             <div class="heading-blk mb-3" data-aos="fade-down">
-                                <h5 class="heading-tit-wz-after font-weight-bold">{{ __('hi')}}, <span class="text-secondary">{{ __("let's create an account")}}</span><br><img
+                                <h5 class="heading-tit-wz-after font-weight-bold">{{ __('hi')}}, <span
+                                        class="text-secondary">{{ __("let's create an account")}}</span><br><img
                                         src="{!! asset('design/images/heading-after.png') !!}"></h5>
                             </div>
-                            <form action="" class="basic-form form-label-inline form-secondaryLight">
+                            <form method="post" action="{{route('patient.register')}}"
+                                  class="basic-form form-label-inline form-secondaryLight">
+                                @method('post')
+                                @csrf
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="">first name:</label>
-                                            <input type="text" class="form-control">
+                                            <label for="">{{ __('first name')}}:</label>
+                                            <input type="text" name="first_name" value="{{old('first_name')}}"
+                                                   class="form-control">
+                                            @error('first_name')
+                                            <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="">last name:</label>
-                                            <input type="text" class="form-control">
+                                            <label for="">{{ __('last name')}}:</label>
+                                            <input type="text" name="last_name" value="{{old('last_name')}}"
+                                                   class="form-control">
+                                            @error('last_name')
+                                            <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">email address:</label>
-                                    <input type="email" class="form-control">
+                                    <label for="">{{ __('email address')}}:</label>
+                                    <input type="email" name="email" class="form-control" value="{{old('email')}}">
+                                    @error('email')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="">phone number:</label>
-                                    <input type="number" class="form-control">
+                                    <label for="">{{ __('phone number')}}:</label>
+                                    <input type="number" name="phone" class="form-control" value="{{old('phone')}}">
+                                    @error('phone')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="">password:</label>
-                                    <input type="password" class="form-control">
+                                    <label for="">{{ __('password')}}:</label>
+                                    <input type="password" name="password" class="form-control">
+                                    @error('password')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="">confirm password:</label>
-                                    <input type="password" class="form-control">
+                                    <label for="">{{ __('confirm password')}}:</label>
+                                    <input type="password" name="password_confirmation" class="form-control">
                                 </div>
                                 <div class="mb-1 text-center">
-                                    <button class="btn btn-thirdly text-capitalize">create account</button>
+                                    <button class="btn btn-thirdly text-capitalize">{{ __('Register')}}</button>
                                 </div>
                             </form>
                         </div>

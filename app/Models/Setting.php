@@ -19,6 +19,7 @@ class Setting extends Model
     const CATEGORY_PAGES = 1;
     const CATEGORY_HOME_SECTIONS = 2;
     const CATEGORY_FOOTER = 3;
+    const CATEGORY_CONTACT = 4;
 
 
     protected $table = 'settings';

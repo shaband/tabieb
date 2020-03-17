@@ -11,10 +11,11 @@
 |
 */
 Route::group(['prefix' => LaravelLocalization::setLocale(),
-    'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+    'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
+    'namespace'=>'Website'
 ], function () {
 
-    Route::get('/', 'Website\HomeController@index');
+    Route::get('/', 'HomeController@index');
 
     try {
         view()->share('settings', \App\Models\Setting::pluck('value', 'name'));
@@ -22,6 +23,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
 
     }
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::view('/about', 'website.about')->name('about');
+    Route::view('/policy', 'website.policy')->name('about');
+    Route::view('/contact', 'website.contact')->name('contact.show');
+    Route::post('/contact', 'ContactController@send')->name('contact.send');
+
 });
 Route::get('/test', 'HomeController@test');
 

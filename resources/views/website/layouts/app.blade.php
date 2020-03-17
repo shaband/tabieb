@@ -31,10 +31,14 @@
     @endif >
 
 <div class="main-wrapper">
+    @include('sweetalert::alert')
 
     @include('website.layouts._header')
+
     @yield('content')
+
     @include('website.layouts._footer')
+
 
     @stack('footer')
     @stack('scripts')

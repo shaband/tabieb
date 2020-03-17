@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Api\v1;
+namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Contact\ContactResource;
-use App\Repositories\interfaces\BlockRepository;
 use App\Repositories\interfaces\ContactRepository;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
+
+
     public $repo;
 
     public function __construct(ContactRepository $repo)
@@ -31,8 +32,8 @@ class ContactController extends Controller
         $contact = $this->repo->store($request->all());
 
 
-        $contact = new ContactResource($contact);
-        return responseJson(compact('contact'), __("Loaded Successfully"));
+        alert(__('Your Message Sent Successfully'), __("We Will Contact With You Soon"), 'success');
+        return redirect()->route('home');
 
     }
 }
