@@ -11,9 +11,9 @@ class RedirectIfNotPatient
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @param  string  $guard
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure $next
+     * @param string $guard
      * @return mixed
      *
      * @throws \Illuminate\Auth\AuthenticationException
@@ -23,8 +23,12 @@ class RedirectIfNotPatient
         if (Auth::guard($guard)->check()) {
             return $next($request);
         }
+        $redirectToRoute = '';
+        if (!$request->expectsJson()) {
+            $redirectToRoute = '/';
+            toast(__("Unauthenticated Please Login First"));
+        }
 
-        $redirectToRoute = $request->expectsJson() ? '' : 'patient/login';
 
         throw new AuthenticationException(
             'Unauthenticated.', [$guard], $redirectToRoute

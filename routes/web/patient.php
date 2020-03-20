@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['namespace' => 'Website\Patient'], function() {
+Route::group(['namespace' => 'Website\Patient'], function () {
 
     Route::get('/', 'HomeController@index')->name('patient.dashboard');
 
@@ -24,4 +24,10 @@ Route::group(['namespace' => 'Website\Patient'], function() {
     Route::get('email/verify', 'Auth\VerificationController@show')->name('patient.verification.notice');
     Route::get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->name('patient.verification.verify');
 
+    Route::middleware(['patient.auth'])->group(function () {
+
+
+        Route::get('profile', 'PatientController@edit')->name('profile.edit');
+
+    });
 });
