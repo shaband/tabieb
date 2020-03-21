@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\v1\Patient;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\patients\PatientResource;
 use App\Repositories\interfaces\PatientRepository;
+use App\Rules\CheckPassword;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -79,6 +80,8 @@ class AuthController extends Controller
             'last_name' => 'nullable|string|max:191',
             'email' => 'nullable|email|unique:patients,email,' . auth()->id(),
             'phone' => 'nullable|numeric|unique:patients,phone,' . auth()->id(),
+            'old_password' => ['required_with:password', 'nullable', 'string'
+            ,'max:191', new CheckPassword('patients', auth()->user()->email)],
             'password' => 'nullable|string|max:191|confirmed',
             'civil_id' => 'nullable|numeric|unique:patients,civil_id,' . auth()->id(),
             'social_security_id' => 'nullable|integer|exists:social_securities,id',

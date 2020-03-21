@@ -4,11 +4,12 @@ namespace App\Models;
 
 use App\Traits\ModelHasLogs;
 use Carbon\Carbon;
+use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Model;
 
 class Reservation extends Model
 {
-use  ModelHasLogs;
+    use  ModelHasLogs;
     public const COMMUNICATION_TYPE_AUDIO = 1;
     public const COMMUNICATION_TYPE_VIDEO = 2;
     public const COMMUNICATION_TYPE_BOTH = 3;
@@ -72,4 +73,24 @@ use  ModelHasLogs;
         $this->attributes['to_time'] = Carbon::parse($value);
     }
 
+    public function getFromDateAttribute(): CarbonImmutable
+    {
+        return CarbonImmutable::parse($this->date . ' ' . $this->from_time);
+    }
+
+    public function getToDateAttribute(): CarbonImmutable
+    {
+        return CarbonImmutable::parse($this->date . ' ' . $this->to_time);
+    }
+
+    public function getCommunicationTypeStringAttribute(): string
+    {
+        $string = __("video / voice call");
+        if ($this->communication_type == static::COMMUNICATION_TYPE_AUDIO) {
+            $string = __("Voice Call");
+        } elseif ($this->communication_type == static::COMMUNICATION_TYPE_VIDEO) {
+            $string = __("Video Call");
+        }
+        return $string;
+    }
 }

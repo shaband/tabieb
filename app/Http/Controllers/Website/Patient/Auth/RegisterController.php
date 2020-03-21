@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Website\Patient\Auth;
 
+use App\Http\Requests\Website\PatientRegisterRequest;
 use App\Models\Patient;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -49,13 +50,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:patients'],
-            'phone' => ['required', 'numeric',  'unique:patients'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        return Validator::make($data, (new PatientRegisterRequest())->rules());
     }
 
     /**

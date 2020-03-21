@@ -24,6 +24,8 @@
     <script src="{!! asset('design/js/aos.js')!!}"></script>
     <script src="{!! asset('design/js/owl.carousel.min.js')!!}"></script>
     <script src="{!! asset('design/js/scripts.js')!!}"></script>
+    <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+
     @yield('header')
 </head>
 <body @if(app()->getLocale()=='ar')

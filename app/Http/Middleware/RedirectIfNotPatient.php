@@ -21,6 +21,8 @@ class RedirectIfNotPatient
     public function handle($request, Closure $next, $guard = 'patient')
     {
         if (Auth::guard($guard)->check()) {
+            auth()->setDefaultDriver($guard);
+
             return $next($request);
         }
         $redirectToRoute = '';

@@ -78,6 +78,24 @@ class Handler extends ExceptionHandler
 
 
     /**
+     * @param \Illuminate\Http\Request $request
+     * @param ValidationException $exception
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
+     */
+    protected function invalid($request, ValidationException $exception)
+    {
+
+        foreach ($exception->errors() as $errors) {
+            foreach ($errors as $error) {
+                toast($error, 'error');
+            }
+        }
+        return redirect($exception->redirectTo ?? url()->previous())
+            ->withInput(\Arr::except($request->input(), $this->dontFlash))
+            ->withErrors($exception->errors(), $exception->errorBag);
+    }
+
+    /**
      * Convert an authentication exception into a response.
      *
      * @param \Illuminate\Http\Request $request

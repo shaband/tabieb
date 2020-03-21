@@ -17,7 +17,8 @@
                         <div class="col-md-4 col-lg-3">
                             <div class="profile-side">
                                 <div class="user-dets">
-                                    <div><a href="profile-edit.html" class="btn btn-secondaryLight2 btn-sm"><i
+                                    <div><a href="{!! route('patient.profile.edit') !!}"
+                                            class="btn btn-secondaryLight2 btn-sm"><i
                                                 class="fas fa-pencil-alt"></i></a></div>
                                     <div class="user-img"><img src="{!! asset($user->img) !!}"></div>
                                     <div class="user-info">
@@ -31,10 +32,17 @@
                                         <li class="active"><a
                                                 href="profile-personal-info.html">{{ __('personal information')}}</a>
                                         </li>
-                                        <li><a href="profile-appointments.html">{{ __('my appointments')}}</a></li>
-                                        <li><a href="profile-history.html">{{ __('my history')}}</a></li>
-                                        <li><a href="profile-password.html">{{ __('change password')}}</a></li>
-                                        {{--                                        <li><a class="text-danger" href="#">{{ __('log out')}}</a></li>--}}
+                                        <li>
+                                            <a href="{!! route('patient.profile.appointments') !!}">{{ __('my appointments')}}</a>
+                                        </li>
+                                        <li><a href="{!! route('patient.profile.history') !!}">{{ __('my history')}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{!! route('patient.profile.change-password') !!}">{{ __('change password')}}</a>
+                                        </li>
+                                        <li><a class="text-danger" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">{{ __('logout') }}
+                                            </a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -42,9 +50,9 @@
                         <div class="col-md-8 col-lg-9">
                             <div class="profile-body">
                                 <div class="heading-blk mb-2">
-                                    <h5 class="heading-tit-wz-after font-weight-bold">{{ __('edit')}} <span
-                                            class="text-secondary">{{ __('information')}}</span><br><img
-                                            src="{{asset($user->img)}}"></h5>
+                                    <h5 class="heading-tit-wz-after font-weight-bold">
+                                        {{ __('edit')}} <span
+                                            class="text-secondary">{{ __('information')}}</span><br></h5>
                                 </div>
                                 @yield('form')
                             </div>

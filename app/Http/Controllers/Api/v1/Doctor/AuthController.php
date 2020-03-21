@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Doctors\DoctorRequest;
 use App\Http\Resources\Doctor\DoctorResource;
 use App\Repositories\interfaces\DoctorRepository;
+use App\Rules\CheckPassword;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -33,6 +34,8 @@ class AuthController extends Controller
     {
         $rules = (new DoctorRequest())->rules();
 
+        $rules['old_password'] = ['required_with:password', 'nullable', 'string
+            ','max:191', new CheckPassword('doctors', auth()->user()->email)];
         $rules['password'] = 'nullable|string|max:191|confirmed';
         \Validator::make($request->all(), $rules)->validate();
 

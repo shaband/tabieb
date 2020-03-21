@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 6.18.0 on 2020-03-07 09:54:19.
+ * Generated for Laravel 6.18.2 on 2020-03-21 12:36:24.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -2730,7 +2730,6 @@ namespace Illuminate\Support\Facades {
          *
          * @param mixed $command
          * @return mixed 
-         * @throws \RuntimeException
          * @static 
          */ 
         public static function dispatchToQueue($command)
@@ -16489,6 +16488,7 @@ namespace Livewire {
     /**
      * 
      *
+     * @see \Livewire\LivewireManager
      */ 
     class Livewire {
         
@@ -17179,6 +17179,63 @@ namespace Mcamara\LaravelLocalization\Facades {
         {
                         /** @var \Mcamara\LaravelLocalization\LaravelLocalization $instance */
                         return $instance->setSerializedTranslatedRoutes($serializedRoutes);
+        }
+         
+    }
+ 
+}
+
+namespace Proengsoft\JsValidation\Facades { 
+
+    /**
+     * 
+     *
+     */ 
+    class JsValidatorFacade {
+        
+        /**
+         * Creates JsValidator instance based on rules and message arrays.
+         *
+         * @param array $rules
+         * @param array $messages
+         * @param array $customAttributes
+         * @param null|string $selector
+         * @return \Proengsoft\JsValidation\Javascript\JavascriptValidator 
+         * @static 
+         */ 
+        public static function make($rules, $messages = [], $customAttributes = [], $selector = null)
+        {
+                        /** @var \Proengsoft\JsValidation\JsValidatorFactory $instance */
+                        return $instance->make($rules, $messages, $customAttributes, $selector);
+        }
+        
+        /**
+         * Creates JsValidator instance based on FormRequest.
+         *
+         * @param $formRequest
+         * @param null $selector
+         * @return \Proengsoft\JsValidation\Javascript\JavascriptValidator 
+         * @throws \Illuminate\Contracts\Container\BindingResolutionException
+         * @static 
+         */ 
+        public static function formRequest($formRequest, $selector = null)
+        {
+                        /** @var \Proengsoft\JsValidation\JsValidatorFactory $instance */
+                        return $instance->formRequest($formRequest, $selector);
+        }
+        
+        /**
+         * Creates JsValidator instance based on Validator.
+         *
+         * @param \Illuminate\Validation\Validator $validator
+         * @param null|string $selector
+         * @return \Proengsoft\JsValidation\Javascript\JavascriptValidator 
+         * @static 
+         */ 
+        public static function validator($validator, $selector = null)
+        {
+                        /** @var \Proengsoft\JsValidation\JsValidatorFactory $instance */
+                        return $instance->validator($validator, $selector);
         }
          
     }
@@ -21126,6 +21183,8 @@ namespace  {
     class Livewire extends \Livewire\Livewire {}
 
     class LaravelLocalization extends \Mcamara\LaravelLocalization\Facades\LaravelLocalization {}
+
+    class JsValidator extends \Proengsoft\JsValidation\Facades\JsValidatorFacade {}
 
     class Alert extends \RealRashid\SweetAlert\Facades\Alert {}
 

@@ -21,6 +21,8 @@ class RedirectIfNotPharamacyRep
     public function handle($request, Closure $next, $guard = 'pharamacy_rep')
     {
         if (Auth::guard($guard)->check()) {
+            auth()->setDefaultDriver($guard);
+
             return $next($request);
         }
 
