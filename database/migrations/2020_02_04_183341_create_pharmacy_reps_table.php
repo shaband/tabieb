@@ -18,7 +18,7 @@ class CreatePharmacyRepsTable extends Migration {
 			$table->bigInteger('pharmacy_id')->unsigned();
 			$table->timestamp('email_verified_at')->nullable();
 			$table->timestamp('phone_verified_at')->nullable();
-			$table->smallInteger('verification_code');
+			$table->smallInteger('verification_code')->unique();
 			$table->rememberToken();
 			$table->timestamps();
 		});
