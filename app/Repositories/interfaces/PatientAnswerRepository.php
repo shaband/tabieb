@@ -3,6 +3,7 @@
 namespace App\Repositories\interfaces;
 
 use App\Repositories\interfaces\BaseInterface;
+use Illuminate\Database\Eloquent\Collection;
 
 /**
  * Interface PatientAnswerRepository.
@@ -12,4 +13,5 @@ use App\Repositories\interfaces\BaseInterface;
 interface PatientAnswerRepository extends BaseInterface
 {
     public function addPatientAnswers(array $answers, array $loads = []): iterable;
+
 }

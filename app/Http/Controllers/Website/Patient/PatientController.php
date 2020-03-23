@@ -106,4 +106,5 @@ class PatientController extends Controller
         return back();
     }
 
+
 }

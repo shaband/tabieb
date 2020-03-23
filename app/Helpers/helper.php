@@ -28,3 +28,8 @@ function days()
         6 => __("Thr"),
         7 => __("Fri")];
 }
+
+function setActive($routeName,$active="active")
+{
+    return request()->routeIs($routeName)?'active':null;
+}

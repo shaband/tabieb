@@ -31,5 +31,8 @@ Route::group(['namespace' => 'Website\Patient'], function () {
         Route::get('change-password', 'PatientController@changePassword')->name('profile.change-password');
         Route::match(['put', 'patch', 'post'], 'profile', 'PatientController@update')->name('profile.update');
 
+        Route::get('patient-questions', 'PatientQuestionController@index')->name('profile.patient-questions');
+        Route::match(['put', 'patch', 'post'], 'patient-questions', 'PatientQuestionController@store');
+
     });
 });

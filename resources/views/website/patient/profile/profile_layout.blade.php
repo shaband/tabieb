@@ -29,15 +29,16 @@
                                 </div>
                                 <div class="user-list">
                                     <ul>
-                                        <li class="active"><a
-                                                href="profile-personal-info.html">{{ __('personal information')}}</a>
+                                        <li class="{!! setActive('patient.profile.patient-questions') !!}"><a
+                                                href="{!! route('patient.profile.patient-questions') !!}">{{ __('personal information')}}</a>
                                         </li>
-                                        <li>
+                                        <li class="{!! setActive('patient.profile.appointments') !!}">
                                             <a href="{!! route('patient.profile.appointments') !!}">{{ __('my appointments')}}</a>
                                         </li>
-                                        <li><a href="{!! route('patient.profile.history') !!}">{{ __('my history')}}</a>
+                                        <li class="{!! setActive('patient.profile.history') !!}"><a
+                                                href="{!! route('patient.profile.history') !!}">{{ __('my history')}}</a>
                                         </li>
-                                        <li>
+                                        <li class="{!! setActive('patient.profile.change-password') !!}">
                                             <a href="{!! route('patient.profile.change-password') !!}">{{ __('change password')}}</a>
                                         </li>
                                         <li><a class="text-danger" onclick="event.preventDefault();
@@ -49,11 +50,7 @@
                         </div>
                         <div class="col-md-8 col-lg-9">
                             <div class="profile-body">
-                                <div class="heading-blk mb-2">
-                                    <h5 class="heading-tit-wz-after font-weight-bold">
-                                        {{ __('edit')}} <span
-                                            class="text-secondary">{{ __('information')}}</span><br></h5>
-                                </div>
+
                                 @yield('form')
                             </div>
                         </div>

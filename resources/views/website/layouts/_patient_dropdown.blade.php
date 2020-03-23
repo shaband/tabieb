@@ -2,12 +2,20 @@
     <a class="nav-link" href="javascript:void(0)"><i
             class="fas fa-user"></i> {!! auth()->guard('patient')->user()->user_name !!}</a>
     <ul>
-        <li class="active"><a
-                href="profile-personal-info.html">{{ __('personal information')}}</a>
+        <li class="{!! setActive('patient.profile.patient-questions') !!}"><a
+                href="{!! route('patient.profile.patient-questions') !!}">{{ __('personal information')}}</a>
         </li>
-        <li><a href="profile-appointments.html">{{ __('appointments')}}</a></li>
-        <li><a href="profile-history.html">{{ __('history')}}</a></li>
-        <li><a href="profile-password.html">{{ __("change password")}}</a></li>
+        <li class="{!! setActive('patient.profile.appointments') !!}">
+            <a href="{!! route('patient.profile.appointments') !!}">{{ __('appointments')}}</a>
+        </li>
+        <li class="{!! setActive('patient.profile.history') !!} ">
+            <a href="{!! route('patient.profile.history') !!}">{{ __('history')}}</a>
+        </li>
+        <li class="{!! setActive('patient.profile.change-password') !!}">
+            <a href="{!! route('patient.profile.change-password') !!}">
+                {{ __("change password")}}
+            </a>
+        </li>
         <li><a href="{{ route('patient.logout') }}" class="text-danger" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">{{ __('logout') }}</a>
         </li>

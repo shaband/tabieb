@@ -4,6 +4,12 @@
 @endsection
 
 @section('form')
+    <div class="heading-blk mb-2">
+        <h5 class="heading-tit-wz-after font-weight-bold">
+            {{ __('edit')}} <span
+                class="text-secondary">{{ __('information')}}</span><br><img
+                src=" {!! asset('design/images/heading-after.png') !!}"></h5>
+    </div>
     <form action="{!! route('patient.profile.update') !!}" class="basic-form form-sm form-label-inline" method="post">
         @csrf
         @method('put')

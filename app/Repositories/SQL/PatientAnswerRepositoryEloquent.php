@@ -3,6 +3,7 @@
 namespace App\Repositories\SQL;
 
 use App\Repositories\SQL\BaseRepository;
+use Illuminate\Database\Eloquent\Collection;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\interfaces\PatientAnswerRepository;
 use App\Models\PatientAnswer;
@@ -49,4 +50,7 @@ class PatientAnswerRepositoryEloquent extends BaseRepository implements PatientA
         }
         return $ans;
     }
+
+
+
 }
