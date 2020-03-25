@@ -24,4 +24,13 @@ Route::group(['namespace' => 'Website\Doctor'], function() {
     Route::get('email/verify', 'Auth\VerificationController@show')->name('doctor.verification.notice');
     Route::get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->name('doctor.verification.verify');
 
+    Route::middleware(['doctor.auth'])->name('doctor.')->group(function () {
+        Route::get('profile', 'DoctorController@edit')->name('profile.edit');
+        Route::get('appointments', 'DoctorController@myAppointment')->name('profile.appointments');
+        Route::get('requests', 'DoctorController@myRequests')->name('profile.requests');
+        Route::get('history', 'DoctorController@myHistory')->name('profile.history');
+        Route::get('change-password', 'DoctorController@changePassword')->name('profile.change-password');
+        Route::match(['put', 'patch', 'post'], 'profile', 'DoctorController@update')->name('profile.update');
+    });
+
 });

@@ -11,9 +11,9 @@
     </div>
     <div class="text-center mb-3">
         <div class="doc-apps-tabs">
-            <a href="{{route('doctor.profile.requests')}}" class="btn">
+            <a href="{{route('doctor.profile.requests')}}" class="btn active">
                 {{ __('appointments requests')}}</a>
-            <a href="{{route('doctor.profile.appointments')}}" class="btn active">{{ __('upcoming appointments')}}</a>
+            <a href="{{route('doctor.profile.appointments')}}" class="btn ">{{ __('upcoming appointments')}}</a>
             <a href="{{route('doctor.profile.history')}}" class="btn ">{{ __('history')}}</a>
         </div>
     </div>

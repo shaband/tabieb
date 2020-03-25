@@ -93,4 +93,30 @@ class Reservation extends Model
         }
         return $string;
     }
+
+    public function getStatusStrAttribute()
+    {
+
+        switch ($this->status) {
+            case static::STATUS_ACTIVE:
+                $str = __("Active");
+                break;
+            case static::STATUS_ACCEPTED;
+                $str = __("Accepted");
+                break;
+            case static::STATUS_REFUSED;
+                $str = __("Refused");
+                break;
+            case static::STATUS_CANCELED;
+                $str = __("Canceled");
+                break;
+            case static::STATUS_FINISHED;
+                $str = __("Finished");
+                break;
+            default:
+                $str = __("Finished");
+        }
+        return $str;
+
+    }
 }

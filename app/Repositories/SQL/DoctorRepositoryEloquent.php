@@ -4,6 +4,7 @@ namespace App\Repositories\SQL;
 
 use App\Models\Doctor;
 use App\Repositories\SQL\BaseRepository;
+use App\Rules\CheckPassword;
 use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Builder;
@@ -51,11 +52,39 @@ class DoctorRepositoryEloquent extends BaseRepository implements DoctorRepositor
             $doctor->image()->updateOrCreate(['type' => $image_data['type']], $image_data);
         }
         $doctor->sub_categories()->sync($request->sub_category_ids);
-        $this->AddFCM($request,$doctor);
+        $this->AddFCM($request, $doctor);
         DB::commit();
         return $doctor->fresh();
 
     }
+
+
+    public static function updateRules(): iterable
+    {
+        return [
+            "first_name_ar" => "nullable|string|max:191",
+            "last_name_ar" => "nullable|string|max:191",
+            "first_name_en" => "nullable|string|max:191",
+            "last_name_en" => "nullable|string|max:191",
+            "description_ar" => "nullable|string",
+            "description_en" => "nullable|string",
+            "title_ar" => "nullable|string|max:191",
+            "title_en" => "nullable|string|max:191",
+            "civil_id" => "nullable|numeric",
+            "price" => "nullable|numeric",
+            "period" => "nullable|numeric",
+            "category_id" => 'nullable|integer|exists:categories,id,category_id,NULL',
+            "sub_category_ids" => 'nullable|array',
+            "sub_category_ids.*" => 'nullable|exists:categories,id,category_id,' . request()->category_id ?? auth()->user()->category_id,
+            'email' => 'nullable|email|max:191|unique:doctors,id,' . auth()->id(),
+            'password' => 'nullable|string|max:191|confirmed',
+            'old_password' => ['required_with:password', 'nullable', 'string
+            ', 'max:191', new CheckPassword('doctors', auth()->user()->email)],
+            'phone' => 'nullable|numeric|unique:doctors,phone,' . auth()->id(),
+            'image' => 'nullable|image',
+        ];
+    }
+
 
     /**
      * @param Request $request

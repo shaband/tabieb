@@ -20,6 +20,8 @@ interface DoctorRepository extends BaseInterface
      */
     public function store(Request $request): Doctor;
 
+
+    public static function   updateRules():iterable;
     /**
      * @param Request $request
      * @param int $id

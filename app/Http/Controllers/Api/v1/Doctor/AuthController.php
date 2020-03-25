@@ -30,13 +30,31 @@ class AuthController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function profile(Request $request)
+    public function update(Request $request)
     {
-        $rules = (new DoctorRequest())->rules();
+        $rules = [
+            "first_name_ar" => "nullable|string|max:191",
+            "last_name_ar" => "nullable|string|max:191",
+            "first_name_en" => "nullable|string|max:191",
+            "last_name_en" => "nullable|string|max:191",
+            "description_ar" => "nullable|string",
+            "description_en" => "nullable|string",
+            "title_ar" => "nullable|string|max:191",
+            "title_en" => "nullable|string|max:191",
+            "civil_id" => "nullable|numeric",
+            "price" => "nullable|numeric",
+            "period" => "nullable|numeric",
+            "category_id" => 'nullable|integer|exists:categories,id,category_id,NULL',
+            "sub_category_ids" => 'nullable|array',
+            "sub_category_ids.*" => 'nullable|exists:categories,id,category_id,' . $request->category_id ?? auth()->user()->category_id,
+            'email' => 'nullable|email|max:191|unique:doctors,id,' . auth()->id(),
+            'password' => 'nullable|string|max:191|confirmed',
+            'old_password' =>  ['required_with:password', 'nullable', 'string
+            ', 'max:191', new CheckPassword('doctors', auth()->user()->email)],
+            'phone' => 'nullable|numeric|unique:doctors,phone,' .  auth()->id(),
+            'image' => 'nullable|image',
+        ];
 
-        $rules['old_password'] = ['required_with:password', 'nullable', 'string
-            ','max:191', new CheckPassword('doctors', auth()->user()->email)];
-        $rules['password'] = 'nullable|string|max:191|confirmed';
         \Validator::make($request->all(), $rules)->validate();
 
         $doctor = $this->repo->update(array_filter($request->all()), auth()->id());
