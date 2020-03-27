@@ -163,11 +163,11 @@ class CreateForeignKeys extends Migration {
 						->onDelete('set null')
 						->onUpdate('cascade');
 		});
-		Schema::table('prescriptions', function(Blueprint $table) {
-			$table->foreign('doctor_id')->references('id')->on('doctors')
-						->onDelete('set null')
-						->onUpdate('cascade');
-		});
+		// Schema::table('prescriptions', function(Blueprint $table) {
+		// 	$table->foreign('doctor_id')->references('id')->on('doctors')
+		// 				->onDelete('set null')
+		// 				->onUpdate('cascade');
+		// });
 		Schema::table('prescription_items', function(Blueprint $table) {
 			$table->foreign('prescription_id')->references('id')->on('prescriptions')
 						->onDelete('cascade')
