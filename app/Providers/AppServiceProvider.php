@@ -28,8 +28,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Gate::before(function ($user, $ability) {
-            return $user->id == 1;
-        });
+        // Gate::before(function ($user, $ability) {
+        //     return $user->id == 1;
+        // });
     }
 }
