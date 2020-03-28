@@ -9,7 +9,7 @@ class CreateAttachmentsTable extends Migration {
 	{
 		Schema::create('attachments', function(Blueprint $table) {
 			$table->bigIncrements('id');
-			$table->longText('file')->unique();
+			$table->longText('file');
 			$table->morphs('model');
 			$table->char('ext')->nullable();
 			$table->smallInteger('type')->nullable()->index();

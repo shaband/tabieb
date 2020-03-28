@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Gate;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,7 +18,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind('path.public', function () {
             return base_path() . '/public_html';
         });
-
     }
 
     /**
@@ -26,6 +27,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
+        // Gate::before(function ($user, $ability) {
+        //     return $user->id == 1;
+        // });
     }
 }
