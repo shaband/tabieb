@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AdminsTableSeeder::class);
         $this->call(SettingsSeeder::class);
         $this->call(PermissionSeeder::class);
+        $this->call(HomePageSettingsSeeder::class);
     }
 }
