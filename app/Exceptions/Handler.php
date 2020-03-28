@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Validation\ValidationException;
 
 class Handler extends ExceptionHandler
@@ -66,9 +67,11 @@ class Handler extends ExceptionHandler
     protected function invalidJson($request, ValidationException $exception)
     {
         $msg = collect(collect($exception->errors())->first())->first();
-        $response = responseJson($exception->errors(), $exception->getMessage(), $exception->status);
+        $errors = $this->errorsInArrayOfStr($exception);
+        $response = $this->errorResponse($msg, $errors, $exception->status);;
 
-        return $response;
+
+        return response()->json($response, $exception->status);
         /*    return response()->json([
 
                 'message' => $exception->getMessage(),
@@ -107,5 +110,40 @@ class Handler extends ExceptionHandler
         return $request->expectsJson()
             ? responseJson([], $exception->getMessage(), 401)
             : redirect()->guest($exception->redirectTo() ?? route('login'));
+    }
+
+    /**
+     * change  array for validation errors to array of strings without keys o
+     * @param ValidationException $exception
+     * @return array
+     */
+    protected function errorsInArrayOfStr(ValidationException $exception): array
+    {
+
+        $errors_bag = [];
+        foreach ($exception->errors() as $errors) {
+            foreach ($errors as $error) {
+                $errors_bag[] = $error;
+            }
+        }
+
+        return $errors_bag;
+    }
+
+    /**
+     * reformat data for response  datum  pattern
+     * @param string|null $msg
+     * @param array|null $errors
+     * @param int|null $status
+     * @return array
+     */
+    protected function errorResponse(?string $msg = null, ?array $errors = [], ?int $status = 0): array
+    {
+        return [
+            'status' => $status==401?2:0,
+            'message' => $msg,
+            'errors' => $errors,
+            'data' => [],
+        ];
     }
 }

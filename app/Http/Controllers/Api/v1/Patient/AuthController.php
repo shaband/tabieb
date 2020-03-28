@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\patients\PatientResource;
 use App\Repositories\interfaces\PatientRepository;
 use App\Rules\CheckPassword;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -61,7 +63,9 @@ class AuthController extends Controller
         $credentials = request(['email', 'password']);
 
         if (!$token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+
+            return $this->UnauthorizedResponse(__('Unauthorized'));
+
         }
         $response = (new PatientResource($patient));
         return responseJson(['patient' => $response, 'token' => $token]);
@@ -81,7 +85,7 @@ class AuthController extends Controller
             'email' => 'nullable|email|unique:patients,email,' . auth()->id(),
             'phone' => 'nullable|numeric|unique:patients,phone,' . auth()->id(),
             'old_password' => ['required_with:password', 'nullable', 'string'
-            ,'max:191', new CheckPassword('patients', auth()->user()->email)],
+                , 'max:191', new CheckPassword('patients', auth()->user()->email)],
             'password' => 'nullable|string|max:191|confirmed',
             'civil_id' => 'nullable|numeric|unique:patients,civil_id,' . auth()->id(),
             'social_security_id' => 'nullable|integer|exists:social_securities,id',
@@ -124,13 +128,20 @@ class AuthController extends Controller
         $credentials = request(['email', 'password']);
         $patient = $this->repo->findWhere(request()->only('email'))->first();
 
+        if (!Hash::check($request->password,$patient->password)) {
+            return $this->UnauthorizedResponse(__('Wrong Password'));
+
+        }
         if ($patient->phone_verified_at == null) {
-            return response()->json(['data' => __('Please Verify Your Account')], 401);
+            return $this->UnauthorizedResponse(__('Please Verify Your Account'));
+
         }
         $this->repo->AddFCM($request, $patient);
 
+
         if (!$token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return $this->UnauthorizedResponse(__('Unauthorized'));
+
         }
 
         $patientResource = new  PatientResource(auth()->user());
@@ -159,4 +170,21 @@ class AuthController extends Controller
         return responseJson(['student' => new PatientResource($patient->fresh())], __("Verified Successfully"));
     }
 
+    /**
+     * handle Unauthorized response  of mobile developer return errors in key errors  as array of strings
+     * @param mixed ...$msg
+     * @return JsonResponse
+     */
+    protected function UnauthorizedResponse(...$msg): JsonResponse
+    {
+
+        return response()->json(
+            [
+                'status' => 2,
+                'message' => isset($msg[0]) ? $msg[0] : __('Unauthorized'),
+                'errors' => $msg,
+                'data' => []
+
+            ], 401);
+    }
 }

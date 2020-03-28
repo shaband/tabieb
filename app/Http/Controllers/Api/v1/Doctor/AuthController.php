@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\Doctors\DoctorRequest;
 use App\Http\Resources\Doctor\DoctorResource;
 use App\Repositories\interfaces\DoctorRepository;
 use App\Rules\CheckPassword;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -87,11 +88,11 @@ class AuthController extends Controller
         $doctor = $this->repo->findWhere(request()->only('email'))->first();
 
         if ($doctor->phone_verified_at == null) {
-            return response()->json(['data' => __('Please Verify Your Account')], 401);
+            return $this->UnauthorizedResponse(__('Please Verify Your Account'));
         }
 
         if (!$token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return $this->UnauthorizedResponse(__('Unauthorized'));
         }
         $this->repo->AddFCM($request, $doctor);
         $doctorResource = new  DoctorResource(auth()->user());
@@ -121,4 +122,22 @@ class AuthController extends Controller
         return responseJson(['student' => new DoctorResource($doctor->fresh())], __("Verified Successfully"));
     }
 
+    /**
+     * handle Unauthorized response  of mobile developer return errors in key errors  as array of strings
+     * @param mixed ...$msg
+     * @return JsonResponse
+     */
+
+    protected function UnauthorizedResponse(...$msg): JsonResponse
+    {
+
+        return response()->json(
+            [
+                'status' => 2,
+                'message' => isset($msg[0]) ? $msg[0] : __('Unauthorized'),
+                'errors' => $msg,
+                'data' => []
+
+            ], 401);
+    }
 }
