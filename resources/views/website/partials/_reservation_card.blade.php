@@ -2,13 +2,20 @@
     <div class="app-img"><img src="{!! asset('design/images/app-icon.png') !!}"></div>
     <div class="app-dets">
         <div>
-            <b>{{ __('doctor full name')}}:</b>
-            <span>
-                @if(auth()->user()->getTable()=='patients')
-                    {!! $reservation->doctor->name !!}</span>
+
+            @if(auth()->user()->getTable()=='patients')
+                <b>{{ __('doctor full name')}}:</b>
+
+                <span>
+                    {!! $reservation->doctor->name !!}
+            </span>
             @elseif(auth()->user()->getTable()=='doctors')
+                <b>{{ __('patient full name')}}:</b>
+                <span>
                 {!! $reservation->patient->name !!}
+            </span>
             @endif
+
         </div>
         <div>
             <b>{{ __('appointment time')}}:</b>
@@ -31,14 +38,55 @@
                 <span>11 hours / 20 minutes / 30 seconds</span>
             </div>
     </div>
-{{--    <div class="app-remove"><a><i class="fas fa-trash-alt"></i></a></div>--}}
+    {{--    <div class="app-remove"><a><i class="fas fa-trash-alt"></i></a></div>--}}
     @endif
     @if(!\Carbon\Carbon::now()->gt($reservation->from_date) &&$reservation->status==$reservation::STATUS_ACTIVE)
-    <div class="app-control">
-        <a href="#" class="btn btn-secondary btn-sm text-capitalize">{{ __('accept')}}</a>
-        <a href="#" class="btn btn-danger btn-sm text-capitalize">{{ __('reject')}}</a>
-   @endif
-    </div>
+        <div class="app-control">
+            <a class="btn btn-secondary btn-sm text-capitalize" onclick="
+                Swal.fire({
+                title: '{!! __('Are you sure?') !!}',
+                text: '{!! __('You Will Not be able to revert this!') !!}',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '{!! __('Yes, Accept it!') !!}'
+                }).then((result) => {
+                if (result.value) {document.getElementById('accept-reservation-{!! $reservation->id !!}').submit();}
+                });event.preventDefault()">{{ __('accept')}}</a>
+
+            <form action="{{ route('doctor.profile.status.update',$reservation->id) }}" method="POST"
+                  style="display: none;"
+                  id="accept-reservation-{!! $reservation->id !!}">
+                {!! csrf_field() !!}
+                @method('put')
+                <input type="hidden" name="status" value="{!! $reservation::STATUS_ACCEPTED !!}">
+            </form>
+
+            <a class="btn btn-danger btn-sm text-capitalize text-white" onclick="
+                Swal.fire({
+                title: '{!! __('Are you sure?') !!}',
+                text: '{!! __('You Will Not be able to revert this!') !!}',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '{!! __('Yes, Reject it!') !!}'
+                }).then((result) => {
+                if (result.value) {document.getElementById('reject-reservation-{!! $reservation->id !!}').submit();}
+                });event.preventDefault()">{{ __('reject')}}</a>
+
+            <form action="{{ route('doctor.profile.status.update',$reservation->id) }}" method="POST"
+                  style="display: none;"
+                  id="reject-reservation-{!! $reservation->id !!}">
+                {!! csrf_field() !!}
+                @method('put')
+                <input type="hidden" name="status" value="{!! $reservation::STATUS_REFUSED !!}">
+            </form>
+
+
+            @endif
+        </div>
 </div>
 
 

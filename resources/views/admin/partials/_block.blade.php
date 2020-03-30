@@ -39,7 +39,7 @@
     <form action="{{ route("admin.$routeName.block",$id) }}" method="POST"
           style="display: none;"
           id="{!! "block-$routeName-$id" !!}">
-        @csrf
+        {!! csrf_field() !!}
         @method('post')
         <input type="hidden" name="block" value="{!! $blocked_at?0:1 !!}">
     </form>

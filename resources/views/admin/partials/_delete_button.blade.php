@@ -24,7 +24,7 @@
     <form action="{{ route('admin.'.$routeName.'.destroy',$id) }}" method="POST"
           style="display: none;"
           id="destroy-{!! $routeName !!}-{!! $id !!}">
-        @csrf
+        {!! csrf_field() !!}
         @method('delete')
     </form>
 @endcan

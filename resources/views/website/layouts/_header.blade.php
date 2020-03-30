@@ -165,8 +165,7 @@
                                         <form id="doctor-login-form" action="{!! route('doctor.login') !!}"
                                               method="post"
                                               class="basic-form form-label-inline form-secondaryLight">
-                                            @csrf
-                                            @method('post')
+{!! csrf_field() !!}                                            @method('post')
                                             <div class="form-group">
                                                 <label for="">{{ __('email address')}}:</label>
                                                 <input type="email" name="email" class="form-control">
@@ -203,7 +202,7 @@
                                         <form id="patient-login-form" action="{!! route('patient.login') !!}"
                                               method="post"
                                               class="basic-form form-label-inline form-secondaryLight">
-                                            @csrf
+                                            {!! csrf_field() !!}
                                             @method('post')
                                             <div class="form-group">
                                                 <label for="">{{ __('email address')}}:</label>
@@ -271,7 +270,7 @@
                                 <form method="post" id="patient-register-form" action="{{route('patient.register')}}"
                                       class="basic-form form-label-inline form-secondaryLight">
                                     @method('post')
-                                    @csrf
+                                    {!! csrf_field() !!}
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">

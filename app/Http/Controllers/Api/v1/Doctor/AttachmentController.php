@@ -31,10 +31,8 @@ class AttachmentController extends Controller
             'name' => 'required|string|max:191'
         ]);
 
-        $data = $this->repo->saveFile($request->file('file'), 'doctors/' . auth()->id() . '/attachments');
-        $data['type'] = $this->repo->getConstants()['DOCTOR_DOCUMENT'];
-        $data['name'] = $request->name;
-        $attachment = auth()->user()->papers()->create($data);
+
+        $attachment = $this->repo->store($request);
 
         $attachment = new AttachmentResource($attachment);
         return responseJson(compact('attachment'), __("Saved Successfully"));

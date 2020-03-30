@@ -38,7 +38,7 @@
     <form
         method="post"
         action="{!! route('patient.profile.patient-questions') !!}" class="form-md form-plain">
-        @csrf
+        {!! csrf_field() !!}
         @method('put')
         @foreach($patient_questions as $question)
             {{--       <div class="text-primary text-capitalize font-weight-bold mb-1">{{ __('medical insurance')}}:</div>--}}

@@ -24,14 +24,14 @@ class DoctorController extends Controller
 
     private $path;
 
-    public function __construct(DoctorRepository $repo, $path = null)
+    public function __construct(DoctorRepository $repo, $path = 'website.doctor.profile')
     {
 
         auth()->setDefaultDriver('doctor_api');
 
         $this->repo = $repo;
 
-        $this->path = $path ?? 'website.doctor.profile';
+        $this->path = $path;
 
     }
 
@@ -57,67 +57,11 @@ class DoctorController extends Controller
         return view($this->path . '.change_password', compact('user'));
     }
 
-    /**
-     * @param ReservationRepository $reservationRepo
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function myRequests(ReservationRepository $reservationRepo)
-    {
-
-        $user = auth()->user();
-
-        $reservations = $reservationRepo->findWhere(
-            [
-                'doctor_id' => auth()->id(),
-                'status' => $reservationRepo->getConstants()['STATUS_ACTIVE'],
-                'date' => [DB::raw('CONCAT(`date`,`from_time`)'), '>=', Carbon::now()]
-            ]
-        );
-        return view($this->path . '.requests', compact('user', 'reservations'));
-    }
-
-    /**
-     * @param ReservationRepository $reservationRepo
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function myAppointment(ReservationRepository $reservationRepo)
-    {
-
-        $user = auth()->user();
-
-        $reservations = $reservationRepo->findWhere(
-            [
-                'doctor_id' => auth()->id(),
-                'status' => $reservationRepo->getConstants()['STATUS_ACCEPTED'],
-                'date' => [DB::raw('CONCAT(`date`,`from_time`)'), '>=', Carbon::now()]
-            ]
-        );
-        return view($this->path . '.appointments', compact('user', 'reservations'));
-    }
-
-
-    /**
-     * @param ReservationRepository $reservationRepo
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function myHistory(ReservationRepository $reservationRepo)
-    {
-
-        $user = auth()->user();
-
-        $reservations = $reservationRepo->findWhere(
-            [
-                'doctor_id' => auth()->id(),
-                //         'status' => $reservationRepo->getConstants()['STATUS_ACCEPTED'],
-                'date' => [DB::raw('CONCAT(`date`,`from_time`)'), '<=', Carbon::now()]
-            ]
-        );
-        return view($this->path . '.histories', compact('user', 'reservations'));
-    }
 
     /**
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function update(Request $request)
     {
@@ -156,37 +100,6 @@ class DoctorController extends Controller
         toast(__("Updated Successfully"), 'success');
 
         return back();
-    }
-
-
-    /**
-     *  change status for reservations
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
-     * @throws \Illuminate\Validation\ValidationException
-     */
-    public function changeReservationStatus(Request $request)
-    {
-        $this->validate($request, [
-            'reservation_id' => 'required|integer|exists:reservations,id,doctor_id,' . auth()->user()->id,
-            'status' => ['required', 'integer',
-                Rule::in(
-                    [
-                        Reservation::STATUS_ACCEPTED,
-                        Reservation::STATUS_REFUSED,
-                        Reservation::STATUS_CANCELED
-                    ])],
-        ]);
-        $attributes = [
-            'status' => $request->status,
-            'status_changed_at' => Carbon::now(),
-        ];
-        $reservation = $this->repo->update($attributes, $request->reservation_id);
-
-        $reservation = new ReservationResource($reservation->load('patient'));
-
-
-        return responseJson(compact('reservation'), __('Updated Successfully'));
     }
 
 

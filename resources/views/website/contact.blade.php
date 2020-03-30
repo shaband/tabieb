@@ -21,7 +21,7 @@
                                     <h6 class="heading-tit-wz-after font-weight-bold">{!! __("Contact") !!} <span class="text-secondary">{!! __("Us") !!}</span><br><img src="{!! asset('design/images/heading-after.png') !!}"></h6>
                                 </div>
                                 <form action="" method="post" class="basic-form form-label-inline">
-                                    @csrf
+                                    {!! csrf_field() !!}
                                     @method('post')
 
 

@@ -13,7 +13,7 @@ class Attachment extends Model
     const  DOCTOR_DOCUMENT = 2;
     protected $table = 'attachments';
     public $timestamps = true;
-    protected $fillable = array('file', 'model', 'ext', 'type', 'name');
+    protected $fillable = array('file', 'model_id','model_type', 'ext', 'type', 'name');
 
     public function model()
     {

@@ -23,7 +23,7 @@
 
         <form id="logout-form" action="{{ route('patient.logout') }}" method="POST"
               style="display: none;">
-            @csrf
+            {!! csrf_field() !!}
         </form>
 
     </ul>

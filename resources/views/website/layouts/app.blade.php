@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{!! asset('design/css/all.css')!!}">
     <link rel="stylesheet" href="{!! asset('design/css/jquery-ui.css')!!}">
     <link rel="stylesheet" href="{!! asset('design/css/owl.carousel.min.css')!!}">
+    <link href="{!! asset('dashboard/dark/assets/libs/dropify/dropify.min.css')!!}" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="{!! asset('design/css/styles.css')!!}">
     @if(app()->getLocale()=='ar')
         <link rel="stylesheet" href="{!! asset('design/css/styles-ar.css')!!}">
@@ -27,6 +28,11 @@
     <script src="{!! asset('design/js/owl.carousel.min.js')!!}"></script>
     <script src="{!! asset('design/js/scripts.js')!!}"></script>
     <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+    <script src="{!! asset('dashboard/dark/assets/libs/dropify/dropify.min.js')!!}"></script>
+
 
     @yield('header')
 </head>

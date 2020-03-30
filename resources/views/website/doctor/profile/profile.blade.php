@@ -11,7 +11,7 @@
                 src=" {!! asset('design/images/heading-after.png') !!}"></h5>
     </div>
     <form action="" class="basic-form form-sm form-label-inline">
-        @csrf
+        {!! csrf_field() !!}
         @method('post')
         <div class="user-img-upload">
             <input id="up-user-img" name="image" type="file">

@@ -11,7 +11,7 @@
                 src=" {!! asset('design/images/heading-after.png') !!}"></h5>
     </div>
     <form action="{!! route('doctor.profile.update') !!}" class="basic-form form-sm form-label-inline" method="post">
-        @csrf
+        {!! csrf_field() !!}
         @method('put')
         <div class="form-group">
             <label for="">{{ __('old password')}}:</label>

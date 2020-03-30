@@ -42,7 +42,7 @@
                         </div>
 
                         <form method="POST" action="{{ route('admin.login') }}" aria-label="{{ __('Login') }}">
-                            @csrf
+                            {!! csrf_field() !!}
 
                             {{--
 

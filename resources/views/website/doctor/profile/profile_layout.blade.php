@@ -35,6 +35,9 @@
                                         <li class="{!! setActive('doctor.profile.appointments') !!}">
                                             <a href="{!! route('doctor.profile.appointments') !!}">{{ __('my appointments')}}</a>
                                         </li>
+                                        <li class="{!! setActive('doctor.profile.documents') !!}">
+                                            <a href="{!! route('doctor.profile.documents') !!}">{{ __('my medical documents')}}</a>
+                                        </li>
                                         <li class="{!! setActive('doctor.profile.history') !!}"><a
                                                 href="{!! route('doctor.profile.history') !!}">{{ __('my history')}}</a>
                                         </li>

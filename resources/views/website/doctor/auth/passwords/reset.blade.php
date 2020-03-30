@@ -28,7 +28,7 @@
                         <form method="POST" action="{{ route('doctor.password.request') }}"
                               aria-label="{{ __('Reset Password') }}"
                               class="basic-form form-md form-label-inline m-auto">
-                            @csrf
+                            {!! csrf_field() !!}
                             <input type="hidden" name="token" value="{{ $token }}">
 
 

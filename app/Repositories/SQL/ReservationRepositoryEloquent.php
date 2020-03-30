@@ -5,6 +5,9 @@ namespace App\Repositories\SQL;
 use App\Repositories\interfaces\ScheduleRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\interfaces\ReservationRepository;
 use App\Models\Reservation;
@@ -74,4 +77,25 @@ class ReservationRepositoryEloquent extends BaseRepository implements Reservatio
         return $reservation;
     }
 
+    /**
+     * @param Request $request
+     * @throws ValidationException
+     */
+    public function validate(array $request = []): void
+    {
+        $validator = Validator::make($request, [
+            'reservation_id' => 'required|integer|exists:reservations,id,doctor_id,' . auth()->user()->id,
+            'status' => ['required', 'integer',
+                Rule::in(
+                    [
+                        Reservation::STATUS_ACCEPTED,
+                        Reservation::STATUS_REFUSED,
+                        Reservation::STATUS_CANCELED
+                    ])],
+        ]);
+        if ($validator->fails()) {
+            throw new  ValidationException($validator);
+        }
+
+    }
 }

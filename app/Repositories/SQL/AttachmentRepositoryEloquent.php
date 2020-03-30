@@ -3,11 +3,12 @@
 namespace App\Repositories\SQL;
 
 use App\Repositories\SQL\BaseRepository;
-use Composer\DependencyResolver\Request;
+use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\interfaces\AttachmentRepository;
 use App\Models\Attachment;
+
 // use App\Validators\AttachmentValidator;
 
 /**
@@ -28,7 +29,6 @@ class AttachmentRepositoryEloquent extends BaseRepository implements AttachmentR
     }
 
 
-
     /**
      * Boot up the repository, pushing criteria
      */
@@ -38,5 +38,13 @@ class AttachmentRepositoryEloquent extends BaseRepository implements AttachmentR
     }
 
 
+    public function store(Request $request):Attachment
+    {
 
+        $data = $this->saveFile($request->file('file'), 'doctors/' . auth()->id() . '/attachments');
+        $data['type'] = $this::getConstants()['DOCTOR_DOCUMENT'];
+        $data['name'] = $request->name;
+        $attachment = auth()->user()->papers()->create($data);
+        return $attachment;
+    }
 }

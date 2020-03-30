@@ -76,11 +76,7 @@ class ReservationController extends Controller
                         Reservation::STATUS_CANCELED
                     ])],
         ]);
-        $attributes = [
-            'status' => $request->status,
-            'status_changed_at' => Carbon::now(),
-        ];
-        $reservation = $this->repo->update($attributes, $request->reservation_id);
+        $reservation = $this->repo->updateStatus($request->reservation_id,$request->status);
 
         $reservation = new ReservationResource($reservation->load('patient'));
 

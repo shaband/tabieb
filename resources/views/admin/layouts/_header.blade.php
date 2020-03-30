@@ -89,7 +89,7 @@
                     <span>{!!  __("Logout")!!}</span>
                 </a>
                 <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
-                    @csrf
+                    {!! csrf_field() !!}
                 </form>
             </div>
         </li>

@@ -29,7 +29,7 @@
                               aria-label="{{ __('Reset Password') }}"
                               class="basic-form form-md form-label-inline m-auto">
 
-                            @csrf
+                            {!! csrf_field() !!}
 
 
                             <input type="hidden" name="token" value="{{ $token }}">
@@ -101,7 +101,7 @@
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('patient.password.request') }}" aria-label="{{ __('Reset Password') }}">
-                            @csrf
+                            {!! csrf_field() !!}
 
                             <input type="hidden" name="token" value="{{ $token }}">
 

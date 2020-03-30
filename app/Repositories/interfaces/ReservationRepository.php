@@ -18,4 +18,7 @@ interface ReservationRepository extends BaseInterface
     public static function status(): iterable;
 
     public static function updateStatus(int $reservation_id, Int $status): Reservation;
+
+    public function validate(array $request): void;
+
 }

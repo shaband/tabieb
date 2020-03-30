@@ -2,13 +2,21 @@
     <a class="nav-link" href="javascript:void(0)"><i
             class="fas fa-user"></i> {!! auth()->guard('doctor')->user()->name !!}</a>
     <ul>
-        <li><a href="profile-doctor-information.html">{{ __('personal information')}}</a>
+        <li class=""><a
+                href="">{{ __('personal information')}}</a>
         </li>
-        <li class="active"><a
-                href="profile-doctor-appointments.html">{{ __('my appointments')}}</a></li>
-        <li><a href="profile-doctor-documents.html">{{ __('medical documents')}}</a></li>
-        <li><a href="profile-history.html">{{ __('my history')}}</a></li>
-        <li><a href="profile-password.html">{{ __('change password')}}</a></li>
+        <li class="{!! setActive('doctor.profile.appointments') !!}">
+            <a href="{!! route('doctor.profile.appointments') !!}">{{ __('my appointments')}}</a>
+        </li>
+        <li class="{!! setActive('doctor.profile.documents') !!}">
+            <a href="{!! route('doctor.profile.documents') !!}">{{ __('my medical documents')}}</a>
+        </li>
+        <li class="{!! setActive('doctor.profile.history') !!}"><a
+                href="{!! route('doctor.profile.history') !!}">{{ __('my history')}}</a>
+        </li>
+        <li class="{!! setActive('doctor.profile.change-password') !!}">
+            <a href="{!! route('doctor.profile.change-password') !!}">{{ __('change password')}}</a>
+        </li>
         <li><a href="javascript:void(0)">
                 <div class="prof-doc-stat">
                     <div><span class="text-primary">{{ __('status')}}:</span> <span
@@ -29,7 +37,7 @@
 
             <form id="logout-form" action="{{ route('doctor.logout') }}" method="POST"
                   style="display: none;">
-                @csrf
+                {!! csrf_field() !!}
             </form>
         </li>
     </ul>

@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['namespace' => 'Website\Doctor'], function() {
+Route::group(['namespace' => 'Website\Doctor'], function () {
 
     Route::get('/', 'HomeController@index')->name('doctor.dashboard');
 
@@ -26,11 +26,18 @@ Route::group(['namespace' => 'Website\Doctor'], function() {
 
     Route::middleware(['doctor.auth'])->name('doctor.')->group(function () {
         Route::get('profile', 'DoctorController@edit')->name('profile.edit');
-        Route::get('appointments', 'DoctorController@myAppointment')->name('profile.appointments');
-        Route::get('requests', 'DoctorController@myRequests')->name('profile.requests');
-        Route::get('history', 'DoctorController@myHistory')->name('profile.history');
+
         Route::get('change-password', 'DoctorController@changePassword')->name('profile.change-password');
         Route::match(['put', 'patch', 'post'], 'profile', 'DoctorController@update')->name('profile.update');
+
+        Route::get('appointments', 'ReservationController@myAppointment')->name('profile.appointments');
+        Route::get('requests', 'ReservationController@myRequests')->name('profile.requests');
+        Route::put('appointment/status/{reservation_id}', 'ReservationController@updateStatus')->name('profile.status.update');
+        Route::get('history', 'ReservationController@myHistory')->name('profile.history');
+        Route::get('documents', 'AttachmentController@index')->name('profile.documents');
+        Route::post('documents', 'AttachmentController@store');
+        Route::delete('documents/{id}', 'AttachmentController@delete')->name('profile.documents.destroy');
+
     });
 
 });
