@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Activitylog\Traits\CausesActivity;
@@ -21,7 +22,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class Doctor extends Authenticatable implements JWTSubject
 {
-    use Notifiable, ColumnTranslation, ModelHasImage, HashPassword,ModelHasLogs,CausesActivity;
+    use Notifiable, ColumnTranslation, ModelHasImage, HashPassword, ModelHasLogs, CausesActivity;
 
     const  GENDER_MALE = 1;
     const  GENDER_FEMALE = 2;
@@ -126,6 +127,24 @@ class Doctor extends Authenticatable implements JWTSubject
     public function papers(): MorphMany
     {
         return $this->MorphMany(Attachment::class, 'model')->where('type', Attachment::DOCTOR_DOCUMENT);
+    }
+
+    /**
+     * Model $this
+     * @return MorphOne
+     */
+    public function logo_image(): MorphOne
+    {
+
+        return $this->morphOne(Attachment::class, 'model')->where('type', Attachment::DOCTOR_Logo);
+    }
+
+
+    /*attributes*/
+
+    public function getLogoAttribute()
+    {
+        return optional($this->logo_image)->file ?? asset('design/images/doctor-logo.png');
     }
 
     /*attributes*/

@@ -47,10 +47,10 @@ class PatientController extends Controller
     {
         $this->authorize('Create ' . $this->roleName);
 
-        $districts = $districtRepo->cursor()->pluck('name', 'id');
+     //   $districts = $districtRepo->cursor()->pluck('name', 'id');
 
         $social_securities = $securityRepo->cursor()->pluck('name', 'id');
-        return view($this->viewPath . 'create', compact('districts', 'social_securities'));
+        return view($this->viewPath . 'create', compact(/*'districts',*/ 'social_securities'));
     }
 
     /**
@@ -78,12 +78,12 @@ class PatientController extends Controller
         $this->authorize('Edit ' . $this->roleName);
 
         $patient = $this->repo->find($id);
-        $districts = $districtRepo->cursor()->pluck('name', 'id');
+       /* $districts = $districtRepo->cursor()->pluck('name', 'id');
         $areas = optional(optional($patient->district)->areas)->pluck('name', 'id') ?? [];
-        $blocks = optional(optional($patient->area)->blocks)->pluck('name', 'id') ?? [];
+        $blocks = optional(optional($patient->area)->blocks)->pluck('name', 'id') ?? [];*/
         $social_securities = $securityRepo->cursor()->pluck('name', 'id');
 
-        return view($this->viewPath . 'edit', compact('patient', 'districts', 'social_securities', 'areas', 'blocks'));
+        return view($this->viewPath . 'edit', compact('patient', /*'districts','areas', 'blocks,*/ 'social_securities'));
     }
 
     /**

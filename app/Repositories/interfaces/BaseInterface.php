@@ -29,7 +29,7 @@ interface BaseInterface extends RepositoryInterface
      * @param string $path
      * @return iterable
      */
-    public function saveFile(UploadedFile $file, string $path = ''): iterable;
+    public function saveFile(UploadedFile $file, string $path = '',$type=null): iterable;
 
     /**
      * @param Request $request

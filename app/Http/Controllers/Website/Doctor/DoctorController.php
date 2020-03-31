@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Website\Doctor;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Reservation\ReservationResource;
 use App\Models\Reservation;
+use App\Repositories\interfaces\AttachmentRepository;
+use App\Repositories\interfaces\CategoryRepository;
 use App\Repositories\interfaces\DoctorRepository;
 use App\Repositories\interfaces\ReservationRepository;
 use App\Rules\CheckPassword;
@@ -38,12 +40,15 @@ class DoctorController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit()
+    public function edit(CategoryRepository $categoryRepository)
     {
 
         $user = auth()->user();
+        $categories = $categoryRepository->all()->pluck('name', 'id');
 
-        return view('website.patient.profile.profile', compact('user'));
+        $sub_categories = $categoryRepository->getSubCategoriesForMainCategory($user->category_id)->pluck('name', 'id');
+        $user->sub_category_ids = $user->sub_categories->pluck('id');
+        return view('website.doctor.profile.profile', compact('user', 'categories', 'sub_categories'));
     }
 
     /**
@@ -63,7 +68,7 @@ class DoctorController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function update(Request $request)
+    public function update(Request $request, AttachmentRepository $attachmentRepo)
     {
         $rules = [
             "first_name_ar" => "nullable|string|max:191",
@@ -95,6 +100,10 @@ class DoctorController extends Controller
         if ($request->image != null) {
             $image_data = $this->repo->saveFile($request->file('image'), 'doctors');
             $doctor->image()->updateOrCreate(['type' => $image_data['type']], $image_data);
+        }
+        if ($request->logo != null) {
+            $logo_data = $this->repo->saveFile($request->file('logo'), 'doctors', $attachmentRepo::getConstants()['DOCTOR_Logo']);
+            $doctor->logo()->updateOrCreate(['type' => $image_data['type']], $logo_data);
         }
 
         toast(__("Updated Successfully"), 'success');

@@ -144,5 +144,8 @@
     <orderEntry type="library" name="polyfill" level="application" />
     <orderEntry type="library" name="fetch" level="application" />
     <orderEntry type="library" name="moment-with-locales" level="application" />
+    <orderEntry type="library" name="bootstrap-datepicker3.standalone" level="application" />
+    <orderEntry type="library" name="bootstrap-datepicker" level="application" />
+    <orderEntry type="library" name="bootstrap-datepicker.ar" level="application" />
   </component>
 </module>

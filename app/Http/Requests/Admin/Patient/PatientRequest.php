@@ -34,9 +34,9 @@ class PatientRequest extends FormRequest
             'civil_id' => 'required|numeric|unique:patients,civil_id,' . $this->patient,
             'social_security_id' => 'nullable|integer|exists:social_securities,id',
             'birthdate' => 'nullable|date|date_format:Y-m-d',
-            'district_id' => 'nullable|integer|exists:districts,id',
-            'area_id' => 'nullable|integer|exists:areas,id',
-            'block_id' => 'nullable|integer|exists:blocks,id',
+//            'district_id' => 'nullable|integer|exists:districts,id',
+//            'area_id' => 'nullable|integer|exists:areas,id',
+//            'block_id' => 'nullable|integer|exists:blocks,id',
             'gender' => 'nullable|integer|min:1|max:2',
         ];
     }

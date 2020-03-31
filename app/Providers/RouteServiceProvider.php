@@ -69,7 +69,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapAdminRoutes(): void
     {
-        Route::prefix('admin')
+        Route::prefix(\LaravelLocalization::setLocale() . '/admin')
             ->middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/web/admin.php'));
@@ -84,7 +84,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapPatientRoutes(): void
     {
-        Route::prefix('patient')
+        Route::prefix(\LaravelLocalization::setLocale() . '/patient')
             ->middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/web/patient.php'));
@@ -99,7 +99,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapDoctorRoutes(): void
     {
-        Route::prefix('doctor')
+        Route::prefix(\LaravelLocalization::setLocale() . '/doctor')
             ->middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/web/doctor.php'));
@@ -114,7 +114,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapPharamacyRepRoutes(): void
     {
-        Route::prefix('pharamacyrep')
+        Route::prefix(\LaravelLocalization::setLocale() . '/pharmacy-rep')
             ->middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/web/pharamacyrep.php'));

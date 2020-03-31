@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['namespace' => 'Website\Doctor'], function () {
+Route::group(['namespace' => 'Website\Doctor', 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
 
     Route::get('/', 'HomeController@index')->name('doctor.dashboard');
 

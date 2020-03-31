@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\patients\PatientResource;
 use App\Repositories\interfaces\PatientRepository;
 use App\Repositories\interfaces\ReservationRepository;
+use App\Repositories\interfaces\SocialSecurityRepository;
 use App\Rules\CheckPassword;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -26,12 +27,13 @@ class PatientController extends Controller
         $this->repo = $repo;
     }
 
-    public function edit()
+    public function edit(SocialSecurityRepository $socialSecurityRepo)
     {
 
         $user = auth()->user();
 
-        return view('website.patient.profile.profile', compact('user'));
+        $social_securities = $socialSecurityRepo->all()->pluck('name', 'id');
+        return view('website.patient.profile.profile', compact('user', 'social_securities'));
     }
 
     public function changePassword()
@@ -51,11 +53,12 @@ class PatientController extends Controller
             [
                 'patient_id' => auth()->id(),
                 'status' => $reservationRepo->getConstants()['STATUS_ACCEPTED'],
-                'date' => [DB::raw('CONCAT(`date`,`from_time`)') , '>=', Carbon::now()]
+                'date' => [DB::raw('CONCAT(`date`,`from_time`)'), '>=', Carbon::now()]
             ]
         );
         return view('website.patient.profile.appointments', compact('user', 'reservations'));
     }
+
     public function myHistory(ReservationRepository $reservationRepo)
     {
 
@@ -64,8 +67,8 @@ class PatientController extends Controller
         $reservations = $reservationRepo->findWhere(
             [
                 'patient_id' => auth()->id(),
-       //         'status' => $reservationRepo->getConstants()['STATUS_ACCEPTED'],
-                'date' => [DB::raw('CONCAT(`date`,`from_time`)') , '<=', Carbon::now()]
+                //         'status' => $reservationRepo->getConstants()['STATUS_ACCEPTED'],
+                'date' => [DB::raw('CONCAT(`date`,`from_time`)'), '<=', Carbon::now()]
             ]
         );
         return view('website.patient.profile.histories', compact('user', 'reservations'));
@@ -89,10 +92,10 @@ class PatientController extends Controller
             'civil_id' => 'nullable|numeric|unique:patients,civil_id,' . auth()->id(),
             'social_security_id' => 'nullable|integer|exists:social_securities,id',
             'birthdate' => 'nullable|date|date_format:Y-m-d',
-            'district_id' => 'nullable|integer|exists:districts,id',
-            'area_id' => 'nullable|integer|exists:areas,id',
+//            'district_id' => 'nullable|integer|exists:districts,id',
+//            'area_id' => 'nullable|integer|exists:areas,id',
             'gender' => 'nullable|integer|min:1|max:2',
-
+            'image' => 'nullable|image',
         ];
 
         \Validator::make($request->all(), $rules)->validate();

@@ -154,7 +154,7 @@
                                     {!! __("Patient Question") !!}</a>
                         </li>
                         @endcan
-                        <li>
+                      {{--  <li>
 
                             <a href="javascript: void(0);" aria-expanded="false">
 
@@ -184,7 +184,7 @@
                                 @endcan
 
                             </ul>
-                        </li>
+                        </li>--}}
                     </ul>
                 </li>
                 <li>

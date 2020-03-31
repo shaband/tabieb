@@ -55,9 +55,10 @@ abstract class BaseRepository extends MainRepository implements BaseInterface
     /**
      * @param UploadedFile $file
      * @param string $path
+     * @param null $type
      * @return iterable
      */
-    public function saveFile(UploadedFile $file, string $path = ''): iterable
+    public function saveFile(UploadedFile $file, string $path = '', $type = null): iterable
     {
 
 
@@ -66,7 +67,7 @@ abstract class BaseRepository extends MainRepository implements BaseInterface
         $data =
             [
                 'file' => 'storage/' . $file->storeAs($path, $name),
-                'type' => Attachment::PROFILE_PICTURE,
+                'type' => $type ?? Attachment::PROFILE_PICTURE ,
                 'ext' => $file->getClientOriginalExtension()
             ];
 

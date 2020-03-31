@@ -94,7 +94,7 @@
     @enderror
 </div>
 
-
+{{--
 <div class="form-group">
     <label for="category_id">{!! __("Select District") !!} </label>
     {!! Form::select('district_id',$districts??[],null,['class'=>'form-control
@@ -131,7 +131,7 @@
         <strong>{{ $message }}</strong>
     </span>
     @enderror
-</div>
+</div>--}}
 
 
 <div class="form-group">
@@ -186,6 +186,7 @@
 </div>
 
 <script>
+/*
     function getAreasOptions(district_id) {
         $.ajax({
             method: 'post',
@@ -215,5 +216,6 @@
             }
         });
     }
+*/
 
 </script>

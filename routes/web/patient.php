@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['namespace' => 'Website\Patient'], function () {
+Route::group(['namespace' => 'Website\Patient', 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
 
     Route::get('/', 'HomeController@index')->name('patient.dashboard');
 
@@ -23,7 +23,6 @@ Route::group(['namespace' => 'Website\Patient'], function () {
     Route::post('email/resend', 'Auth\VerificationController@resend')->name('patient.verification.resend');
     Route::get('email/verify', 'Auth\VerificationController@show')->name('patient.verification.notice');
     Route::get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->name('patient.verification.verify');
-
     Route::middleware(['patient.auth'])->name('patient.')->group(function () {
         Route::get('profile', 'PatientController@edit')->name('profile.edit');
         Route::get('appointments', 'PatientController@myAppointment')->name('profile.appointments');

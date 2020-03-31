@@ -53,7 +53,7 @@ class RoleController extends Controller
     {
         $this->authorize('Create ' . $this->roleName);
 
-        $permissions_groups = $this->permissionRepo->all()->groupBy('group_name');
+        $permissions_groups = $this->permissionRepo->findWhereNotIn('group_name',['Districts','Areas','Blocks'])->groupBy('group_name');
         return view($this->viewPath . 'create', compact('permissions_groups'));
     }
 
@@ -89,7 +89,7 @@ class RoleController extends Controller
 
         $role = $this->repo->find($id);
         $role_permissions = $role->permissions->pluck('id')->toArray();
-        $permissions_groups = $this->permissionRepo->all()->groupBy('group_name');
+        $permissions_groups = $this->permissionRepo->findWhereNotIn('group_name',['Districts','Areas','Blocks'])->groupBy('group_name');
 
 
         return view($this->viewPath . 'edit', compact('role', 'permissions_groups', 'role_permissions'));
