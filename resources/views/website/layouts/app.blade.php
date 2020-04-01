@@ -32,10 +32,11 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
-    <link rel="stylesheet" href="{!! asset('design/wickepicker/wickedpicker.min.css') !!}">
+    <link href="{!! asset('dashboard/dark/assets/libs/bootstrap-timepicker/bootstrap-timepicker.min.css') !!}"
+          rel="stylesheet">
 
-    <script src="{!! asset('design/wickepicker/wickedpicker.min.js')!!}"></script>
 
+    <script src="{!! asset('dashboard/dark/assets/libs/bootstrap-timepicker/bootstrap-timepicker.min.js')!!}"></script>
 
     <script src="{!! asset('dashboard/dark/assets/libs/dropify/dropify.min.js')!!}"></script>
 

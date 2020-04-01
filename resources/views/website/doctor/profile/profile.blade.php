@@ -140,6 +140,19 @@
         </div>
         <div class="col-md-6 col-lg-4">
             <div class="form-group">
+                <label for="">{!! __("period By Minutes") !!}:</label>
+                {!! Form::number('period',null,['class'=>'form-control']) !!}
+
+            </div>
+
+            @error('price')
+            <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+            @enderror
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="form-group">
                 <label for="">{!! __("Price") !!}:</label>
                 {!! Form::number('price',null,['class'=>'form-control']) !!}
 
@@ -237,118 +250,7 @@
     {!! Form::close() !!}
 
     <hr class="my-4">
-    <form class="basic-form form-label-inline">
-        <div class="heading-blk mb-2 mt-2">
-            <h5 class="heading-tit-wz-after font-weight-bold">{{ __('appointments')}} <span
-                    class="text-secondary">time</span><br><img src="{{ asset('design/images/heading-after.png')}}"></h5>
-        </div>
-        <div class="appointment-day-item form-group d-block p-2">
-            <div class="appointment-day-header my-2">
-                <p class="text-primary font-weight-bold text-capitalize m-0">sunday</p>
-                <a class="add-period text-secondary text-capitalize font-reg-sm"><i class="fas fa-plus-circle"></i> add
-                    period</a>
-            </div>
-            <div class="appointment-day-body">
-                <div class="appointment-time-item">
-                    <div class="row">
-                        <div class="col-6">
-                            <div class='form-group'>
-                                <label>from:</label>
-                                <input type="text" class="timepicker form-control"/>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class='form-group'>
-                                <label>to:</label>
-                                <input type="text" class="timepicker form-control"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="appointment-time-item">
-                    <div class="row">
-                        <div class="col-6">
-                            <div class='form-group'>
-                                <label>from:</label>
-                                <input type="text" class="timepicker form-control"/>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class='form-group'>
-                                <label>to:</label>
-                                <input type="text" class="timepicker form-control"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="appointment-day-item form-group d-block p-2">
-            <div class="appointment-day-header my-2">
-                <p class="text-primary font-weight-bold text-capitalize m-0">monday</p>
-                <a class="add-period text-secondary text-capitalize font-reg-sm"><i class="fas fa-plus-circle"></i> add
-                    period</a>
-            </div>
-            <div class="appointment-day-body">
-                <!-- Append Times Here -->
-            </div>
-        </div>
-        <div class="appointment-day-item form-group d-block p-2">
-            <div class="appointment-day-header my-2">
-                <p class="text-primary font-weight-bold text-capitalize m-0">tuesday</p>
-                <a class="add-period text-secondary text-capitalize font-reg-sm"><i class="fas fa-plus-circle"></i> add
-                    period</a>
-            </div>
-            <div class="appointment-day-body">
-                <!-- Append Times Here -->
-            </div>
-        </div>
-        <div class="appointment-day-item form-group d-block p-2">
-            <div class="appointment-day-header my-2">
-                <p class="text-primary font-weight-bold text-capitalize m-0">wednesday</p>
-                <a class="add-period text-secondary text-capitalize font-reg-sm"><i class="fas fa-plus-circle"></i> add
-                    period</a>
-            </div>
-            <div class="appointment-day-body">
-                <!-- Append Times Here -->
-            </div>
-        </div>
-        <div class="appointment-day-item form-group d-block p-2">
-            <div class="appointment-day-header my-2">
-                <p class="text-primary font-weight-bold text-capitalize m-0">thursday</p>
-                <a class="add-period text-secondary text-capitalize font-reg-sm"><i class="fas fa-plus-circle"></i> add
-                    period</a>
-            </div>
-            <div class="appointment-day-body">
-                <!-- Append Times Here -->
-            </div>
-        </div>
-        <div class="appointment-day-item form-group d-block p-2">
-            <div class="appointment-day-header my-2">
-                <p class="text-primary font-weight-bold text-capitalize m-0">friday</p>
-                <a class="add-period text-secondary text-capitalize font-reg-sm"><i class="fas fa-plus-circle"></i> add
-                    period</a>
-            </div>
-            <div class="appointment-day-body">
-                <!-- Append Times Here -->
-            </div>
-        </div>
-        <div class="appointment-day-item form-group d-block p-2">
-            <div class="appointment-day-header my-2">
-                <p class="text-primary font-weight-bold text-capitalize m-0">saturday</p>
-                <a class="add-period text-secondary text-capitalize font-reg-sm"><i class="fas fa-plus-circle"></i> add
-                    period</a>
-            </div>
-            <div class="appointment-day-body">
-                <!-- Append Times Here -->
-            </div>
-        </div>
-
-        <div>
-            <button class="btn btn-thirdly text-capitalize btn-sm">save changes</button>
-        </div>
-    </form>
-
+    @include('website.doctor.profile.schedules._table')
 @endsection
 @push('scripts')
     <script>

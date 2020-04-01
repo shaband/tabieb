@@ -7,10 +7,11 @@ use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Schedule extends Model
 {
-    use  ModelHasLogs;
+    use  ModelHasLogs, SoftDeletes;
     const DAY_SAT = 1;
     const DAY_SUN = 2;
     const DAY_MON = 3;
@@ -39,11 +40,14 @@ class Schedule extends Model
 
     public function setFromTimeAttribute($value): void
     {
+        $value = str_replace(" : ", ":", $value);
         $this->attributes['from_time'] = Carbon::parse($value);
     }
 
     public function setToTimeAttribute($value): void
     {
+        $value = str_replace(" : ", ":", $value);
+
         $this->attributes['to_time'] = Carbon::parse($value);
     }
 

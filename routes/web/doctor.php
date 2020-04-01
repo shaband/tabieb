@@ -29,6 +29,7 @@ Route::group(['namespace' => 'Website\Doctor', 'middleware' => ['localeSessionRe
 
         Route::get('change-password', 'DoctorController@changePassword')->name('profile.change-password');
         Route::match(['put', 'patch', 'post'], 'profile', 'DoctorController@update')->name('profile.update');
+        Route::post('schedules', 'DoctorController@storeSchedule')->name('profile.schedules');
 
         Route::get('appointments', 'ReservationController@myAppointment')->name('profile.appointments');
         Route::get('requests', 'ReservationController@myRequests')->name('profile.requests');

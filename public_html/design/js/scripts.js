@@ -169,7 +169,7 @@ $(document).ready(function () {
         }
     });
 
-    $('.timepicker').wickedpicker();
+    $('.timepicker').timepicker();
     $('.datepicker').datepicker({
         language: document.documentElement.lang,
         rtl: document.documentElement.lang === 'ar'
