@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="{!! asset('design/css/jquery-ui.css')!!}">
     <link rel="stylesheet" href="{!! asset('design/css/owl.carousel.min.css')!!}">
     <link href="{!! asset('dashboard/dark/assets/libs/dropify/dropify.min.css')!!}" rel="stylesheet" type="text/css"/>
+    <link href="{!! asset('dashboard/dark/assets/css/icons.min.css') !!}" rel="stylesheet" type="text/css"/>
+
     <link rel="stylesheet" href="{!! asset('design/css/styles.css')!!}">
     @if(app()->getLocale()=='ar')
         <link rel="stylesheet" href="{!! asset('design/css/styles-ar.css')!!}">

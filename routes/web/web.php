@@ -27,6 +27,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     Route::view('/policy', 'website.policy')->name('policy');
     Route::view('/contact', 'website.contact')->name('contact.show');
     Route::post('/contact', 'ContactController@send')->name('contact.send');
+    Route::get('/appointment/search', 'ReservationController@search')->name('reservation.search');
 
 });
 Route::get('/test', 'HomeController@test');

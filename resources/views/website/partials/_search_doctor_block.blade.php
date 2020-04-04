@@ -1,0 +1,153 @@
+<div class="doc-item doc-full-dets" data-aos="fade-in">
+    <div class="row">
+        <div class="col-md-4 col-lg-2">
+            <div class="doc-img">
+                <img src="{!! $doctor->img !!}">
+            </div>
+        </div>
+        <div class="col-md-8 col-lg-6">
+            <div class="doc-dets">
+                <h6 class="doc-n">{!! $doctor->name !!}
+                    @if($doctor->is_active)
+                        <span
+                            class="doc-status active"> {{ __('online now')}}</span>
+                    @endif
+                </h6>
+                <div class="doc-s">
+                    {!! $doctor->title !!}
+                </div>
+                <div class="doc-rating">
+                    @for($i=1;$i<=5;$i++)
+                        <i class="fas fa-star @if ($doctor->ratings->avg('rate')>=$i) active @endif"></i>
+                    @endfor
+                </div>
+                <div class="doc-plus-dets">
+                    <div class="doc-price">
+                        <ins>{!! $doctor->price !!} {{ __('sr/h')}}</ins>
+                        {{--                                                <del>120 sr/h</del>--}}
+                    </div>
+                    <div class="doc-badges">
+                        @foreach($doctor->sub_categories as $sub_category)
+                            <span class="badge">{!! $sub_category->name !!}</span>
+                        @endforeach
+                    </div>
+                    <div class="doc-desc">
+                        {!! substr($doctor->description,0,49) !!}
+                        <a href="#" class="link-secondary">
+                            {{ __('read more')}}
+                        </a>
+                    </div>
+                </div>
+                <div class="doc-extra-dets">
+                    <div><img
+                            src="{{url('design/images/icons/time-date.png')}}"> {{ __('available')}}
+                        on: 23 sep
+                    </div>
+                    <div><img src="{{url('design/images/icons/clock.png')}}"> {{ __('from')}}:
+                        12:45 to: 5:50
+                    </div>
+                </div>
+                <div class="doc-controls">
+                    <a href="#" class="doc-book-btn btn btn-secondary btn-sm"><img
+                            src="{{ url('design/images/icons/phone-White.png')}}">{{ __('quick call')}}
+                    </a>
+                    <a href="#" class="doc-book-btn btn btn-thirdly btn-sm"><img
+                            src="{{ url('design/images/icons/tag.png')}}"> {{ __('book now')}}</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 align-self-center">
+            <div class="doc-aval-times">
+                <div class="owl-carousel">
+                    <div class="item">
+                        <div class="single-day">
+                            <div class="single-day-date">sat - 23 sep</div>
+                            <div class="single-day-times">
+                                <div class="single-time active"><span>10: 00 am</span></div>
+                                <div class="single-time disabled"><span>10: 00 am</span></div>
+                                <div class="single-time"><span>10: 00 am</span></div>
+                                <div class="single-time"><span>10: 00 am</span></div>
+                                <div class="single-time disabled"><span>10: 00 am</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="single-day">
+                            <div class="single-day-date">sat - 23 sep</div>
+                            <div class="single-day-times">
+                                <div class="single-time"><span>10: 00 am</span></div>
+                                <div class="single-time"><span>10: 00 am</span></div>
+                                <div class="single-time"><span>10: 00 am</span></div>
+                                <div class="single-time"><span>10: 00 am</span></div>
+                                <div class="single-time"><span>10: 00 am</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="single-day">
+                            <div class="single-day-date">sat - 23 sep</div>
+                            <div class="single-day-times">
+                                <div class="single-time"><span>10: 00 am</span></div>
+                                <div class="single-time"><span>10: 00 am</span></div>
+                                <div class="single-time"><span>10: 00 am</span></div>
+                                <div class="single-time"><span>10: 00 am</span></div>
+                                <div class="single-time"><span>10: 00 am</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="single-day">
+                            <div class="single-day-date">sat - 23 sep</div>
+                            <div class="single-day-times">
+                                <div class="single-time"><span>10: 00 am</span></div>
+                                <div class="single-time"><span>10: 00 am</span></div>
+                                <div class="single-time"><span>10: 00 am</span></div>
+                                <div class="single-time"><span>10: 00 am</span></div>
+                                <div class="single-time"><span>10: 00 am</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="single-day">
+                            <div class="single-day-date">sat - 23 sep</div>
+                            <div class="single-day-times">
+                                <div class="single-time active"><span>10: 00 am</span></div>
+                                <div class="single-time"><span>10: 00 am</span></div>
+                                <div class="single-time"><span>10: 00 am</span></div>
+                                <div class="single-time"><span>10: 00 am</span></div>
+                                <div class="single-time"><span>10: 00 am</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="single-day">
+                            <div class="single-day-date">sat - 23 sep</div>
+                            <div class="single-day-times">
+                                <div class="single-time"><span>10: 00 am</span></div>
+                                <div class="single-time"><span>10: 00 am</span></div>
+                                <div class="single-time"><span>10: 00 am</span></div>
+                                <div class="single-time"><span>10: 00 am</span></div>
+                                <div class="single-time"><span>10: 00 am</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="single-day">
+                            <div class="single-day-date">sat - 23 sep</div>
+                            <div class="single-day-times">
+                                <div class="single-time"><span>10: 00 am</span></div>
+                                <div class="single-time"><span>10: 00 am</span></div>
+                                <div class="single-time"><span>10: 00 am</span></div>
+                                <div class="single-time"><span>10: 00 am</span></div>
+                                <div class="single-time"><span>10: 00 am</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>

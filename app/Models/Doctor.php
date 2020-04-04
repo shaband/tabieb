@@ -28,6 +28,8 @@ class Doctor extends Authenticatable implements JWTSubject
     const  GENDER_FEMALE = 2;
     protected $table = 'doctors';
     public $timestamps = true;
+    const  KEYWORDS = ['first_name_en', 'last_name_en', 'last_name_ar', 'first_name_ar',
+        'title_ar', 'title_en'];
     protected $fillable = array('first_name_en', 'last_name_en', 'last_name_ar', 'first_name_ar', 'description_ar', 'description_en', 'title_ar', 'title_en', 'email', 'password', 'phone', 'category_id', 'price', 'period', 'last_login', 'email_verified_at', 'phone_verified_at', 'civil_id', 'verification_code', 'remember_token', 'gender', 'blocked_at', 'blocked_reason',);
 
 
@@ -139,6 +141,11 @@ class Doctor extends Authenticatable implements JWTSubject
         return $this->morphOne(Attachment::class, 'model')->where('type', Attachment::DOCTOR_Logo);
     }
 
+    public function fcm_tokens()
+    {
+        return $this->morphMany(Device::class, 'model')->where('device_type', Device::TOKEN_TYPE_FCM);
+    }
+
 
     /*attributes*/
 
@@ -146,8 +153,6 @@ class Doctor extends Authenticatable implements JWTSubject
     {
         return optional($this->logo_image)->file ?? asset('design/images/doctor-logo.png');
     }
-
-    /*attributes*/
 
     public function getNameAttribute()
     {
@@ -174,10 +179,48 @@ class Doctor extends Authenticatable implements JWTSubject
     }
 
 
-    public function fcm_tokens()
+    public function scopeOfKeyWord(Builder $query, $value): void
     {
-        return $this->morphMany(Device::class, 'model')->where('device_type', Device::TOKEN_TYPE_FCM);
+
+        $query->when($value != null, function (Builder $builder) use ($value) {
+            $builder->where(function ($builder) use ($value) {
+                foreach (static::KEYWORDS as $keyword) {
+                    $builder->orWhere($keyword, 'like', "%$value%");
+                }
+            });
+        });
+
+
     }
+
+    public function scopeOfCategory(Builder $query, $value): void
+    {
+        $query->when($value != null, function (Builder $builder) use ($value) {
+            $builder->Where('category_id', $value);
+            $builder->orWhereHas('sub_categories', function (Builder $q) use ($value) {
+                $q->where('id', $value);
+            });
+        });
+    }
+
+    public function scopeOfBetweenTime(Builder $query, $from = null, $to = null): void
+    {
+        $query->when($from != null, function (Builder $builder) use ($from) {
+            $builder->WhereHas('schedules', function (Builder $q) use ($from) {
+                $q->where('from_time', '<=', $from);
+                $q->where('to_time', '>=', $from);
+            });
+
+        });
+        $query->when($to != null, function (Builder $builder) use ($to) {
+            $builder->WhereHas('schedules', function (Builder $q) use ($to) {
+                $q->where('to_time', '<=', $to);
+                $q->where('to_time', '>=', $to);
+            });
+        });
+    }
+
+
 }
 
 

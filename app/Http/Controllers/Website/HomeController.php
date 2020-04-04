@@ -28,13 +28,19 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $categories = $this->category_repo->getMainCategory()->keyBy('id');
 
-        $doctors = $this->doctor_repo->makeModel()->where('blocked_at', null)->limit(4)->get()->sortBy(function (Doctor $doctor) {
-            return $doctor->reservation()->count();
+
+        $doctors = $this->doctor_repo->makeModel()->withCount('reservation')->with('ratings:rate', 'image:file')->where('blocked_at', null)->limit(4)->get()->sortBy(function (Doctor $doctor) {
+            return $doctor->reservation_count;
         });
 
-        $categories =$this->category_repo->getMainCategory()->pluck('name', 'id');
+        $doctors->each(function ($doctor) use ($categories) {
 
-        return view('website.index', compact('doctors','categories'));
+            $doctor->setRelation('category', $categories[$doctor->category_id]);
+        });
+
+
+        return view('website.index', compact('doctors', 'categories'));
     }
 }

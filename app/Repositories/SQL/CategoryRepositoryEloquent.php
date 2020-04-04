@@ -57,4 +57,10 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
 
     }
 
+    public function OpenCategoriesList()
+    {
+        return $this->findByField('blocked_at', null, ['id', 'name_ar', 'name_en'])->pluck('name', 'id');
+    }
+
+
 }

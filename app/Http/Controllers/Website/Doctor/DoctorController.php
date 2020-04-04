@@ -49,12 +49,14 @@ class DoctorController extends Controller
     {
 
         $user = auth()->user();
-        $categories = $categoryRepository->all()->pluck('name', 'id');
+        $categories = $categoryRepository->getMainCategory()->pluck('name', 'id');
 
         $schedules = $scheduleRepo->DoctorScheduleGroupedByDay($user->id);
 
         $sub_categories = $categoryRepository->getSubCategoriesForMainCategory($user->category_id)->pluck('name', 'id');
+
         $user->sub_category_ids = $user->sub_categories->pluck('id');
+
         return view('website.doctor.profile.profile', compact('user', 'categories', 'sub_categories', 'schedules'));
     }
 

@@ -15,53 +15,7 @@
                     <h5 class="font-weight-bold" data-delay="1500" data-aos="fade-in">
                         {!! __("have a video/voice call") !!} </h5>
                 </div>
-                <div class="intro-search" data-delay="2000" data-aos="fade-up">
-                    <form class="form-secondary">
-                        <div class="row align-items-end justify-content-center">
-                            <div class="col-sm-6 col-md-3 col-lg">
-                                <div class="form-group">
-                                    <label for="">{!! __("search by name") !!}</label>
-                                    <input type="text" class="form-control" name="doctor_name"
-                                           placeholder="search by name">
-                                    <i class="fas fa-search"></i>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-3 col-lg">
-                                <div class="form-group">
-                                    <label for="">{!!  __("select specialities") !!}</label>
-                                    <select class="form-control bootstrap-select" name="category_id">
-                                        @foreach($categories as $key=>$category)
-                                            <option value="{!! $key !!}">{!! $category !!}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-3 col-lg">
-                                <div class="form-group">
-                                    <label for="">{{ __('available time from')}}</label>
-                                    <input type="time" name="from_time" class="form-control " placeholder="pick time">
-                                    <i class="fas fa-calendar-alt"></i>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-3 col-lg">
-                                <div class="form-group">
-                                    <label for="">{{ __('available time to')}}</label>
-                                    <input type="time" name="to_time" class="form-control " placeholder="pick time">
-                                    <i class="fas fa-calendar-alt"></i>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-3 col-lg">
-                                <div class="search-confirm">
-                                    <button type="button"
-                                            class="btn bg-primary-gradient-x text-white w-100">{{ __('Search now')}}
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-
-                </div>
-            </div>
+                @include('website.partials._search_form')            </div>
         </div>
     </section>
     <!-- END Home Page Intro -->
@@ -139,7 +93,7 @@
             <div>
                 <div class="container">
                     <div class="row align-items-center">
-                     @include('website.partials._info_section')
+                        @include('website.partials._info_section')
                     </div>
                 </div>
             </div>
@@ -220,8 +174,10 @@
                             {!! substr($settings['download_description_'.app()->getLocale()],0,732)  !!}
                         </p>
                         <div class="apps-blk" data-aos="fade-in">
-                            <a href="{!! $settings['andriod_link'] !!}"><img src="{!! asset('design') !!}/images/btn-apple.png" alt=""></a>
-                            <a href="{!! $settings['ios_link'] !!}"><img src="{!! asset('design') !!}/images/btn-google.png" alt=""></a>
+                            <a href="{!! $settings['andriod_link'] !!}"><img
+                                    src="{!! asset('design') !!}/images/btn-apple.png" alt=""></a>
+                            <a href="{!! $settings['ios_link'] !!}"><img
+                                    src="{!! asset('design') !!}/images/btn-google.png" alt=""></a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-4 app-img">
