@@ -24,7 +24,7 @@ $factory->define(\App\Models\Reservation::class, function (Faker $faker) {
         'communication_type' => $faker->numberBetween(1, 3),
         'status_changed_at' => $date->addDays($faker->numberBetween(1, 30)),
         'status' => $faker->numberBetween(1, 5),
-        'description' => $faker->text(16383),
+        'description' => $faker->sentence(),
         'created_at' => $faker->dateTime,
         'updated_at' => $faker->dateTime,
     ];

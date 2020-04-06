@@ -18,11 +18,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Activitylog\Traits\CausesActivity;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use \HighIdeas\UsersOnline\Traits\UsersOnlineTrait;
 
 
 class Doctor extends Authenticatable implements JWTSubject
 {
-    use Notifiable, ColumnTranslation, ModelHasImage, HashPassword, ModelHasLogs, CausesActivity;
+    use Notifiable, ColumnTranslation, ModelHasImage, HashPassword, ModelHasLogs, CausesActivity,UsersOnlineTrait;
 
     const  GENDER_MALE = 1;
     const  GENDER_FEMALE = 2;

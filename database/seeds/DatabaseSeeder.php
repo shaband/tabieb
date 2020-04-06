@@ -16,5 +16,15 @@ class DatabaseSeeder extends Seeder
         $this->call(SettingsSeeder::class);
         $this->call(PermissionSeeder::class);
         $this->call(HomePageSettingsSeeder::class);
+        $this->call(SocialSecuritiesTableSeeder::class);
+        $this->call(CategoriesTableSeeder::class);
+        $this->call(DoctorsTableSeeder::class);
+        $this->call(PatientsTableSeeder::class);
+        $this->call(SchedulesTableSeeder::class);
+        $this->call(ReservationsTableSeeder::class);
+        $this->call(RatingsTableSeeder::class);
+        $this->call(PatientQuestionsTableSeeder::class);
+        $this->call(PatientAnswersTableSeeder::class);
+        $this->call(DoctorCategoryTableSeeder::class);
     }
 }

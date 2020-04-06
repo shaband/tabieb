@@ -16,7 +16,7 @@ $have_questions=PatientAnswer::where('patient_id',$patient_id)->pluck('question_
     return [
         'patient_id' =>$patient_id,
         'question_id' => PatientQuestion::whereNotIn('id',$have_questions)->inRandomOrder()->first()->id,
-        'answer' => $faker->text(16383),
+        'answer' => $faker->sentence(),
         'status' => $faker->boolean(),
         'created_at' => $faker->dateTime,
         'updated_at' => $faker->dateTime,

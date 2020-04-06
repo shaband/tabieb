@@ -13,7 +13,7 @@ $reservation=    Reservation::whereDoesntHave('rating')->inRandomOrder()->first(
         'doctor_id' => $reservation->doctor_id,
         'patient_id' => $reservation->patient_id,
         'rate' => $faker->numberBetween(1,5),
-        'description' => $faker->text(16383),
+        'description' => $faker->sentence(),
         'created_at' => $faker->dateTime,
         'updated_at' => $faker->dateTime,
     ];

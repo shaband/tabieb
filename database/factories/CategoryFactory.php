@@ -7,12 +7,13 @@ use Faker\Generator as Faker;
 
 $factory->define(\App\Models\Category::class, function (Faker $faker) {
     return [
-       // 'category_id' => Category::inRandomOrder()->first()->id,
-        'name_ar' => $faker->text(63),
-        'name_en' => $faker->text(63),
-        'description_ar' => $faker->text(16383),
-        'description_en' => $faker->text(16383),
-        'blocked_at' => $faker->dateTime,
+        // 'category_id' => Category::inRandomOrder()->first()->id,
+        'name_ar' => $faker->name(),
+        'name_en' => $faker->name(),
+        'description_ar' => $faker->text(12),
+        'description_en' => $faker->text(12),
+        'category_id' => optional(Category::where('category_id', null)->where('blocked_at', null)->inRandomOrder()->first())->id,
+        //  'blocked_at' => $faker->dateTime,
         'created_at' => $faker->dateTime,
         'updated_at' => $faker->dateTime,
     ];
