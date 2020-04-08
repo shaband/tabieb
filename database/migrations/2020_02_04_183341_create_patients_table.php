@@ -21,7 +21,7 @@ class CreatePatientsTable extends Migration
             $table->timestamp('blocked_at')->nullable();
             $table->longText('blocked_reason')->nullable();
             $table->date('birthdate')->nullable();
-            $table->date('social_security_at')->nullable();
+            $table->date('social_security_expired_at')->nullable();
             $table->bigInteger('district_id')->unsigned()->nullable()->index();
             $table->bigInteger('area_id')->unsigned()->nullable()->index();
             $table->bigInteger('block_id')->unsigned()->nullable()->index();

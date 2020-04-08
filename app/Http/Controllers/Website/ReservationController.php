@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Website;
 
 use App\Criteria\DoctorSearchCriteriaCriteria;
 use App\Http\Controllers\Controller;
-use App\Models\Schedule;
+
 use App\Repositories\interfaces\CategoryRepository;
 use App\Repositories\interfaces\DoctorRepository;
 use App\Repositories\interfaces\ReservationRepository;
@@ -48,10 +48,9 @@ class ReservationController extends Controller
 
         $doctors->each(function ($doctor) use ($categories, $categoryRepo) {
             $doctor->setRelation('category', $categories['category_id'] ?? $categoryRepo->makeModel());
-
         });
+
 
         return view('website.search', compact('categories', 'doctors'));
     }
-
 }

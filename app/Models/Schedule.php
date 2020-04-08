@@ -38,6 +38,44 @@ class Schedule extends Model
         return $this->hasMany('App\Models\Reservation');
     }
 
+
+    /* attributes */
+
+    public function getReservationTimesAttribute()
+    {
+
+
+        $schedule_day = $this->day;
+        $today = CarbonImmutable::now()->dayOfWeek + 1;
+
+        if ($today > $schedule_day) {
+            $schedule_day += 6;
+        }
+        $date =  CarbonImmutable::now()->addDays($schedule_day - $today);
+        $period = optional($this->doctor)->period ?? 30;
+        $anchor = CarbonImmutable::parse($this->from_time);
+        $to = Carbon::parse($this->to_time);
+        $times = [];
+
+        while ($anchor->isBefore($to)) {
+            $end =   $anchor->addMinutes($period);
+            if ($end->isAfter($to)) {
+                $end = $to;
+            }
+
+            $has_reservation = $this->reservations()->where('status', Reservation::STATUS_ACCEPTED)->whereDate('date', $date)->whereTime('from_time', '<=', $anchor)->whereTime('to_time', '>=', $end)->count();
+
+            $schedule_period = [
+                'start' => $anchor,
+                'end' => $end,
+                'has_reservation' => $has_reservation
+            ];
+            $times[] = $schedule_period;
+            $anchor = $end;
+        }
+
+        return $times;
+    }
     public function setFromTimeAttribute($value): void
     {
         $value = str_replace(" : ", ":", $value);
@@ -55,6 +93,5 @@ class Schedule extends Model
     {
         $builder->whereTime('from_time', '<=', $value);
         $builder->whereTime('to_time', '>=', $value);
-
     }
 }

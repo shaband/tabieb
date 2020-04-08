@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
         $this->call(SettingsSeeder::class);
         $this->call(PermissionSeeder::class);
         $this->call(HomePageSettingsSeeder::class);
+        $this->call(InsertDataSeeder::class)
+        /* 
         $this->call(SocialSecuritiesTableSeeder::class);
         $this->call(CategoriesTableSeeder::class);
         $this->call(DoctorsTableSeeder::class);
@@ -25,6 +27,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RatingsTableSeeder::class);
         $this->call(PatientQuestionsTableSeeder::class);
         $this->call(PatientAnswersTableSeeder::class);
-        $this->call(DoctorCategoryTableSeeder::class);
+        $this->call(DoctorCategoryTableSeeder::class); */
     }
 }

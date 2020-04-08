@@ -12,12 +12,12 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('categories')->delete();
-        
+
         \DB::table('categories')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'name_ar' => 'Selma Sosa',
@@ -29,7 +29,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-02-05 21:11:06',
                 'updated_at' => '2020-02-05 21:11:06',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'name_ar' => 'Cyrus Owen',
@@ -41,7 +41,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-02-05 21:22:54',
                 'updated_at' => '2020-02-05 21:22:54',
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'name_ar' => 'Aliquam dolorem ut nam eius qui.',
@@ -53,7 +53,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-02-11 20:09:15',
                 'updated_at' => '2020-02-11 20:09:15',
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
                 'name_ar' => 'Quis similique mollitia voluptatibus. Nihil ut in laborum.',
@@ -65,7 +65,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2019-07-11 10:32:59',
                 'updated_at' => '1979-02-12 21:49:24',
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 5,
                 'name_ar' => 'Sint veniam sit sed odit sed.',
@@ -77,7 +77,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1989-06-18 15:35:36',
                 'updated_at' => '1975-01-21 15:19:09',
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 6,
                 'name_ar' => 'Earum sed eum cum.',
@@ -89,7 +89,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1984-09-11 07:09:23',
                 'updated_at' => '2016-09-27 00:11:29',
             ),
-            6 => 
+            6 =>
             array (
                 'id' => 7,
                 'name_ar' => 'Eum soluta voluptatem a voluptatem.',
@@ -101,7 +101,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1974-06-04 13:02:18',
                 'updated_at' => '1995-12-13 14:05:56',
             ),
-            7 => 
+            7 =>
             array (
                 'id' => 8,
                 'name_ar' => 'Cupiditate enim dolorem velit commodi.',
@@ -113,7 +113,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1981-11-29 09:45:00',
                 'updated_at' => '1976-06-08 05:57:14',
             ),
-            8 => 
+            8 =>
             array (
                 'id' => 9,
                 'name_ar' => 'Error voluptatem ab suscipit est voluptatem.',
@@ -125,7 +125,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1972-07-03 07:03:16',
                 'updated_at' => '1976-06-12 20:18:40',
             ),
-            9 => 
+            9 =>
             array (
                 'id' => 10,
                 'name_ar' => 'Harum amet voluptas voluptatem incidunt eum quis.',
@@ -137,7 +137,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1983-06-13 11:05:11',
                 'updated_at' => '2013-11-16 01:36:10',
             ),
-            10 => 
+            10 =>
             array (
                 'id' => 11,
                 'name_ar' => 'Dignissimos provident accusamus eum quisquam.',
@@ -149,7 +149,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1973-02-06 06:51:34',
                 'updated_at' => '1971-09-13 13:18:48',
             ),
-            11 => 
+            11 =>
             array (
                 'id' => 12,
                 'name_ar' => 'Velit molestiae a laboriosam et ut aut quam.',
@@ -161,7 +161,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2019-12-02 02:34:52',
                 'updated_at' => '1997-01-31 12:56:15',
             ),
-            12 => 
+            12 =>
             array (
                 'id' => 13,
                 'name_ar' => 'Eligendi necessitatibus ea ratione optio qui sunt.',
@@ -173,7 +173,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1985-12-16 22:16:02',
                 'updated_at' => '2013-03-25 14:57:04',
             ),
-            13 => 
+            13 =>
             array (
                 'id' => 14,
                 'name_ar' => 'Neque quis excepturi cumque in in.',
@@ -185,7 +185,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2009-03-30 12:41:14',
                 'updated_at' => '1972-10-08 00:19:30',
             ),
-            14 => 
+            14 =>
             array (
                 'id' => 15,
                 'name_ar' => 'Vel rerum voluptas minima neque temporibus.',
@@ -197,7 +197,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1981-04-10 05:01:47',
                 'updated_at' => '2013-11-29 05:37:58',
             ),
-            15 => 
+            15 =>
             array (
                 'id' => 16,
                 'name_ar' => 'Nemo molestiae autem id a voluptas. Qui tempore et odit quia.',
@@ -209,7 +209,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2019-02-27 23:49:11',
                 'updated_at' => '1998-11-27 10:07:23',
             ),
-            16 => 
+            16 =>
             array (
                 'id' => 17,
                 'name_ar' => 'Possimus cupiditate est et velit dolorum omnis.',
@@ -221,7 +221,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1997-08-20 05:58:39',
                 'updated_at' => '2016-09-19 18:43:03',
             ),
-            17 => 
+            17 =>
             array (
                 'id' => 18,
                 'name_ar' => 'Facilis quaerat qui qui vero commodi quas sint.',
@@ -233,7 +233,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1998-05-15 22:54:48',
                 'updated_at' => '2017-06-25 18:28:48',
             ),
-            18 => 
+            18 =>
             array (
                 'id' => 19,
                 'name_ar' => 'Quo sunt consectetur dolores reprehenderit et assumenda eum.',
@@ -245,7 +245,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1980-04-04 01:02:31',
                 'updated_at' => '2002-03-22 01:29:16',
             ),
-            19 => 
+            19 =>
             array (
                 'id' => 20,
                 'name_ar' => 'Ut ut magnam facilis totam natus.',
@@ -257,7 +257,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1984-04-21 12:52:06',
                 'updated_at' => '2000-01-30 02:12:44',
             ),
-            20 => 
+            20 =>
             array (
                 'id' => 21,
                 'name_ar' => 'Vel ipsum quia expedita vero.',
@@ -269,7 +269,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1975-06-29 11:57:11',
                 'updated_at' => '1975-08-26 12:33:26',
             ),
-            21 => 
+            21 =>
             array (
                 'id' => 22,
                 'name_ar' => 'Officia est blanditiis provident quia corrupti assumenda.',
@@ -281,7 +281,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1989-07-16 18:28:10',
                 'updated_at' => '2018-07-18 04:21:22',
             ),
-            22 => 
+            22 =>
             array (
                 'id' => 23,
                 'name_ar' => 'Consectetur sit reiciendis minima similique neque omnis.',
@@ -293,7 +293,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2008-02-12 06:28:14',
                 'updated_at' => '1988-08-18 15:34:53',
             ),
-            23 => 
+            23 =>
             array (
                 'id' => 24,
                 'name_ar' => 'Eos commodi temporibus sunt qui consequatur hic ipsa ipsam.',
@@ -305,7 +305,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1997-08-14 03:53:40',
                 'updated_at' => '1974-08-18 14:47:17',
             ),
-            24 => 
+            24 =>
             array (
                 'id' => 25,
                 'name_ar' => 'Iste vel sequi dolorem. Alias ducimus dicta quod quo ut.',
@@ -317,7 +317,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1988-12-24 12:09:29',
                 'updated_at' => '2002-03-25 07:20:09',
             ),
-            25 => 
+            25 =>
             array (
                 'id' => 26,
                 'name_ar' => 'Et et esse reiciendis optio esse.',
@@ -329,7 +329,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1994-12-27 04:37:39',
                 'updated_at' => '2008-02-21 11:14:59',
             ),
-            26 => 
+            26 =>
             array (
                 'id' => 27,
                 'name_ar' => 'Porro suscipit quae earum. Et sit rerum et beatae et.',
@@ -341,7 +341,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2008-03-15 13:19:25',
                 'updated_at' => '2009-03-23 03:56:19',
             ),
-            27 => 
+            27 =>
             array (
                 'id' => 28,
                 'name_ar' => 'Quasi nisi qui ratione.',
@@ -353,7 +353,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2009-07-26 05:40:04',
                 'updated_at' => '1984-11-16 11:32:20',
             ),
-            28 => 
+            28 =>
             array (
                 'id' => 29,
                 'name_ar' => 'Magni ducimus voluptas non dolorem deserunt rerum iste.',
@@ -365,7 +365,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1983-12-16 23:36:25',
                 'updated_at' => '1994-03-16 09:43:20',
             ),
-            29 => 
+            29 =>
             array (
                 'id' => 30,
                 'name_ar' => 'Qui ipsum voluptatibus eum at.',
@@ -377,7 +377,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2012-05-21 07:07:25',
                 'updated_at' => '1977-02-07 16:58:13',
             ),
-            30 => 
+            30 =>
             array (
                 'id' => 31,
                 'name_ar' => 'Numquam velit qui earum molestias voluptatum consequatur.',
@@ -389,7 +389,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2003-10-31 16:42:13',
                 'updated_at' => '2015-11-07 00:43:54',
             ),
-            31 => 
+            31 =>
             array (
                 'id' => 32,
                 'name_ar' => 'Similique nihil est ut. Nam minima praesentium ipsam.',
@@ -401,7 +401,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2014-12-13 06:16:42',
                 'updated_at' => '2011-08-02 10:18:56',
             ),
-            32 => 
+            32 =>
             array (
                 'id' => 33,
                 'name_ar' => 'Fugiat qui deleniti nesciunt eligendi ea nostrum.',
@@ -413,7 +413,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2017-08-02 00:47:49',
                 'updated_at' => '1980-01-25 14:30:01',
             ),
-            33 => 
+            33 =>
             array (
                 'id' => 34,
                 'name_ar' => 'Iste nesciunt est vero error quo culpa.',
@@ -425,7 +425,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1980-06-05 03:52:17',
                 'updated_at' => '1973-07-14 13:56:30',
             ),
-            34 => 
+            34 =>
             array (
                 'id' => 35,
                 'name_ar' => 'Voluptate provident amet voluptate eaque.',
@@ -437,7 +437,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2016-08-25 23:29:08',
                 'updated_at' => '1997-04-18 23:00:22',
             ),
-            35 => 
+            35 =>
             array (
                 'id' => 36,
                 'name_ar' => 'Amet perferendis et fuga voluptatem.',
@@ -449,7 +449,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2002-06-21 16:58:42',
                 'updated_at' => '2006-09-29 07:17:20',
             ),
-            36 => 
+            36 =>
             array (
                 'id' => 37,
                 'name_ar' => 'Qui dolor qui voluptatum sunt.',
@@ -461,7 +461,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2018-07-09 06:47:32',
                 'updated_at' => '1977-03-02 20:09:13',
             ),
-            37 => 
+            37 =>
             array (
                 'id' => 38,
                 'name_ar' => 'Incidunt recusandae voluptate sed repudiandae non est.',
@@ -473,7 +473,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1998-03-04 21:48:21',
                 'updated_at' => '2002-09-13 20:09:10',
             ),
-            38 => 
+            38 =>
             array (
                 'id' => 39,
                 'name_ar' => 'Molestias facilis unde aperiam occaecati.',
@@ -485,7 +485,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1986-12-12 22:53:00',
                 'updated_at' => '1994-05-20 18:27:27',
             ),
-            39 => 
+            39 =>
             array (
                 'id' => 40,
                 'name_ar' => 'Sed sint laudantium optio.',
@@ -497,7 +497,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1972-07-27 23:58:13',
                 'updated_at' => '1971-11-21 07:41:26',
             ),
-            40 => 
+            40 =>
             array (
                 'id' => 41,
                 'name_ar' => 'Nobis et aut quasi tempore sint.',
@@ -509,7 +509,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2005-07-03 18:27:33',
                 'updated_at' => '1997-03-13 10:35:26',
             ),
-            41 => 
+            41 =>
             array (
                 'id' => 42,
                 'name_ar' => 'Reprehenderit eaque mollitia et aspernatur ut sunt.',
@@ -521,7 +521,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2003-10-09 07:31:38',
                 'updated_at' => '1992-04-14 00:14:15',
             ),
-            42 => 
+            42 =>
             array (
                 'id' => 43,
                 'name_ar' => 'Optio animi consequatur quia voluptas excepturi.',
@@ -533,7 +533,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2008-12-01 19:44:55',
                 'updated_at' => '1983-04-04 11:14:13',
             ),
-            43 => 
+            43 =>
             array (
                 'id' => 44,
                 'name_ar' => 'Coy Aufderhar',
@@ -545,7 +545,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1971-09-29 08:12:21',
                 'updated_at' => '1971-04-22 06:06:44',
             ),
-            44 => 
+            44 =>
             array (
                 'id' => 45,
                 'name_ar' => 'Mathilde Stoltenberg',
@@ -557,7 +557,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1996-11-05 23:51:16',
                 'updated_at' => '1970-07-17 12:21:33',
             ),
-            45 => 
+            45 =>
             array (
                 'id' => 46,
                 'name_ar' => 'Adan Koch',
@@ -569,7 +569,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1977-08-01 18:56:53',
                 'updated_at' => '1977-05-08 21:46:57',
             ),
-            46 => 
+            46 =>
             array (
                 'id' => 47,
                 'name_ar' => 'Dr. Uriah Turcotte',
@@ -581,7 +581,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2006-09-12 23:03:38',
                 'updated_at' => '1988-05-24 08:48:31',
             ),
-            47 => 
+            47 =>
             array (
                 'id' => 48,
                 'name_ar' => 'Dr. Aron Greenfelder',
@@ -593,7 +593,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2003-01-15 00:15:55',
                 'updated_at' => '1991-09-28 18:30:22',
             ),
-            48 => 
+            48 =>
             array (
                 'id' => 49,
                 'name_ar' => 'Arnulfo Abernathy',
@@ -605,7 +605,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2007-01-28 17:55:35',
                 'updated_at' => '1976-12-04 21:52:24',
             ),
-            49 => 
+            49 =>
             array (
                 'id' => 50,
                 'name_ar' => 'Abbie Bahringer',
@@ -617,7 +617,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1996-06-15 04:01:12',
                 'updated_at' => '1984-08-31 23:42:54',
             ),
-            50 => 
+            50 =>
             array (
                 'id' => 51,
                 'name_ar' => 'Mr. Alexander Turner',
@@ -629,7 +629,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2003-08-20 16:33:05',
                 'updated_at' => '2009-07-27 05:52:02',
             ),
-            51 => 
+            51 =>
             array (
                 'id' => 52,
                 'name_ar' => 'Kelsi Kreiger',
@@ -641,7 +641,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1982-12-11 13:47:44',
                 'updated_at' => '1996-01-30 01:56:12',
             ),
-            52 => 
+            52 =>
             array (
                 'id' => 53,
                 'name_ar' => 'Eleazar Raynor',
@@ -653,7 +653,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2017-04-04 01:49:42',
                 'updated_at' => '1998-03-11 04:40:53',
             ),
-            53 => 
+            53 =>
             array (
                 'id' => 54,
                 'name_ar' => 'Ms. Birdie Murray',
@@ -665,7 +665,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1970-01-16 10:10:05',
                 'updated_at' => '2016-03-31 20:40:51',
             ),
-            54 => 
+            54 =>
             array (
                 'id' => 55,
                 'name_ar' => 'Ms. Aliyah Wehner III',
@@ -677,7 +677,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1991-12-27 10:00:16',
                 'updated_at' => '2011-05-14 13:47:56',
             ),
-            55 => 
+            55 =>
             array (
                 'id' => 56,
                 'name_ar' => 'Edwardo Rohan',
@@ -689,7 +689,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2011-04-06 04:55:34',
                 'updated_at' => '1992-10-24 19:15:44',
             ),
-            56 => 
+            56 =>
             array (
                 'id' => 57,
                 'name_ar' => 'Carmen Sporer',
@@ -701,7 +701,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1991-09-24 09:49:37',
                 'updated_at' => '1984-10-07 09:00:06',
             ),
-            57 => 
+            57 =>
             array (
                 'id' => 58,
                 'name_ar' => 'Chester Schumm MD',
@@ -713,7 +713,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1987-06-16 05:30:03',
                 'updated_at' => '1981-01-20 23:16:31',
             ),
-            58 => 
+            58 =>
             array (
                 'id' => 59,
                 'name_ar' => 'Kaitlyn Feest Jr.',
@@ -725,7 +725,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1998-12-30 13:07:26',
                 'updated_at' => '2001-12-29 00:52:35',
             ),
-            59 => 
+            59 =>
             array (
                 'id' => 60,
                 'name_ar' => 'Ms. Amara Halvorson',
@@ -737,7 +737,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1977-10-05 18:34:57',
                 'updated_at' => '2012-10-20 18:41:00',
             ),
-            60 => 
+            60 =>
             array (
                 'id' => 61,
                 'name_ar' => 'Ollie Schowalter',
@@ -749,7 +749,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2017-09-26 01:40:09',
                 'updated_at' => '1980-11-02 18:20:24',
             ),
-            61 => 
+            61 =>
             array (
                 'id' => 62,
                 'name_ar' => 'Abigale Hessel',
@@ -761,7 +761,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1995-09-10 14:55:12',
                 'updated_at' => '1991-02-16 02:01:42',
             ),
-            62 => 
+            62 =>
             array (
                 'id' => 63,
                 'name_ar' => 'Prof. Salma Koepp',
@@ -773,7 +773,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1991-01-27 16:57:52',
                 'updated_at' => '2013-01-28 21:09:54',
             ),
-            63 => 
+            63 =>
             array (
                 'id' => 64,
                 'name_ar' => 'Miss Callie Connelly',
@@ -785,7 +785,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1994-12-29 21:01:47',
                 'updated_at' => '1973-01-29 14:29:38',
             ),
-            64 => 
+            64 =>
             array (
                 'id' => 65,
                 'name_ar' => 'Prof. Al Ernser MD',
@@ -797,7 +797,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1981-01-23 00:39:50',
                 'updated_at' => '1980-04-27 04:41:42',
             ),
-            65 => 
+            65 =>
             array (
                 'id' => 66,
                 'name_ar' => 'Lillian Langosh',
@@ -809,7 +809,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2018-08-21 14:16:51',
                 'updated_at' => '1982-01-25 01:34:53',
             ),
-            66 => 
+            66 =>
             array (
                 'id' => 67,
                 'name_ar' => 'Dr. Greg Jast Sr.',
@@ -821,7 +821,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2005-06-27 06:34:07',
                 'updated_at' => '2007-12-17 15:52:32',
             ),
-            67 => 
+            67 =>
             array (
                 'id' => 68,
                 'name_ar' => 'Lulu Fadel',
@@ -833,7 +833,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2001-10-31 08:36:06',
                 'updated_at' => '2002-04-23 04:40:50',
             ),
-            68 => 
+            68 =>
             array (
                 'id' => 69,
                 'name_ar' => 'Prof. Sharon Bednar MD',
@@ -845,7 +845,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1976-01-04 17:08:49',
                 'updated_at' => '2018-04-25 04:53:13',
             ),
-            69 => 
+            69 =>
             array (
                 'id' => 70,
                 'name_ar' => 'Narciso Metz',
@@ -857,7 +857,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1998-12-27 05:09:26',
                 'updated_at' => '1982-01-27 05:11:07',
             ),
-            70 => 
+            70 =>
             array (
                 'id' => 71,
                 'name_ar' => 'Carmelo Boyer',
@@ -869,7 +869,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2014-06-15 17:24:57',
                 'updated_at' => '2019-10-16 08:24:53',
             ),
-            71 => 
+            71 =>
             array (
                 'id' => 72,
                 'name_ar' => 'Bryon Johnson',
@@ -881,7 +881,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1990-08-23 02:42:00',
                 'updated_at' => '2001-04-27 07:38:55',
             ),
-            72 => 
+            72 =>
             array (
                 'id' => 73,
                 'name_ar' => 'Mr. Quinton West',
@@ -893,7 +893,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2017-08-22 23:48:04',
                 'updated_at' => '1991-08-26 10:44:46',
             ),
-            73 => 
+            73 =>
             array (
                 'id' => 74,
                 'name_ar' => 'Prof. Rey Schimmel',
@@ -905,7 +905,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1989-05-14 23:26:20',
                 'updated_at' => '1978-12-19 17:56:27',
             ),
-            74 => 
+            74 =>
             array (
                 'id' => 75,
                 'name_ar' => 'Mr. Richmond Wiegand Sr.',
@@ -917,7 +917,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1972-10-06 19:12:07',
                 'updated_at' => '2010-04-23 07:50:56',
             ),
-            75 => 
+            75 =>
             array (
                 'id' => 76,
                 'name_ar' => 'Hailee Gibson',
@@ -929,7 +929,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1973-01-14 02:35:42',
                 'updated_at' => '2000-07-28 04:56:52',
             ),
-            76 => 
+            76 =>
             array (
                 'id' => 77,
                 'name_ar' => 'Misty Bartoletti',
@@ -941,7 +941,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2012-11-29 20:12:19',
                 'updated_at' => '1985-04-12 12:22:19',
             ),
-            77 => 
+            77 =>
             array (
                 'id' => 78,
                 'name_ar' => 'Prof. Edyth Nader',
@@ -953,7 +953,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1987-03-21 06:38:49',
                 'updated_at' => '1993-04-08 21:51:02',
             ),
-            78 => 
+            78 =>
             array (
                 'id' => 79,
                 'name_ar' => 'Godfrey Collins',
@@ -965,7 +965,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1977-05-11 15:34:54',
                 'updated_at' => '2003-02-03 13:31:12',
             ),
-            79 => 
+            79 =>
             array (
                 'id' => 80,
                 'name_ar' => 'May Rowe',
@@ -977,7 +977,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1984-02-15 13:32:34',
                 'updated_at' => '2003-04-22 12:32:12',
             ),
-            80 => 
+            80 =>
             array (
                 'id' => 81,
                 'name_ar' => 'Schuyler Macejkovic',
@@ -989,7 +989,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2003-06-05 03:10:57',
                 'updated_at' => '1998-03-07 20:43:49',
             ),
-            81 => 
+            81 =>
             array (
                 'id' => 82,
                 'name_ar' => 'Nathaniel Mohr Sr.',
@@ -1001,7 +1001,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1982-06-28 20:49:56',
                 'updated_at' => '1971-05-17 01:49:47',
             ),
-            82 => 
+            82 =>
             array (
                 'id' => 83,
                 'name_ar' => 'Prof. Stefan Collins III',
@@ -1013,7 +1013,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2013-02-07 01:47:28',
                 'updated_at' => '2019-03-12 20:17:35',
             ),
-            83 => 
+            83 =>
             array (
                 'id' => 84,
                 'name_ar' => 'Monique Abernathy',
@@ -1025,7 +1025,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1970-01-30 18:07:23',
                 'updated_at' => '2019-04-17 04:09:45',
             ),
-            84 => 
+            84 =>
             array (
                 'id' => 85,
                 'name_ar' => 'Margarette Heller',
@@ -1037,7 +1037,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1978-12-18 20:20:07',
                 'updated_at' => '1972-06-03 09:19:09',
             ),
-            85 => 
+            85 =>
             array (
                 'id' => 86,
                 'name_ar' => 'Mrs. Miracle Von I',
@@ -1049,7 +1049,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1996-01-07 03:31:55',
                 'updated_at' => '2010-09-06 18:51:39',
             ),
-            86 => 
+            86 =>
             array (
                 'id' => 87,
                 'name_ar' => 'Dr. Freeman Wisoky DDS',
@@ -1061,7 +1061,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1971-06-26 03:35:48',
                 'updated_at' => '2002-01-08 15:45:25',
             ),
-            87 => 
+            87 =>
             array (
                 'id' => 88,
                 'name_ar' => 'Virginie Schoen',
@@ -1073,7 +1073,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2002-12-31 11:23:27',
                 'updated_at' => '1987-02-28 05:43:32',
             ),
-            88 => 
+            88 =>
             array (
                 'id' => 89,
                 'name_ar' => 'Mr. Preston Keeling',
@@ -1085,7 +1085,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2018-12-29 02:07:16',
                 'updated_at' => '1970-06-18 01:22:34',
             ),
-            89 => 
+            89 =>
             array (
                 'id' => 90,
                 'name_ar' => 'Pearl Koch',
@@ -1097,7 +1097,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1982-11-26 10:25:46',
                 'updated_at' => '1982-09-21 20:52:15',
             ),
-            90 => 
+            90 =>
             array (
                 'id' => 91,
                 'name_ar' => 'Gregorio Bosco',
@@ -1109,7 +1109,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1983-01-29 22:32:16',
                 'updated_at' => '1975-02-26 07:40:08',
             ),
-            91 => 
+            91 =>
             array (
                 'id' => 92,
                 'name_ar' => 'Mr. Logan Moore',
@@ -1121,7 +1121,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1979-06-17 03:57:13',
                 'updated_at' => '2017-03-02 09:44:44',
             ),
-            92 => 
+            92 =>
             array (
                 'id' => 93,
                 'name_ar' => 'Ms. Jammie Trantow',
@@ -1133,7 +1133,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1984-06-21 00:41:42',
                 'updated_at' => '2012-03-23 16:33:19',
             ),
-            93 => 
+            93 =>
             array (
                 'id' => 94,
                 'name_ar' => 'Greg Kohler',
@@ -1145,7 +1145,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2008-04-06 05:07:23',
                 'updated_at' => '1996-09-10 19:31:50',
             ),
-            94 => 
+            94 =>
             array (
                 'id' => 95,
                 'name_ar' => 'Karl Jakubowski',
@@ -1157,7 +1157,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2001-10-07 09:42:26',
                 'updated_at' => '2011-11-09 04:05:07',
             ),
-            95 => 
+            95 =>
             array (
                 'id' => 96,
                 'name_ar' => 'Prof. Furman Moore IV',
@@ -1169,7 +1169,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1982-03-16 22:22:47',
                 'updated_at' => '1999-11-02 05:24:59',
             ),
-            96 => 
+            96 =>
             array (
                 'id' => 97,
                 'name_ar' => 'Alexys Greenholt Jr.',
@@ -1181,7 +1181,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1980-05-22 05:27:39',
                 'updated_at' => '1982-01-05 20:14:53',
             ),
-            97 => 
+            97 =>
             array (
                 'id' => 98,
                 'name_ar' => 'Zelda Kunze',
@@ -1193,7 +1193,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1979-01-09 06:21:23',
                 'updated_at' => '1971-09-18 11:12:02',
             ),
-            98 => 
+            98 =>
             array (
                 'id' => 99,
                 'name_ar' => 'Abel Barton',
@@ -1205,7 +1205,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1991-09-11 23:56:11',
                 'updated_at' => '2016-01-09 09:53:00',
             ),
-            99 => 
+            99 =>
             array (
                 'id' => 100,
                 'name_ar' => 'Kody Zboncak',
@@ -1217,7 +1217,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1996-03-17 18:22:39',
                 'updated_at' => '1993-02-17 11:18:48',
             ),
-            100 => 
+            100 =>
             array (
                 'id' => 101,
                 'name_ar' => 'Alfred Herzog',
@@ -1229,7 +1229,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2001-02-03 10:37:54',
                 'updated_at' => '1985-11-23 02:17:07',
             ),
-            101 => 
+            101 =>
             array (
                 'id' => 102,
                 'name_ar' => 'Deondre Conroy',
@@ -1241,7 +1241,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1998-02-13 03:35:45',
                 'updated_at' => '1971-03-06 04:41:54',
             ),
-            102 => 
+            102 =>
             array (
                 'id' => 103,
                 'name_ar' => 'Vilma Prosacco PhD',
@@ -1253,7 +1253,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2000-08-30 15:59:01',
                 'updated_at' => '1993-10-18 09:26:21',
             ),
-            103 => 
+            103 =>
             array (
                 'id' => 104,
                 'name_ar' => 'Molly Romaguera',
@@ -1265,7 +1265,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2003-01-31 20:27:05',
                 'updated_at' => '1975-03-10 12:22:47',
             ),
-            104 => 
+            104 =>
             array (
                 'id' => 105,
                 'name_ar' => 'Ethyl Pfeffer',
@@ -1277,7 +1277,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1984-02-03 12:14:49',
                 'updated_at' => '1971-03-14 23:56:26',
             ),
-            105 => 
+            105 =>
             array (
                 'id' => 106,
                 'name_ar' => 'Pierce Dicki',
@@ -1289,7 +1289,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1990-03-25 19:05:06',
                 'updated_at' => '1990-12-01 15:04:41',
             ),
-            106 => 
+            106 =>
             array (
                 'id' => 107,
                 'name_ar' => 'Dr. Ida Nolan',
@@ -1301,7 +1301,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1970-09-02 17:45:57',
                 'updated_at' => '2016-09-29 03:35:22',
             ),
-            107 => 
+            107 =>
             array (
                 'id' => 108,
                 'name_ar' => 'Spencer Keebler Jr.',
@@ -1313,7 +1313,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2002-03-05 10:45:06',
                 'updated_at' => '2006-01-27 07:53:03',
             ),
-            108 => 
+            108 =>
             array (
                 'id' => 109,
                 'name_ar' => 'Cristal King',
@@ -1325,7 +1325,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2016-08-24 15:42:24',
                 'updated_at' => '1999-09-24 14:19:25',
             ),
-            109 => 
+            109 =>
             array (
                 'id' => 110,
                 'name_ar' => 'Ashtyn Kling',
@@ -1337,7 +1337,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1982-10-06 20:27:50',
                 'updated_at' => '2014-09-02 22:47:49',
             ),
-            110 => 
+            110 =>
             array (
                 'id' => 111,
                 'name_ar' => 'Prof. Ola Reinger IV',
@@ -1349,7 +1349,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1977-10-14 12:00:26',
                 'updated_at' => '2006-02-28 13:37:16',
             ),
-            111 => 
+            111 =>
             array (
                 'id' => 112,
                 'name_ar' => 'Dr. Arnold Bradtke IV',
@@ -1361,7 +1361,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1991-07-06 10:12:55',
                 'updated_at' => '1999-11-08 17:52:11',
             ),
-            112 => 
+            112 =>
             array (
                 'id' => 113,
                 'name_ar' => 'Prof. Cierra Kshlerin',
@@ -1373,7 +1373,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2007-09-14 03:43:54',
                 'updated_at' => '1973-11-04 12:42:48',
             ),
-            113 => 
+            113 =>
             array (
                 'id' => 114,
                 'name_ar' => 'Braulio Runte',
@@ -1385,7 +1385,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2010-03-05 22:19:49',
                 'updated_at' => '1980-11-13 09:51:52',
             ),
-            114 => 
+            114 =>
             array (
                 'id' => 115,
                 'name_ar' => 'Justine Jacobson II',
@@ -1397,7 +1397,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1995-03-15 08:23:41',
                 'updated_at' => '1977-04-27 02:33:37',
             ),
-            115 => 
+            115 =>
             array (
                 'id' => 116,
                 'name_ar' => 'Mrs. Eliane Tremblay DVM',
@@ -1409,7 +1409,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2015-05-19 01:10:04',
                 'updated_at' => '1983-05-07 11:43:33',
             ),
-            116 => 
+            116 =>
             array (
                 'id' => 117,
                 'name_ar' => 'Gussie Kovacek',
@@ -1421,7 +1421,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1997-09-28 07:44:51',
                 'updated_at' => '2015-07-29 01:23:03',
             ),
-            117 => 
+            117 =>
             array (
                 'id' => 118,
                 'name_ar' => 'Ms. Abby Feil DVM',
@@ -1433,7 +1433,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1990-10-30 10:06:13',
                 'updated_at' => '2005-09-10 22:28:05',
             ),
-            118 => 
+            118 =>
             array (
                 'id' => 119,
                 'name_ar' => 'Dr. Lea Stamm DVM',
@@ -1445,7 +1445,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1973-06-04 20:58:09',
                 'updated_at' => '2015-06-30 01:01:46',
             ),
-            119 => 
+            119 =>
             array (
                 'id' => 120,
                 'name_ar' => 'Watson Hoppe',
@@ -1457,7 +1457,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1970-08-17 06:29:44',
                 'updated_at' => '2019-01-28 07:53:10',
             ),
-            120 => 
+            120 =>
             array (
                 'id' => 121,
                 'name_ar' => 'Frieda Marvin',
@@ -1469,7 +1469,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1987-12-07 07:04:28',
                 'updated_at' => '1977-10-25 13:27:44',
             ),
-            121 => 
+            121 =>
             array (
                 'id' => 122,
                 'name_ar' => 'Milton Bayer',
@@ -1481,7 +1481,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2000-02-02 03:05:16',
                 'updated_at' => '1994-04-27 14:27:27',
             ),
-            122 => 
+            122 =>
             array (
                 'id' => 123,
                 'name_ar' => 'Clement Bode',
@@ -1493,7 +1493,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '1990-07-22 19:36:31',
                 'updated_at' => '2009-09-21 02:45:31',
             ),
-            123 => 
+            123 =>
             array (
                 'id' => 124,
                 'name_ar' => 'Laverna Wisoky',
@@ -1505,7 +1505,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:57',
                 'updated_at' => '2020-04-06 19:10:57',
             ),
-            124 => 
+            124 =>
             array (
                 'id' => 125,
                 'name_ar' => 'Zakary Rutherford',
@@ -1517,7 +1517,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:57',
                 'updated_at' => '2020-04-06 19:10:57',
             ),
-            125 => 
+            125 =>
             array (
                 'id' => 126,
                 'name_ar' => 'Mrs. Adrienne Kris III',
@@ -1529,7 +1529,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:57',
                 'updated_at' => '2020-04-06 19:10:57',
             ),
-            126 => 
+            126 =>
             array (
                 'id' => 127,
                 'name_ar' => 'Elenor Wilkinson',
@@ -1541,7 +1541,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:57',
                 'updated_at' => '2020-04-06 19:10:57',
             ),
-            127 => 
+            127 =>
             array (
                 'id' => 128,
                 'name_ar' => 'Ryann Lehner I',
@@ -1553,7 +1553,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:57',
                 'updated_at' => '2020-04-06 19:10:57',
             ),
-            128 => 
+            128 =>
             array (
                 'id' => 129,
                 'name_ar' => 'Xander Kilback Sr.',
@@ -1565,7 +1565,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:57',
                 'updated_at' => '2020-04-06 19:10:57',
             ),
-            129 => 
+            129 =>
             array (
                 'id' => 130,
                 'name_ar' => 'Chaim Barrows',
@@ -1577,7 +1577,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:57',
                 'updated_at' => '2020-04-06 19:10:57',
             ),
-            130 => 
+            130 =>
             array (
                 'id' => 131,
                 'name_ar' => 'Prof. Tod Carter Jr.',
@@ -1589,7 +1589,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:57',
                 'updated_at' => '2020-04-06 19:10:57',
             ),
-            131 => 
+            131 =>
             array (
                 'id' => 132,
                 'name_ar' => 'Prof. Paxton Harber Sr.',
@@ -1601,7 +1601,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:57',
                 'updated_at' => '2020-04-06 19:10:57',
             ),
-            132 => 
+            132 =>
             array (
                 'id' => 133,
                 'name_ar' => 'Ford Johnston',
@@ -1613,7 +1613,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:58',
                 'updated_at' => '2020-04-06 19:10:58',
             ),
-            133 => 
+            133 =>
             array (
                 'id' => 134,
                 'name_ar' => 'Prof. Kamren Bashirian V',
@@ -1625,7 +1625,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:58',
                 'updated_at' => '2020-04-06 19:10:58',
             ),
-            134 => 
+            134 =>
             array (
                 'id' => 135,
                 'name_ar' => 'Mr. Foster Goldner Jr.',
@@ -1637,7 +1637,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:58',
                 'updated_at' => '2020-04-06 19:10:58',
             ),
-            135 => 
+            135 =>
             array (
                 'id' => 136,
                 'name_ar' => 'Sabrina Russel',
@@ -1649,7 +1649,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:58',
                 'updated_at' => '2020-04-06 19:10:58',
             ),
-            136 => 
+            136 =>
             array (
                 'id' => 137,
                 'name_ar' => 'Eden Zulauf',
@@ -1661,7 +1661,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:58',
                 'updated_at' => '2020-04-06 19:10:58',
             ),
-            137 => 
+            137 =>
             array (
                 'id' => 138,
                 'name_ar' => 'Mina Beahan',
@@ -1673,7 +1673,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:58',
                 'updated_at' => '2020-04-06 19:10:58',
             ),
-            138 => 
+            138 =>
             array (
                 'id' => 139,
                 'name_ar' => 'Mrs. Hermina Connelly',
@@ -1685,7 +1685,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:58',
                 'updated_at' => '2020-04-06 19:10:58',
             ),
-            139 => 
+            139 =>
             array (
                 'id' => 140,
                 'name_ar' => 'Prof. Carroll Bernhard DDS',
@@ -1697,7 +1697,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:58',
                 'updated_at' => '2020-04-06 19:10:58',
             ),
-            140 => 
+            140 =>
             array (
                 'id' => 141,
                 'name_ar' => 'Jerome Streich',
@@ -1709,7 +1709,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:58',
                 'updated_at' => '2020-04-06 19:10:58',
             ),
-            141 => 
+            141 =>
             array (
                 'id' => 142,
                 'name_ar' => 'Mrs. Margarette Stroman III',
@@ -1721,7 +1721,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:58',
                 'updated_at' => '2020-04-06 19:10:58',
             ),
-            142 => 
+            142 =>
             array (
                 'id' => 143,
                 'name_ar' => 'Tanya Klein',
@@ -1733,7 +1733,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:58',
                 'updated_at' => '2020-04-06 19:10:58',
             ),
-            143 => 
+            143 =>
             array (
                 'id' => 144,
                 'name_ar' => 'Mr. Milton Vandervort',
@@ -1745,7 +1745,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:58',
                 'updated_at' => '2020-04-06 19:10:58',
             ),
-            144 => 
+            144 =>
             array (
                 'id' => 145,
                 'name_ar' => 'Prof. German McKenzie DVM',
@@ -1757,7 +1757,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:58',
                 'updated_at' => '2020-04-06 19:10:58',
             ),
-            145 => 
+            145 =>
             array (
                 'id' => 146,
                 'name_ar' => 'Alexandrea Schaefer',
@@ -1769,7 +1769,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:58',
                 'updated_at' => '2020-04-06 19:10:58',
             ),
-            146 => 
+            146 =>
             array (
                 'id' => 147,
                 'name_ar' => 'Anya Kreiger',
@@ -1781,7 +1781,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:58',
                 'updated_at' => '2020-04-06 19:10:58',
             ),
-            147 => 
+            147 =>
             array (
                 'id' => 148,
                 'name_ar' => 'Jaqueline Bogisich',
@@ -1793,7 +1793,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:58',
                 'updated_at' => '2020-04-06 19:10:58',
             ),
-            148 => 
+            148 =>
             array (
                 'id' => 149,
                 'name_ar' => 'Wilbert Lebsack',
@@ -1805,7 +1805,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:58',
                 'updated_at' => '2020-04-06 19:10:58',
             ),
-            149 => 
+            149 =>
             array (
                 'id' => 150,
                 'name_ar' => 'Madisen Fisher',
@@ -1817,7 +1817,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:58',
                 'updated_at' => '2020-04-06 19:10:58',
             ),
-            150 => 
+            150 =>
             array (
                 'id' => 151,
                 'name_ar' => 'Jeff Schumm',
@@ -1829,7 +1829,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:58',
                 'updated_at' => '2020-04-06 19:10:58',
             ),
-            151 => 
+            151 =>
             array (
                 'id' => 152,
                 'name_ar' => 'Chester Lemke',
@@ -1841,7 +1841,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:58',
                 'updated_at' => '2020-04-06 19:10:58',
             ),
-            152 => 
+            152 =>
             array (
                 'id' => 153,
                 'name_ar' => 'Ramiro Koch V',
@@ -1853,7 +1853,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:58',
                 'updated_at' => '2020-04-06 19:10:58',
             ),
-            153 => 
+            153 =>
             array (
                 'id' => 154,
                 'name_ar' => 'Dr. Armand Nolan',
@@ -1865,7 +1865,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:58',
                 'updated_at' => '2020-04-06 19:10:58',
             ),
-            154 => 
+            154 =>
             array (
                 'id' => 155,
                 'name_ar' => 'Arnold Kuhn PhD',
@@ -1877,7 +1877,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:58',
                 'updated_at' => '2020-04-06 19:10:58',
             ),
-            155 => 
+            155 =>
             array (
                 'id' => 156,
                 'name_ar' => 'Tyra Conroy',
@@ -1889,7 +1889,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:59',
                 'updated_at' => '2020-04-06 19:10:59',
             ),
-            156 => 
+            156 =>
             array (
                 'id' => 157,
                 'name_ar' => 'Talon Rutherford',
@@ -1901,7 +1901,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:59',
                 'updated_at' => '2020-04-06 19:10:59',
             ),
-            157 => 
+            157 =>
             array (
                 'id' => 158,
                 'name_ar' => 'Kasey Lehner',
@@ -1913,7 +1913,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:59',
                 'updated_at' => '2020-04-06 19:10:59',
             ),
-            158 => 
+            158 =>
             array (
                 'id' => 159,
                 'name_ar' => 'Brandyn Schulist',
@@ -1925,7 +1925,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:59',
                 'updated_at' => '2020-04-06 19:10:59',
             ),
-            159 => 
+            159 =>
             array (
                 'id' => 160,
                 'name_ar' => 'Joana Blanda',
@@ -1937,7 +1937,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:59',
                 'updated_at' => '2020-04-06 19:10:59',
             ),
-            160 => 
+            160 =>
             array (
                 'id' => 161,
                 'name_ar' => 'Alvena Goodwin',
@@ -1949,7 +1949,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:59',
                 'updated_at' => '2020-04-06 19:10:59',
             ),
-            161 => 
+            161 =>
             array (
                 'id' => 162,
                 'name_ar' => 'Gilberto Wilkinson DVM',
@@ -1961,7 +1961,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:59',
                 'updated_at' => '2020-04-06 19:10:59',
             ),
-            162 => 
+            162 =>
             array (
                 'id' => 163,
                 'name_ar' => 'Mrs. Reva Moen Jr.',
@@ -1973,7 +1973,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:59',
                 'updated_at' => '2020-04-06 19:10:59',
             ),
-            163 => 
+            163 =>
             array (
                 'id' => 164,
                 'name_ar' => 'Pablo McCullough',
@@ -1985,7 +1985,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:59',
                 'updated_at' => '2020-04-06 19:10:59',
             ),
-            164 => 
+            164 =>
             array (
                 'id' => 165,
                 'name_ar' => 'Prof. Henry Trantow',
@@ -1997,7 +1997,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:59',
                 'updated_at' => '2020-04-06 19:10:59',
             ),
-            165 => 
+            165 =>
             array (
                 'id' => 166,
                 'name_ar' => 'Alessandra Heaney PhD',
@@ -2009,7 +2009,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:59',
                 'updated_at' => '2020-04-06 19:10:59',
             ),
-            166 => 
+            166 =>
             array (
                 'id' => 167,
                 'name_ar' => 'Prof. Brady Huels',
@@ -2021,7 +2021,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:59',
                 'updated_at' => '2020-04-06 19:10:59',
             ),
-            167 => 
+            167 =>
             array (
                 'id' => 168,
                 'name_ar' => 'Jakayla Sawayn',
@@ -2033,7 +2033,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:59',
                 'updated_at' => '2020-04-06 19:10:59',
             ),
-            168 => 
+            168 =>
             array (
                 'id' => 169,
                 'name_ar' => 'Ms. Addie Volkman',
@@ -2045,7 +2045,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:59',
                 'updated_at' => '2020-04-06 19:10:59',
             ),
-            169 => 
+            169 =>
             array (
                 'id' => 170,
                 'name_ar' => 'Nils Rutherford',
@@ -2057,7 +2057,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:59',
                 'updated_at' => '2020-04-06 19:10:59',
             ),
-            170 => 
+            170 =>
             array (
                 'id' => 171,
                 'name_ar' => 'Silas Rohan II',
@@ -2069,7 +2069,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:59',
                 'updated_at' => '2020-04-06 19:10:59',
             ),
-            171 => 
+            171 =>
             array (
                 'id' => 172,
                 'name_ar' => 'Rocky Sporer',
@@ -2081,7 +2081,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:59',
                 'updated_at' => '2020-04-06 19:10:59',
             ),
-            172 => 
+            172 =>
             array (
                 'id' => 173,
                 'name_ar' => 'Brooke Ward',
@@ -2093,7 +2093,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:59',
                 'updated_at' => '2020-04-06 19:10:59',
             ),
-            173 => 
+            173 =>
             array (
                 'id' => 174,
                 'name_ar' => 'Bell Bogan',
@@ -2105,7 +2105,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:10:59',
                 'updated_at' => '2020-04-06 19:10:59',
             ),
-            174 => 
+            174 =>
             array (
                 'id' => 175,
                 'name_ar' => 'Ewald Larkin',
@@ -2117,7 +2117,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:00',
                 'updated_at' => '2020-04-06 19:11:00',
             ),
-            175 => 
+            175 =>
             array (
                 'id' => 176,
                 'name_ar' => 'Edythe Denesik',
@@ -2129,7 +2129,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:00',
                 'updated_at' => '2020-04-06 19:11:00',
             ),
-            176 => 
+            176 =>
             array (
                 'id' => 177,
                 'name_ar' => 'Onie Aufderhar DVM',
@@ -2141,7 +2141,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:00',
                 'updated_at' => '2020-04-06 19:11:00',
             ),
-            177 => 
+            177 =>
             array (
                 'id' => 178,
                 'name_ar' => 'Prof. Al Towne II',
@@ -2153,7 +2153,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:00',
                 'updated_at' => '2020-04-06 19:11:00',
             ),
-            178 => 
+            178 =>
             array (
                 'id' => 179,
                 'name_ar' => 'Zoey Kuvalis',
@@ -2165,7 +2165,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:00',
                 'updated_at' => '2020-04-06 19:11:00',
             ),
-            179 => 
+            179 =>
             array (
                 'id' => 180,
                 'name_ar' => 'Macy Ernser',
@@ -2177,7 +2177,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:00',
                 'updated_at' => '2020-04-06 19:11:00',
             ),
-            180 => 
+            180 =>
             array (
                 'id' => 181,
                 'name_ar' => 'Candelario Schmeler IV',
@@ -2189,7 +2189,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:00',
                 'updated_at' => '2020-04-06 19:11:00',
             ),
-            181 => 
+            181 =>
             array (
                 'id' => 182,
                 'name_ar' => 'Sandrine Zemlak',
@@ -2201,7 +2201,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:00',
                 'updated_at' => '2020-04-06 19:11:00',
             ),
-            182 => 
+            182 =>
             array (
                 'id' => 183,
                 'name_ar' => 'Rosalinda Conroy',
@@ -2213,7 +2213,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:00',
                 'updated_at' => '2020-04-06 19:11:00',
             ),
-            183 => 
+            183 =>
             array (
                 'id' => 184,
                 'name_ar' => 'Ms. Rae Torp MD',
@@ -2225,7 +2225,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:00',
                 'updated_at' => '2020-04-06 19:11:00',
             ),
-            184 => 
+            184 =>
             array (
                 'id' => 185,
                 'name_ar' => 'Cloyd Harber',
@@ -2237,7 +2237,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:00',
                 'updated_at' => '2020-04-06 19:11:00',
             ),
-            185 => 
+            185 =>
             array (
                 'id' => 186,
                 'name_ar' => 'Tianna Bosco',
@@ -2249,7 +2249,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:00',
                 'updated_at' => '2020-04-06 19:11:00',
             ),
-            186 => 
+            186 =>
             array (
                 'id' => 187,
                 'name_ar' => 'Blaze Walter',
@@ -2261,7 +2261,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:00',
                 'updated_at' => '2020-04-06 19:11:00',
             ),
-            187 => 
+            187 =>
             array (
                 'id' => 188,
                 'name_ar' => 'Lafayette Tromp',
@@ -2273,7 +2273,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:00',
                 'updated_at' => '2020-04-06 19:11:00',
             ),
-            188 => 
+            188 =>
             array (
                 'id' => 189,
                 'name_ar' => 'Genesis Veum',
@@ -2285,7 +2285,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:00',
                 'updated_at' => '2020-04-06 19:11:00',
             ),
-            189 => 
+            189 =>
             array (
                 'id' => 190,
                 'name_ar' => 'Prof. Candelario Corwin IV',
@@ -2297,7 +2297,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:00',
                 'updated_at' => '2020-04-06 19:11:00',
             ),
-            190 => 
+            190 =>
             array (
                 'id' => 191,
                 'name_ar' => 'Kenny Crist',
@@ -2309,7 +2309,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:00',
                 'updated_at' => '2020-04-06 19:11:00',
             ),
-            191 => 
+            191 =>
             array (
                 'id' => 192,
                 'name_ar' => 'Ricardo Turner Jr.',
@@ -2321,7 +2321,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:00',
                 'updated_at' => '2020-04-06 19:11:00',
             ),
-            192 => 
+            192 =>
             array (
                 'id' => 193,
                 'name_ar' => 'Preston Effertz',
@@ -2333,7 +2333,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:00',
                 'updated_at' => '2020-04-06 19:11:00',
             ),
-            193 => 
+            193 =>
             array (
                 'id' => 194,
                 'name_ar' => 'Lane Kirlin I',
@@ -2345,7 +2345,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:00',
                 'updated_at' => '2020-04-06 19:11:00',
             ),
-            194 => 
+            194 =>
             array (
                 'id' => 195,
                 'name_ar' => 'Israel Hoppe',
@@ -2357,7 +2357,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:01',
                 'updated_at' => '2020-04-06 19:11:01',
             ),
-            195 => 
+            195 =>
             array (
                 'id' => 196,
                 'name_ar' => 'Lucious Herzog',
@@ -2369,7 +2369,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:01',
                 'updated_at' => '2020-04-06 19:11:01',
             ),
-            196 => 
+            196 =>
             array (
                 'id' => 197,
                 'name_ar' => 'German Bruen',
@@ -2381,7 +2381,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:01',
                 'updated_at' => '2020-04-06 19:11:01',
             ),
-            197 => 
+            197 =>
             array (
                 'id' => 198,
                 'name_ar' => 'Timmothy Walter',
@@ -2393,7 +2393,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:01',
                 'updated_at' => '2020-04-06 19:11:01',
             ),
-            198 => 
+            198 =>
             array (
                 'id' => 199,
                 'name_ar' => 'Forrest Parker',
@@ -2405,7 +2405,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:01',
                 'updated_at' => '2020-04-06 19:11:01',
             ),
-            199 => 
+            199 =>
             array (
                 'id' => 200,
                 'name_ar' => 'Mrs. Arlene Abbott',
@@ -2417,7 +2417,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:01',
                 'updated_at' => '2020-04-06 19:11:01',
             ),
-            200 => 
+            200 =>
             array (
                 'id' => 201,
                 'name_ar' => 'Ms. Alverta Tillman Sr.',
@@ -2429,7 +2429,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:01',
                 'updated_at' => '2020-04-06 19:11:01',
             ),
-            201 => 
+            201 =>
             array (
                 'id' => 202,
                 'name_ar' => 'Leanna Reichert',
@@ -2441,7 +2441,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:01',
                 'updated_at' => '2020-04-06 19:11:01',
             ),
-            202 => 
+            202 =>
             array (
                 'id' => 203,
                 'name_ar' => 'Giovanna Strosin',
@@ -2453,7 +2453,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:01',
                 'updated_at' => '2020-04-06 19:11:01',
             ),
-            203 => 
+            203 =>
             array (
                 'id' => 204,
                 'name_ar' => 'Kyle Bode',
@@ -2465,7 +2465,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:01',
                 'updated_at' => '2020-04-06 19:11:01',
             ),
-            204 => 
+            204 =>
             array (
                 'id' => 205,
                 'name_ar' => 'Mr. Coby Ziemann Jr.',
@@ -2477,7 +2477,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:01',
                 'updated_at' => '2020-04-06 19:11:01',
             ),
-            205 => 
+            205 =>
             array (
                 'id' => 206,
                 'name_ar' => 'Dr. Dexter Von III',
@@ -2489,7 +2489,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:01',
                 'updated_at' => '2020-04-06 19:11:01',
             ),
-            206 => 
+            206 =>
             array (
                 'id' => 207,
                 'name_ar' => 'Prof. Felicita Denesik V',
@@ -2501,7 +2501,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:01',
                 'updated_at' => '2020-04-06 19:11:01',
             ),
-            207 => 
+            207 =>
             array (
                 'id' => 208,
                 'name_ar' => 'Enoch Mann',
@@ -2513,7 +2513,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:01',
                 'updated_at' => '2020-04-06 19:11:01',
             ),
-            208 => 
+            208 =>
             array (
                 'id' => 209,
                 'name_ar' => 'Jacinthe Gaylord II',
@@ -2525,7 +2525,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:01',
                 'updated_at' => '2020-04-06 19:11:01',
             ),
-            209 => 
+            209 =>
             array (
                 'id' => 210,
                 'name_ar' => 'Garrick Blick I',
@@ -2537,7 +2537,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:01',
                 'updated_at' => '2020-04-06 19:11:01',
             ),
-            210 => 
+            210 =>
             array (
                 'id' => 211,
                 'name_ar' => 'Geovanni Spinka',
@@ -2549,7 +2549,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:01',
                 'updated_at' => '2020-04-06 19:11:01',
             ),
-            211 => 
+            211 =>
             array (
                 'id' => 212,
                 'name_ar' => 'Ms. Dixie Kozey',
@@ -2561,7 +2561,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:01',
                 'updated_at' => '2020-04-06 19:11:01',
             ),
-            212 => 
+            212 =>
             array (
                 'id' => 213,
                 'name_ar' => 'Prof. Beaulah Windler',
@@ -2573,7 +2573,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:01',
                 'updated_at' => '2020-04-06 19:11:01',
             ),
-            213 => 
+            213 =>
             array (
                 'id' => 214,
                 'name_ar' => 'Ms. Alda Jacobs',
@@ -2585,7 +2585,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:01',
                 'updated_at' => '2020-04-06 19:11:01',
             ),
-            214 => 
+            214 =>
             array (
                 'id' => 215,
                 'name_ar' => 'Winifred Zulauf',
@@ -2597,7 +2597,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:01',
                 'updated_at' => '2020-04-06 19:11:01',
             ),
-            215 => 
+            215 =>
             array (
                 'id' => 216,
                 'name_ar' => 'Genevieve Glover DDS',
@@ -2609,7 +2609,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:01',
                 'updated_at' => '2020-04-06 19:11:01',
             ),
-            216 => 
+            216 =>
             array (
                 'id' => 217,
                 'name_ar' => 'Mrs. Jessyca Donnelly',
@@ -2621,7 +2621,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:01',
                 'updated_at' => '2020-04-06 19:11:01',
             ),
-            217 => 
+            217 =>
             array (
                 'id' => 218,
                 'name_ar' => 'Mr. Royce Halvorson PhD',
@@ -2633,7 +2633,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:01',
                 'updated_at' => '2020-04-06 19:11:01',
             ),
-            218 => 
+            218 =>
             array (
                 'id' => 219,
                 'name_ar' => 'Margaret Steuber',
@@ -2645,7 +2645,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:02',
                 'updated_at' => '2020-04-06 19:11:02',
             ),
-            219 => 
+            219 =>
             array (
                 'id' => 220,
                 'name_ar' => 'Prof. Kyle Sporer',
@@ -2657,7 +2657,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:02',
                 'updated_at' => '2020-04-06 19:11:02',
             ),
-            220 => 
+            220 =>
             array (
                 'id' => 221,
                 'name_ar' => 'Ethyl Lebsack',
@@ -2669,7 +2669,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:02',
                 'updated_at' => '2020-04-06 19:11:02',
             ),
-            221 => 
+            221 =>
             array (
                 'id' => 222,
                 'name_ar' => 'Granville Schiller',
@@ -2681,7 +2681,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:02',
                 'updated_at' => '2020-04-06 19:11:02',
             ),
-            222 => 
+            222 =>
             array (
                 'id' => 223,
                 'name_ar' => 'Alessandra Pfeffer II',
@@ -2693,7 +2693,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:02',
                 'updated_at' => '2020-04-06 19:11:02',
             ),
-            223 => 
+            223 =>
             array (
                 'id' => 224,
                 'name_ar' => 'Izabella Nolan Jr.',
@@ -2705,7 +2705,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:02',
                 'updated_at' => '2020-04-06 19:11:02',
             ),
-            224 => 
+            224 =>
             array (
                 'id' => 225,
                 'name_ar' => 'Jaron Larkin MD',
@@ -2717,7 +2717,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:02',
                 'updated_at' => '2020-04-06 19:11:02',
             ),
-            225 => 
+            225 =>
             array (
                 'id' => 226,
                 'name_ar' => 'Dr. Andy Carroll I',
@@ -2729,7 +2729,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:02',
                 'updated_at' => '2020-04-06 19:11:02',
             ),
-            226 => 
+            226 =>
             array (
                 'id' => 227,
                 'name_ar' => 'Ms. Lisa Hermiston',
@@ -2741,7 +2741,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:02',
                 'updated_at' => '2020-04-06 19:11:02',
             ),
-            227 => 
+            227 =>
             array (
                 'id' => 228,
                 'name_ar' => 'Ms. Cordie Herman PhD',
@@ -2753,7 +2753,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:02',
                 'updated_at' => '2020-04-06 19:11:02',
             ),
-            228 => 
+            228 =>
             array (
                 'id' => 229,
                 'name_ar' => 'Mrs. Lizzie Farrell IV',
@@ -2765,7 +2765,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:02',
                 'updated_at' => '2020-04-06 19:11:02',
             ),
-            229 => 
+            229 =>
             array (
                 'id' => 230,
                 'name_ar' => 'Frieda Hirthe',
@@ -2777,7 +2777,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:02',
                 'updated_at' => '2020-04-06 19:11:02',
             ),
-            230 => 
+            230 =>
             array (
                 'id' => 231,
                 'name_ar' => 'Alfonso Gislason',
@@ -2789,7 +2789,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:02',
                 'updated_at' => '2020-04-06 19:11:02',
             ),
-            231 => 
+            231 =>
             array (
                 'id' => 232,
                 'name_ar' => 'Karl Powlowski Sr.',
@@ -2801,7 +2801,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:02',
                 'updated_at' => '2020-04-06 19:11:02',
             ),
-            232 => 
+            232 =>
             array (
                 'id' => 233,
                 'name_ar' => 'Julia Bayer II',
@@ -2813,7 +2813,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:02',
                 'updated_at' => '2020-04-06 19:11:02',
             ),
-            233 => 
+            233 =>
             array (
                 'id' => 234,
                 'name_ar' => 'Carmela Thompson',
@@ -2825,7 +2825,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:02',
                 'updated_at' => '2020-04-06 19:11:02',
             ),
-            234 => 
+            234 =>
             array (
                 'id' => 235,
                 'name_ar' => 'Jaden Gleason',
@@ -2837,7 +2837,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:02',
                 'updated_at' => '2020-04-06 19:11:02',
             ),
-            235 => 
+            235 =>
             array (
                 'id' => 236,
                 'name_ar' => 'Myrtie O\'Keefe MD',
@@ -2849,7 +2849,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:02',
                 'updated_at' => '2020-04-06 19:11:02',
             ),
-            236 => 
+            236 =>
             array (
                 'id' => 237,
                 'name_ar' => 'Trystan Runolfsdottir',
@@ -2861,7 +2861,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:02',
                 'updated_at' => '2020-04-06 19:11:02',
             ),
-            237 => 
+            237 =>
             array (
                 'id' => 238,
                 'name_ar' => 'Warren Legros Jr.',
@@ -2873,7 +2873,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:02',
                 'updated_at' => '2020-04-06 19:11:02',
             ),
-            238 => 
+            238 =>
             array (
                 'id' => 239,
                 'name_ar' => 'Ms. Hilda Quigley',
@@ -2885,7 +2885,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:02',
                 'updated_at' => '2020-04-06 19:11:02',
             ),
-            239 => 
+            239 =>
             array (
                 'id' => 240,
                 'name_ar' => 'Rodrigo Denesik',
@@ -2897,7 +2897,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:02',
                 'updated_at' => '2020-04-06 19:11:02',
             ),
-            240 => 
+            240 =>
             array (
                 'id' => 241,
                 'name_ar' => 'Hoyt Schuppe',
@@ -2909,7 +2909,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:02',
                 'updated_at' => '2020-04-06 19:11:02',
             ),
-            241 => 
+            241 =>
             array (
                 'id' => 242,
                 'name_ar' => 'Maymie Terry',
@@ -2921,7 +2921,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:02',
                 'updated_at' => '2020-04-06 19:11:02',
             ),
-            242 => 
+            242 =>
             array (
                 'id' => 243,
                 'name_ar' => 'Leo Lind MD',
@@ -2933,7 +2933,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:03',
                 'updated_at' => '2020-04-06 19:11:03',
             ),
-            243 => 
+            243 =>
             array (
                 'id' => 244,
                 'name_ar' => 'Patrick Mante',
@@ -2945,7 +2945,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:03',
                 'updated_at' => '2020-04-06 19:11:03',
             ),
-            244 => 
+            244 =>
             array (
                 'id' => 245,
                 'name_ar' => 'Dr. Kurt Adams',
@@ -2957,7 +2957,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:03',
                 'updated_at' => '2020-04-06 19:11:03',
             ),
-            245 => 
+            245 =>
             array (
                 'id' => 246,
                 'name_ar' => 'Elwyn Runolfsdottir',
@@ -2969,7 +2969,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:03',
                 'updated_at' => '2020-04-06 19:11:03',
             ),
-            246 => 
+            246 =>
             array (
                 'id' => 247,
                 'name_ar' => 'Duane Larkin MD',
@@ -2981,7 +2981,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:03',
                 'updated_at' => '2020-04-06 19:11:03',
             ),
-            247 => 
+            247 =>
             array (
                 'id' => 248,
                 'name_ar' => 'Laisha Bosco',
@@ -2993,7 +2993,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:03',
                 'updated_at' => '2020-04-06 19:11:03',
             ),
-            248 => 
+            248 =>
             array (
                 'id' => 249,
                 'name_ar' => 'Bennie Glover',
@@ -3005,7 +3005,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:03',
                 'updated_at' => '2020-04-06 19:11:03',
             ),
-            249 => 
+            249 =>
             array (
                 'id' => 250,
                 'name_ar' => 'Adelia Rodriguez',
@@ -3017,7 +3017,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:03',
                 'updated_at' => '2020-04-06 19:11:03',
             ),
-            250 => 
+            250 =>
             array (
                 'id' => 251,
                 'name_ar' => 'Dr. Pamela Stanton PhD',
@@ -3029,7 +3029,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:03',
                 'updated_at' => '2020-04-06 19:11:03',
             ),
-            251 => 
+            251 =>
             array (
                 'id' => 252,
                 'name_ar' => 'Jairo Fritsch',
@@ -3041,7 +3041,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:03',
                 'updated_at' => '2020-04-06 19:11:03',
             ),
-            252 => 
+            252 =>
             array (
                 'id' => 253,
                 'name_ar' => 'Jaron Cummerata',
@@ -3053,7 +3053,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:03',
                 'updated_at' => '2020-04-06 19:11:03',
             ),
-            253 => 
+            253 =>
             array (
                 'id' => 254,
                 'name_ar' => 'Elian Koss',
@@ -3065,7 +3065,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:03',
                 'updated_at' => '2020-04-06 19:11:03',
             ),
-            254 => 
+            254 =>
             array (
                 'id' => 255,
                 'name_ar' => 'Ruben Jakubowski',
@@ -3077,7 +3077,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:03',
                 'updated_at' => '2020-04-06 19:11:03',
             ),
-            255 => 
+            255 =>
             array (
                 'id' => 256,
                 'name_ar' => 'Prof. Elinor Mraz',
@@ -3089,7 +3089,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:03',
                 'updated_at' => '2020-04-06 19:11:03',
             ),
-            256 => 
+            256 =>
             array (
                 'id' => 257,
                 'name_ar' => 'Bernadette Turcotte',
@@ -3101,7 +3101,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:03',
                 'updated_at' => '2020-04-06 19:11:03',
             ),
-            257 => 
+            257 =>
             array (
                 'id' => 258,
                 'name_ar' => 'Ezequiel Trantow',
@@ -3113,7 +3113,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:03',
                 'updated_at' => '2020-04-06 19:11:03',
             ),
-            258 => 
+            258 =>
             array (
                 'id' => 259,
                 'name_ar' => 'Prof. Donnie Kuhlman I',
@@ -3125,7 +3125,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:03',
                 'updated_at' => '2020-04-06 19:11:03',
             ),
-            259 => 
+            259 =>
             array (
                 'id' => 260,
                 'name_ar' => 'Everardo Sporer',
@@ -3137,7 +3137,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:03',
                 'updated_at' => '2020-04-06 19:11:03',
             ),
-            260 => 
+            260 =>
             array (
                 'id' => 261,
                 'name_ar' => 'Jasper Labadie',
@@ -3149,7 +3149,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:03',
                 'updated_at' => '2020-04-06 19:11:03',
             ),
-            261 => 
+            261 =>
             array (
                 'id' => 262,
                 'name_ar' => 'Junius Grady',
@@ -3161,7 +3161,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:03',
                 'updated_at' => '2020-04-06 19:11:03',
             ),
-            262 => 
+            262 =>
             array (
                 'id' => 263,
                 'name_ar' => 'Madelynn Schmeler',
@@ -3173,7 +3173,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:03',
                 'updated_at' => '2020-04-06 19:11:03',
             ),
-            263 => 
+            263 =>
             array (
                 'id' => 264,
                 'name_ar' => 'Daron Moen',
@@ -3185,7 +3185,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:03',
                 'updated_at' => '2020-04-06 19:11:03',
             ),
-            264 => 
+            264 =>
             array (
                 'id' => 265,
                 'name_ar' => 'Ruthie Rolfson',
@@ -3197,7 +3197,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:04',
                 'updated_at' => '2020-04-06 19:11:04',
             ),
-            265 => 
+            265 =>
             array (
                 'id' => 266,
                 'name_ar' => 'Miss Myrtle Hackett',
@@ -3209,7 +3209,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:04',
                 'updated_at' => '2020-04-06 19:11:04',
             ),
-            266 => 
+            266 =>
             array (
                 'id' => 267,
                 'name_ar' => 'Victoria Nienow',
@@ -3221,7 +3221,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:04',
                 'updated_at' => '2020-04-06 19:11:04',
             ),
-            267 => 
+            267 =>
             array (
                 'id' => 268,
                 'name_ar' => 'Akeem Walker',
@@ -3233,7 +3233,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:04',
                 'updated_at' => '2020-04-06 19:11:04',
             ),
-            268 => 
+            268 =>
             array (
                 'id' => 269,
                 'name_ar' => 'Ova Feest',
@@ -3245,7 +3245,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:04',
                 'updated_at' => '2020-04-06 19:11:04',
             ),
-            269 => 
+            269 =>
             array (
                 'id' => 270,
                 'name_ar' => 'Abner Mertz Sr.',
@@ -3257,7 +3257,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:05',
                 'updated_at' => '2020-04-06 19:11:05',
             ),
-            270 => 
+            270 =>
             array (
                 'id' => 271,
                 'name_ar' => 'Major Wisozk',
@@ -3269,7 +3269,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:05',
                 'updated_at' => '2020-04-06 19:11:05',
             ),
-            271 => 
+            271 =>
             array (
                 'id' => 272,
                 'name_ar' => 'Miss Fleta Schulist MD',
@@ -3281,7 +3281,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:05',
                 'updated_at' => '2020-04-06 19:11:05',
             ),
-            272 => 
+            272 =>
             array (
                 'id' => 273,
                 'name_ar' => 'Kelly Robel',
@@ -3293,7 +3293,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:05',
                 'updated_at' => '2020-04-06 19:11:05',
             ),
-            273 => 
+            273 =>
             array (
                 'id' => 274,
                 'name_ar' => 'Nella Conroy Jr.',
@@ -3305,7 +3305,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:05',
                 'updated_at' => '2020-04-06 19:11:05',
             ),
-            274 => 
+            274 =>
             array (
                 'id' => 275,
                 'name_ar' => 'Walter Stehr',
@@ -3317,7 +3317,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:05',
                 'updated_at' => '2020-04-06 19:11:05',
             ),
-            275 => 
+            275 =>
             array (
                 'id' => 276,
                 'name_ar' => 'Clementine Lind',
@@ -3329,7 +3329,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:05',
                 'updated_at' => '2020-04-06 19:11:05',
             ),
-            276 => 
+            276 =>
             array (
                 'id' => 277,
                 'name_ar' => 'Candida Beer MD',
@@ -3341,7 +3341,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:05',
                 'updated_at' => '2020-04-06 19:11:05',
             ),
-            277 => 
+            277 =>
             array (
                 'id' => 278,
                 'name_ar' => 'Helene Welch',
@@ -3353,7 +3353,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:05',
                 'updated_at' => '2020-04-06 19:11:05',
             ),
-            278 => 
+            278 =>
             array (
                 'id' => 279,
                 'name_ar' => 'Faye Bernhard',
@@ -3365,7 +3365,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:05',
                 'updated_at' => '2020-04-06 19:11:05',
             ),
-            279 => 
+            279 =>
             array (
                 'id' => 280,
                 'name_ar' => 'Odie Quigley',
@@ -3377,7 +3377,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:05',
                 'updated_at' => '2020-04-06 19:11:05',
             ),
-            280 => 
+            280 =>
             array (
                 'id' => 281,
                 'name_ar' => 'Mason Dietrich',
@@ -3389,7 +3389,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:05',
                 'updated_at' => '2020-04-06 19:11:05',
             ),
-            281 => 
+            281 =>
             array (
                 'id' => 282,
                 'name_ar' => 'Greyson Schuster',
@@ -3401,7 +3401,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:05',
                 'updated_at' => '2020-04-06 19:11:05',
             ),
-            282 => 
+            282 =>
             array (
                 'id' => 283,
                 'name_ar' => 'Rubye Tromp V',
@@ -3413,7 +3413,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:05',
                 'updated_at' => '2020-04-06 19:11:05',
             ),
-            283 => 
+            283 =>
             array (
                 'id' => 284,
                 'name_ar' => 'Dr. Estefania Robel PhD',
@@ -3425,7 +3425,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:05',
                 'updated_at' => '2020-04-06 19:11:05',
             ),
-            284 => 
+            284 =>
             array (
                 'id' => 285,
                 'name_ar' => 'Nadia Gaylord IV',
@@ -3437,7 +3437,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:05',
                 'updated_at' => '2020-04-06 19:11:05',
             ),
-            285 => 
+            285 =>
             array (
                 'id' => 286,
                 'name_ar' => 'Jazlyn Nitzsche',
@@ -3449,7 +3449,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:05',
                 'updated_at' => '2020-04-06 19:11:05',
             ),
-            286 => 
+            286 =>
             array (
                 'id' => 287,
                 'name_ar' => 'Fabiola Zulauf',
@@ -3461,7 +3461,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:05',
                 'updated_at' => '2020-04-06 19:11:05',
             ),
-            287 => 
+            287 =>
             array (
                 'id' => 288,
                 'name_ar' => 'Rhianna Spencer MD',
@@ -3473,7 +3473,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:05',
                 'updated_at' => '2020-04-06 19:11:05',
             ),
-            288 => 
+            288 =>
             array (
                 'id' => 289,
                 'name_ar' => 'Gracie Beer',
@@ -3485,7 +3485,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:05',
                 'updated_at' => '2020-04-06 19:11:05',
             ),
-            289 => 
+            289 =>
             array (
                 'id' => 290,
                 'name_ar' => 'Frida Gleason',
@@ -3497,7 +3497,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:06',
                 'updated_at' => '2020-04-06 19:11:06',
             ),
-            290 => 
+            290 =>
             array (
                 'id' => 291,
                 'name_ar' => 'Erik Lueilwitz MD',
@@ -3509,7 +3509,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:06',
                 'updated_at' => '2020-04-06 19:11:06',
             ),
-            291 => 
+            291 =>
             array (
                 'id' => 292,
                 'name_ar' => 'Arielle Klein',
@@ -3521,7 +3521,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:06',
                 'updated_at' => '2020-04-06 19:11:06',
             ),
-            292 => 
+            292 =>
             array (
                 'id' => 293,
                 'name_ar' => 'Erling Padberg I',
@@ -3533,7 +3533,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:06',
                 'updated_at' => '2020-04-06 19:11:06',
             ),
-            293 => 
+            293 =>
             array (
                 'id' => 294,
                 'name_ar' => 'Javonte Rutherford',
@@ -3545,7 +3545,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:06',
                 'updated_at' => '2020-04-06 19:11:06',
             ),
-            294 => 
+            294 =>
             array (
                 'id' => 295,
                 'name_ar' => 'Bryana Bruen',
@@ -3557,7 +3557,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:06',
                 'updated_at' => '2020-04-06 19:11:06',
             ),
-            295 => 
+            295 =>
             array (
                 'id' => 296,
                 'name_ar' => 'Marta Rowe V',
@@ -3569,7 +3569,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:06',
                 'updated_at' => '2020-04-06 19:11:06',
             ),
-            296 => 
+            296 =>
             array (
                 'id' => 297,
                 'name_ar' => 'Della Bosco',
@@ -3581,7 +3581,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:06',
                 'updated_at' => '2020-04-06 19:11:06',
             ),
-            297 => 
+            297 =>
             array (
                 'id' => 298,
                 'name_ar' => 'Annetta Howell',
@@ -3593,7 +3593,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:06',
                 'updated_at' => '2020-04-06 19:11:06',
             ),
-            298 => 
+            298 =>
             array (
                 'id' => 299,
                 'name_ar' => 'Katherine Auer',
@@ -3605,7 +3605,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:06',
                 'updated_at' => '2020-04-06 19:11:06',
             ),
-            299 => 
+            299 =>
             array (
                 'id' => 300,
                 'name_ar' => 'Nicolas Barrows',
@@ -3617,7 +3617,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:06',
                 'updated_at' => '2020-04-06 19:11:06',
             ),
-            300 => 
+            300 =>
             array (
                 'id' => 301,
                 'name_ar' => 'Alford Koepp DVM',
@@ -3629,7 +3629,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:06',
                 'updated_at' => '2020-04-06 19:11:06',
             ),
-            301 => 
+            301 =>
             array (
                 'id' => 302,
                 'name_ar' => 'Nat Heller',
@@ -3641,7 +3641,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:06',
                 'updated_at' => '2020-04-06 19:11:06',
             ),
-            302 => 
+            302 =>
             array (
                 'id' => 303,
                 'name_ar' => 'Laila Bergnaum',
@@ -3653,7 +3653,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:06',
                 'updated_at' => '2020-04-06 19:11:06',
             ),
-            303 => 
+            303 =>
             array (
                 'id' => 304,
                 'name_ar' => 'Murphy Schmitt',
@@ -3665,7 +3665,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:06',
                 'updated_at' => '2020-04-06 19:11:06',
             ),
-            304 => 
+            304 =>
             array (
                 'id' => 305,
                 'name_ar' => 'Breanne Barrows',
@@ -3677,7 +3677,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:06',
                 'updated_at' => '2020-04-06 19:11:06',
             ),
-            305 => 
+            305 =>
             array (
                 'id' => 306,
                 'name_ar' => 'Daniella Davis',
@@ -3689,7 +3689,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:06',
                 'updated_at' => '2020-04-06 19:11:06',
             ),
-            306 => 
+            306 =>
             array (
                 'id' => 307,
                 'name_ar' => 'Pat Streich',
@@ -3701,7 +3701,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:06',
                 'updated_at' => '2020-04-06 19:11:06',
             ),
-            307 => 
+            307 =>
             array (
                 'id' => 308,
                 'name_ar' => 'Adrianna Brown',
@@ -3713,7 +3713,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:07',
                 'updated_at' => '2020-04-06 19:11:07',
             ),
-            308 => 
+            308 =>
             array (
                 'id' => 309,
                 'name_ar' => 'Camron Spinka',
@@ -3725,7 +3725,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:07',
                 'updated_at' => '2020-04-06 19:11:07',
             ),
-            309 => 
+            309 =>
             array (
                 'id' => 310,
                 'name_ar' => 'Mr. Izaiah Purdy III',
@@ -3737,7 +3737,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:07',
                 'updated_at' => '2020-04-06 19:11:07',
             ),
-            310 => 
+            310 =>
             array (
                 'id' => 311,
                 'name_ar' => 'Prof. Leora Ritchie',
@@ -3749,7 +3749,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:07',
                 'updated_at' => '2020-04-06 19:11:07',
             ),
-            311 => 
+            311 =>
             array (
                 'id' => 312,
                 'name_ar' => 'Dr. Leif Adams',
@@ -3761,7 +3761,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:07',
                 'updated_at' => '2020-04-06 19:11:07',
             ),
-            312 => 
+            312 =>
             array (
                 'id' => 313,
                 'name_ar' => 'Elna Hettinger',
@@ -3773,7 +3773,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:07',
                 'updated_at' => '2020-04-06 19:11:07',
             ),
-            313 => 
+            313 =>
             array (
                 'id' => 314,
                 'name_ar' => 'Dr. Anne Nikolaus',
@@ -3785,7 +3785,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:07',
                 'updated_at' => '2020-04-06 19:11:07',
             ),
-            314 => 
+            314 =>
             array (
                 'id' => 315,
                 'name_ar' => 'Lilliana Rolfson',
@@ -3797,7 +3797,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:07',
                 'updated_at' => '2020-04-06 19:11:07',
             ),
-            315 => 
+            315 =>
             array (
                 'id' => 316,
                 'name_ar' => 'Miss Ariane Halvorson V',
@@ -3809,7 +3809,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:07',
                 'updated_at' => '2020-04-06 19:11:07',
             ),
-            316 => 
+            316 =>
             array (
                 'id' => 317,
                 'name_ar' => 'Malika Bashirian',
@@ -3821,7 +3821,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:07',
                 'updated_at' => '2020-04-06 19:11:07',
             ),
-            317 => 
+            317 =>
             array (
                 'id' => 318,
                 'name_ar' => 'Mr. Geovanny Mante III',
@@ -3833,7 +3833,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:07',
                 'updated_at' => '2020-04-06 19:11:07',
             ),
-            318 => 
+            318 =>
             array (
                 'id' => 319,
                 'name_ar' => 'Margarete Altenwerth',
@@ -3845,7 +3845,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:07',
                 'updated_at' => '2020-04-06 19:11:07',
             ),
-            319 => 
+            319 =>
             array (
                 'id' => 320,
                 'name_ar' => 'Liam Koepp',
@@ -3857,7 +3857,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:07',
                 'updated_at' => '2020-04-06 19:11:07',
             ),
-            320 => 
+            320 =>
             array (
                 'id' => 321,
                 'name_ar' => 'Naomie Lowe',
@@ -3869,7 +3869,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:07',
                 'updated_at' => '2020-04-06 19:11:07',
             ),
-            321 => 
+            321 =>
             array (
                 'id' => 322,
                 'name_ar' => 'Makayla Kling',
@@ -3881,7 +3881,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:07',
                 'updated_at' => '2020-04-06 19:11:07',
             ),
-            322 => 
+            322 =>
             array (
                 'id' => 323,
                 'name_ar' => 'Georgianna Ankunding',
@@ -3893,7 +3893,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:07',
                 'updated_at' => '2020-04-06 19:11:07',
             ),
-            323 => 
+            323 =>
             array (
                 'id' => 324,
                 'name_ar' => 'Noelia Cartwright IV',
@@ -3905,7 +3905,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:07',
                 'updated_at' => '2020-04-06 19:11:07',
             ),
-            324 => 
+            324 =>
             array (
                 'id' => 325,
                 'name_ar' => 'Dr. Stacy Macejkovic Sr.',
@@ -3917,7 +3917,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:07',
                 'updated_at' => '2020-04-06 19:11:07',
             ),
-            325 => 
+            325 =>
             array (
                 'id' => 326,
                 'name_ar' => 'Kaylie Berge III',
@@ -3929,7 +3929,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:07',
                 'updated_at' => '2020-04-06 19:11:07',
             ),
-            326 => 
+            326 =>
             array (
                 'id' => 327,
                 'name_ar' => 'Dr. Sterling Hane II',
@@ -3941,7 +3941,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:07',
                 'updated_at' => '2020-04-06 19:11:07',
             ),
-            327 => 
+            327 =>
             array (
                 'id' => 328,
                 'name_ar' => 'Mr. Samson Ferry V',
@@ -3953,7 +3953,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:07',
                 'updated_at' => '2020-04-06 19:11:07',
             ),
-            328 => 
+            328 =>
             array (
                 'id' => 329,
                 'name_ar' => 'Prof. Keegan Jacobi I',
@@ -3965,7 +3965,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:07',
                 'updated_at' => '2020-04-06 19:11:07',
             ),
-            329 => 
+            329 =>
             array (
                 'id' => 330,
                 'name_ar' => 'Arlie Deckow',
@@ -3977,7 +3977,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:07',
                 'updated_at' => '2020-04-06 19:11:07',
             ),
-            330 => 
+            330 =>
             array (
                 'id' => 331,
                 'name_ar' => 'Christian Roob',
@@ -3989,7 +3989,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:08',
                 'updated_at' => '2020-04-06 19:11:08',
             ),
-            331 => 
+            331 =>
             array (
                 'id' => 332,
                 'name_ar' => 'Dixie Hegmann',
@@ -4001,7 +4001,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:08',
                 'updated_at' => '2020-04-06 19:11:08',
             ),
-            332 => 
+            332 =>
             array (
                 'id' => 333,
                 'name_ar' => 'Prof. Rylee Reichel V',
@@ -4013,7 +4013,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:08',
                 'updated_at' => '2020-04-06 19:11:08',
             ),
-            333 => 
+            333 =>
             array (
                 'id' => 334,
                 'name_ar' => 'Gus Grimes I',
@@ -4025,7 +4025,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:08',
                 'updated_at' => '2020-04-06 19:11:08',
             ),
-            334 => 
+            334 =>
             array (
                 'id' => 335,
                 'name_ar' => 'Jamison Yundt',
@@ -4037,7 +4037,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:08',
                 'updated_at' => '2020-04-06 19:11:08',
             ),
-            335 => 
+            335 =>
             array (
                 'id' => 336,
                 'name_ar' => 'Mr. Connor Greenfelder',
@@ -4049,7 +4049,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:08',
                 'updated_at' => '2020-04-06 19:11:08',
             ),
-            336 => 
+            336 =>
             array (
                 'id' => 337,
                 'name_ar' => 'Mrs. Reta Gulgowski',
@@ -4061,7 +4061,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:08',
                 'updated_at' => '2020-04-06 19:11:08',
             ),
-            337 => 
+            337 =>
             array (
                 'id' => 338,
                 'name_ar' => 'Dr. Odell Homenick DVM',
@@ -4073,7 +4073,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:08',
                 'updated_at' => '2020-04-06 19:11:08',
             ),
-            338 => 
+            338 =>
             array (
                 'id' => 339,
                 'name_ar' => 'Dr. Fredrick Mueller MD',
@@ -4085,7 +4085,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:08',
                 'updated_at' => '2020-04-06 19:11:08',
             ),
-            339 => 
+            339 =>
             array (
                 'id' => 340,
                 'name_ar' => 'Alayna Ankunding',
@@ -4097,7 +4097,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:08',
                 'updated_at' => '2020-04-06 19:11:08',
             ),
-            340 => 
+            340 =>
             array (
                 'id' => 341,
                 'name_ar' => 'Mariela Rath II',
@@ -4109,7 +4109,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:08',
                 'updated_at' => '2020-04-06 19:11:08',
             ),
-            341 => 
+            341 =>
             array (
                 'id' => 342,
                 'name_ar' => 'Cyril Ziemann PhD',
@@ -4121,7 +4121,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:08',
                 'updated_at' => '2020-04-06 19:11:08',
             ),
-            342 => 
+            342 =>
             array (
                 'id' => 343,
                 'name_ar' => 'Prof. Garth Kerluke V',
@@ -4133,7 +4133,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:08',
                 'updated_at' => '2020-04-06 19:11:08',
             ),
-            343 => 
+            343 =>
             array (
                 'id' => 344,
                 'name_ar' => 'Lyric Tillman',
@@ -4145,7 +4145,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:08',
                 'updated_at' => '2020-04-06 19:11:08',
             ),
-            344 => 
+            344 =>
             array (
                 'id' => 345,
                 'name_ar' => 'Eldred Schultz',
@@ -4157,7 +4157,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:08',
                 'updated_at' => '2020-04-06 19:11:08',
             ),
-            345 => 
+            345 =>
             array (
                 'id' => 346,
                 'name_ar' => 'Prof. Samir Altenwerth Sr.',
@@ -4169,7 +4169,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:08',
                 'updated_at' => '2020-04-06 19:11:08',
             ),
-            346 => 
+            346 =>
             array (
                 'id' => 347,
                 'name_ar' => 'Torrey Durgan',
@@ -4181,7 +4181,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:08',
                 'updated_at' => '2020-04-06 19:11:08',
             ),
-            347 => 
+            347 =>
             array (
                 'id' => 348,
                 'name_ar' => 'Rodolfo Flatley DDS',
@@ -4193,7 +4193,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:08',
                 'updated_at' => '2020-04-06 19:11:08',
             ),
-            348 => 
+            348 =>
             array (
                 'id' => 349,
                 'name_ar' => 'Brenna McLaughlin',
@@ -4205,7 +4205,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:08',
                 'updated_at' => '2020-04-06 19:11:08',
             ),
-            349 => 
+            349 =>
             array (
                 'id' => 350,
                 'name_ar' => 'Lavern Homenick',
@@ -4217,7 +4217,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:08',
                 'updated_at' => '2020-04-06 19:11:08',
             ),
-            350 => 
+            350 =>
             array (
                 'id' => 351,
                 'name_ar' => 'Jacklyn Runolfsson',
@@ -4229,7 +4229,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:08',
                 'updated_at' => '2020-04-06 19:11:08',
             ),
-            351 => 
+            351 =>
             array (
                 'id' => 352,
                 'name_ar' => 'Hanna Gleason PhD',
@@ -4241,7 +4241,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:08',
                 'updated_at' => '2020-04-06 19:11:08',
             ),
-            352 => 
+            352 =>
             array (
                 'id' => 353,
                 'name_ar' => 'Lizeth Grant I',
@@ -4253,7 +4253,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:08',
                 'updated_at' => '2020-04-06 19:11:08',
             ),
-            353 => 
+            353 =>
             array (
                 'id' => 354,
                 'name_ar' => 'Clay Harvey',
@@ -4265,7 +4265,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:08',
                 'updated_at' => '2020-04-06 19:11:08',
             ),
-            354 => 
+            354 =>
             array (
                 'id' => 355,
                 'name_ar' => 'Heaven Braun',
@@ -4277,7 +4277,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:09',
                 'updated_at' => '2020-04-06 19:11:09',
             ),
-            355 => 
+            355 =>
             array (
                 'id' => 356,
                 'name_ar' => 'Chaz Grimes',
@@ -4289,7 +4289,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:09',
                 'updated_at' => '2020-04-06 19:11:09',
             ),
-            356 => 
+            356 =>
             array (
                 'id' => 357,
                 'name_ar' => 'Preston Mayert',
@@ -4301,7 +4301,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:09',
                 'updated_at' => '2020-04-06 19:11:09',
             ),
-            357 => 
+            357 =>
             array (
                 'id' => 358,
                 'name_ar' => 'Zora Jones',
@@ -4313,7 +4313,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:09',
                 'updated_at' => '2020-04-06 19:11:09',
             ),
-            358 => 
+            358 =>
             array (
                 'id' => 359,
                 'name_ar' => 'Lee Hansen',
@@ -4325,7 +4325,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:09',
                 'updated_at' => '2020-04-06 19:11:09',
             ),
-            359 => 
+            359 =>
             array (
                 'id' => 360,
                 'name_ar' => 'Okey Schroeder',
@@ -4337,7 +4337,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:09',
                 'updated_at' => '2020-04-06 19:11:09',
             ),
-            360 => 
+            360 =>
             array (
                 'id' => 361,
                 'name_ar' => 'Nico Bruen II',
@@ -4349,7 +4349,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:09',
                 'updated_at' => '2020-04-06 19:11:09',
             ),
-            361 => 
+            361 =>
             array (
                 'id' => 362,
                 'name_ar' => 'Brandyn Emard',
@@ -4361,7 +4361,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:09',
                 'updated_at' => '2020-04-06 19:11:09',
             ),
-            362 => 
+            362 =>
             array (
                 'id' => 363,
                 'name_ar' => 'Dr. Timothy Champlin',
@@ -4373,7 +4373,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:09',
                 'updated_at' => '2020-04-06 19:11:09',
             ),
-            363 => 
+            363 =>
             array (
                 'id' => 364,
                 'name_ar' => 'Philip Wolf DDS',
@@ -4385,7 +4385,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:09',
                 'updated_at' => '2020-04-06 19:11:09',
             ),
-            364 => 
+            364 =>
             array (
                 'id' => 365,
                 'name_ar' => 'Dr. Ophelia Gerlach PhD',
@@ -4397,7 +4397,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:09',
                 'updated_at' => '2020-04-06 19:11:09',
             ),
-            365 => 
+            365 =>
             array (
                 'id' => 366,
                 'name_ar' => 'Mrs. Dawn Schmitt',
@@ -4409,7 +4409,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:09',
                 'updated_at' => '2020-04-06 19:11:09',
             ),
-            366 => 
+            366 =>
             array (
                 'id' => 367,
                 'name_ar' => 'Jaleel Gusikowski',
@@ -4421,7 +4421,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:09',
                 'updated_at' => '2020-04-06 19:11:09',
             ),
-            367 => 
+            367 =>
             array (
                 'id' => 368,
                 'name_ar' => 'Eugenia Jacobson',
@@ -4433,7 +4433,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:09',
                 'updated_at' => '2020-04-06 19:11:09',
             ),
-            368 => 
+            368 =>
             array (
                 'id' => 369,
                 'name_ar' => 'Scarlett Balistreri',
@@ -4445,7 +4445,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:09',
                 'updated_at' => '2020-04-06 19:11:09',
             ),
-            369 => 
+            369 =>
             array (
                 'id' => 370,
                 'name_ar' => 'Luz Roberts MD',
@@ -4457,7 +4457,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:09',
                 'updated_at' => '2020-04-06 19:11:09',
             ),
-            370 => 
+            370 =>
             array (
                 'id' => 371,
                 'name_ar' => 'Javonte Miller Sr.',
@@ -4469,7 +4469,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:09',
                 'updated_at' => '2020-04-06 19:11:09',
             ),
-            371 => 
+            371 =>
             array (
                 'id' => 372,
                 'name_ar' => 'Dr. Jackson Halvorson PhD',
@@ -4481,7 +4481,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:09',
                 'updated_at' => '2020-04-06 19:11:09',
             ),
-            372 => 
+            372 =>
             array (
                 'id' => 373,
                 'name_ar' => 'Onie Tremblay',
@@ -4493,7 +4493,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:09',
                 'updated_at' => '2020-04-06 19:11:09',
             ),
-            373 => 
+            373 =>
             array (
                 'id' => 374,
                 'name_ar' => 'Jake Bechtelar',
@@ -4505,7 +4505,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:09',
                 'updated_at' => '2020-04-06 19:11:09',
             ),
-            374 => 
+            374 =>
             array (
                 'id' => 375,
                 'name_ar' => 'Prof. Herbert Kerluke II',
@@ -4517,7 +4517,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:09',
                 'updated_at' => '2020-04-06 19:11:09',
             ),
-            375 => 
+            375 =>
             array (
                 'id' => 376,
                 'name_ar' => 'Tevin Gerhold',
@@ -4529,7 +4529,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:10',
                 'updated_at' => '2020-04-06 19:11:10',
             ),
-            376 => 
+            376 =>
             array (
                 'id' => 377,
                 'name_ar' => 'Tyrique Kiehn',
@@ -4541,7 +4541,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:10',
                 'updated_at' => '2020-04-06 19:11:10',
             ),
-            377 => 
+            377 =>
             array (
                 'id' => 378,
                 'name_ar' => 'Prof. Gabriel Jacobson',
@@ -4553,7 +4553,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:10',
                 'updated_at' => '2020-04-06 19:11:10',
             ),
-            378 => 
+            378 =>
             array (
                 'id' => 379,
                 'name_ar' => 'Mr. Dylan Quigley DVM',
@@ -4565,7 +4565,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:10',
                 'updated_at' => '2020-04-06 19:11:10',
             ),
-            379 => 
+            379 =>
             array (
                 'id' => 380,
                 'name_ar' => 'Claude Hettinger',
@@ -4577,7 +4577,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:10',
                 'updated_at' => '2020-04-06 19:11:10',
             ),
-            380 => 
+            380 =>
             array (
                 'id' => 381,
                 'name_ar' => 'Monroe Bergstrom',
@@ -4589,7 +4589,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:10',
                 'updated_at' => '2020-04-06 19:11:10',
             ),
-            381 => 
+            381 =>
             array (
                 'id' => 382,
                 'name_ar' => 'Jesse O\'Connell',
@@ -4601,7 +4601,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:10',
                 'updated_at' => '2020-04-06 19:11:10',
             ),
-            382 => 
+            382 =>
             array (
                 'id' => 383,
                 'name_ar' => 'Ayden Hand',
@@ -4613,7 +4613,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:10',
                 'updated_at' => '2020-04-06 19:11:10',
             ),
-            383 => 
+            383 =>
             array (
                 'id' => 384,
                 'name_ar' => 'Mabelle Turcotte',
@@ -4625,7 +4625,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:10',
                 'updated_at' => '2020-04-06 19:11:10',
             ),
-            384 => 
+            384 =>
             array (
                 'id' => 385,
                 'name_ar' => 'Jackeline Nader',
@@ -4637,7 +4637,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:10',
                 'updated_at' => '2020-04-06 19:11:10',
             ),
-            385 => 
+            385 =>
             array (
                 'id' => 386,
                 'name_ar' => 'Dr. Heaven Cormier DVM',
@@ -4649,7 +4649,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:10',
                 'updated_at' => '2020-04-06 19:11:10',
             ),
-            386 => 
+            386 =>
             array (
                 'id' => 387,
                 'name_ar' => 'Dolly Sporer',
@@ -4661,7 +4661,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:10',
                 'updated_at' => '2020-04-06 19:11:10',
             ),
-            387 => 
+            387 =>
             array (
                 'id' => 388,
                 'name_ar' => 'Jacey Dibbert V',
@@ -4673,7 +4673,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:10',
                 'updated_at' => '2020-04-06 19:11:10',
             ),
-            388 => 
+            388 =>
             array (
                 'id' => 389,
                 'name_ar' => 'Chasity Ward',
@@ -4685,7 +4685,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:10',
                 'updated_at' => '2020-04-06 19:11:10',
             ),
-            389 => 
+            389 =>
             array (
                 'id' => 390,
                 'name_ar' => 'Dandre Waelchi',
@@ -4697,7 +4697,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:10',
                 'updated_at' => '2020-04-06 19:11:10',
             ),
-            390 => 
+            390 =>
             array (
                 'id' => 391,
                 'name_ar' => 'Prof. Elsie Kiehn',
@@ -4709,7 +4709,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:10',
                 'updated_at' => '2020-04-06 19:11:10',
             ),
-            391 => 
+            391 =>
             array (
                 'id' => 392,
                 'name_ar' => 'Eveline Koelpin',
@@ -4721,7 +4721,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:10',
                 'updated_at' => '2020-04-06 19:11:10',
             ),
-            392 => 
+            392 =>
             array (
                 'id' => 393,
                 'name_ar' => 'Prof. Tania Okuneva Sr.',
@@ -4733,7 +4733,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:10',
                 'updated_at' => '2020-04-06 19:11:10',
             ),
-            393 => 
+            393 =>
             array (
                 'id' => 394,
                 'name_ar' => 'Prof. Mittie Rogahn',
@@ -4745,7 +4745,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:11',
                 'updated_at' => '2020-04-06 19:11:11',
             ),
-            394 => 
+            394 =>
             array (
                 'id' => 395,
                 'name_ar' => 'Prof. Lizeth Hauck PhD',
@@ -4757,7 +4757,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:11',
                 'updated_at' => '2020-04-06 19:11:11',
             ),
-            395 => 
+            395 =>
             array (
                 'id' => 396,
                 'name_ar' => 'Ms. Cleora Treutel',
@@ -4769,7 +4769,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:11',
                 'updated_at' => '2020-04-06 19:11:11',
             ),
-            396 => 
+            396 =>
             array (
                 'id' => 397,
                 'name_ar' => 'Mrs. Chanelle Sanford Jr.',
@@ -4781,7 +4781,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:11',
                 'updated_at' => '2020-04-06 19:11:11',
             ),
-            397 => 
+            397 =>
             array (
                 'id' => 398,
                 'name_ar' => 'Nico Kuphal',
@@ -4793,7 +4793,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:11',
                 'updated_at' => '2020-04-06 19:11:11',
             ),
-            398 => 
+            398 =>
             array (
                 'id' => 399,
                 'name_ar' => 'Esther Kessler',
@@ -4805,7 +4805,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:11',
                 'updated_at' => '2020-04-06 19:11:11',
             ),
-            399 => 
+            399 =>
             array (
                 'id' => 400,
                 'name_ar' => 'Jessy Ruecker I',
@@ -4817,7 +4817,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:11',
                 'updated_at' => '2020-04-06 19:11:11',
             ),
-            400 => 
+            400 =>
             array (
                 'id' => 401,
                 'name_ar' => 'Alexandrea Franecki',
@@ -4829,7 +4829,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:11',
                 'updated_at' => '2020-04-06 19:11:11',
             ),
-            401 => 
+            401 =>
             array (
                 'id' => 402,
                 'name_ar' => 'Miss Ofelia Casper II',
@@ -4841,7 +4841,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:11',
                 'updated_at' => '2020-04-06 19:11:11',
             ),
-            402 => 
+            402 =>
             array (
                 'id' => 403,
                 'name_ar' => 'Presley Gerhold II',
@@ -4853,7 +4853,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:11',
                 'updated_at' => '2020-04-06 19:11:11',
             ),
-            403 => 
+            403 =>
             array (
                 'id' => 404,
                 'name_ar' => 'Prof. Jan Ratke I',
@@ -4865,7 +4865,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:11',
                 'updated_at' => '2020-04-06 19:11:11',
             ),
-            404 => 
+            404 =>
             array (
                 'id' => 405,
                 'name_ar' => 'Gabriella Swift',
@@ -4877,7 +4877,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:11',
                 'updated_at' => '2020-04-06 19:11:11',
             ),
-            405 => 
+            405 =>
             array (
                 'id' => 406,
                 'name_ar' => 'Josie Hyatt IV',
@@ -4889,7 +4889,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:11',
                 'updated_at' => '2020-04-06 19:11:11',
             ),
-            406 => 
+            406 =>
             array (
                 'id' => 407,
                 'name_ar' => 'Andrew Ward PhD',
@@ -4901,7 +4901,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:11',
                 'updated_at' => '2020-04-06 19:11:11',
             ),
-            407 => 
+            407 =>
             array (
                 'id' => 408,
                 'name_ar' => 'Katlyn Kreiger',
@@ -4913,7 +4913,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:11',
                 'updated_at' => '2020-04-06 19:11:11',
             ),
-            408 => 
+            408 =>
             array (
                 'id' => 409,
                 'name_ar' => 'Mr. Garnett Nolan',
@@ -4925,7 +4925,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:11',
                 'updated_at' => '2020-04-06 19:11:11',
             ),
-            409 => 
+            409 =>
             array (
                 'id' => 410,
                 'name_ar' => 'Prof. Alison Bosco II',
@@ -4937,7 +4937,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:11',
                 'updated_at' => '2020-04-06 19:11:11',
             ),
-            410 => 
+            410 =>
             array (
                 'id' => 411,
                 'name_ar' => 'Candida Kuhic Sr.',
@@ -4949,7 +4949,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:11',
                 'updated_at' => '2020-04-06 19:11:11',
             ),
-            411 => 
+            411 =>
             array (
                 'id' => 412,
                 'name_ar' => 'Abdul Block',
@@ -4961,7 +4961,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:11',
                 'updated_at' => '2020-04-06 19:11:11',
             ),
-            412 => 
+            412 =>
             array (
                 'id' => 413,
                 'name_ar' => 'Keyshawn Schiller I',
@@ -4973,7 +4973,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:11',
                 'updated_at' => '2020-04-06 19:11:11',
             ),
-            413 => 
+            413 =>
             array (
                 'id' => 414,
                 'name_ar' => 'Alba Labadie',
@@ -4985,7 +4985,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:11',
                 'updated_at' => '2020-04-06 19:11:11',
             ),
-            414 => 
+            414 =>
             array (
                 'id' => 415,
                 'name_ar' => 'Mrs. Rosalinda Berge',
@@ -4997,7 +4997,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:11',
                 'updated_at' => '2020-04-06 19:11:11',
             ),
-            415 => 
+            415 =>
             array (
                 'id' => 416,
                 'name_ar' => 'Dr. Philip Ullrich',
@@ -5009,7 +5009,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:11',
                 'updated_at' => '2020-04-06 19:11:11',
             ),
-            416 => 
+            416 =>
             array (
                 'id' => 417,
                 'name_ar' => 'Miss Courtney Rippin',
@@ -5021,7 +5021,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:11',
                 'updated_at' => '2020-04-06 19:11:11',
             ),
-            417 => 
+            417 =>
             array (
                 'id' => 418,
                 'name_ar' => 'Luisa Pfannerstill I',
@@ -5033,7 +5033,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:11',
                 'updated_at' => '2020-04-06 19:11:11',
             ),
-            418 => 
+            418 =>
             array (
                 'id' => 419,
                 'name_ar' => 'Prof. Jamarcus Crist',
@@ -5045,7 +5045,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:12',
                 'updated_at' => '2020-04-06 19:11:12',
             ),
-            419 => 
+            419 =>
             array (
                 'id' => 420,
                 'name_ar' => 'Dr. Lee Legros',
@@ -5057,7 +5057,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:12',
                 'updated_at' => '2020-04-06 19:11:12',
             ),
-            420 => 
+            420 =>
             array (
                 'id' => 421,
                 'name_ar' => 'Hal Bernhard V',
@@ -5069,7 +5069,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:12',
                 'updated_at' => '2020-04-06 19:11:12',
             ),
-            421 => 
+            421 =>
             array (
                 'id' => 422,
                 'name_ar' => 'Prof. Aurelia Tromp DDS',
@@ -5081,7 +5081,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:12',
                 'updated_at' => '2020-04-06 19:11:12',
             ),
-            422 => 
+            422 =>
             array (
                 'id' => 423,
                 'name_ar' => 'Leanne Satterfield',
@@ -5093,7 +5093,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:12',
                 'updated_at' => '2020-04-06 19:11:12',
             ),
-            423 => 
+            423 =>
             array (
                 'id' => 424,
                 'name_ar' => 'Margarita Schumm',
@@ -5105,7 +5105,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:12',
                 'updated_at' => '2020-04-06 19:11:12',
             ),
-            424 => 
+            424 =>
             array (
                 'id' => 425,
                 'name_ar' => 'Grayson Zieme',
@@ -5117,7 +5117,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:12',
                 'updated_at' => '2020-04-06 19:11:12',
             ),
-            425 => 
+            425 =>
             array (
                 'id' => 426,
                 'name_ar' => 'Ms. Aylin Schmeler V',
@@ -5129,7 +5129,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:12',
                 'updated_at' => '2020-04-06 19:11:12',
             ),
-            426 => 
+            426 =>
             array (
                 'id' => 427,
                 'name_ar' => 'Dr. Patrick Kozey MD',
@@ -5141,7 +5141,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:12',
                 'updated_at' => '2020-04-06 19:11:12',
             ),
-            427 => 
+            427 =>
             array (
                 'id' => 428,
                 'name_ar' => 'Mallory Stokes',
@@ -5153,7 +5153,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:12',
                 'updated_at' => '2020-04-06 19:11:12',
             ),
-            428 => 
+            428 =>
             array (
                 'id' => 429,
                 'name_ar' => 'Ola Ryan',
@@ -5165,7 +5165,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:12',
                 'updated_at' => '2020-04-06 19:11:12',
             ),
-            429 => 
+            429 =>
             array (
                 'id' => 430,
                 'name_ar' => 'Domingo Lang',
@@ -5177,7 +5177,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:12',
                 'updated_at' => '2020-04-06 19:11:12',
             ),
-            430 => 
+            430 =>
             array (
                 'id' => 431,
                 'name_ar' => 'Madeline Franecki',
@@ -5189,7 +5189,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:12',
                 'updated_at' => '2020-04-06 19:11:12',
             ),
-            431 => 
+            431 =>
             array (
                 'id' => 432,
                 'name_ar' => 'Prof. Gianni Dach',
@@ -5201,7 +5201,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:12',
                 'updated_at' => '2020-04-06 19:11:12',
             ),
-            432 => 
+            432 =>
             array (
                 'id' => 433,
                 'name_ar' => 'Abbigail Wyman',
@@ -5213,7 +5213,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:12',
                 'updated_at' => '2020-04-06 19:11:12',
             ),
-            433 => 
+            433 =>
             array (
                 'id' => 434,
                 'name_ar' => 'Kelsi Oberbrunner',
@@ -5225,7 +5225,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:13',
                 'updated_at' => '2020-04-06 19:11:13',
             ),
-            434 => 
+            434 =>
             array (
                 'id' => 435,
                 'name_ar' => 'Ceasar Funk',
@@ -5237,7 +5237,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:13',
                 'updated_at' => '2020-04-06 19:11:13',
             ),
-            435 => 
+            435 =>
             array (
                 'id' => 436,
                 'name_ar' => 'Katheryn Marquardt',
@@ -5249,7 +5249,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:13',
                 'updated_at' => '2020-04-06 19:11:13',
             ),
-            436 => 
+            436 =>
             array (
                 'id' => 437,
                 'name_ar' => 'Mr. Andy Graham',
@@ -5261,7 +5261,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:13',
                 'updated_at' => '2020-04-06 19:11:13',
             ),
-            437 => 
+            437 =>
             array (
                 'id' => 438,
                 'name_ar' => 'Sydnie Zemlak',
@@ -5273,7 +5273,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:13',
                 'updated_at' => '2020-04-06 19:11:13',
             ),
-            438 => 
+            438 =>
             array (
                 'id' => 439,
                 'name_ar' => 'Dr. Kailee Witting',
@@ -5285,7 +5285,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:13',
                 'updated_at' => '2020-04-06 19:11:13',
             ),
-            439 => 
+            439 =>
             array (
                 'id' => 440,
                 'name_ar' => 'Ramona Ondricka',
@@ -5297,7 +5297,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:13',
                 'updated_at' => '2020-04-06 19:11:13',
             ),
-            440 => 
+            440 =>
             array (
                 'id' => 441,
                 'name_ar' => 'Ward Hoeger',
@@ -5309,7 +5309,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:13',
                 'updated_at' => '2020-04-06 19:11:13',
             ),
-            441 => 
+            441 =>
             array (
                 'id' => 442,
                 'name_ar' => 'Price Douglas',
@@ -5321,7 +5321,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:13',
                 'updated_at' => '2020-04-06 19:11:13',
             ),
-            442 => 
+            442 =>
             array (
                 'id' => 443,
                 'name_ar' => 'Mr. Orrin Wilderman V',
@@ -5333,7 +5333,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:13',
                 'updated_at' => '2020-04-06 19:11:13',
             ),
-            443 => 
+            443 =>
             array (
                 'id' => 444,
                 'name_ar' => 'Lyric Schaefer',
@@ -5345,7 +5345,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:13',
                 'updated_at' => '2020-04-06 19:11:13',
             ),
-            444 => 
+            444 =>
             array (
                 'id' => 445,
                 'name_ar' => 'Briana Crona',
@@ -5357,7 +5357,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:13',
                 'updated_at' => '2020-04-06 19:11:13',
             ),
-            445 => 
+            445 =>
             array (
                 'id' => 446,
                 'name_ar' => 'Rowan Carroll',
@@ -5369,7 +5369,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:13',
                 'updated_at' => '2020-04-06 19:11:13',
             ),
-            446 => 
+            446 =>
             array (
                 'id' => 447,
                 'name_ar' => 'Ollie Hyatt',
@@ -5381,7 +5381,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:13',
                 'updated_at' => '2020-04-06 19:11:13',
             ),
-            447 => 
+            447 =>
             array (
                 'id' => 448,
                 'name_ar' => 'Hershel D\'Amore Jr.',
@@ -5393,7 +5393,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:13',
                 'updated_at' => '2020-04-06 19:11:13',
             ),
-            448 => 
+            448 =>
             array (
                 'id' => 449,
                 'name_ar' => 'Kole Mosciski',
@@ -5405,7 +5405,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:13',
                 'updated_at' => '2020-04-06 19:11:13',
             ),
-            449 => 
+            449 =>
             array (
                 'id' => 450,
                 'name_ar' => 'Dr. Reuben Cassin DDS',
@@ -5417,7 +5417,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:13',
                 'updated_at' => '2020-04-06 19:11:13',
             ),
-            450 => 
+            450 =>
             array (
                 'id' => 451,
                 'name_ar' => 'Rose Torp',
@@ -5429,7 +5429,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:13',
                 'updated_at' => '2020-04-06 19:11:13',
             ),
-            451 => 
+            451 =>
             array (
                 'id' => 452,
                 'name_ar' => 'Leslie Bailey',
@@ -5441,7 +5441,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:13',
                 'updated_at' => '2020-04-06 19:11:13',
             ),
-            452 => 
+            452 =>
             array (
                 'id' => 453,
                 'name_ar' => 'Miss Aliya Hammes III',
@@ -5453,7 +5453,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:13',
                 'updated_at' => '2020-04-06 19:11:13',
             ),
-            453 => 
+            453 =>
             array (
                 'id' => 454,
                 'name_ar' => 'Paolo Keebler',
@@ -5465,7 +5465,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:13',
                 'updated_at' => '2020-04-06 19:11:13',
             ),
-            454 => 
+            454 =>
             array (
                 'id' => 455,
                 'name_ar' => 'Shayne Ratke',
@@ -5477,7 +5477,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:13',
                 'updated_at' => '2020-04-06 19:11:13',
             ),
-            455 => 
+            455 =>
             array (
                 'id' => 456,
                 'name_ar' => 'Keagan Dach',
@@ -5489,7 +5489,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:13',
                 'updated_at' => '2020-04-06 19:11:13',
             ),
-            456 => 
+            456 =>
             array (
                 'id' => 457,
                 'name_ar' => 'Asha Reichel Sr.',
@@ -5501,7 +5501,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:14',
                 'updated_at' => '2020-04-06 19:11:14',
             ),
-            457 => 
+            457 =>
             array (
                 'id' => 458,
                 'name_ar' => 'Ezra Dooley',
@@ -5513,7 +5513,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:14',
                 'updated_at' => '2020-04-06 19:11:14',
             ),
-            458 => 
+            458 =>
             array (
                 'id' => 459,
                 'name_ar' => 'Miracle Jast',
@@ -5525,7 +5525,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:14',
                 'updated_at' => '2020-04-06 19:11:14',
             ),
-            459 => 
+            459 =>
             array (
                 'id' => 460,
                 'name_ar' => 'Marcos Powlowski',
@@ -5537,7 +5537,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:14',
                 'updated_at' => '2020-04-06 19:11:14',
             ),
-            460 => 
+            460 =>
             array (
                 'id' => 461,
                 'name_ar' => 'Mikayla Thiel',
@@ -5549,7 +5549,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:14',
                 'updated_at' => '2020-04-06 19:11:14',
             ),
-            461 => 
+            461 =>
             array (
                 'id' => 462,
                 'name_ar' => 'Mr. Gianni McLaughlin',
@@ -5561,7 +5561,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:14',
                 'updated_at' => '2020-04-06 19:11:14',
             ),
-            462 => 
+            462 =>
             array (
                 'id' => 463,
                 'name_ar' => 'Ms. Laila Kutch',
@@ -5573,7 +5573,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:14',
                 'updated_at' => '2020-04-06 19:11:14',
             ),
-            463 => 
+            463 =>
             array (
                 'id' => 464,
                 'name_ar' => 'Teresa Reinger',
@@ -5585,7 +5585,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:14',
                 'updated_at' => '2020-04-06 19:11:14',
             ),
-            464 => 
+            464 =>
             array (
                 'id' => 465,
                 'name_ar' => 'Ms. Julia Kreiger V',
@@ -5597,7 +5597,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:14',
                 'updated_at' => '2020-04-06 19:11:14',
             ),
-            465 => 
+            465 =>
             array (
                 'id' => 466,
                 'name_ar' => 'Sandra Schiller II',
@@ -5609,7 +5609,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:14',
                 'updated_at' => '2020-04-06 19:11:14',
             ),
-            466 => 
+            466 =>
             array (
                 'id' => 467,
                 'name_ar' => 'Marc Anderson',
@@ -5621,7 +5621,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:14',
                 'updated_at' => '2020-04-06 19:11:14',
             ),
-            467 => 
+            467 =>
             array (
                 'id' => 468,
                 'name_ar' => 'Haskell Kassulke Jr.',
@@ -5633,7 +5633,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:14',
                 'updated_at' => '2020-04-06 19:11:14',
             ),
-            468 => 
+            468 =>
             array (
                 'id' => 469,
                 'name_ar' => 'Kyle Hermiston PhD',
@@ -5645,7 +5645,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:14',
                 'updated_at' => '2020-04-06 19:11:14',
             ),
-            469 => 
+            469 =>
             array (
                 'id' => 470,
                 'name_ar' => 'Prof. Ruben Willms III',
@@ -5657,7 +5657,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:14',
                 'updated_at' => '2020-04-06 19:11:14',
             ),
-            470 => 
+            470 =>
             array (
                 'id' => 471,
                 'name_ar' => 'Ms. Samanta Reichert',
@@ -5669,7 +5669,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:14',
                 'updated_at' => '2020-04-06 19:11:14',
             ),
-            471 => 
+            471 =>
             array (
                 'id' => 472,
                 'name_ar' => 'Magdalena Howe IV',
@@ -5681,7 +5681,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:14',
                 'updated_at' => '2020-04-06 19:11:14',
             ),
-            472 => 
+            472 =>
             array (
                 'id' => 473,
                 'name_ar' => 'Lukas Ledner',
@@ -5693,7 +5693,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:14',
                 'updated_at' => '2020-04-06 19:11:14',
             ),
-            473 => 
+            473 =>
             array (
                 'id' => 474,
                 'name_ar' => 'Brandon Schultz',
@@ -5705,7 +5705,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:14',
                 'updated_at' => '2020-04-06 19:11:14',
             ),
-            474 => 
+            474 =>
             array (
                 'id' => 475,
                 'name_ar' => 'Lou Lubowitz',
@@ -5717,7 +5717,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:14',
                 'updated_at' => '2020-04-06 19:11:14',
             ),
-            475 => 
+            475 =>
             array (
                 'id' => 476,
                 'name_ar' => 'Mara Hodkiewicz',
@@ -5729,7 +5729,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:14',
                 'updated_at' => '2020-04-06 19:11:14',
             ),
-            476 => 
+            476 =>
             array (
                 'id' => 477,
                 'name_ar' => 'Bernita Goldner',
@@ -5741,7 +5741,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:14',
                 'updated_at' => '2020-04-06 19:11:14',
             ),
-            477 => 
+            477 =>
             array (
                 'id' => 478,
                 'name_ar' => 'Bulah Buckridge',
@@ -5753,7 +5753,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:14',
                 'updated_at' => '2020-04-06 19:11:14',
             ),
-            478 => 
+            478 =>
             array (
                 'id' => 479,
                 'name_ar' => 'Elizabeth Larson',
@@ -5765,7 +5765,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:14',
                 'updated_at' => '2020-04-06 19:11:14',
             ),
-            479 => 
+            479 =>
             array (
                 'id' => 480,
                 'name_ar' => 'Jerrell Keeling PhD',
@@ -5777,7 +5777,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:15',
                 'updated_at' => '2020-04-06 19:11:15',
             ),
-            480 => 
+            480 =>
             array (
                 'id' => 481,
                 'name_ar' => 'Murray Ryan Sr.',
@@ -5789,7 +5789,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:15',
                 'updated_at' => '2020-04-06 19:11:15',
             ),
-            481 => 
+            481 =>
             array (
                 'id' => 482,
                 'name_ar' => 'Sofia Spencer',
@@ -5801,7 +5801,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:15',
                 'updated_at' => '2020-04-06 19:11:15',
             ),
-            482 => 
+            482 =>
             array (
                 'id' => 483,
                 'name_ar' => 'Abe Jones',
@@ -5813,7 +5813,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:15',
                 'updated_at' => '2020-04-06 19:11:15',
             ),
-            483 => 
+            483 =>
             array (
                 'id' => 484,
                 'name_ar' => 'Dr. Vivien Ruecker MD',
@@ -5825,7 +5825,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:15',
                 'updated_at' => '2020-04-06 19:11:15',
             ),
-            484 => 
+            484 =>
             array (
                 'id' => 485,
                 'name_ar' => 'Barry Kuhic',
@@ -5837,7 +5837,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:15',
                 'updated_at' => '2020-04-06 19:11:15',
             ),
-            485 => 
+            485 =>
             array (
                 'id' => 486,
                 'name_ar' => 'Mrs. Clementine Bogan DVM',
@@ -5849,7 +5849,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:15',
                 'updated_at' => '2020-04-06 19:11:15',
             ),
-            486 => 
+            486 =>
             array (
                 'id' => 487,
                 'name_ar' => 'Mr. Quinton Waters III',
@@ -5861,7 +5861,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:15',
                 'updated_at' => '2020-04-06 19:11:15',
             ),
-            487 => 
+            487 =>
             array (
                 'id' => 488,
                 'name_ar' => 'Precious Boyer MD',
@@ -5873,7 +5873,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:15',
                 'updated_at' => '2020-04-06 19:11:15',
             ),
-            488 => 
+            488 =>
             array (
                 'id' => 489,
                 'name_ar' => 'Emery Hoeger',
@@ -5885,7 +5885,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:15',
                 'updated_at' => '2020-04-06 19:11:15',
             ),
-            489 => 
+            489 =>
             array (
                 'id' => 490,
                 'name_ar' => 'Miss Karlie Bosco V',
@@ -5897,7 +5897,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:15',
                 'updated_at' => '2020-04-06 19:11:15',
             ),
-            490 => 
+            490 =>
             array (
                 'id' => 491,
                 'name_ar' => 'Prof. Douglas Turner',
@@ -5909,7 +5909,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:15',
                 'updated_at' => '2020-04-06 19:11:15',
             ),
-            491 => 
+            491 =>
             array (
                 'id' => 492,
                 'name_ar' => 'Sincere Nikolaus',
@@ -5921,7 +5921,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:15',
                 'updated_at' => '2020-04-06 19:11:15',
             ),
-            492 => 
+            492 =>
             array (
                 'id' => 493,
                 'name_ar' => 'Emmanuelle Kihn',
@@ -5933,7 +5933,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:15',
                 'updated_at' => '2020-04-06 19:11:15',
             ),
-            493 => 
+            493 =>
             array (
                 'id' => 494,
                 'name_ar' => 'Miss Adeline Emard Sr.',
@@ -5945,7 +5945,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:15',
                 'updated_at' => '2020-04-06 19:11:15',
             ),
-            494 => 
+            494 =>
             array (
                 'id' => 495,
                 'name_ar' => 'Clifton Reichert',
@@ -5957,7 +5957,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:15',
                 'updated_at' => '2020-04-06 19:11:15',
             ),
-            495 => 
+            495 =>
             array (
                 'id' => 496,
                 'name_ar' => 'Eunice Miller',
@@ -5969,7 +5969,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:15',
                 'updated_at' => '2020-04-06 19:11:15',
             ),
-            496 => 
+            496 =>
             array (
                 'id' => 497,
                 'name_ar' => 'Breanne Rolfson',
@@ -5981,7 +5981,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:15',
                 'updated_at' => '2020-04-06 19:11:15',
             ),
-            497 => 
+            497 =>
             array (
                 'id' => 498,
                 'name_ar' => 'Prof. Laverna McKenzie Jr.',
@@ -5993,7 +5993,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:15',
                 'updated_at' => '2020-04-06 19:11:15',
             ),
-            498 => 
+            498 =>
             array (
                 'id' => 499,
                 'name_ar' => 'Norwood Stehr DVM',
@@ -6005,7 +6005,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:15',
                 'updated_at' => '2020-04-06 19:11:15',
             ),
-            499 => 
+            499 =>
             array (
                 'id' => 500,
                 'name_ar' => 'Sebastian Gibson',
@@ -6019,7 +6019,7 @@ class CategoriesTableSeeder extends Seeder
             ),
         ));
         \DB::table('categories')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 501,
                 'name_ar' => 'Lawson Tromp',
@@ -6031,7 +6031,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:15',
                 'updated_at' => '2020-04-06 19:11:15',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 502,
                 'name_ar' => 'Kris Kuphal V',
@@ -6043,7 +6043,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:15',
                 'updated_at' => '2020-04-06 19:11:15',
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 503,
                 'name_ar' => 'Prof. Peyton Waelchi I',
@@ -6055,7 +6055,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:16',
                 'updated_at' => '2020-04-06 19:11:16',
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 504,
                 'name_ar' => 'Jacklyn Kuvalis',
@@ -6067,7 +6067,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:16',
                 'updated_at' => '2020-04-06 19:11:16',
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 505,
                 'name_ar' => 'Kailee Weissnat',
@@ -6079,7 +6079,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:16',
                 'updated_at' => '2020-04-06 19:11:16',
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 506,
                 'name_ar' => 'Lowell Schmitt',
@@ -6091,7 +6091,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:16',
                 'updated_at' => '2020-04-06 19:11:16',
             ),
-            6 => 
+            6 =>
             array (
                 'id' => 507,
                 'name_ar' => 'Yasmeen Corkery',
@@ -6103,7 +6103,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:16',
                 'updated_at' => '2020-04-06 19:11:16',
             ),
-            7 => 
+            7 =>
             array (
                 'id' => 508,
                 'name_ar' => 'Deshaun Gislason',
@@ -6115,7 +6115,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:16',
                 'updated_at' => '2020-04-06 19:11:16',
             ),
-            8 => 
+            8 =>
             array (
                 'id' => 509,
                 'name_ar' => 'Fabiola Rippin',
@@ -6127,7 +6127,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:16',
                 'updated_at' => '2020-04-06 19:11:16',
             ),
-            9 => 
+            9 =>
             array (
                 'id' => 510,
                 'name_ar' => 'Ms. Jordane McGlynn',
@@ -6139,7 +6139,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:16',
                 'updated_at' => '2020-04-06 19:11:16',
             ),
-            10 => 
+            10 =>
             array (
                 'id' => 511,
                 'name_ar' => 'Ms. Yadira Rippin',
@@ -6151,7 +6151,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:16',
                 'updated_at' => '2020-04-06 19:11:16',
             ),
-            11 => 
+            11 =>
             array (
                 'id' => 512,
                 'name_ar' => 'Giovanni Parker',
@@ -6163,7 +6163,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:16',
                 'updated_at' => '2020-04-06 19:11:16',
             ),
-            12 => 
+            12 =>
             array (
                 'id' => 513,
                 'name_ar' => 'Cali Zemlak PhD',
@@ -6175,7 +6175,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:16',
                 'updated_at' => '2020-04-06 19:11:16',
             ),
-            13 => 
+            13 =>
             array (
                 'id' => 514,
                 'name_ar' => 'Broderick Hayes Sr.',
@@ -6187,7 +6187,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:16',
                 'updated_at' => '2020-04-06 19:11:16',
             ),
-            14 => 
+            14 =>
             array (
                 'id' => 515,
                 'name_ar' => 'Oren Little',
@@ -6199,7 +6199,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:16',
                 'updated_at' => '2020-04-06 19:11:16',
             ),
-            15 => 
+            15 =>
             array (
                 'id' => 516,
                 'name_ar' => 'Stanley Schumm',
@@ -6211,7 +6211,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:16',
                 'updated_at' => '2020-04-06 19:11:16',
             ),
-            16 => 
+            16 =>
             array (
                 'id' => 517,
                 'name_ar' => 'Dr. Nestor Hane',
@@ -6223,7 +6223,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:16',
                 'updated_at' => '2020-04-06 19:11:16',
             ),
-            17 => 
+            17 =>
             array (
                 'id' => 518,
                 'name_ar' => 'Trever Leuschke',
@@ -6235,7 +6235,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:16',
                 'updated_at' => '2020-04-06 19:11:16',
             ),
-            18 => 
+            18 =>
             array (
                 'id' => 519,
                 'name_ar' => 'Shaun Botsford I',
@@ -6247,7 +6247,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:16',
                 'updated_at' => '2020-04-06 19:11:16',
             ),
-            19 => 
+            19 =>
             array (
                 'id' => 520,
                 'name_ar' => 'Erich Conn',
@@ -6259,7 +6259,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:16',
                 'updated_at' => '2020-04-06 19:11:16',
             ),
-            20 => 
+            20 =>
             array (
                 'id' => 521,
                 'name_ar' => 'Madonna Nikolaus DDS',
@@ -6271,7 +6271,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:16',
                 'updated_at' => '2020-04-06 19:11:16',
             ),
-            21 => 
+            21 =>
             array (
                 'id' => 522,
                 'name_ar' => 'Arvid Bogisich',
@@ -6283,7 +6283,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:16',
                 'updated_at' => '2020-04-06 19:11:16',
             ),
-            22 => 
+            22 =>
             array (
                 'id' => 523,
                 'name_ar' => 'Eric Parisian MD',
@@ -6295,7 +6295,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:16',
                 'updated_at' => '2020-04-06 19:11:16',
             ),
-            23 => 
+            23 =>
             array (
                 'id' => 524,
                 'name_ar' => 'Amanda Yost',
@@ -6307,7 +6307,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:16',
                 'updated_at' => '2020-04-06 19:11:16',
             ),
-            24 => 
+            24 =>
             array (
                 'id' => 525,
                 'name_ar' => 'Rhoda Bashirian Sr.',
@@ -6319,7 +6319,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:16',
                 'updated_at' => '2020-04-06 19:11:16',
             ),
-            25 => 
+            25 =>
             array (
                 'id' => 526,
                 'name_ar' => 'Liliane Collier',
@@ -6331,7 +6331,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:17',
                 'updated_at' => '2020-04-06 19:11:17',
             ),
-            26 => 
+            26 =>
             array (
                 'id' => 527,
                 'name_ar' => 'Benton Luettgen',
@@ -6343,7 +6343,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:17',
                 'updated_at' => '2020-04-06 19:11:17',
             ),
-            27 => 
+            27 =>
             array (
                 'id' => 528,
                 'name_ar' => 'Mr. Travon O\'Conner',
@@ -6355,7 +6355,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:17',
                 'updated_at' => '2020-04-06 19:11:17',
             ),
-            28 => 
+            28 =>
             array (
                 'id' => 529,
                 'name_ar' => 'Herbert Hill',
@@ -6367,7 +6367,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:17',
                 'updated_at' => '2020-04-06 19:11:17',
             ),
-            29 => 
+            29 =>
             array (
                 'id' => 530,
                 'name_ar' => 'Ms. Letitia Beahan V',
@@ -6379,7 +6379,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:17',
                 'updated_at' => '2020-04-06 19:11:17',
             ),
-            30 => 
+            30 =>
             array (
                 'id' => 531,
                 'name_ar' => 'Prof. Chanelle Macejkovic',
@@ -6391,7 +6391,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:17',
                 'updated_at' => '2020-04-06 19:11:17',
             ),
-            31 => 
+            31 =>
             array (
                 'id' => 532,
                 'name_ar' => 'Delia Bayer DDS',
@@ -6403,7 +6403,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:17',
                 'updated_at' => '2020-04-06 19:11:17',
             ),
-            32 => 
+            32 =>
             array (
                 'id' => 533,
                 'name_ar' => 'Deborah Thompson',
@@ -6415,7 +6415,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:17',
                 'updated_at' => '2020-04-06 19:11:17',
             ),
-            33 => 
+            33 =>
             array (
                 'id' => 534,
                 'name_ar' => 'Mac Dare V',
@@ -6427,7 +6427,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:17',
                 'updated_at' => '2020-04-06 19:11:17',
             ),
-            34 => 
+            34 =>
             array (
                 'id' => 535,
                 'name_ar' => 'Caitlyn Haley',
@@ -6439,7 +6439,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:17',
                 'updated_at' => '2020-04-06 19:11:17',
             ),
-            35 => 
+            35 =>
             array (
                 'id' => 536,
                 'name_ar' => 'Mrs. Lizeth Roob IV',
@@ -6451,7 +6451,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:17',
                 'updated_at' => '2020-04-06 19:11:17',
             ),
-            36 => 
+            36 =>
             array (
                 'id' => 537,
                 'name_ar' => 'Mr. Afton Monahan',
@@ -6463,7 +6463,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:17',
                 'updated_at' => '2020-04-06 19:11:17',
             ),
-            37 => 
+            37 =>
             array (
                 'id' => 538,
                 'name_ar' => 'Ted Crist',
@@ -6475,7 +6475,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:17',
                 'updated_at' => '2020-04-06 19:11:17',
             ),
-            38 => 
+            38 =>
             array (
                 'id' => 539,
                 'name_ar' => 'Ethel Sipes',
@@ -6487,7 +6487,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:17',
                 'updated_at' => '2020-04-06 19:11:17',
             ),
-            39 => 
+            39 =>
             array (
                 'id' => 540,
                 'name_ar' => 'Curt Stroman',
@@ -6499,7 +6499,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:17',
                 'updated_at' => '2020-04-06 19:11:17',
             ),
-            40 => 
+            40 =>
             array (
                 'id' => 541,
                 'name_ar' => 'Henri Schaefer',
@@ -6511,7 +6511,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:17',
                 'updated_at' => '2020-04-06 19:11:17',
             ),
-            41 => 
+            41 =>
             array (
                 'id' => 542,
                 'name_ar' => 'Burley Nienow IV',
@@ -6523,7 +6523,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:17',
                 'updated_at' => '2020-04-06 19:11:17',
             ),
-            42 => 
+            42 =>
             array (
                 'id' => 543,
                 'name_ar' => 'Ivory Halvorson DDS',
@@ -6535,7 +6535,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:17',
                 'updated_at' => '2020-04-06 19:11:17',
             ),
-            43 => 
+            43 =>
             array (
                 'id' => 544,
                 'name_ar' => 'Robin Smitham Jr.',
@@ -6547,7 +6547,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:17',
                 'updated_at' => '2020-04-06 19:11:17',
             ),
-            44 => 
+            44 =>
             array (
                 'id' => 545,
                 'name_ar' => 'Zachariah O\'Hara Jr.',
@@ -6559,7 +6559,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:17',
                 'updated_at' => '2020-04-06 19:11:17',
             ),
-            45 => 
+            45 =>
             array (
                 'id' => 546,
                 'name_ar' => 'Judy White',
@@ -6571,7 +6571,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:17',
                 'updated_at' => '2020-04-06 19:11:17',
             ),
-            46 => 
+            46 =>
             array (
                 'id' => 547,
                 'name_ar' => 'Marjory O\'Kon PhD',
@@ -6583,7 +6583,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:17',
                 'updated_at' => '2020-04-06 19:11:17',
             ),
-            47 => 
+            47 =>
             array (
                 'id' => 548,
                 'name_ar' => 'Roma Gottlieb',
@@ -6595,7 +6595,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:17',
                 'updated_at' => '2020-04-06 19:11:17',
             ),
-            48 => 
+            48 =>
             array (
                 'id' => 549,
                 'name_ar' => 'Jean Zboncak Jr.',
@@ -6607,7 +6607,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:18',
                 'updated_at' => '2020-04-06 19:11:18',
             ),
-            49 => 
+            49 =>
             array (
                 'id' => 550,
                 'name_ar' => 'Arden Weber',
@@ -6619,7 +6619,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:18',
                 'updated_at' => '2020-04-06 19:11:18',
             ),
-            50 => 
+            50 =>
             array (
                 'id' => 551,
                 'name_ar' => 'Devon Pacocha',
@@ -6631,7 +6631,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:18',
                 'updated_at' => '2020-04-06 19:11:18',
             ),
-            51 => 
+            51 =>
             array (
                 'id' => 552,
                 'name_ar' => 'Weston Heaney PhD',
@@ -6643,7 +6643,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:18',
                 'updated_at' => '2020-04-06 19:11:18',
             ),
-            52 => 
+            52 =>
             array (
                 'id' => 553,
                 'name_ar' => 'Dr. Presley Roberts IV',
@@ -6655,7 +6655,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:18',
                 'updated_at' => '2020-04-06 19:11:18',
             ),
-            53 => 
+            53 =>
             array (
                 'id' => 554,
                 'name_ar' => 'Emilie Windler',
@@ -6667,7 +6667,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:18',
                 'updated_at' => '2020-04-06 19:11:18',
             ),
-            54 => 
+            54 =>
             array (
                 'id' => 555,
                 'name_ar' => 'Myrtie Bogan',
@@ -6679,7 +6679,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:18',
                 'updated_at' => '2020-04-06 19:11:18',
             ),
-            55 => 
+            55 =>
             array (
                 'id' => 556,
                 'name_ar' => 'Dr. Toni Jacobi',
@@ -6691,7 +6691,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:18',
                 'updated_at' => '2020-04-06 19:11:18',
             ),
-            56 => 
+            56 =>
             array (
                 'id' => 557,
                 'name_ar' => 'Miss Avis Schoen',
@@ -6703,7 +6703,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:18',
                 'updated_at' => '2020-04-06 19:11:18',
             ),
-            57 => 
+            57 =>
             array (
                 'id' => 558,
                 'name_ar' => 'Mr. Mallory Stroman V',
@@ -6715,7 +6715,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:18',
                 'updated_at' => '2020-04-06 19:11:18',
             ),
-            58 => 
+            58 =>
             array (
                 'id' => 559,
                 'name_ar' => 'Shane Greenfelder',
@@ -6727,7 +6727,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:18',
                 'updated_at' => '2020-04-06 19:11:18',
             ),
-            59 => 
+            59 =>
             array (
                 'id' => 560,
                 'name_ar' => 'Blaze Spinka',
@@ -6739,7 +6739,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:18',
                 'updated_at' => '2020-04-06 19:11:18',
             ),
-            60 => 
+            60 =>
             array (
                 'id' => 561,
                 'name_ar' => 'Dario Powlowski',
@@ -6751,7 +6751,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:18',
                 'updated_at' => '2020-04-06 19:11:18',
             ),
-            61 => 
+            61 =>
             array (
                 'id' => 562,
                 'name_ar' => 'Mariam Lebsack',
@@ -6763,7 +6763,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:18',
                 'updated_at' => '2020-04-06 19:11:18',
             ),
-            62 => 
+            62 =>
             array (
                 'id' => 563,
                 'name_ar' => 'Sabrina Rodriguez',
@@ -6775,7 +6775,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:18',
                 'updated_at' => '2020-04-06 19:11:18',
             ),
-            63 => 
+            63 =>
             array (
                 'id' => 564,
                 'name_ar' => 'Sadye Strosin',
@@ -6787,7 +6787,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:18',
                 'updated_at' => '2020-04-06 19:11:18',
             ),
-            64 => 
+            64 =>
             array (
                 'id' => 565,
                 'name_ar' => 'Prof. Albert Waelchi',
@@ -6799,7 +6799,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:18',
                 'updated_at' => '2020-04-06 19:11:18',
             ),
-            65 => 
+            65 =>
             array (
                 'id' => 566,
                 'name_ar' => 'Elsie Kutch',
@@ -6811,7 +6811,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:18',
                 'updated_at' => '2020-04-06 19:11:18',
             ),
-            66 => 
+            66 =>
             array (
                 'id' => 567,
                 'name_ar' => 'Kylie Emard',
@@ -6823,7 +6823,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:18',
                 'updated_at' => '2020-04-06 19:11:18',
             ),
-            67 => 
+            67 =>
             array (
                 'id' => 568,
                 'name_ar' => 'Mr. Sydney Botsford V',
@@ -6835,7 +6835,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:18',
                 'updated_at' => '2020-04-06 19:11:18',
             ),
-            68 => 
+            68 =>
             array (
                 'id' => 569,
                 'name_ar' => 'Margie Zulauf',
@@ -6847,7 +6847,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:19',
                 'updated_at' => '2020-04-06 19:11:19',
             ),
-            69 => 
+            69 =>
             array (
                 'id' => 570,
                 'name_ar' => 'Jay Prohaska',
@@ -6859,7 +6859,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:19',
                 'updated_at' => '2020-04-06 19:11:19',
             ),
-            70 => 
+            70 =>
             array (
                 'id' => 571,
                 'name_ar' => 'Grant Stoltenberg',
@@ -6871,7 +6871,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:19',
                 'updated_at' => '2020-04-06 19:11:19',
             ),
-            71 => 
+            71 =>
             array (
                 'id' => 572,
                 'name_ar' => 'Deven Brakus',
@@ -6883,7 +6883,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:19',
                 'updated_at' => '2020-04-06 19:11:19',
             ),
-            72 => 
+            72 =>
             array (
                 'id' => 573,
                 'name_ar' => 'Fabian Jacobson',
@@ -6895,7 +6895,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:19',
                 'updated_at' => '2020-04-06 19:11:19',
             ),
-            73 => 
+            73 =>
             array (
                 'id' => 574,
                 'name_ar' => 'Miss Sabrina Fay PhD',
@@ -6907,7 +6907,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:19',
                 'updated_at' => '2020-04-06 19:11:19',
             ),
-            74 => 
+            74 =>
             array (
                 'id' => 575,
                 'name_ar' => 'Dr. Shawna Waters',
@@ -6919,7 +6919,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:19',
                 'updated_at' => '2020-04-06 19:11:19',
             ),
-            75 => 
+            75 =>
             array (
                 'id' => 576,
                 'name_ar' => 'Ms. Lynn Cremin MD',
@@ -6931,7 +6931,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:19',
                 'updated_at' => '2020-04-06 19:11:19',
             ),
-            76 => 
+            76 =>
             array (
                 'id' => 577,
                 'name_ar' => 'Francis Daugherty MD',
@@ -6943,7 +6943,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:19',
                 'updated_at' => '2020-04-06 19:11:19',
             ),
-            77 => 
+            77 =>
             array (
                 'id' => 578,
                 'name_ar' => 'Heath Stracke',
@@ -6955,7 +6955,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:19',
                 'updated_at' => '2020-04-06 19:11:19',
             ),
-            78 => 
+            78 =>
             array (
                 'id' => 579,
                 'name_ar' => 'Dr. Dominic Hickle IV',
@@ -6967,7 +6967,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:19',
                 'updated_at' => '2020-04-06 19:11:19',
             ),
-            79 => 
+            79 =>
             array (
                 'id' => 580,
                 'name_ar' => 'Prof. Larue Bashirian',
@@ -6979,7 +6979,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:19',
                 'updated_at' => '2020-04-06 19:11:19',
             ),
-            80 => 
+            80 =>
             array (
                 'id' => 581,
                 'name_ar' => 'Darrick Schmitt',
@@ -6991,7 +6991,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:19',
                 'updated_at' => '2020-04-06 19:11:19',
             ),
-            81 => 
+            81 =>
             array (
                 'id' => 582,
                 'name_ar' => 'Helmer Cole',
@@ -7003,7 +7003,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:19',
                 'updated_at' => '2020-04-06 19:11:19',
             ),
-            82 => 
+            82 =>
             array (
                 'id' => 583,
                 'name_ar' => 'Mallie Murray',
@@ -7015,7 +7015,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:19',
                 'updated_at' => '2020-04-06 19:11:19',
             ),
-            83 => 
+            83 =>
             array (
                 'id' => 584,
                 'name_ar' => 'Dr. Emil Medhurst',
@@ -7027,7 +7027,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:19',
                 'updated_at' => '2020-04-06 19:11:19',
             ),
-            84 => 
+            84 =>
             array (
                 'id' => 585,
                 'name_ar' => 'Sasha Crist IV',
@@ -7039,7 +7039,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:19',
                 'updated_at' => '2020-04-06 19:11:19',
             ),
-            85 => 
+            85 =>
             array (
                 'id' => 586,
                 'name_ar' => 'Mr. Broderick O\'Reilly DVM',
@@ -7051,7 +7051,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:19',
                 'updated_at' => '2020-04-06 19:11:19',
             ),
-            86 => 
+            86 =>
             array (
                 'id' => 587,
                 'name_ar' => 'Caterina Jakubowski',
@@ -7063,7 +7063,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:19',
                 'updated_at' => '2020-04-06 19:11:19',
             ),
-            87 => 
+            87 =>
             array (
                 'id' => 588,
                 'name_ar' => 'Alexandra Smitham',
@@ -7075,7 +7075,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:19',
                 'updated_at' => '2020-04-06 19:11:19',
             ),
-            88 => 
+            88 =>
             array (
                 'id' => 589,
                 'name_ar' => 'Ramona Hoeger',
@@ -7087,7 +7087,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:19',
                 'updated_at' => '2020-04-06 19:11:19',
             ),
-            89 => 
+            89 =>
             array (
                 'id' => 590,
                 'name_ar' => 'Abigale King',
@@ -7099,7 +7099,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:19',
                 'updated_at' => '2020-04-06 19:11:19',
             ),
-            90 => 
+            90 =>
             array (
                 'id' => 591,
                 'name_ar' => 'Phyllis Gleichner',
@@ -7111,7 +7111,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:19',
                 'updated_at' => '2020-04-06 19:11:19',
             ),
-            91 => 
+            91 =>
             array (
                 'id' => 592,
                 'name_ar' => 'Harley Trantow',
@@ -7123,7 +7123,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:20',
                 'updated_at' => '2020-04-06 19:11:20',
             ),
-            92 => 
+            92 =>
             array (
                 'id' => 593,
                 'name_ar' => 'Anabel Barton',
@@ -7135,7 +7135,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:20',
                 'updated_at' => '2020-04-06 19:11:20',
             ),
-            93 => 
+            93 =>
             array (
                 'id' => 594,
                 'name_ar' => 'Dr. Maud Ryan',
@@ -7147,7 +7147,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:20',
                 'updated_at' => '2020-04-06 19:11:20',
             ),
-            94 => 
+            94 =>
             array (
                 'id' => 595,
                 'name_ar' => 'Mr. Lukas Dibbert MD',
@@ -7159,7 +7159,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:20',
                 'updated_at' => '2020-04-06 19:11:20',
             ),
-            95 => 
+            95 =>
             array (
                 'id' => 596,
                 'name_ar' => 'Nathanael Prosacco',
@@ -7171,7 +7171,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:20',
                 'updated_at' => '2020-04-06 19:11:20',
             ),
-            96 => 
+            96 =>
             array (
                 'id' => 597,
                 'name_ar' => 'Mrs. Dixie Blanda',
@@ -7183,7 +7183,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:20',
                 'updated_at' => '2020-04-06 19:11:20',
             ),
-            97 => 
+            97 =>
             array (
                 'id' => 598,
                 'name_ar' => 'Christop Walsh',
@@ -7195,7 +7195,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:20',
                 'updated_at' => '2020-04-06 19:11:20',
             ),
-            98 => 
+            98 =>
             array (
                 'id' => 599,
                 'name_ar' => 'Lavern Dicki',
@@ -7207,7 +7207,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:20',
                 'updated_at' => '2020-04-06 19:11:20',
             ),
-            99 => 
+            99 =>
             array (
                 'id' => 600,
                 'name_ar' => 'Eldridge Klocko Sr.',
@@ -7219,7 +7219,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:20',
                 'updated_at' => '2020-04-06 19:11:20',
             ),
-            100 => 
+            100 =>
             array (
                 'id' => 601,
                 'name_ar' => 'Retha Koelpin',
@@ -7231,7 +7231,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:20',
                 'updated_at' => '2020-04-06 19:11:20',
             ),
-            101 => 
+            101 =>
             array (
                 'id' => 602,
                 'name_ar' => 'Miss Shana Herman',
@@ -7243,7 +7243,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:20',
                 'updated_at' => '2020-04-06 19:11:20',
             ),
-            102 => 
+            102 =>
             array (
                 'id' => 603,
                 'name_ar' => 'Ivah Baumbach',
@@ -7255,7 +7255,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:21',
                 'updated_at' => '2020-04-06 19:11:21',
             ),
-            103 => 
+            103 =>
             array (
                 'id' => 604,
                 'name_ar' => 'Elroy Towne',
@@ -7267,7 +7267,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:21',
                 'updated_at' => '2020-04-06 19:11:21',
             ),
-            104 => 
+            104 =>
             array (
                 'id' => 605,
                 'name_ar' => 'Aliyah Lockman',
@@ -7279,7 +7279,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:21',
                 'updated_at' => '2020-04-06 19:11:21',
             ),
-            105 => 
+            105 =>
             array (
                 'id' => 606,
                 'name_ar' => 'Yvonne Herzog',
@@ -7291,7 +7291,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:21',
                 'updated_at' => '2020-04-06 19:11:21',
             ),
-            106 => 
+            106 =>
             array (
                 'id' => 607,
                 'name_ar' => 'Vince Wolff III',
@@ -7303,7 +7303,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:21',
                 'updated_at' => '2020-04-06 19:11:21',
             ),
-            107 => 
+            107 =>
             array (
                 'id' => 608,
                 'name_ar' => 'Dr. Jazmyne Ziemann V',
@@ -7315,7 +7315,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:21',
                 'updated_at' => '2020-04-06 19:11:21',
             ),
-            108 => 
+            108 =>
             array (
                 'id' => 609,
                 'name_ar' => 'Mrs. Emilie Feil DVM',
@@ -7327,7 +7327,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:21',
                 'updated_at' => '2020-04-06 19:11:21',
             ),
-            109 => 
+            109 =>
             array (
                 'id' => 610,
                 'name_ar' => 'Hilton Stamm',
@@ -7339,7 +7339,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:21',
                 'updated_at' => '2020-04-06 19:11:21',
             ),
-            110 => 
+            110 =>
             array (
                 'id' => 611,
                 'name_ar' => 'Eva Rolfson',
@@ -7351,7 +7351,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:21',
                 'updated_at' => '2020-04-06 19:11:21',
             ),
-            111 => 
+            111 =>
             array (
                 'id' => 612,
                 'name_ar' => 'Orpha Hahn PhD',
@@ -7363,7 +7363,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:21',
                 'updated_at' => '2020-04-06 19:11:21',
             ),
-            112 => 
+            112 =>
             array (
                 'id' => 613,
                 'name_ar' => 'Dee Crist Sr.',
@@ -7375,7 +7375,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:21',
                 'updated_at' => '2020-04-06 19:11:21',
             ),
-            113 => 
+            113 =>
             array (
                 'id' => 614,
                 'name_ar' => 'Mariela West',
@@ -7387,7 +7387,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:21',
                 'updated_at' => '2020-04-06 19:11:21',
             ),
-            114 => 
+            114 =>
             array (
                 'id' => 615,
                 'name_ar' => 'Dr. Gordon Conroy Sr.',
@@ -7399,7 +7399,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:21',
                 'updated_at' => '2020-04-06 19:11:21',
             ),
-            115 => 
+            115 =>
             array (
                 'id' => 616,
                 'name_ar' => 'Alyson Lakin Jr.',
@@ -7411,7 +7411,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:21',
                 'updated_at' => '2020-04-06 19:11:21',
             ),
-            116 => 
+            116 =>
             array (
                 'id' => 617,
                 'name_ar' => 'Lynn Schmeler',
@@ -7423,7 +7423,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:21',
                 'updated_at' => '2020-04-06 19:11:21',
             ),
-            117 => 
+            117 =>
             array (
                 'id' => 618,
                 'name_ar' => 'Miss Alycia Rau DVM',
@@ -7435,7 +7435,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:21',
                 'updated_at' => '2020-04-06 19:11:21',
             ),
-            118 => 
+            118 =>
             array (
                 'id' => 619,
                 'name_ar' => 'Itzel Johnston',
@@ -7447,7 +7447,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:21',
                 'updated_at' => '2020-04-06 19:11:21',
             ),
-            119 => 
+            119 =>
             array (
                 'id' => 620,
                 'name_ar' => 'Miss Josefa Heathcote Sr.',
@@ -7459,7 +7459,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:21',
                 'updated_at' => '2020-04-06 19:11:21',
             ),
-            120 => 
+            120 =>
             array (
                 'id' => 621,
                 'name_ar' => 'Zoey Ondricka',
@@ -7471,7 +7471,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:21',
                 'updated_at' => '2020-04-06 19:11:21',
             ),
-            121 => 
+            121 =>
             array (
                 'id' => 622,
                 'name_ar' => 'Cristina Fahey I',
@@ -7483,7 +7483,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:22',
                 'updated_at' => '2020-04-06 19:11:22',
             ),
-            122 => 
+            122 =>
             array (
                 'id' => 623,
                 'name_ar' => 'Dr. Reese Davis Sr.',
@@ -7495,7 +7495,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:22',
                 'updated_at' => '2020-04-06 19:11:22',
             ),
-            123 => 
+            123 =>
             array (
                 'id' => 624,
                 'name_ar' => 'Vickie Mraz',
@@ -7507,7 +7507,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:22',
                 'updated_at' => '2020-04-06 19:11:22',
             ),
-            124 => 
+            124 =>
             array (
                 'id' => 625,
                 'name_ar' => 'Lonzo Lowe',
@@ -7519,7 +7519,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:22',
                 'updated_at' => '2020-04-06 19:11:22',
             ),
-            125 => 
+            125 =>
             array (
                 'id' => 626,
                 'name_ar' => 'Prof. Oscar Yundt',
@@ -7531,7 +7531,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:22',
                 'updated_at' => '2020-04-06 19:11:22',
             ),
-            126 => 
+            126 =>
             array (
                 'id' => 627,
                 'name_ar' => 'Adele Mante',
@@ -7543,7 +7543,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:22',
                 'updated_at' => '2020-04-06 19:11:22',
             ),
-            127 => 
+            127 =>
             array (
                 'id' => 628,
                 'name_ar' => 'Dr. Lois Berge IV',
@@ -7555,7 +7555,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:22',
                 'updated_at' => '2020-04-06 19:11:22',
             ),
-            128 => 
+            128 =>
             array (
                 'id' => 629,
                 'name_ar' => 'Dr. John King',
@@ -7567,7 +7567,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:22',
                 'updated_at' => '2020-04-06 19:11:22',
             ),
-            129 => 
+            129 =>
             array (
                 'id' => 630,
                 'name_ar' => 'Prof. Suzanne Adams II',
@@ -7579,7 +7579,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:22',
                 'updated_at' => '2020-04-06 19:11:22',
             ),
-            130 => 
+            130 =>
             array (
                 'id' => 631,
                 'name_ar' => 'Elinore Hoppe',
@@ -7591,7 +7591,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:22',
                 'updated_at' => '2020-04-06 19:11:22',
             ),
-            131 => 
+            131 =>
             array (
                 'id' => 632,
                 'name_ar' => 'Halie Hammes',
@@ -7603,7 +7603,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:22',
                 'updated_at' => '2020-04-06 19:11:22',
             ),
-            132 => 
+            132 =>
             array (
                 'id' => 633,
                 'name_ar' => 'Enos Carter PhD',
@@ -7615,7 +7615,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:22',
                 'updated_at' => '2020-04-06 19:11:22',
             ),
-            133 => 
+            133 =>
             array (
                 'id' => 634,
                 'name_ar' => 'Terrence Schinner',
@@ -7627,7 +7627,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:22',
                 'updated_at' => '2020-04-06 19:11:22',
             ),
-            134 => 
+            134 =>
             array (
                 'id' => 635,
                 'name_ar' => 'Cloyd Balistreri',
@@ -7639,7 +7639,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:22',
                 'updated_at' => '2020-04-06 19:11:22',
             ),
-            135 => 
+            135 =>
             array (
                 'id' => 636,
                 'name_ar' => 'Dr. Anabelle Hermiston Sr.',
@@ -7651,7 +7651,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:23',
                 'updated_at' => '2020-04-06 19:11:23',
             ),
-            136 => 
+            136 =>
             array (
                 'id' => 637,
                 'name_ar' => 'Lulu Sporer',
@@ -7663,7 +7663,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:23',
                 'updated_at' => '2020-04-06 19:11:23',
             ),
-            137 => 
+            137 =>
             array (
                 'id' => 638,
                 'name_ar' => 'Dr. Allen Bashirian',
@@ -7675,7 +7675,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:23',
                 'updated_at' => '2020-04-06 19:11:23',
             ),
-            138 => 
+            138 =>
             array (
                 'id' => 639,
                 'name_ar' => 'Ms. Nya Hirthe',
@@ -7687,7 +7687,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:23',
                 'updated_at' => '2020-04-06 19:11:23',
             ),
-            139 => 
+            139 =>
             array (
                 'id' => 640,
                 'name_ar' => 'Mr. Bobbie Mosciski',
@@ -7699,7 +7699,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:23',
                 'updated_at' => '2020-04-06 19:11:23',
             ),
-            140 => 
+            140 =>
             array (
                 'id' => 641,
                 'name_ar' => 'Marta Jerde',
@@ -7711,7 +7711,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:23',
                 'updated_at' => '2020-04-06 19:11:23',
             ),
-            141 => 
+            141 =>
             array (
                 'id' => 642,
                 'name_ar' => 'Miss Ashlynn Larkin IV',
@@ -7723,7 +7723,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:23',
                 'updated_at' => '2020-04-06 19:11:23',
             ),
-            142 => 
+            142 =>
             array (
                 'id' => 643,
                 'name_ar' => 'Dortha Roberts',
@@ -7735,7 +7735,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:23',
                 'updated_at' => '2020-04-06 19:11:23',
             ),
-            143 => 
+            143 =>
             array (
                 'id' => 644,
                 'name_ar' => 'Ms. Justine Beatty Jr.',
@@ -7747,7 +7747,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:23',
                 'updated_at' => '2020-04-06 19:11:23',
             ),
-            144 => 
+            144 =>
             array (
                 'id' => 645,
                 'name_ar' => 'Wilson Halvorson',
@@ -7759,7 +7759,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:23',
                 'updated_at' => '2020-04-06 19:11:23',
             ),
-            145 => 
+            145 =>
             array (
                 'id' => 646,
                 'name_ar' => 'Mrs. Shana Hackett',
@@ -7771,7 +7771,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:23',
                 'updated_at' => '2020-04-06 19:11:23',
             ),
-            146 => 
+            146 =>
             array (
                 'id' => 647,
                 'name_ar' => 'Mattie Ledner',
@@ -7783,7 +7783,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:23',
                 'updated_at' => '2020-04-06 19:11:23',
             ),
-            147 => 
+            147 =>
             array (
                 'id' => 648,
                 'name_ar' => 'Kennedy Heathcote',
@@ -7795,7 +7795,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:23',
                 'updated_at' => '2020-04-06 19:11:23',
             ),
-            148 => 
+            148 =>
             array (
                 'id' => 649,
                 'name_ar' => 'Demarco Boyle IV',
@@ -7807,7 +7807,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:23',
                 'updated_at' => '2020-04-06 19:11:23',
             ),
-            149 => 
+            149 =>
             array (
                 'id' => 650,
                 'name_ar' => 'Megane Batz',
@@ -7819,7 +7819,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:23',
                 'updated_at' => '2020-04-06 19:11:23',
             ),
-            150 => 
+            150 =>
             array (
                 'id' => 651,
                 'name_ar' => 'Mr. Kelvin Gerlach',
@@ -7831,7 +7831,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:23',
                 'updated_at' => '2020-04-06 19:11:23',
             ),
-            151 => 
+            151 =>
             array (
                 'id' => 652,
                 'name_ar' => 'Elton Abbott',
@@ -7843,7 +7843,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:23',
                 'updated_at' => '2020-04-06 19:11:23',
             ),
-            152 => 
+            152 =>
             array (
                 'id' => 653,
                 'name_ar' => 'Joelle Padberg',
@@ -7855,7 +7855,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:23',
                 'updated_at' => '2020-04-06 19:11:23',
             ),
-            153 => 
+            153 =>
             array (
                 'id' => 654,
                 'name_ar' => 'Estell Lynch',
@@ -7867,7 +7867,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:23',
                 'updated_at' => '2020-04-06 19:11:23',
             ),
-            154 => 
+            154 =>
             array (
                 'id' => 655,
                 'name_ar' => 'Ewald Ullrich',
@@ -7879,7 +7879,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:23',
                 'updated_at' => '2020-04-06 19:11:23',
             ),
-            155 => 
+            155 =>
             array (
                 'id' => 656,
                 'name_ar' => 'Johnny Reichel',
@@ -7891,7 +7891,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:23',
                 'updated_at' => '2020-04-06 19:11:23',
             ),
-            156 => 
+            156 =>
             array (
                 'id' => 657,
                 'name_ar' => 'Prof. Jasper Konopelski',
@@ -7903,7 +7903,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:23',
                 'updated_at' => '2020-04-06 19:11:23',
             ),
-            157 => 
+            157 =>
             array (
                 'id' => 658,
                 'name_ar' => 'Sydni Quitzon',
@@ -7915,7 +7915,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:24',
                 'updated_at' => '2020-04-06 19:11:24',
             ),
-            158 => 
+            158 =>
             array (
                 'id' => 659,
                 'name_ar' => 'Dora Cole',
@@ -7927,7 +7927,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:24',
                 'updated_at' => '2020-04-06 19:11:24',
             ),
-            159 => 
+            159 =>
             array (
                 'id' => 660,
                 'name_ar' => 'Karson Beahan IV',
@@ -7939,7 +7939,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:24',
                 'updated_at' => '2020-04-06 19:11:24',
             ),
-            160 => 
+            160 =>
             array (
                 'id' => 661,
                 'name_ar' => 'Laisha Witting',
@@ -7951,7 +7951,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:24',
                 'updated_at' => '2020-04-06 19:11:24',
             ),
-            161 => 
+            161 =>
             array (
                 'id' => 662,
                 'name_ar' => 'Korey Nolan',
@@ -7963,7 +7963,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:24',
                 'updated_at' => '2020-04-06 19:11:24',
             ),
-            162 => 
+            162 =>
             array (
                 'id' => 663,
                 'name_ar' => 'Mr. Giles Ledner',
@@ -7975,7 +7975,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:24',
                 'updated_at' => '2020-04-06 19:11:24',
             ),
-            163 => 
+            163 =>
             array (
                 'id' => 664,
                 'name_ar' => 'Mr. Zechariah Parker II',
@@ -7987,7 +7987,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:24',
                 'updated_at' => '2020-04-06 19:11:24',
             ),
-            164 => 
+            164 =>
             array (
                 'id' => 665,
                 'name_ar' => 'Mr. Adrian Feeney V',
@@ -7999,7 +7999,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:24',
                 'updated_at' => '2020-04-06 19:11:24',
             ),
-            165 => 
+            165 =>
             array (
                 'id' => 666,
                 'name_ar' => 'Kenya Collier V',
@@ -8011,7 +8011,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:24',
                 'updated_at' => '2020-04-06 19:11:24',
             ),
-            166 => 
+            166 =>
             array (
                 'id' => 667,
                 'name_ar' => 'Deanna Murphy',
@@ -8023,7 +8023,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:24',
                 'updated_at' => '2020-04-06 19:11:24',
             ),
-            167 => 
+            167 =>
             array (
                 'id' => 668,
                 'name_ar' => 'Connor Fadel',
@@ -8035,7 +8035,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:24',
                 'updated_at' => '2020-04-06 19:11:24',
             ),
-            168 => 
+            168 =>
             array (
                 'id' => 669,
                 'name_ar' => 'May Lemke',
@@ -8047,7 +8047,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:24',
                 'updated_at' => '2020-04-06 19:11:24',
             ),
-            169 => 
+            169 =>
             array (
                 'id' => 670,
                 'name_ar' => 'Kelli Corwin',
@@ -8059,7 +8059,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:24',
                 'updated_at' => '2020-04-06 19:11:24',
             ),
-            170 => 
+            170 =>
             array (
                 'id' => 671,
                 'name_ar' => 'Hailey Langworth',
@@ -8071,7 +8071,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:24',
                 'updated_at' => '2020-04-06 19:11:24',
             ),
-            171 => 
+            171 =>
             array (
                 'id' => 672,
                 'name_ar' => 'Retha Gerhold PhD',
@@ -8083,7 +8083,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:24',
                 'updated_at' => '2020-04-06 19:11:24',
             ),
-            172 => 
+            172 =>
             array (
                 'id' => 673,
                 'name_ar' => 'Bernita Runolfsdottir',
@@ -8095,7 +8095,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:24',
                 'updated_at' => '2020-04-06 19:11:24',
             ),
-            173 => 
+            173 =>
             array (
                 'id' => 674,
                 'name_ar' => 'Ansley Hand',
@@ -8107,7 +8107,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:24',
                 'updated_at' => '2020-04-06 19:11:24',
             ),
-            174 => 
+            174 =>
             array (
                 'id' => 675,
                 'name_ar' => 'Marty Rau',
@@ -8119,7 +8119,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:24',
                 'updated_at' => '2020-04-06 19:11:24',
             ),
-            175 => 
+            175 =>
             array (
                 'id' => 676,
                 'name_ar' => 'Gerald Howe',
@@ -8131,7 +8131,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:24',
                 'updated_at' => '2020-04-06 19:11:24',
             ),
-            176 => 
+            176 =>
             array (
                 'id' => 677,
                 'name_ar' => 'Tierra Nicolas Jr.',
@@ -8143,7 +8143,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:24',
                 'updated_at' => '2020-04-06 19:11:24',
             ),
-            177 => 
+            177 =>
             array (
                 'id' => 678,
                 'name_ar' => 'Ben Cartwright',
@@ -8155,7 +8155,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:24',
                 'updated_at' => '2020-04-06 19:11:24',
             ),
-            178 => 
+            178 =>
             array (
                 'id' => 679,
                 'name_ar' => 'Margaret Kulas',
@@ -8167,7 +8167,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:24',
                 'updated_at' => '2020-04-06 19:11:24',
             ),
-            179 => 
+            179 =>
             array (
                 'id' => 680,
                 'name_ar' => 'Margarete Reynolds PhD',
@@ -8179,7 +8179,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:24',
                 'updated_at' => '2020-04-06 19:11:24',
             ),
-            180 => 
+            180 =>
             array (
                 'id' => 681,
                 'name_ar' => 'Mr. Elroy Hamill',
@@ -8191,7 +8191,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:24',
                 'updated_at' => '2020-04-06 19:11:24',
             ),
-            181 => 
+            181 =>
             array (
                 'id' => 682,
                 'name_ar' => 'Orlando Mante DDS',
@@ -8203,7 +8203,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:25',
                 'updated_at' => '2020-04-06 19:11:25',
             ),
-            182 => 
+            182 =>
             array (
                 'id' => 683,
                 'name_ar' => 'Trinity Douglas',
@@ -8215,7 +8215,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:25',
                 'updated_at' => '2020-04-06 19:11:25',
             ),
-            183 => 
+            183 =>
             array (
                 'id' => 684,
                 'name_ar' => 'Joesph Cassin Sr.',
@@ -8227,7 +8227,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:25',
                 'updated_at' => '2020-04-06 19:11:25',
             ),
-            184 => 
+            184 =>
             array (
                 'id' => 685,
                 'name_ar' => 'Harry O\'Conner III',
@@ -8239,7 +8239,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:25',
                 'updated_at' => '2020-04-06 19:11:25',
             ),
-            185 => 
+            185 =>
             array (
                 'id' => 686,
                 'name_ar' => 'Kadin Corkery',
@@ -8251,7 +8251,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-04-06 19:11:25',
                 'updated_at' => '2020-04-06 19:11:25',
             ),
-            186 => 
+            186 =>
             array (
                 'id' => 687,
                 'name_ar' => 'Aaliyah Medhurst',
@@ -8264,7 +8264,7 @@ class CategoriesTableSeeder extends Seeder
                 'updated_at' => '2020-04-06 19:11:25',
             ),
         ));
-        
-        
+
+
     }
 }

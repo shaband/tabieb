@@ -9,17 +9,16 @@
             <div class="doc-dets">
                 <h6 class="doc-n">{!! $doctor->name !!}
                     @if($doctor->is_active)
-                        <span
-                            class="doc-status active"> {{ __('online now')}}</span>
+                    <span class="doc-status active"> {{ __('online now')}}</span>
                     @endif
                 </h6>
                 <div class="doc-s">
                     {!! $doctor->title !!}
                 </div>
                 <div class="doc-rating">
-                    @for($i=1;$i<=5;$i++)
-                        <i class="fas fa-star @if ($doctor->ratings->avg('rate')>=$i) active @endif"></i>
-                    @endfor
+                    @for($i=1;$i<=5;$i++) <i class="fas fa-star @if ($doctor->ratings->avg('rate')>=$i) active @endif">
+                        </i>
+                        @endfor
                 </div>
                 <div class="doc-plus-dets">
                     <div class="doc-price">
@@ -28,7 +27,7 @@
                     </div>
                     <div class="doc-badges">
                         @foreach($doctor->sub_categories as $sub_category)
-                            <span class="badge">{!! $sub_category->name !!}</span>
+                        <span class="badge">{!! $sub_category->name !!}</span>
                         @endforeach
                     </div>
                     <div class="doc-desc">
@@ -39,8 +38,7 @@
                     </div>
                 </div>
                 <div class="doc-extra-dets">
-                    <div><img
-                            src="{{url('design/images/icons/time-date.png')}}"> {{ __('available')}}
+                    <div><img src="{{url('design/images/icons/time-date.png')}}"> {{ __('available')}}
                         on: 23 sep
                     </div>
                     <div><img src="{{url('design/images/icons/clock.png')}}"> {{ __('from')}}:
@@ -57,95 +55,7 @@
             </div>
         </div>
         <div class="col-lg-4 align-self-center">
-            <div class="doc-aval-times">
-                <div class="owl-carousel">
-                    <div class="item">
-                        <div class="single-day">
-                            <div class="single-day-date">sat - 23 sep</div>
-                            <div class="single-day-times">
-                                <div class="single-time active"><span>10: 00 am</span></div>
-                                <div class="single-time disabled"><span>10: 00 am</span></div>
-                                <div class="single-time"><span>10: 00 am</span></div>
-                                <div class="single-time"><span>10: 00 am</span></div>
-                                <div class="single-time disabled"><span>10: 00 am</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="single-day">
-                            <div class="single-day-date">sat - 23 sep</div>
-                            <div class="single-day-times">
-                                <div class="single-time"><span>10: 00 am</span></div>
-                                <div class="single-time"><span>10: 00 am</span></div>
-                                <div class="single-time"><span>10: 00 am</span></div>
-                                <div class="single-time"><span>10: 00 am</span></div>
-                                <div class="single-time"><span>10: 00 am</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="single-day">
-                            <div class="single-day-date">sat - 23 sep</div>
-                            <div class="single-day-times">
-                                <div class="single-time"><span>10: 00 am</span></div>
-                                <div class="single-time"><span>10: 00 am</span></div>
-                                <div class="single-time"><span>10: 00 am</span></div>
-                                <div class="single-time"><span>10: 00 am</span></div>
-                                <div class="single-time"><span>10: 00 am</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="single-day">
-                            <div class="single-day-date">sat - 23 sep</div>
-                            <div class="single-day-times">
-                                <div class="single-time"><span>10: 00 am</span></div>
-                                <div class="single-time"><span>10: 00 am</span></div>
-                                <div class="single-time"><span>10: 00 am</span></div>
-                                <div class="single-time"><span>10: 00 am</span></div>
-                                <div class="single-time"><span>10: 00 am</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="single-day">
-                            <div class="single-day-date">sat - 23 sep</div>
-                            <div class="single-day-times">
-                                <div class="single-time active"><span>10: 00 am</span></div>
-                                <div class="single-time"><span>10: 00 am</span></div>
-                                <div class="single-time"><span>10: 00 am</span></div>
-                                <div class="single-time"><span>10: 00 am</span></div>
-                                <div class="single-time"><span>10: 00 am</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="single-day">
-                            <div class="single-day-date">sat - 23 sep</div>
-                            <div class="single-day-times">
-                                <div class="single-time"><span>10: 00 am</span></div>
-                                <div class="single-time"><span>10: 00 am</span></div>
-                                <div class="single-time"><span>10: 00 am</span></div>
-                                <div class="single-time"><span>10: 00 am</span></div>
-                                <div class="single-time"><span>10: 00 am</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="single-day">
-                            <div class="single-day-date">sat - 23 sep</div>
-                            <div class="single-day-times">
-                                <div class="single-time"><span>10: 00 am</span></div>
-                                <div class="single-time"><span>10: 00 am</span></div>
-                                <div class="single-time"><span>10: 00 am</span></div>
-                                <div class="single-time"><span>10: 00 am</span></div>
-                                <div class="single-time"><span>10: 00 am</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            @include('website.partials._weakly_schedule')
         </div>
     </div>
 

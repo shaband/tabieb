@@ -33,6 +33,7 @@ $this->command->info('start');
             ReservationsTableSeeder::class,
             RatingsTableSeeder::class,
         ]);
+
         $this->command->info('finished');
     }
 }

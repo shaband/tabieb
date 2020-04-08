@@ -141,7 +141,7 @@ class DoctorRepositoryEloquent extends BaseRepository implements DoctorRepositor
         });
 
         $model = $model->when($request->date, function (Builder $builder) use ($request) {
-            $day = CarbonImmutable::parse($request->date)->weekday();;
+            $day = CarbonImmutable::parse($request->date)->weekday();
             $builder->whereHas('schedules', function (Builder $schedule) use ($request, $day) {
                 $schedule->where('day', $day + 1);
                 $schedule->when(($request->from_time != null), function (Builder $builder) use ($request) {

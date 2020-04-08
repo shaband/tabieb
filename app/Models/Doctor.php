@@ -8,6 +8,8 @@ use App\Traits\ColumnTranslation;
 use App\Traits\HashPassword;
 use App\Traits\ModelHasImage;
 use App\Traits\ModelHasLogs;
+use Carbon\Carbon;
+use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -23,14 +25,16 @@ use \HighIdeas\UsersOnline\Traits\UsersOnlineTrait;
 
 class Doctor extends Authenticatable implements JWTSubject
 {
-    use Notifiable, ColumnTranslation, ModelHasImage, HashPassword, ModelHasLogs, CausesActivity,UsersOnlineTrait;
+    use Notifiable, ColumnTranslation, ModelHasImage, HashPassword, ModelHasLogs, CausesActivity, UsersOnlineTrait;
 
     const  GENDER_MALE = 1;
     const  GENDER_FEMALE = 2;
     protected $table = 'doctors';
     public $timestamps = true;
-    const  KEYWORDS = ['first_name_en', 'last_name_en', 'last_name_ar', 'first_name_ar',
-        'title_ar', 'title_en'];
+    const  KEYWORDS = [
+        'first_name_en', 'last_name_en', 'last_name_ar', 'first_name_ar',
+        'title_ar', 'title_en'
+    ];
     protected $fillable = array('first_name_en', 'last_name_en', 'last_name_ar', 'first_name_ar', 'description_ar', 'description_en', 'title_ar', 'title_en', 'email', 'password', 'phone', 'category_id', 'price', 'period', 'last_login', 'email_verified_at', 'phone_verified_at', 'civil_id', 'verification_code', 'remember_token', 'gender', 'blocked_at', 'blocked_reason',);
 
 
@@ -108,7 +112,10 @@ class Doctor extends Authenticatable implements JWTSubject
 
     public function schedules(): HasMany
     {
-        return $this->hasMany(Schedule::class);
+        return $this->hasMany(Schedule::class)->with(['reservations' => function ($reservation) {
+
+            $reservation->where('status', Reservation::STATUS_ACCEPTED);
+        }]);
     }
 
     public function reservation(): HasMany
@@ -162,8 +169,21 @@ class Doctor extends Authenticatable implements JWTSubject
             return $this->first_name_ar . ' ' . $this->last_name_ar;
         }
         return $this->first_name_en . ' ' . $this->last_name_ar;
+    }
+    public function getWeaklySchedulesAttribute()
+    {
+        $today = CarbonImmutable::now();
+        $week_dates = [];
+        for ($i = 0; $i < 7; $i++) {
+            $day = $today->addDays($i);
+            $day_number = $day->dayOfWeek + 1;
+            $schedules = $this->schedules->where('day', $day_number)->each(function ($schedule) use ($day) {
+                $schedule->date = $day;
+            });
 
-
+            $week_dates[$day_number] = $schedules;
+        }
+        return  $week_dates;
     }
 
 
@@ -190,8 +210,6 @@ class Doctor extends Authenticatable implements JWTSubject
                 }
             });
         });
-
-
     }
 
     public function scopeOfCategory(Builder $query, $value): void
@@ -211,7 +229,6 @@ class Doctor extends Authenticatable implements JWTSubject
                 $q->where('from_time', '<=', $from);
                 $q->where('to_time', '>=', $from);
             });
-
         });
         $query->when($to != null, function (Builder $builder) use ($to) {
             $builder->WhereHas('schedules', function (Builder $q) use ($to) {
@@ -220,8 +237,4 @@ class Doctor extends Authenticatable implements JWTSubject
             });
         });
     }
-
-
 }
-
-
