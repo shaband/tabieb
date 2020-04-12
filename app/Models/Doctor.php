@@ -21,7 +21,7 @@ use Illuminate\Notifications\Notifiable;
 use Spatie\Activitylog\Traits\CausesActivity;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use \HighIdeas\UsersOnline\Traits\UsersOnlineTrait;
-
+use stdClass;
 
 class Doctor extends Authenticatable implements JWTSubject
 {
@@ -113,7 +113,6 @@ class Doctor extends Authenticatable implements JWTSubject
     public function schedules(): HasMany
     {
         return $this->hasMany(Schedule::class)->with(['reservations' => function ($reservation) {
-
             $reservation->where('status', Reservation::STATUS_ACCEPTED);
         }]);
     }
@@ -170,6 +169,7 @@ class Doctor extends Authenticatable implements JWTSubject
         }
         return $this->first_name_en . ' ' . $this->last_name_ar;
     }
+
     public function getWeaklySchedulesAttribute()
     {
         $today = CarbonImmutable::now();
@@ -177,15 +177,34 @@ class Doctor extends Authenticatable implements JWTSubject
         for ($i = 0; $i < 7; $i++) {
             $day = $today->addDays($i);
             $day_number = $day->dayOfWeek + 1;
-            $schedules = $this->schedules->where('day', $day_number)->each(function ($schedule) use ($day) {
-                $schedule->date = $day;
-            });
-
-            $week_dates[$day_number] = $schedules;
+            $schedules = $this->schedules->where('day', $day_number);
+            $appointments = [];
+            foreach ($schedules as $schedule) {
+                $times = $schedule->reservation_times;
+                $appointments =  array_merge($appointments, $times);
+            }
+            $week_dates[$day_number] = ['day' => $day, 'times' => $appointments];
         }
         return  $week_dates;
     }
 
+    public function getAvailableOnAttribute()
+    {
+        $schedules = $this->weakly_schedules;
+        $available_day =    collect($schedules)->where('times', '!=', [])->where('times.has_reservation', 0)->first();
+        return optional($available_day);
+    }
+
+    public function getAvailableDayAttribute()
+    {
+        $available =  $this->available_on;
+        return optional($available['day'] ?? null);
+    }
+    public function getAvailableTimeAttribute()
+    {
+        $available =  $this->available_on;
+        return collect($available['times'])->first() ?? [];
+    }
 
     /*scopes*/
 

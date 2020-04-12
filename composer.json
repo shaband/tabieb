@@ -35,6 +35,7 @@
         "barryvdh/laravel-ide-helper": "^2.6",
         "coderello/laravel-populated-factory": "^0.3.0",
         "facade/ignition": "^1.4",
+        "facade/ignition-code-editor": "^1.0",
         "fruitcake/laravel-telescope-toolbar": "^1.2",
         "fzaninotto/faker": "^1.9.1",
         "laravel/ui": "^1.1",

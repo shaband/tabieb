@@ -53,4 +53,19 @@ class ReservationController extends Controller
 
         return view('website.search', compact('categories', 'doctors'));
     }
+
+
+    public function doctorProfile($id, CategoryRepository $categoryRepo)
+    {
+        $categories = $categoryRepo->getMainCategory()->keyBy('id');
+
+        $doctor = $this->doctorRepo
+            ->with(['ratings' => function ($rating) {
+                $rating->with('patient');
+                $rating->orderBy('rating');
+            }, 'image', 'category', 'sub_categories', 'schedules'])
+            ->find($id)->setRelation('category', $categories['category_id'] ?? $categoryRepo->makeModel());
+
+        return view('website.doctor_page', compact('doctor', 'categories'));
+    }
 }

@@ -48,7 +48,7 @@
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ar.min.js"></script>
     <script src="{!! asset('design/js/scripts.js')!!}"></script>
 
-    @yield('header')
+    @stack('header')
 </head>
 <body @if(app()->getLocale()=='ar')
       class="rtl" dir="rtl"

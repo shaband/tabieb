@@ -68,7 +68,7 @@ class Handler extends ExceptionHandler
     {
         $msg = collect(collect($exception->errors())->first())->first();
         $errors = $this->errorsInArrayOfStr($exception);
-        $response = $this->errorResponse($msg, $errors, $exception->status);;
+        $response = $this->errorResponse($msg, $errors, $exception->status);
 
 
         return response()->json($response, $exception->status);
@@ -143,7 +143,7 @@ class Handler extends ExceptionHandler
             'status' => $status==401?2:0,
             'message' => $msg,
             'errors' => $errors,
-            'data' => [],
+            'data' => null,
         ];
     }
 }

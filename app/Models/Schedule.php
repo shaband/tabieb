@@ -63,7 +63,18 @@ class Schedule extends Model
                 $end = $to;
             }
 
-            $has_reservation = $this->reservations()->where('status', Reservation::STATUS_ACCEPTED)->whereDate('date', $date)->whereTime('from_time', '<=', $anchor)->whereTime('to_time', '>=', $end)->count();
+            $has_reservation = $this->reservations->where('status', Reservation::STATUS_ACCEPTED)
+                ->filter(function ($reservation)  use ($date, $anchor, $end) {
+                    $whereDate = Carbon::parse($reservation->date)->equalTo($date);
+                    $whereFromDate = Carbon::parse($reservation->from_time)->lessThanOrEqualTo($anchor);
+                    $wheretoDate = Carbon::parse($reservation->to_time)->greaterThanOrEqualTo($end);
+
+                    return ($whereDate && $whereFromDate && $wheretoDate);
+                })
+                // ->whereDate('date', $date)
+                // ->whereTime('from_time', '<=', $anchor)
+                // ->whereTime('to_time', '>=', $end)
+                ->count();
 
             $schedule_period = [
                 'start' => $anchor,

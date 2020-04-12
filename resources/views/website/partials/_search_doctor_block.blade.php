@@ -37,14 +37,16 @@
                         </a>
                     </div>
                 </div>
+                @if($doctor->available!=null)
                 <div class="doc-extra-dets">
                     <div><img src="{{url('design/images/icons/time-date.png')}}"> {{ __('available')}}
-                        on: 23 sep
-                    </div>
+                        {{$doctor->available_day->format('d-M')}} </div>
                     <div><img src="{{url('design/images/icons/clock.png')}}"> {{ __('from')}}:
-                        12:45 to: 5:50
+                        {{optional($doctor->available_time['start'] ?? null)->format('H:i')}} {{ __('to')}} :
+                        {{optional($doctor->available_time['end']?? null)->format('H:i')}}
                     </div>
                 </div>
+                @endif
                 <div class="doc-controls">
                     <a href="#" class="doc-book-btn btn btn-secondary btn-sm"><img
                             src="{{ url('design/images/icons/phone-White.png')}}">{{ __('quick call')}}
