@@ -50,9 +50,9 @@ class AuthController extends Controller
             "sub_category_ids.*" => 'nullable|exists:categories,id,category_id,' . $request->category_id ?? auth()->user()->category_id,
             'email' => 'nullable|email|max:191|unique:doctors,id,' . auth()->id(),
             'password' => 'nullable|string|max:191|confirmed',
-            'old_password' =>  ['required_with:password', 'nullable', 'string
+            'old_password' => ['required_with:password', 'nullable', 'string
             ', 'max:191', new CheckPassword('doctors', auth()->user()->email)],
-            'phone' => 'nullable|numeric|unique:doctors,phone,' .  auth()->id(),
+            'phone' => 'nullable|numeric|unique:doctors,phone,' . auth()->id(),
             'image' => 'nullable|image',
         ];
 
@@ -119,7 +119,14 @@ class AuthController extends Controller
 
         $doctor = $this->repo->verify($request);
 
-        return responseJson(['student' => new DoctorResource($doctor->fresh())], __("Verified Successfully"));
+
+        if (!$token = auth()->login($doctor)) {
+
+            return $this->UnauthorizedResponse(__('Unauthorized'));
+
+        }
+
+        return responseJson(['student' => new DoctorResource($doctor->fresh()), 'token' => $token], __("Verified Successfully"));
     }
 
     /**
@@ -136,7 +143,7 @@ class AuthController extends Controller
                 'status' => 2,
                 'message' => isset($msg[0]) ? $msg[0] : __('Unauthorized'),
                 'errors' => $msg,
-                'data' => []
+                'data' => null
 
             ], 401);
     }

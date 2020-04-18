@@ -5,7 +5,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2020-04-11 16:59:16.
+    * Generated on 2020-04-15 15:26:48.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -68,6 +68,7 @@ namespace PHPSTORM_META {
         'Illuminate\Notifications\ChannelManager' => \Illuminate\Notifications\ChannelManager::class,
         'Illuminate\Routing\Contracts\ControllerDispatcher' => \Illuminate\Routing\ControllerDispatcher::class,
         'Illuminate\Session\Middleware\StartSession' => \Illuminate\Session\Middleware\StartSession::class,
+        'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
         'Laravel\Telescope\Contracts\ClearableRepository' => \Laravel\Telescope\Storage\DatabaseEntriesRepository::class,
         'Laravel\Telescope\Contracts\EntriesRepository' => \Laravel\Telescope\Storage\DatabaseEntriesRepository::class,
         'Laravel\Telescope\Contracts\PrunableRepository' => \Laravel\Telescope\Storage\DatabaseEntriesRepository::class,
@@ -294,6 +295,7 @@ namespace PHPSTORM_META {
         'Illuminate\Notifications\ChannelManager' => \Illuminate\Notifications\ChannelManager::class,
         'Illuminate\Routing\Contracts\ControllerDispatcher' => \Illuminate\Routing\ControllerDispatcher::class,
         'Illuminate\Session\Middleware\StartSession' => \Illuminate\Session\Middleware\StartSession::class,
+        'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
         'Laravel\Telescope\Contracts\ClearableRepository' => \Laravel\Telescope\Storage\DatabaseEntriesRepository::class,
         'Laravel\Telescope\Contracts\EntriesRepository' => \Laravel\Telescope\Storage\DatabaseEntriesRepository::class,
         'Laravel\Telescope\Contracts\PrunableRepository' => \Laravel\Telescope\Storage\DatabaseEntriesRepository::class,
@@ -520,6 +522,7 @@ namespace PHPSTORM_META {
         'Illuminate\Notifications\ChannelManager' => \Illuminate\Notifications\ChannelManager::class,
         'Illuminate\Routing\Contracts\ControllerDispatcher' => \Illuminate\Routing\ControllerDispatcher::class,
         'Illuminate\Session\Middleware\StartSession' => \Illuminate\Session\Middleware\StartSession::class,
+        'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
         'Laravel\Telescope\Contracts\ClearableRepository' => \Laravel\Telescope\Storage\DatabaseEntriesRepository::class,
         'Laravel\Telescope\Contracts\EntriesRepository' => \Laravel\Telescope\Storage\DatabaseEntriesRepository::class,
         'Laravel\Telescope\Contracts\PrunableRepository' => \Laravel\Telescope\Storage\DatabaseEntriesRepository::class,
@@ -746,6 +749,7 @@ namespace PHPSTORM_META {
         'Illuminate\Notifications\ChannelManager' => \Illuminate\Notifications\ChannelManager::class,
         'Illuminate\Routing\Contracts\ControllerDispatcher' => \Illuminate\Routing\ControllerDispatcher::class,
         'Illuminate\Session\Middleware\StartSession' => \Illuminate\Session\Middleware\StartSession::class,
+        'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
         'Laravel\Telescope\Contracts\ClearableRepository' => \Laravel\Telescope\Storage\DatabaseEntriesRepository::class,
         'Laravel\Telescope\Contracts\EntriesRepository' => \Laravel\Telescope\Storage\DatabaseEntriesRepository::class,
         'Laravel\Telescope\Contracts\PrunableRepository' => \Laravel\Telescope\Storage\DatabaseEntriesRepository::class,
@@ -972,6 +976,7 @@ namespace PHPSTORM_META {
         'Illuminate\Notifications\ChannelManager' => \Illuminate\Notifications\ChannelManager::class,
         'Illuminate\Routing\Contracts\ControllerDispatcher' => \Illuminate\Routing\ControllerDispatcher::class,
         'Illuminate\Session\Middleware\StartSession' => \Illuminate\Session\Middleware\StartSession::class,
+        'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
         'Laravel\Telescope\Contracts\ClearableRepository' => \Laravel\Telescope\Storage\DatabaseEntriesRepository::class,
         'Laravel\Telescope\Contracts\EntriesRepository' => \Laravel\Telescope\Storage\DatabaseEntriesRepository::class,
         'Laravel\Telescope\Contracts\PrunableRepository' => \Laravel\Telescope\Storage\DatabaseEntriesRepository::class,
@@ -1198,6 +1203,7 @@ namespace PHPSTORM_META {
         'Illuminate\Notifications\ChannelManager' => \Illuminate\Notifications\ChannelManager::class,
         'Illuminate\Routing\Contracts\ControllerDispatcher' => \Illuminate\Routing\ControllerDispatcher::class,
         'Illuminate\Session\Middleware\StartSession' => \Illuminate\Session\Middleware\StartSession::class,
+        'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
         'Laravel\Telescope\Contracts\ClearableRepository' => \Laravel\Telescope\Storage\DatabaseEntriesRepository::class,
         'Laravel\Telescope\Contracts\EntriesRepository' => \Laravel\Telescope\Storage\DatabaseEntriesRepository::class,
         'Laravel\Telescope\Contracts\PrunableRepository' => \Laravel\Telescope\Storage\DatabaseEntriesRepository::class,
@@ -1424,6 +1430,7 @@ namespace PHPSTORM_META {
         'Illuminate\Notifications\ChannelManager' => \Illuminate\Notifications\ChannelManager::class,
         'Illuminate\Routing\Contracts\ControllerDispatcher' => \Illuminate\Routing\ControllerDispatcher::class,
         'Illuminate\Session\Middleware\StartSession' => \Illuminate\Session\Middleware\StartSession::class,
+        'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
         'Laravel\Telescope\Contracts\ClearableRepository' => \Laravel\Telescope\Storage\DatabaseEntriesRepository::class,
         'Laravel\Telescope\Contracts\EntriesRepository' => \Laravel\Telescope\Storage\DatabaseEntriesRepository::class,
         'Laravel\Telescope\Contracts\PrunableRepository' => \Laravel\Telescope\Storage\DatabaseEntriesRepository::class,
@@ -1650,6 +1657,7 @@ namespace PHPSTORM_META {
         'Illuminate\Notifications\ChannelManager' => \Illuminate\Notifications\ChannelManager::class,
         'Illuminate\Routing\Contracts\ControllerDispatcher' => \Illuminate\Routing\ControllerDispatcher::class,
         'Illuminate\Session\Middleware\StartSession' => \Illuminate\Session\Middleware\StartSession::class,
+        'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
         'Laravel\Telescope\Contracts\ClearableRepository' => \Laravel\Telescope\Storage\DatabaseEntriesRepository::class,
         'Laravel\Telescope\Contracts\EntriesRepository' => \Laravel\Telescope\Storage\DatabaseEntriesRepository::class,
         'Laravel\Telescope\Contracts\PrunableRepository' => \Laravel\Telescope\Storage\DatabaseEntriesRepository::class,

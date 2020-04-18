@@ -118,7 +118,7 @@ class DoctorRepositoryEloquent extends BaseRepository implements DoctorRepositor
      */
     public function doctorsInCategory(Request $request): Collection
     {
-        $doctors = $this->makeModel()
+        $doctors = $this->query()
             ->with('category', 'sub_categories')
             ->where('blocked_at', null)
             ->where('category_id', $request->category_id)
@@ -128,7 +128,7 @@ class DoctorRepositoryEloquent extends BaseRepository implements DoctorRepositor
 
     public function searchInDoctors(Request $request): Collection
     {
-        $model = $this->makeModel()->with('category', 'sub_categories');
+        $model = $this->query()->with('category', 'sub_categories');
 
         $model = $model->when($request->category_id, function (Builder $builder) use ($request) {
             $builder->where('category_id', $request->category_id);
@@ -163,7 +163,7 @@ class DoctorRepositoryEloquent extends BaseRepository implements DoctorRepositor
     public function Available(): Collection
     {
 
-        $doctors = $this->makeModel()->Available()->get();
+        $doctors = $this->query()->Available()->get();
 
         return $doctors;
     }
@@ -200,4 +200,22 @@ class DoctorRepositoryEloquent extends BaseRepository implements DoctorRepositor
         }
     }
 
+    public function MobileDoctor() :Builder
+    {
+
+        return $this->query()
+            ->with([
+                'category',
+                'sub_categories',
+                'schedules',
+                'ratings' => function ($rating) {
+                $rating->with(
+                    ['patient' => function ($patient) {
+                    $patient->with('image:file');
+                    $patient->select('first_name', 'last_name');
+                }]);
+            }])
+            ->where('blocked_at', null)
+            ->limit(10);
+    }
 }

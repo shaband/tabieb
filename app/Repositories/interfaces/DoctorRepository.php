@@ -4,6 +4,7 @@ namespace App\Repositories\interfaces;
 
 use App\Models\Doctor;
 use App\Repositories\interfaces\BaseInterface;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,8 @@ interface DoctorRepository extends BaseInterface
     public function store(Request $request): Doctor;
 
 
-    public static function   updateRules():iterable;
+    public static function updateRules(): iterable;
+
     /**
      * @param Request $request
      * @param int $id
@@ -53,5 +55,8 @@ interface DoctorRepository extends BaseInterface
     public function verify(Request $request): Doctor;
 
 
-    public function AddFCM(Request $request,Doctor $patient):void ;
+    public function AddFCM(Request $request, Doctor $patient): void;
+
+
+    public function MobileDoctor(): Builder;
 }

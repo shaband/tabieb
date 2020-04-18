@@ -136,12 +136,14 @@
       <path value="$PROJECT_DIR$/vendor/facade/ignition-code-editor" />
       <path value="$PROJECT_DIR$/vendor/highideas/laravel-users-online" />
       <path value="$PROJECT_DIR$/vendor/orangehill/iseed" />
+      <path value="$PROJECT_DIR$/vendor/league/oauth1-client" />
+      <path value="$PROJECT_DIR$/vendor/laravel/socialite" />
     </include_path>
   </component>
   <component name="PhpInterpreters">
     <interpreters>
       <interpreter id="8b254680-9e62-428b-a853-93cca9fc64be" name="Remote PHP" home="vagrant://DATA" debugger_id="php.debugger.XDebug">
-        <remote_data VAGRANT_FOLDER="$USER_HOME$/Homestead" INTERPRETER_PATH="/usr/bin/php" HELPERS_PATH="/home/vagrant/.phpstorm_helpers" INITIALIZED="false" VALID="true" RUN_AS_ROOT_VIA_SUDO="false" />
+        <remote_data INTERPRETER_PATH="/usr/bin/php" HELPERS_PATH="/home/vagrant/.phpstorm_helpers" INITIALIZED="false" VALID="true" RUN_AS_ROOT_VIA_SUDO="false" VAGRANT_FOLDER="$USER_HOME$/Homestead" />
       </interpreter>
     </interpreters>
   </component>

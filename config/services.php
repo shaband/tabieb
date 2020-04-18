@@ -33,5 +33,25 @@ return [
     'tokbox' => [
         'key' => env('TOKBOX_KEY', null),
         'secret' => env('TOKBOX_SECRET', null),
-    ]
+    ],
+   /* 'facebook' => [
+        'client_id' => env('FACEBOOK_CLIENT_ID',null),
+        'client_secret' => env('FACEBOOK_CLIENT_SECRET',null),
+        'redirect' =>  'https://'.isset($_SERVER['HTTP_HOST'])?$_SERVER['HTTP_HOST']: null.'/'.env('FACEBOOK_CALLBACK',null),
+    ],
+    'google' => [
+        'client_id' => env('GOOGLE_CLIENT_ID',null),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET',null),
+        'redirect' => 'https://'.isset($_SERVER['HTTP_HOST'])?$_SERVER['HTTP_HOST']: null.'/'.env('GOOGLE_CALLBACK',null),
+    ],*/
+    /*'twitter' => [
+        'client_id' => env('TWITTER_CLIENT_ID',null),
+        'client_secret' => env('TWITTER_CLIENT_SECRET',null),
+        'redirect' =>  env('TWITTER_CALLBACK',null),
+    ],
+    'github' => [
+        'client_id' => env('GITHUB_CLIENT_ID',null),
+        'client_secret' => env('GITHUB_CLIENT_SECRET',null),
+        'redirect' =>  env('GITHUB_CALLBACK',null),
+    ],*/
 ];

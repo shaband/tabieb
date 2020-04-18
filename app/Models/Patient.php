@@ -110,6 +110,15 @@ class Patient extends Authenticatable implements JWTSubject
     {
         return $this->morphMany(Attachment::class, 'model')->where('type', 2);
     }
+    public function providers()
+    {
+        return $this->morphMany(AuthModelProvider::class, 'model')->where('type', 2);
+    }
+    public function medical_histories()
+    {
+        return $this->hasMany(MedicalHistory::class, 'patient_id')
+            ->with(['file:file,ext','creator','category:name_ar,name_en']);
+    }
 
     public function reservations()
     {

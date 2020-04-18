@@ -7,7 +7,6 @@
 
 
 
-@endpush
 @section('content')
 <!-- START Page Title -->
 <section id="page-tit" class="tit-wz-search"
@@ -32,10 +31,12 @@
                 @foreach($doctors as $doctor)
 
 
-                @include('website.partials._search_doctor_block') @endforeach
+                @include('website.partials._search_doctor_block')
+
+                @endforeach
             </div>
             <!-- END Doctors Container -->
-            <!-- START Doctors Pages -->
+        {{--    <!-- START Doctors Pages -->
             <div class="paging">
                 <nav class="pt-5" aria-label="Page navigation example">
                     <ul class="pagination justify-content-center">
@@ -57,7 +58,7 @@
                     </ul>
                 </nav>
             </div>
-            <!-- END Doctors Pages -->
+            <!-- END Doctors Pages -->--}}
         </div>
     </div>
 </section>

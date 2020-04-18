@@ -12,7 +12,7 @@ function responseJson($data = null, ?string $msg = null, int $status = 200)
     $response = [
         'status' => ($status == 200) ? 1 : 0,
         'message' => $msg,
-        'data' => $data,
+        'data' =>  $data,
     ];
     return response()->json($response, $status);
 }

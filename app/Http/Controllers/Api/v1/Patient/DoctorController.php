@@ -14,41 +14,62 @@ class DoctorController extends Controller
 {
     private $repo;
 
+    /**
+     * DoctorController constructor.
+     * @param DoctorRepository $repo
+     */
     public function __construct(DoctorRepository $repo)
     {
         $this->repo = $repo;
     }
 
-
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function index()
     {
-        $popular_doctors = $this->repo->makeModel()->with('category','sub_categories')->where('blocked_at', null)->limit(10)->get()->sortBy(function (Doctor $doctor) {
-            return $doctor->reservation()->count();
-        });
 
-        $doctors_you_may_call = $this->repo->makeModel()->with('category','sub_categories')
-            ->where('blocked_at', null)
+        $popular_doctors = $this->repo->MobileDoctor()
+            ->withCount('reservation')
+            ->get()
+            ->sortBy(function (Doctor $doctor) {
+                return $doctor->reservation_count;
+            });
+
+        $doctors_you_may_call = $this->repo->MobileDoctor()
             ->whereNotIn('id', $popular_doctors->pluck('id'))
             ->get();
 
-        $popular_doctors = DoctorResource::collection($popular_doctors);
-        $doctors_you_may_call = DoctorResource::collection($doctors_you_may_call);
-        return responseJson(compact('popular_doctors', 'doctors_you_may_call'), __("Loaded Successfully"));
+        return responseJson([
+            'popular_doctors' => DoctorResource::collection($popular_doctors),
+            'doctors_you_may_call' => DoctorResource::collection($doctors_you_may_call)
+        ], __("Loaded Successfully"));
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function doctorsInCategory(Request $request)
     {
-        $doctors = $this->repo->doctorsInCategory($request);
-        $doctors = DoctorResource::collection($doctors);
-        return responseJson(compact('doctors'), __("Loaded Successfully"));
+        return responseJson(
+            [
+                'doctors' => DoctorResource::collection($this->repo->doctorsInCategory($request))
+            ],
+            __("Loaded Successfully"));
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function search(Request $request)
     {
-        $doctors = $this->repo->searchInDoctors($request);
-        $doctors = DoctorResource::collection($doctors);
-
-        return responseJson(compact('doctors'), __("Loaded Successfully"));
+        return responseJson(
+            [
+                'doctors' => $this->repo->searchInDoctors($request)
+            ],
+            __("Loaded Successfully"));
     }
 
 

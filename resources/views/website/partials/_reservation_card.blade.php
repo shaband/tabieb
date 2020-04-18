@@ -29,12 +29,19 @@
             <div class="app-control">
                 <a href="#" class="btn btn-thirdly btn-sm text-uppercase"><img
                         src="{!! asset('design/images/icons/video-white.png') !!}">{{ __('start call now')}}</a>
+
+                <a href="{!! route('doctor.medical-history',$reservation->patient_id) !!}"
+                   class="btn btn-outline-secondary btn-sm text-capitalize">{{ __('view medical history')}}</a>
+
             </div>
+
+
         @endif
+
 
         @if(\Carbon\Carbon::now()->gt($reservation->from_date))
             <div>
-                <b>call summary:</b>
+                <b>{{ __('call summary')}}:</b>
                 <span>11 hours / 20 minutes / 30 seconds</span>
             </div>
     </div>
@@ -61,6 +68,10 @@
                 {!! csrf_field() !!}
                 @method('put')
                 <input type="hidden" name="status" value="{!! $reservation::STATUS_ACCEPTED !!}">
+
+                <a href="{!! route('doctor.medical-history',$reservation->patient_id) !!}"
+                   class="btn btn-outline-secondary btn-sm text-capitalize">{{ __('view medical history')}}</a>
+
             </form>
 
             <a class="btn btn-danger btn-sm text-capitalize text-white" onclick="
@@ -84,8 +95,11 @@
                 <input type="hidden" name="status" value="{!! $reservation::STATUS_REFUSED !!}">
             </form>
 
+            <a href="{!! route('doctor.medical-history',$reservation->patient_id) !!}"
+               class="btn btn-outline-secondary btn-sm text-capitalize">{{ __('view medical history')}}</a>
 
             @endif
+
         </div>
 </div>
 

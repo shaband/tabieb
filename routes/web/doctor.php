@@ -39,6 +39,7 @@ Route::group(['namespace' => 'Website\Doctor', 'middleware' => ['localeSessionRe
         Route::post('documents', 'AttachmentController@store');
         Route::delete('documents/{id}', 'AttachmentController@delete')->name('profile.documents.destroy');
 
+        Route::get('appointment/{id}/medical-history', 'MedicalHistoryController@index')->name('medical-history');
     });
 
 });

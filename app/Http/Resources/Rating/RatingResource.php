@@ -19,15 +19,18 @@ class RatingResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'reservation' => new ReservationResource($this->whenLoaded('reservation')),
+            'doctor' => new DoctorResource($this->whenLoaded('doctor')),
+
+            //   'patient' => new PatientResource($this->whenLoaded('patient')),
             'id' => $this->id,
             'rate' => $this->rate,
             'description' => $this->description,
+            'patient_name' => optional($this->patient)->name ?? "",
+            'patient_img' => optional($this->patient)->img ?? "",
 
             //relashions
 
-            'reservation' => new ReservationResource($this->whenLoaded('reservation')),
-            'doctor' => new DoctorResource($this->whenLoaded('doctor')),
-            'patient' => new PatientResource($this->whenLoaded('patient')),
         ];
 
     }

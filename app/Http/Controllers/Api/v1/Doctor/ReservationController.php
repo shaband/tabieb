@@ -27,7 +27,7 @@ class ReservationController extends Controller
      */
     public function upcoming(Request $request)
     {
-        $reservation = $this->repo->makeModel()->where('doctor_id', auth()->id())
+        $reservation = $this->repo->query()->where('doctor_id', auth()->id())
             ->whereDate('date', '>=', Carbon::now())
             ->whereIn('status', $this->repo::getConstants('STATUS_ACCEPTED'))->get();
 
@@ -49,7 +49,7 @@ class ReservationController extends Controller
         $this->validate($request, [
             'status' => ['required', 'integer', Rule::in($this->repo::getConstants('STATUS'))]
         ]);
-        $reservation = $this->repo->makeModel()->where('doctor_id', auth()->id())
+        $reservation = $this->repo->query()->where('doctor_id', auth()->id())
             ->whereDate('date', '>=', Carbon::now())
             ->where('status', $request->status)->get();
 
@@ -90,7 +90,7 @@ class ReservationController extends Controller
      */
     public function previous(Request $request)
     {
-        $reservation = $this->repo->makeModel()
+        $reservation = $this->repo->query()
             ->whereDate('date', '<', Carbon::now())
             ->whereIn('status', $this->repo::getConstants('STATUS_ACCEPTED'))->get();
         $reservation = ReservationResource::collection($reservation);

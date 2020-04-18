@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-4 col-lg-2">
             <div class="doc-img">
-                <img src="{!! $doctor->img !!}">
+                <img src="{!! asset($doctor->img) !!}">
             </div>
         </div>
         <div class="col-md-8 col-lg-6">
@@ -32,7 +32,7 @@
                     </div>
                     <div class="doc-desc">
                         {!! substr($doctor->description,0,49) !!}
-                        <a href="#" class="link-secondary">
+                        <a href="{{route('reservation.doctor',$doctor->id)}}" class="link-secondary">
                             {{ __('read more')}}
                         </a>
                     </div>

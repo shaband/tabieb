@@ -26,7 +26,7 @@ class AddSoftDeleteToSchedules extends Migration
     public function down()
     {
         Schema::table('schedules', function (Blueprint $table) {
-            $table->removeColumn('deleted_at');
+            $table->dropColumn('deleted_at');
         });
     }
 }

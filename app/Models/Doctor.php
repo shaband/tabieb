@@ -181,28 +181,29 @@ class Doctor extends Authenticatable implements JWTSubject
             $appointments = [];
             foreach ($schedules as $schedule) {
                 $times = $schedule->reservation_times;
-                $appointments =  array_merge($appointments, $times);
+                $appointments = array_merge($appointments, $times);
             }
             $week_dates[$day_number] = ['day' => $day, 'times' => $appointments];
         }
-        return  $week_dates;
+        return $week_dates;
     }
 
     public function getAvailableOnAttribute()
     {
         $schedules = $this->weakly_schedules;
-        $available_day =    collect($schedules)->where('times', '!=', [])->where('times.has_reservation', 0)->first();
+        $available_day = collect($schedules)->where('times', '!=', [])->where('times.has_reservation', 0)->first();
         return optional($available_day);
     }
 
     public function getAvailableDayAttribute()
     {
-        $available =  $this->available_on;
+        $available = $this->available_on;
         return optional($available['day'] ?? null);
     }
+
     public function getAvailableTimeAttribute()
     {
-        $available =  $this->available_on;
+        $available = $this->available_on;
         return collect($available['times'])->first() ?? [];
     }
 

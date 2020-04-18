@@ -56,7 +56,7 @@ class ReservationController extends Controller
      */
     public function upcoming(Request $request)
     {
-        $reservation = $this->repo->makeModel()->where('patient_id', auth()->id())
+        $reservation = $this->repo->query()->where('patient_id', auth()->id())
             ->whereDate('date', '>=', Carbon::now())
             ->whereIn('status', $this->repo::status())->get();
 
@@ -72,7 +72,7 @@ class ReservationController extends Controller
      */
     public function previous(Request $request)
     {
-        $reservation = $this->repo->makeModel()
+        $reservation = $this->repo->query()
             ->whereDate('date', '<', Carbon::now())
             //   ->whereTime('from_time', '<', Carbon::now())
             ->get();

@@ -25,7 +25,7 @@ class ChatController extends Controller
 
     public function inbox()
     {
-        $chats = $this->repo->makeModel()->with('doctor')->Where($this->auth_column, auth()->id())->get();
+        $chats = $this->repo->query()->with('doctor')->Where($this->auth_column, auth()->id())->get();
 
         $chats = ChatResource::collection($chats);
         return responseJson(compact('chats'), __("Loaded Successfully"));

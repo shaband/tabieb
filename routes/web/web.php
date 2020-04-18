@@ -33,3 +33,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
 });
 Route::get('/test', 'HomeController@test');
 
+
+/*social login*/
+Route::get('auth/{provider}/login/{type}', 'Auth\SocialController@redirectToProvider')->name('social.login');
+Route::get('auth/{provider}/callback', 'Auth\SocialController@handleProviderCallback');

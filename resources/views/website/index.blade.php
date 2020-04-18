@@ -52,16 +52,16 @@
                                                 <i class="fas fa-star @if ($doctor->ratings->avg('rate')>=$i) active @endif"></i>
                                             @endfor
                                         </div>
-                                        <div class="doc-extra-dets">
-                                            <div><img src="{!! asset('design/images/icons/time-date.png')!!}">
-                                                {{ __('Available on')}}: 23 sep
+                                        @if($doctor->available!=null)
+                                            <div class="doc-extra-dets">
+                                                <div><img src="{{url('design/images/icons/time-date.png')}}"> {{ __('available')}}
+                                                    {{$doctor->available_day->format('d-M')}} </div>
+                                                <div><img src="{{url('design/images/icons/clock.png')}}"> {{ __('from')}}:
+                                                    {{optional($doctor->available_time['start'] ?? null)->format('H:i')}} {{ __('to')}} :
+                                                    {{optional($doctor->available_time['end']?? null)->format('H:i')}}
+                                                </div>
                                             </div>
-                                            <div><img src="{!! asset('design/images/icons/clock.png') !!}">
-                                                from: 12:45
-                                                to:
-                                                5:50
-                                            </div>
-                                        </div>
+                                        @endif
                                         <a href="#"
                                            class="doc-book-btn btn btn-secondary btn-sm">{!! __("Book Now") !!}</a>
                                     </div>

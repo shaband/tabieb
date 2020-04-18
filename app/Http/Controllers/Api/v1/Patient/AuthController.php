@@ -60,15 +60,9 @@ class AuthController extends Controller
 
 
         $patient = $this->repo->store($request);
-        $credentials = request(['email', 'password']);
 
-        if (!$token = auth()->attempt($credentials)) {
-
-            return $this->UnauthorizedResponse(__('Unauthorized'));
-
-        }
         $response = (new PatientResource($patient));
-        return responseJson(['patient' => $response, 'token' => $token]);
+        return responseJson(['patient' => $response]);
     }
 
     /**
@@ -128,7 +122,7 @@ class AuthController extends Controller
         $credentials = request(['email', 'password']);
         $patient = $this->repo->findWhere(request()->only('email'))->first();
 
-        if (!Hash::check($request->password,$patient->password)) {
+        if (!Hash::check($request->password, $patient->password)) {
             return $this->UnauthorizedResponse(__('Wrong Password'));
 
         }
@@ -167,7 +161,13 @@ class AuthController extends Controller
 
         $patient = $this->repo->verify($request);
 
-        return responseJson(['student' => new PatientResource($patient->fresh())], __("Verified Successfully"));
+        if (!$token = auth()->login($patient)) {
+
+            return $this->UnauthorizedResponse(__('Unauthorized'));
+
+        }
+
+        return responseJson(['student' => new PatientResource($patient->fresh()), 'token' => $token], __("Verified Successfully"));
     }
 
     /**
@@ -183,7 +183,7 @@ class AuthController extends Controller
                 'status' => 2,
                 'message' => isset($msg[0]) ? $msg[0] : __('Unauthorized'),
                 'errors' => $msg,
-                'data' => []
+                'data' => null
 
             ], 401);
     }

@@ -47,7 +47,7 @@ class ReservationController extends Controller
         $doctors = $this->doctorRepo->pushCriteria(new DoctorSearchCriteriaCriteria($request))->with('image:file', 'ratings:rate', 'category:name_ar,name_en,id', 'sub_categories:name_ar,name_en', 'schedules')->paginate(10);
 
         $doctors->each(function ($doctor) use ($categories, $categoryRepo) {
-            $doctor->setRelation('category', $categories['category_id'] ?? $categoryRepo->makeModel());
+            $doctor->setRelation('category', $categories['category_id'] ?? $categoryRepo->query());
         });
 
 
@@ -62,9 +62,9 @@ class ReservationController extends Controller
         $doctor = $this->doctorRepo
             ->with(['ratings' => function ($rating) {
                 $rating->with('patient');
-                $rating->orderBy('rating');
+                $rating->orderBy('rate');
             }, 'image', 'category', 'sub_categories', 'schedules'])
-            ->find($id)->setRelation('category', $categories['category_id'] ?? $categoryRepo->makeModel());
+            ->find($id)->setRelation('category', $categories['category_id'] ?? $categoryRepo->query());
 
         return view('website.doctor_page', compact('doctor', 'categories'));
     }
