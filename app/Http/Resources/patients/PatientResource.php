@@ -33,19 +33,19 @@ class PatientResource extends JsonResource
             'blocked_reason' => $this->blocked_reason,
             'birthdate' => $this->birthdate,
             'age' => $this->birthdate ? Carbon::now()->diffInYears($this->birthdate) : null,
-         //   'district_id' => $this->district_id,
-         //   'area_id' => $this->area_id,
-         //   'block_id' => $this->block_id,
+            //   'district_id' => $this->district_id,
+            //   'area_id' => $this->area_id,
+            //   'block_id' => $this->block_id,
             'gender' => $this->gender,
             'verification_code' => $this->verification_code,
             'phone_verified_at' => $this->phone_verified_at,
             'email_verified_at' => $this->email_verified_at,
-
+            'token' => null,
             //relationship
             'social_security' => new SocialSecurityResource($this->whenLoaded('social_security')),
-         //   'district' => new DistrictResource($this->whenLoaded('district')),
-         //   'area' => new AreaResource($this->whenLoaded('area')),
-         //   'block' => new BlockResource($this->whenLoaded('block')),
+            //   'district' => new DistrictResource($this->whenLoaded('district')),
+            //   'area' => new AreaResource($this->whenLoaded('area')),
+            //   'block' => new BlockResource($this->whenLoaded('block')),
         ];
     }
 }

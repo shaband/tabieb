@@ -50,6 +50,8 @@ class DoctorResource extends JsonResource
             'rating' => round($this->ratings->avg('rate') ?? 0, 1),
             'reviews' => $this->whenLoaded('ratings',RatingResource::collection($this->ratings)),
 
+            'token'=>null,
+
         ];
     }
 

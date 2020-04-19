@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\v1\Doctor;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Doctors\DoctorRequest;
 use App\Http\Resources\Doctor\DoctorResource;
+use App\Http\Resources\patients\PatientResource;
 use App\Repositories\interfaces\DoctorRepository;
 use App\Rules\CheckPassword;
 use Illuminate\Http\JsonResponse;
@@ -65,6 +66,8 @@ class AuthController extends Controller
         }
 
         $response = (new DoctorResource($doctor));
+        $response['token'] = auth()->refresh();
+
         return responseJson(['doctor' => $response]);
     }
 
@@ -95,9 +98,10 @@ class AuthController extends Controller
             return $this->UnauthorizedResponse(__('Unauthorized'));
         }
         $this->repo->AddFCM($request, $doctor);
-        $doctorResource = new  DoctorResource(auth()->user());
+        $doctorResource = (new  DoctorResource(auth()->user()))->jsonSerialize();
 
-        return responseJson(['doctor' => $doctorResource, 'token' => $token]);
+
+        return responseJson(['doctor' =>[ $doctorResource+ ['token' => $token]]]);
     }
 
     /**
@@ -126,7 +130,12 @@ class AuthController extends Controller
 
         }
 
-        return responseJson(['student' => new DoctorResource($doctor->fresh()), 'token' => $token], __("Verified Successfully"));
+        return responseJson(
+            ['doctor' => [
+                (new DoctorResource($doctor->fresh()))->jsonSerialize()
+                + ['token' => $token]
+            ]
+            ], __("Verified Successfully"));
     }
 
     /**

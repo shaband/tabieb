@@ -87,8 +87,7 @@ class AuthController extends Controller
             'district_id' => 'nullable|integer|exists:districts,id',
             'area_id' => 'nullable|integer|exists:areas,id',
             'gender' => 'nullable|integer|min:1|max:2',
-            'fb_token' => 'nullable|string',
-            'google_token' => 'nullable|string',
+'image'=>'nullable|image'
         ];
 
         \Validator::make($request->all(), $rules)->validate();
@@ -99,7 +98,9 @@ class AuthController extends Controller
             $patient->image()->updateOrCreate(['type' => $image_data['type']], $image_data);
         }
 
-        $response = (new PatientResource($patient));
+        $response = (new PatientResource($patient))->jsonSerialize();
+
+        $response['token'] = auth()->refresh();
         return responseJson(['patient' => $response]);
     }
 
@@ -138,8 +139,9 @@ class AuthController extends Controller
 
         }
 
-        $patientResource = new  PatientResource(auth()->user());
-        return responseJson(['patient' => $patientResource, 'token' => $token]);
+        $patientResource = (new  PatientResource(auth()->user()))->jsonSerialize();
+
+        return responseJson(['patient' => $patientResource + ['token' => $token]]);
     }
 
     /**
@@ -167,7 +169,15 @@ class AuthController extends Controller
 
         }
 
-        return responseJson(['student' => new PatientResource($patient->fresh()), 'token' => $token], __("Verified Successfully"));
+        return responseJson(
+            [
+                'patient' => [
+                    (new PatientResource($patient->fresh()))->jsonSerialize()
+                    + ['token' => $token]
+                ]
+            ],
+            __("Verified Successfully")
+        );
     }
 
     /**
