@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Website;
 use App\Criteria\DoctorSearchCriteriaCriteria;
 use App\Http\Controllers\Controller;
 
+use App\Repositories\interfaces\AttachmentRepository;
 use App\Repositories\interfaces\CategoryRepository;
 use App\Repositories\interfaces\DoctorRepository;
 use App\Repositories\interfaces\ReservationRepository;
@@ -68,4 +69,12 @@ class ReservationController extends Controller
 
         return view('website.doctor_page', compact('doctor', 'categories'));
     }
+
+
+    public function doctorCertifications($id, AttachmentRepository $attachmentRepository)
+    {
+        return view('website.certifications', [
+            'certifications' => $attachmentRepository->getDoctorCertifications($id)]);
+    }
+
 }

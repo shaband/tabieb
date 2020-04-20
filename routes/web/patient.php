@@ -12,7 +12,6 @@ Route::group(['namespace' => 'Website\Patient', 'middleware' => ['localeSessionR
     // Register
     Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('patient.register');
     Route::post('register', 'Auth\RegisterController@register');
-
     // Passwords
     Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('patient.password.email');
     Route::post('password/reset', 'Auth\ResetPasswordController@reset');
@@ -21,8 +20,11 @@ Route::group(['namespace' => 'Website\Patient', 'middleware' => ['localeSessionR
 
     // Verify
     Route::post('email/resend', 'Auth\VerificationController@resend')->name('patient.verification.resend');
+
     Route::get('email/verify', 'Auth\VerificationController@show')->name('patient.verification.notice');
+
     Route::get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->name('patient.verification.verify');
+
     Route::middleware(['patient.auth'])->name('patient.')->group(function () {
         Route::get('profile', 'PatientController@edit')->name('profile.edit');
         Route::get('appointments', 'PatientController@myAppointment')->name('profile.appointments');
@@ -30,8 +32,9 @@ Route::group(['namespace' => 'Website\Patient', 'middleware' => ['localeSessionR
         Route::get('change-password', 'PatientController@changePassword')->name('profile.change-password');
         Route::match(['put', 'patch', 'post'], 'profile', 'PatientController@update')->name('profile.update');
 
-        Route::get('patient-questions', 'PatientQuestionController@index')->name('profile.patient-questions');
         Route::match(['put', 'patch', 'post'], 'patient-questions', 'PatientQuestionController@store');
+        Route::get('medical-histories', 'MedicalHistoryController@index')->name('profile.medicalHistory');
+        Route::post('medical-histories', 'MedicalHistoryController@store');
 
     });
 });

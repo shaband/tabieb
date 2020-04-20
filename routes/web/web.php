@@ -12,7 +12,7 @@
 */
 Route::group(['prefix' => LaravelLocalization::setLocale(),
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
-    'namespace'=>'Website'
+    'namespace' => 'Website'
 ], function () {
 
     Route::get('/', 'HomeController@index');
@@ -29,6 +29,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     Route::post('/contact', 'ContactController@send')->name('contact.send');
     Route::get('/appointment/search', 'ReservationController@search')->name('reservation.search');
     Route::get('/profile/{id}/doctor', 'ReservationController@doctorProfile')->name('reservation.doctor');
+    Route::get('/certifications/{id}/doctor', 'ReservationController@doctorCertifications')->name('reservation.doctor.certification');
 
 });
 Route::get('/test', 'HomeController@test');

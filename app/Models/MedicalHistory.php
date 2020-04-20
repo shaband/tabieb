@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\ModelHasLogs;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class MedicalHistory extends Model
@@ -40,8 +41,16 @@ class MedicalHistory extends Model
         return $this->morphTo('creator');
     }
 
-    public function file()
+    public function image()
     {
-        return $this->morphOne(Attachment::class, 'model')->where('type', Attachment::MEDICAL_HISTORY)->latest();
+        return $this->morphOne(Attachment::class, 'model')
+            ->where('type', Attachment::MEDICAL_HISTORY)
+            ->latest();
+    }
+
+    public function setDateAttribute($value)
+    {
+
+        $this->attributes['date'] = Carbon::parse($value);
     }
 }

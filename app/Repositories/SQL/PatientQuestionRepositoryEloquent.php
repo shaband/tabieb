@@ -39,7 +39,7 @@ class PatientQuestionRepositoryEloquent extends BaseRepository implements Patien
     public function WithAnswersOfPatient(int $patient_id)
     {
 
-        $questions = $this->query()->all();
+        $questions = $this->all();
 
         $answers = auth()->user()->patient_answers;
 

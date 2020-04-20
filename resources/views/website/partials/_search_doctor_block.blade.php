@@ -9,7 +9,7 @@
             <div class="doc-dets">
                 <h6 class="doc-n">{!! $doctor->name !!}
                     @if($doctor->is_active)
-                    <span class="doc-status active"> {{ __('online now')}}</span>
+                        <span class="doc-status active"> {{ __('online now')}}</span>
                     @endif
                 </h6>
                 <div class="doc-s">
@@ -17,8 +17,8 @@
                 </div>
                 <div class="doc-rating">
                     @for($i=1;$i<=5;$i++) <i class="fas fa-star @if ($doctor->ratings->avg('rate')>=$i) active @endif">
-                        </i>
-                        @endfor
+                    </i>
+                    @endfor
                 </div>
                 <div class="doc-plus-dets">
                     <div class="doc-price">
@@ -27,7 +27,7 @@
                     </div>
                     <div class="doc-badges">
                         @foreach($doctor->sub_categories as $sub_category)
-                        <span class="badge">{!! $sub_category->name !!}</span>
+                            <span class="badge">{!! $sub_category->name !!}</span>
                         @endforeach
                     </div>
                     <div class="doc-desc">
@@ -38,14 +38,14 @@
                     </div>
                 </div>
                 @if($doctor->available!=null)
-                <div class="doc-extra-dets">
-                    <div><img src="{{url('design/images/icons/time-date.png')}}"> {{ __('available')}}
-                        {{$doctor->available_day->format('d-M')}} </div>
-                    <div><img src="{{url('design/images/icons/clock.png')}}"> {{ __('from')}}:
-                        {{optional($doctor->available_time['start'] ?? null)->format('H:i')}} {{ __('to')}} :
-                        {{optional($doctor->available_time['end']?? null)->format('H:i')}}
+                    <div class="doc-extra-dets">
+                        <div><img src="{{url('design/images/icons/time-date.png')}}"> {{ __('available')}}
+                            {{$doctor->available_day->format('d-M')}} </div>
+                        <div><img src="{{url('design/images/icons/clock.png')}}"> {{ __('from')}}:
+                            {{optional($doctor->available_time['start'] ?? null)->format('H:i')}} {{ __('to')}} :
+                            {{optional($doctor->available_time['end']?? null)->format('H:i')}}
+                        </div>
                     </div>
-                </div>
                 @endif
                 <div class="doc-controls">
                     <a href="#" class="doc-book-btn btn btn-secondary btn-sm"><img
@@ -53,6 +53,10 @@
                     </a>
                     <a href="#" class="doc-book-btn btn btn-thirdly btn-sm"><img
                             src="{{ url('design/images/icons/tag.png')}}"> {{ __('book now')}}</a>
+
+                    <a href="{{route('reservation.doctor.certification',$doctor->id)}}"
+                       class="doc-book-btn btn btn-outline-secondary btn-sm btn-xs">{{ __('medical
+                                                documents')}}</a>
                 </div>
             </div>
         </div>

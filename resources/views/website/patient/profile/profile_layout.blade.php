@@ -29,8 +29,8 @@
                                 </div>
                                 <div class="user-list">
                                     <ul>
-                                        <li class="{!! setActive('patient.profile.patient-questions') !!}"><a
-                                                href="{!! route('patient.profile.patient-questions') !!}">{{ __('personal information')}}</a>
+                                        <li class="{!! setActive('patient.profile.medicalHistory') !!}"><a
+                                                href="{!! route('patient.profile.medicalHistory') !!}">{{ __('personal information')}}</a>
                                         </li>
                                         <li class="{!! setActive('patient.profile.appointments') !!}">
                                             <a href="{!! route('patient.profile.appointments') !!}">{{ __('my appointments')}}</a>

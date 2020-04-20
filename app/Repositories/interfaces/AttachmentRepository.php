@@ -14,6 +14,16 @@ use Illuminate\Http\UploadedFile;
  */
 interface AttachmentRepository extends BaseInterface
 {
-
+    /**
+     * @param Request $request
+     * @return Attachment
+     */
     public function store(Request $request): Attachment;
+
+    /**
+     * get doctor certifications
+     * @param int $id
+     * @return mixed
+     */
+    public function getDoctorCertifications(int $id);
 }

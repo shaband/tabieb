@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Admin;
 use App\Models\Doctor;
+use App\Models\MedicalHistory;
 use App\Models\Patient;
 use App\Models\Pharmacy;
 use App\Models\PharmacyRep;
@@ -35,8 +36,9 @@ class ModelServiceProvider extends ServiceProvider
             'admins' => Admin::class,
             'doctors' => Doctor::class,
             'patients' => Patient::class,
-            'pharmacies'=>Pharmacy::class,
-            'Pharmacy_reps'=>PharmacyRep::class,
+            'pharmacies' => Pharmacy::class,
+            'Pharmacy_reps' => PharmacyRep::class,
+            'medical_histories' => MedicalHistory::class,
         ]);
 
         Prescription::observe(prescriptionObserver::class);

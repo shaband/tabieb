@@ -32,13 +32,14 @@ class PatientQuestionController extends Controller
     }
 
 
-    public function index()
+    /*public function index()
     {
         $user = auth()->user();
         $patient_questions = $this->repo->WithAnswersOfPatient($user->id);
 
-        return view('website.patient.profile.questions', compact('patient_questions', 'user'));
-    }
+        return view('website.patient.profile.questions',
+            compact('patient_questions', 'user'));
+    }*/
 
     public function Store(Request $request)
     {

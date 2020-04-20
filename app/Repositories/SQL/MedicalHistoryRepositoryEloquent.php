@@ -2,7 +2,10 @@
 
 namespace App\Repositories\SQL;
 
+use App\Models\Attachment;
 use App\Repositories\SQL\BaseRepository;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\interfaces\MedicalHistoryRepository;
 use App\Models\MedicalHistory;
@@ -44,8 +47,32 @@ class MedicalHistoryRepositoryEloquent extends BaseRepository implements Medical
         return $this->join('reservations', 'reservations.patient_id', 'medical_histories.patient_id')
             ->where('reservations.doctor_id', auth()->id())
             ->distinct()
-            ->with('file')
+            ->with('image')
             ->select('medical_histories.*')
             ->get();
     }
+
+
+    /**
+     * store medical history with  image if included
+     * @param array $attributes
+     * @return mixed
+     */
+
+    public function store($attributes)
+    {
+
+        DB::beginTransaction();
+
+        $medical_history = $this->create($attributes);
+
+        if (isset($attributes['image'])) {
+            $image_data = $this->saveFile($attributes['image'], 'medical_histories', Attachment::MEDICAL_HISTORY);
+            $medical_history->image()->updateOrCreate(['type' => $image_data['type']], $image_data);
+        }
+        DB::commit();
+
+        return $medical_history->fresh();
+    }
+
 }

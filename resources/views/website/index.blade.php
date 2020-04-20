@@ -54,15 +54,18 @@
                                         </div>
                                         @if($doctor->available!=null)
                                             <div class="doc-extra-dets">
-                                                <div><img src="{{url('design/images/icons/time-date.png')}}"> {{ __('available')}}
+                                                <div><img
+                                                        src="{{url('design/images/icons/time-date.png')}}"> {{ __('available')}}
                                                     {{$doctor->available_day->format('d-M')}} </div>
-                                                <div><img src="{{url('design/images/icons/clock.png')}}"> {{ __('from')}}:
-                                                    {{optional($doctor->available_time['start'] ?? null)->format('H:i')}} {{ __('to')}} :
+                                                <div><img
+                                                        src="{{url('design/images/icons/clock.png')}}"> {{ __('from')}}:
+                                                    {{optional($doctor->available_time['start'] ?? null)->format('H:i')}} {{ __('to')}}
+                                                    :
                                                     {{optional($doctor->available_time['end']?? null)->format('H:i')}}
                                                 </div>
                                             </div>
                                         @endif
-                                        <a href="#"
+                                        <a href="{!! route('reservation.doctor',$doctor->id) !!}"
                                            class="doc-book-btn btn btn-secondary btn-sm">{!! __("Book Now") !!}</a>
                                     </div>
                                 </div>

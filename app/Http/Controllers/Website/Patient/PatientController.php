@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Website\Patient;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\patients\PatientResource;
+use App\Repositories\interfaces\PatientQuestionRepository;
 use App\Repositories\interfaces\PatientRepository;
 use App\Repositories\interfaces\ReservationRepository;
 use App\Repositories\interfaces\SocialSecurityRepository;
@@ -27,13 +28,16 @@ class PatientController extends Controller
         $this->repo = $repo;
     }
 
-    public function edit(SocialSecurityRepository $socialSecurityRepo)
+    public function edit(SocialSecurityRepository $socialSecurityRepo, PatientQuestionRepository $questionRepository)
     {
 
         $user = auth()->user();
+        $patient_questions = $questionRepository->WithAnswersOfPatient($user->id);
 
         $social_securities = $socialSecurityRepo->all()->pluck('name', 'id');
-        return view('website.patient.profile.profile', compact('user', 'social_securities'));
+
+
+        return view('website.patient.profile.profile', compact('user', 'social_securities', 'patient_questions'));
     }
 
     public function changePassword()

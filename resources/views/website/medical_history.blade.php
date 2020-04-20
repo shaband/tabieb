@@ -22,9 +22,9 @@
                                     <div class="cert-item">
                                         <h6 class="font-weight-bold">{{$history->title}}</h6>
 
-                                        @if(optional($history->file)->file!=null)
+                                        @if(optional($history->image)->file!=null)
                                             <div class="cert-link">
-                                                <a href="{{asset(optional($history->file)->file)}}"
+                                                <a href="{{asset(optional($history->image)->file)}}"
                                                    class="text-secondary text-capitalize"
                                                    target="_blank">{{ __('show file now')}}</a>
                                             </div>

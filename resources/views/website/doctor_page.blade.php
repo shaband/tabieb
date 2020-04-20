@@ -74,6 +74,10 @@
                                             <a href="#" class="doc-book-btn btn btn-thirdlyLight btn-sm"><img
                                                     src="{{asset('design/images/icons/video.png')}}"> {{ __('video call')}}
                                             </a>
+                                            <a href="{{route('reservation.doctor.certification',$doctor->id)}}"
+                                               class="doc-book-btn btn btn-outline-secondary btn-sm btn-xs">{{ __('medical
+                                                documents')}}</a>
+
                                             <br>
                                             <a href="#" class="doc-book-btn btn btn-secondary"><img
                                                     src="{{asset('design/images/icons/phone-White.png')}}"> {{ __('quick call')}}
@@ -130,7 +134,8 @@
                                         <div class="client-op-dets font-reg-sm">
                                             <h6 class="client-n">{!! $rating->patient->name !!}</h6>
                                             <div class="client-t-d">
-                                                <span>{!! $rating->created_at->format("H:i A") !!}</span> {!! $rating->created_at->format("d M Y") !!}</div>
+                                                <span>{!! $rating->created_at->format("H:i A") !!}</span> {!! $rating->created_at->format("d M Y") !!}
+                                            </div>
                                             <div class="doc-rating client-rating">
                                                 @for($i=1;$i<=5;$i++) <i
                                                     class="fas fa-star @if ($rating->rate>=$i) active @endif">
@@ -190,13 +195,13 @@
                                                 @endforeach
                                             </div>
                                         </div>
-                                    @endforeach
-                                        <!-- END Doctor Available Dates and Times Container -->
-                                        <div class="doc-appointments-controls mt-3 text-center">
-                                            <a href="#" class="btn btn-thirdly btn-sm text-capitalize">{{ __('book &
+                                @endforeach
+                                <!-- END Doctor Available Dates and Times Container -->
+                                    <div class="doc-appointments-controls mt-3 text-center">
+                                        <a href="#" class="btn btn-thirdly btn-sm text-capitalize">{{ __('book &
                                                 proceed to
                                                 payment')}}</a>
-                                        </div>
+                                    </div>
                                 </div>
                                 <!-- END Doctor Available Dates and Times Block -->
                             </div>

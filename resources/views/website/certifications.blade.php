@@ -2,7 +2,7 @@
 
 @section('title')
 
-    {!! __("Medical History")  !!}
+    {!! __("Certifications")  !!}
 
 @endsection
 @section('content')
@@ -20,11 +20,11 @@
 
                                 <div class="col-sm-6 col-md-4">
                                     <div class="cert-item">
-                                        <h6 class="font-weight-bold">{{$certification->title}}</h6>
+                                        <h6 class="font-weight-bold">{{$certification->name}}</h6>
 
-                                        @if(optional($certification->file)->file!=null)
+                                        @if($certification->file!=null)
                                             <div class="cert-link">
-                                                <a href="{{asset(optional($certification->file)->file)}}"
+                                                <a href="{{asset($certification->file)}}"
                                                    class="text-secondary text-capitalize"
                                                    target="_blank">{{ __('show file now')}}</a>
                                             </div>
@@ -36,7 +36,7 @@
 
                                 <div
                                     class="d-flex justify-content-center bd-highlight mb-3 w-100">
-                                        {{ __("There is No Medical History For This Patient")}}
+                                    {{ __("There is No Certifications For This Doctor")}}
 
                                 </div>
 

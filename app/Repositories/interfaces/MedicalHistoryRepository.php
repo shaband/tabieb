@@ -16,4 +16,11 @@ interface MedicalHistoryRepository extends BaseInterface
      * @return mixed
      */
     public function getMedicalHistoryForDoctor(int $patient_id);
+
+    /**
+     * store medical history with  image if included
+     * @param array $attributes
+     * @return mixed
+     */
+    public function store($attributes);
 }
