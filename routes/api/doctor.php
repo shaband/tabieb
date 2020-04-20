@@ -18,6 +18,7 @@ Route::post('auth/register', 'AuthController@register');
 Route::post('auth/login', 'AuthController@login');
 Route::post('auth/logout', 'AuthController@logout');
 Route::post('auth/verify', 'AuthController@verify');
+Route::post('auth/verification/resend', 'AuthController@resendVerification');
 Route::post('auth/profile', 'AuthController@Profile');
 
 

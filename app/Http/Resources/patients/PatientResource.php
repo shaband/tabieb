@@ -43,9 +43,6 @@ class PatientResource extends JsonResource
             'token' => null,
             //relationship
             'social_security' => new SocialSecurityResource($this->whenLoaded('social_security')),
-            //   'district' => new DistrictResource($this->whenLoaded('district')),
-            //   'area' => new AreaResource($this->whenLoaded('area')),
-            //   'block' => new BlockResource($this->whenLoaded('block')),
         ];
     }
 }

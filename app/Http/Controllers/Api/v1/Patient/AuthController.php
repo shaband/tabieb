@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\v1\Patient;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Doctor\DoctorResource;
 use App\Http\Resources\patients\PatientResource;
 use App\Repositories\interfaces\PatientRepository;
 use App\Rules\CheckPassword;
@@ -21,7 +22,7 @@ class AuthController extends Controller
 
     public function __construct(PatientRepository $repo)
     {
-        $this->middleware('auth:patient_api', ['except' => ['login', 'register', 'verify']]);
+        $this->middleware('auth:patient_api', ['except' => ['login', 'register', 'verify', 'resendVerification']]);
         auth()->setDefaultDriver('patient_api');
 
         $this->repo = $repo;
@@ -87,7 +88,7 @@ class AuthController extends Controller
             'district_id' => 'nullable|integer|exists:districts,id',
             'area_id' => 'nullable|integer|exists:areas,id',
             'gender' => 'nullable|integer|min:1|max:2',
-'image'=>'nullable|image'
+            'image' => 'nullable|image'
         ];
 
         \Validator::make($request->all(), $rules)->validate();
@@ -139,9 +140,12 @@ class AuthController extends Controller
 
         }
 
-        $patientResource = (new  PatientResource(auth()->user()))->jsonSerialize();
+        return responseJson(['patient' =>
+                ['token' => $token]
+                + (new  PatientResource(auth()->user()))->jsonSerialize()
 
-        return responseJson(['patient' => $patientResource + ['token' => $token]]);
+            ]
+        );
     }
 
     /**
@@ -157,6 +161,34 @@ class AuthController extends Controller
     }
 
 
+    /**
+     * send verification code to doctor
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function resendVerification(Request $request)
+    {
+        $request->validate(
+            ['email' => 'required|email|exists:patients,email']
+        );
+
+        $patient = $this->repo->where($request->only('email'))->first();
+        if ($patient) {
+            //TODO::send SMS verification
+
+            return responseJson(['patient' => new PatientResource($patient)], __("Code Send Successfully"));
+        }
+        if ($patient) {
+            return responseJson(null, __("Email Not Found"), 401);
+        }
+    }
+
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function verify(Request $request)
     {
         $this->validate($request, ['verification_code' => 'required|integer|exists:patients,verification_code']);
@@ -171,10 +203,10 @@ class AuthController extends Controller
 
         return responseJson(
             [
-                'patient' => [
-                    (new PatientResource($patient->fresh()))->jsonSerialize()
-                    + ['token' => $token]
-                ]
+                'patient' =>
+                    ['token' => $token] + (new PatientResource($patient->fresh()))->jsonSerialize()
+
+
             ],
             __("Verified Successfully")
         );

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Doctors\DoctorRequest;
 use App\Http\Resources\Doctor\DoctorResource;
 use App\Http\Resources\patients\PatientResource;
+use App\Models\Patient;
 use App\Repositories\interfaces\DoctorRepository;
 use App\Rules\CheckPassword;
 use Illuminate\Http\JsonResponse;
@@ -22,7 +23,7 @@ class AuthController extends Controller
 
     public function __construct(DoctorRepository $repo)
     {
-        $this->middleware('auth:doctor_api', ['except' => ['login', 'verify']]);
+        $this->middleware('auth:doctor_api', ['except' => ['login', 'verify','resendVerification']]);
         auth()->setDefaultDriver('doctor_api');
 
         $this->repo = $repo;
@@ -32,7 +33,7 @@ class AuthController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request)
+    public function profile(Request $request)
     {
         $rules = [
             "first_name_ar" => "nullable|string|max:191",
@@ -91,6 +92,7 @@ class AuthController extends Controller
         $doctor = $this->repo->findWhere(request()->only('email'))->first();
 
         if ($doctor->phone_verified_at == null) {
+            //TODO::send verifcation code on mobile
             return $this->UnauthorizedResponse(__('Please Verify Your Account'));
         }
 
@@ -98,10 +100,15 @@ class AuthController extends Controller
             return $this->UnauthorizedResponse(__('Unauthorized'));
         }
         $this->repo->AddFCM($request, $doctor);
-        $doctorResource = (new  DoctorResource(auth()->user()))->jsonSerialize();
 
 
-        return responseJson(['doctor' =>[ $doctorResource+ ['token' => $token]]]);
+        return responseJson(
+            ['doctor' =>
+                ['token' => $token] +
+                (new  DoctorResource(auth()->user()))->jsonSerialize()
+
+
+            ], __("Logged In Successfully"));
     }
 
     /**
@@ -131,11 +138,33 @@ class AuthController extends Controller
         }
 
         return responseJson(
-            ['doctor' => [
+            ['doctor' =>
                 (new DoctorResource($doctor->fresh()))->jsonSerialize()
                 + ['token' => $token]
-            ]
+
             ], __("Verified Successfully"));
+    }
+
+    /**
+     * send verification code to doctor
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function resendVerification(Request $request)
+    {
+        $request->validate(
+            ['email' => 'required|email|exists:doctors,email']
+        );
+
+        $doctor = $this->repo->where($request->only('email'))->first();
+        if ($doctor) {
+            //TODO::send SMS verification
+
+            return responseJson(['doctor' => new DoctorResource($doctor)], __("Code Send Successfully"));
+        }
+        if ($doctor) {
+            return responseJson(null, __("Email Not Found"), 401);
+        }
     }
 
     /**
