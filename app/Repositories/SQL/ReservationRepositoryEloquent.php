@@ -5,6 +5,7 @@ namespace App\Repositories\SQL;
 use App\Repositories\interfaces\ScheduleRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
@@ -65,7 +66,7 @@ class ReservationRepositoryEloquent extends BaseRepository implements Reservatio
     }
 
 
-    public static function updateStatus(int $reservation_id, Int $status): Reservation
+    public static function updateStatus(int $reservation_id, int $status): Reservation
     {
 
         $attributes = [
@@ -98,4 +99,21 @@ class ReservationRepositoryEloquent extends BaseRepository implements Reservatio
         }
 
     }
+
+
+    public function getDoctorReservationByStatus($doctor_id, $status, $date = null)
+    {
+
+
+        return $this->query()->with(['patient' => function ($patient) {
+            $patient->with('image:file');
+        }])->where('doctor_id', $doctor_id)
+            ->when($date != null,
+                function ($q) use ($date) {
+                    $q->whereDate('date', '>=', $date);
+                })
+            ->where('status', $status)->orderBy(DB::raw('date'), 'asc')->get();
+
+    }
+
 }

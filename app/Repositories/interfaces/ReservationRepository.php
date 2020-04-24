@@ -21,4 +21,6 @@ interface ReservationRepository extends BaseInterface
 
     public function validate(array $request): void;
 
+    public function getDoctorReservationByStatus($doctor_id,$status,$data=null);
+
 }

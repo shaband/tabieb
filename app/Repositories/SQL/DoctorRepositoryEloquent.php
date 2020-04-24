@@ -128,7 +128,7 @@ class DoctorRepositoryEloquent extends BaseRepository implements DoctorRepositor
 
     public function searchInDoctors(Request $request): Collection
     {
-        $model = $this->query()->with('category', 'sub_categories');
+        $model = $this->query()->with(static::DoctorMobileRelations());
 
         $model = $model->when($request->category_id, function (Builder $builder) use ($request) {
             $builder->where('category_id', $request->category_id);
@@ -200,21 +200,27 @@ class DoctorRepositoryEloquent extends BaseRepository implements DoctorRepositor
         }
     }
 
-    public function MobileDoctor() :Builder
+
+    public static function DoctorMobileRelations(): array
+    {
+        return [
+            'category',
+            'sub_categories',
+            'schedules',
+            'ratings' => function ($rating) {
+                $rating->with(
+                    ['patient' => function ($patient) {
+                        $patient->with('image:file');
+                        $patient->select('first_name', 'last_name');
+                    }]);
+            }];
+    }
+
+    public function MobileDoctor(): Builder
     {
 
         return $this->query()
-            ->with([
-                'category',
-                'sub_categories',
-                'schedules',
-                'ratings' => function ($rating) {
-                $rating->with(
-                    ['patient' => function ($patient) {
-                    $patient->with('image:file');
-                    $patient->select('first_name', 'last_name');
-                }]);
-            }])
+            ->with(self::DoctorMobileRelations())
             ->where('blocked_at', null)
             ->limit(10);
     }

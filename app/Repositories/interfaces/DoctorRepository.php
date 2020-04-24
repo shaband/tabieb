@@ -58,5 +58,7 @@ interface DoctorRepository extends BaseInterface
     public function AddFCM(Request $request, Doctor $patient): void;
 
 
+    public static function DoctorMobileRelations(): array;
+
     public function MobileDoctor(): Builder;
 }

@@ -67,7 +67,7 @@ class DoctorController extends Controller
     {
         return responseJson(
             [
-                'doctors' => $this->repo->searchInDoctors($request)
+                'doctors' => DoctorResource::collection($this->repo->searchInDoctors($request))
             ],
             __("Loaded Successfully"));
     }

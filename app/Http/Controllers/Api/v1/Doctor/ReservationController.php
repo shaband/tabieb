@@ -49,13 +49,14 @@ class ReservationController extends Controller
         $this->validate($request, [
             'status' => ['required', 'integer', Rule::in($this->repo::getConstants('STATUS'))]
         ]);
-        $reservation = $this->repo->query()->where('doctor_id', auth()->id())
-            ->whereDate('date', '>=', Carbon::now())
-            ->where('status', $request->status)->get();
+        $reservation = $this->repo->getDoctorReservationByStatus(auth()->id(), $request->status, Carbon::now());
 
-        $reservation = ReservationResource::collection($reservation->load('patient'));
-
-        return responseJson(compact('reservation'), __('Loaded Successfully'));
+        return responseJson(
+            [
+                'reservation' => ReservationResource::collection($reservation)
+            ],
+            __('Loaded Successfully')
+        );
     }
 
     /**
@@ -76,7 +77,7 @@ class ReservationController extends Controller
                         Reservation::STATUS_CANCELED
                     ])],
         ]);
-        $reservation = $this->repo->updateStatus($request->reservation_id,$request->status);
+        $reservation = $this->repo->updateStatus($request->reservation_id, $request->status);
 
         $reservation = new ReservationResource($reservation->load('patient'));
 

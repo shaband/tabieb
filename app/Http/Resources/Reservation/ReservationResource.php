@@ -30,12 +30,19 @@ class ReservationResource extends JsonResource
             'description' => $this->description,
 
 
-            //relashions
+            //relations
 
 
             'doctor' => new DoctorResource($this->whenLoaded('doctor')),
             'schedule' => new DoctorResource($this->whenLoaded('schedule')),
-            'patient' => new PatientResource($this->whenLoaded('patient')),
+            'patient' => /*new PatientResource(*/ $this->whenLoaded('patient', function () {
+
+                return [
+                    'name' => $this->patient->name,
+                    'id' => $this->patient_id,
+                    'img' => $this->patient->img
+                ];
+            })/*)*/,
         ];
     }
 }
