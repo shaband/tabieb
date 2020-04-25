@@ -67,7 +67,7 @@ abstract class BaseRepository extends MainRepository implements BaseInterface
         $data =
             [
                 'file' => 'storage/' . $file->storeAs($path, $name),
-                'type' => $type ?? Attachment::PROFILE_PICTURE ,
+                'type' => $type ?? Attachment::PROFILE_PICTURE,
                 'ext' => $file->getClientOriginalExtension()
             ];
 
@@ -125,5 +125,13 @@ abstract class BaseRepository extends MainRepository implements BaseInterface
         return $constants;
     }
 
+
+    public static function getConstantsFlipped($keyContains = null, $returnCount = false)
+    {
+        $constants = self::getConstants($keyContains, $returnCount);
+
+        return array_flip($constants);
+
+    }
 
 }

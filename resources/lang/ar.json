@@ -444,5 +444,13 @@
     "no": "لا",
     "Save": "حفظ",
     "Terms & Conditions": "البنود و الظروف",
-    "Search": "بحث"
+    "Search": "بحث",
+    "COMMUNICATION_TYPE_AUDIO": "صوت",
+    "COMMUNICATION_TYPE_VIDEO":"فيديو",
+    "COMMUNICATION_TYPE_BOTH": "صوت/فيديو",
+    "STATUS_ACTIVE":"جديد",
+    "STATUS_ACCEPTED": "مقبول",
+    "STATUS_REFUSED":"مرفوض",
+    "STATUS_CANCELED": "ملغى",
+    "STATUS_FINISHED":"منتهى"
 }

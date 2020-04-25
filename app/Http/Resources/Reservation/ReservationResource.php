@@ -2,9 +2,11 @@
 
 namespace App\Http\Resources\Reservation;
 
-use App\Http\Resources\Doctor\doctorResource;
+use App\Http\Resources\Doctor\DoctorResource;
 use App\Http\Resources\patients\PatientResource;
 use App\Http\Resources\Schedule\ScheduleResource;
+use App\Models\Reservation;
+use App\Repositories\interfaces\ReservationRepository;
 use Carbon\CarbonImmutable;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -24,9 +26,9 @@ class ReservationResource extends JsonResource
             'date_string' => CarbonImmutable::parse($this->date)->diffForHumans(),
             'from_time' => CarbonImmutable::parse($this->from_time)->toTimeString(),
             'to_time' => CarbonImmutable::parse($this->to_time)->toTimeString(),
-            'communication_type' => $this->communication_type,
+            'communication_type' => self::getCommunicationType($this->communication_type),
             'status_changed_at' => $this->status_changed_at ? CarbonImmutable::parse($this->status_changed_at) : null,
-            'status' => $this->status,
+            'status' => self::getStatus($this->status),
             'description' => $this->description,
 
 
@@ -44,5 +46,17 @@ class ReservationResource extends JsonResource
                 ];
             })/*)*/,
         ];
+    }
+
+    public static function getCommunicationType($type)
+    {
+        $status = app(ReservationRepository::class)->getConstantsFlipped('COMMUNICATION_TYPE')[$type];
+        return __($status);
+    }
+
+    public static function getStatus($status)
+    {
+        $status = app(ReservationRepository::class)->getConstantsFlipped('STATUS')[$status];
+        return __($status);
     }
 }
