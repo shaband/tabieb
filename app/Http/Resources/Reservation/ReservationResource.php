@@ -28,7 +28,8 @@ class ReservationResource extends JsonResource
             'to_time' => CarbonImmutable::parse($this->to_time)->toTimeString(),
             'communication_type' => self::getCommunicationType($this->communication_type),
             'status_changed_at' => $this->status_changed_at ? CarbonImmutable::parse($this->status_changed_at) : null,
-            'status' => self::getStatus($this->status),
+            'status_label' => self::getStatus($this->status),
+            'status' => $this->status,
             'description' => $this->description,
 
 
