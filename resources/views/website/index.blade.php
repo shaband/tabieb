@@ -1,6 +1,8 @@
 @extends('website.layouts.app')
 
-
+@section('title')
+    {!! env("APP_NAME",'tabayib') !!}
+@endsection
 @section('content')
 
     <!-- START Home Page Intro -->

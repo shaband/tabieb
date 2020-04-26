@@ -7,6 +7,7 @@ use App\Notifications\Admin\Auth\VerifyEmail;
 use App\Traits\HashPassword;
 use App\Traits\ModelHasImage;
 use App\Traits\ModelHasLogs;
+use HighIdeas\UsersOnline\Traits\UsersOnlineTrait;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Notifications\Notifiable;
@@ -17,7 +18,8 @@ use Spatie\Permission\Traits\HasRoles;
 class Admin extends Authenticatable
 {
 
-    use Notifiable, HasRoles, HashPassword, ModelHasImage, ModelHasLogs, CausesActivity;
+    use Notifiable, HasRoles, HashPassword, ModelHasImage, ModelHasLogs, CausesActivity, UsersOnlineTrait;
+
     protected $table = 'admins';
     public $timestamps = true;
     protected $fillable = array('name', 'email', 'password', 'phone', 'blocked_at', 'blocked_reason');

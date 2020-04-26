@@ -23,7 +23,10 @@ class MedicalHistoryController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $medical_histories = $this->repo->with(['image:file', 'creator'])->findByField('patient_id', $user->id);
+        $medical_histories = $this->repo->query()
+            ->with('image', 'creator')
+            ->where('patient_id', $user->id)
+            ->get();
 
         return view('website.patient.profile.medical_histories', compact('user', 'medical_histories'));
     }

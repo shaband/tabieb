@@ -29,7 +29,7 @@ class MedicalHistoryRequest extends FormRequest
             'description' => 'nullable|string',
             'patient_id' => 'required|integer|exists:patients,id',
             'category_id' => 'nullable|integer|exists:categories,id',
-            'image' => 'nullable|image',
+            'image' => 'nullable|mimes:jpeg,bmp,png,jpg,svg,pdf',
             'date' => 'nullable|date',
         ];
     }

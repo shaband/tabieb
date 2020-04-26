@@ -47,8 +47,8 @@
             <div class="med-his-item">
                 <div class="med-his-head">
                     <div class="tit-time mb-2">
-                        <h6 class="tit text-primary m-0">{{ __(' title')}}</h6>
-                        <div class="time text-secondary">{{$history->title}}</div>
+                        <h6 class="tit text-primary m-0">{{$history->title}}</h6>
+                        <div class="time text-secondary">{{ $history->date}} </div>
                     </div>
                     <div class="med-his-usr mb-2 text-capitalize text-secondary bg-secondaryLight">{{ __('added by')}}
                         {{optional($history->creator)->name}}

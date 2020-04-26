@@ -27,7 +27,7 @@ class PatientRegisterRequest extends FormRequest
 
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:patients'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:patients', "confirmed"],
             'phone' => ['required', 'numeric', 'unique:patients'],
             'password' => ['required', 'string', 'min:8', 'confirmed',],
 

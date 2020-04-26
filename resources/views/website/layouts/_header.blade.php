@@ -305,6 +305,14 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                         @enderror
+                                    </div> <div class="form-group">
+                                        <label for="">{{ __('email address')}}:</label>
+                                        <input type="email" name="email_confirmation" class="form-control" value="{{old('email_confirmation')}}">
+                                        @error('email_confirmation')
+                                        <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label for="">{{ __('phone number')}}:</label>

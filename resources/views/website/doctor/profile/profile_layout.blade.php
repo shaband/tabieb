@@ -28,8 +28,8 @@
                                     </div>
                                 </div>
                                 <div class="user-list">
-                                    <ul>
-                                        <li class=""><a
+                                    <ul class="{!! setActive('doctor.profile.edit') !!}>
+                                        <li class="{!! route('doctor.profile.edit') !!}"><a
                                                 href="">{{ __('personal information')}}</a>
                                         </li>
                                         <li class="{!! setActive('doctor.profile.appointments') !!}">

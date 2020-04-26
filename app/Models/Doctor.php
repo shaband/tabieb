@@ -167,7 +167,7 @@ class Doctor extends Authenticatable implements JWTSubject
 
             return $this->first_name_ar . ' ' . $this->last_name_ar;
         }
-        return $this->first_name_en . ' ' . $this->last_name_ar;
+        return $this->first_name_en . ' ' . $this->last_name_en;
     }
 
     public function getWeaklySchedulesAttribute()

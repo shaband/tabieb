@@ -1,6 +1,6 @@
 <li class="nav-item nav-item-wz-sub">
     <a class="nav-link" href="javascript:void(0)"><i
-            class="fas fa-user"></i> {!! auth()->guard('patient')->user()->user_name !!}</a>
+            class="fas fa-user"></i> {!! auth()->guard('patient')->user()->name !!}</a>
     <ul>
         <li class="{!! setActive('patient.profile.medicalHistory') !!}"><a
                 href="{!! route('patient.profile.medicalHistory') !!}">{{ __('personal information')}}</a>

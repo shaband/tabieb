@@ -44,63 +44,63 @@
                 <b>{{ __('call summary')}}:</b>
                 <span>11 hours / 20 minutes / 30 seconds</span>
             </div>
-    </div>
-    {{--    <div class="app-remove"><a><i class="fas fa-trash-alt"></i></a></div>--}}
-    @endif
-    @if(!\Carbon\Carbon::now()->gt($reservation->from_date) &&$reservation->status==$reservation::STATUS_ACTIVE)
-        <div class="app-control">
-            <a class="btn btn-secondary btn-sm text-capitalize" onclick="
-                Swal.fire({
-                title: '{!! __('Are you sure?') !!}',
-                text: '{!! __('You Will Not be able to revert this!') !!}',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: '{!! __('Yes, Accept it!') !!}'
-                }).then((result) => {
-                if (result.value) {document.getElementById('accept-reservation-{!! $reservation->id !!}').submit();}
-                });event.preventDefault()">{{ __('accept')}}</a>
 
-            <form action="{{ route('doctor.profile.status.update',$reservation->id) }}" method="POST"
-                  style="display: none;"
-                  id="accept-reservation-{!! $reservation->id !!}">
-                {!! csrf_field() !!}
-                @method('put')
-                <input type="hidden" name="status" value="{!! $reservation::STATUS_ACCEPTED !!}">
+            {{--    <div class="app-remove"><a><i class="fas fa-trash-alt"></i></a></div>--}}
+        @endif
+        @if(!\Carbon\Carbon::now()->gt($reservation->from_date) &&$reservation->status==$reservation::STATUS_ACTIVE)
+            <div class="app-control">
+                <a class="btn btn-secondary btn-sm text-capitalize" onclick="
+                    Swal.fire({
+                    title: '{!! __('Are you sure?') !!}',
+                    text: '{!! __('You Will Not be able to revert this!') !!}',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: '{!! __('Yes, Accept it!') !!}'
+                    }).then((result) => {
+                    if (result.value) {document.getElementById('accept-reservation-{!! $reservation->id !!}').submit();}
+                    });event.preventDefault()">{{ __('accept')}}</a>
+
+                <form action="{{ route('doctor.profile.status.update',$reservation->id) }}" method="POST"
+                      style="display: none;"
+                      id="accept-reservation-{!! $reservation->id !!}">
+                    {!! csrf_field() !!}
+                    @method('put')
+                    <input type="hidden" name="status" value="{!! $reservation::STATUS_ACCEPTED !!}">
+
+                    <a href="{!! route('doctor.medical-history',$reservation->patient_id) !!}"
+                       class="btn btn-outline-secondary btn-sm text-capitalize">{{ __('view medical history')}}</a>
+
+                </form>
+
+                <a class="btn btn-danger btn-sm text-capitalize text-white" onclick="
+                    Swal.fire({
+                    title: '{!! __('Are you sure?') !!}',
+                    text: '{!! __('You Will Not be able to revert this!') !!}',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: '{!! __('Yes, Reject it!') !!}'
+                    }).then((result) => {
+                    if (result.value) {document.getElementById('reject-reservation-{!! $reservation->id !!}').submit();}
+                    });event.preventDefault()">{{ __('reject')}}</a>
+
+                <form action="{{ route('doctor.profile.status.update',$reservation->id) }}" method="POST"
+                      style="display: none;"
+                      id="reject-reservation-{!! $reservation->id !!}">
+                    {!! csrf_field() !!}
+                    @method('put')
+                    <input type="hidden" name="status" value="{!! $reservation::STATUS_REFUSED !!}">
+                </form>
 
                 <a href="{!! route('doctor.medical-history',$reservation->patient_id) !!}"
                    class="btn btn-outline-secondary btn-sm text-capitalize">{{ __('view medical history')}}</a>
 
-            </form>
-
-            <a class="btn btn-danger btn-sm text-capitalize text-white" onclick="
-                Swal.fire({
-                title: '{!! __('Are you sure?') !!}',
-                text: '{!! __('You Will Not be able to revert this!') !!}',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: '{!! __('Yes, Reject it!') !!}'
-                }).then((result) => {
-                if (result.value) {document.getElementById('reject-reservation-{!! $reservation->id !!}').submit();}
-                });event.preventDefault()">{{ __('reject')}}</a>
-
-            <form action="{{ route('doctor.profile.status.update',$reservation->id) }}" method="POST"
-                  style="display: none;"
-                  id="reject-reservation-{!! $reservation->id !!}">
-                {!! csrf_field() !!}
-                @method('put')
-                <input type="hidden" name="status" value="{!! $reservation::STATUS_REFUSED !!}">
-            </form>
-
-            <a href="{!! route('doctor.medical-history',$reservation->patient_id) !!}"
-               class="btn btn-outline-secondary btn-sm text-capitalize">{{ __('view medical history')}}</a>
-
-            @endif
-
-        </div>
+            </div>
+        @endif
+    </div>
 </div>
 
 

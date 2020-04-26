@@ -32,7 +32,7 @@ Route::group(['namespace' => 'Website\Patient', 'middleware' => ['localeSessionR
         Route::get('change-password', 'PatientController@changePassword')->name('profile.change-password');
         Route::match(['put', 'patch', 'post'], 'profile', 'PatientController@update')->name('profile.update');
 
-        Route::match(['put', 'patch', 'post'], 'patient-questions', 'PatientQuestionController@store');
+        Route::match(['put', 'patch', 'post'], 'patient-questions', 'PatientQuestionController@store')->name('profile.patient-questions');
         Route::get('medical-histories', 'MedicalHistoryController@index')->name('profile.medicalHistory');
         Route::post('medical-histories', 'MedicalHistoryController@store');
 
