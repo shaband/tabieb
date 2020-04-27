@@ -51,7 +51,7 @@ class RouteServiceProvider extends ServiceProvider
 
         //web
         $this->mapWebRoutes();
-        $this->mapPharamacyRepRoutes();
+        $this->mapPharmacyRepRoutes();
         $this->mapDoctorRoutes();
         $this->mapPatientRoutes();
         $this->mapAdminRoutes();
@@ -112,12 +112,12 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function mapPharamacyRepRoutes(): void
+    protected function mapPharmacyRepRoutes(): void
     {
-        Route::prefix(\LaravelLocalization::setLocale() . '/pharmacy-rep')
+        Route::prefix(\LaravelLocalization::setLocale() . '/pharmacy')
             ->middleware('web')
             ->namespace($this->namespace)
-            ->group(base_path('routes/web/pharamacyrep.php'));
+            ->group(base_path('routes/web/pharmacy_rep.php'));
     }
 
     /**

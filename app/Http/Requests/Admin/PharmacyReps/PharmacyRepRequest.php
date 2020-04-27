@@ -3,9 +3,21 @@
 namespace App\Http\Requests\Admin\PharmacyReps;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class PharmacyRepRequest extends FormRequest
 {
+
+    public function validationData()
+    {
+
+        $data = parent::validationData();
+        if (Auth::guard('pharmacy_rep')->check() && !isset($data['pharmacy_id'])) {
+            $data['pharmacy_id'] = Auth::guard('pharmacy_rep')->user()->pharmacy_id;
+        }
+        return $data;
+    }
+
     /**
      * Determine if the user is authorized to make this request.
      *

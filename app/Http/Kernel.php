@@ -52,9 +52,9 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'pharamacy_rep.auth' => \App\Http\Middleware\RedirectIfNotPharamacyRep::class,
-        'pharamacy_rep.guest' => \App\Http\Middleware\RedirectIfPharamacyRep::class,
-        // 'pharamacy_rep.verified' => \App\Http\Middleware\EnsurePharamacyRepEmailIsVerified::class,
+        'pharmacy_rep.auth' => \App\Http\Middleware\RedirectIfNotPharmacyRep::class,
+        'pharmacy_rep.guest' => \App\Http\Middleware\RedirectIfPharmacyRep::class,
+        // 'pharmacy_rep.verified' => \App\Http\Middleware\EnsurePharmacyRepEmailIsVerified::class,
         'doctor.auth' => \App\Http\Middleware\RedirectIfNotDoctor::class,
         'doctor.guest' => \App\Http\Middleware\RedirectIfDoctor::class,
         // 'doctor.verified' => \App\Http\Middleware\EnsureDoctorEmailIsVerified::class,

@@ -36,9 +36,9 @@ return [
     */
 
     'guards' => [
-        'pharamacy_rep' => [
+        'pharmacy_rep' => [
             'driver' => 'session',
-            'provider' => 'pharamacy_reps',
+            'provider' => 'pharmacy_reps',
         ],
 
         'doctor' => [
@@ -67,10 +67,6 @@ return [
         ],
 
 
-        'pharamacy_rep_api' => [
-            'driver' => 'jwt',
-            'provider' => 'pharamacy_reps',
-        ],
 
         'doctor_api' => [
             'driver' => 'jwt',
@@ -102,7 +98,7 @@ return [
     */
 
     'providers' => [
-        'pharamacy_reps' => [
+        'pharmacy_reps' => [
             'driver' => 'eloquent',
             'model' => App\Models\PharmacyRep::class,
         ],
@@ -149,8 +145,8 @@ return [
     */
 
     'passwords' => [
-        'pharamacy_reps' => [
-            'provider' => 'pharamacy_reps',
+        'pharmacy_reps' => [
+            'provider' => 'pharmacy_reps',
             'table' => 'pharamacy_rep_password_resets',
             'expire' => 60,
             'throttle' => 60,

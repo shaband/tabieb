@@ -1,13 +1,4 @@
 
-<div class="form-group">
-    <label for="pharmacy_id">{!! __("Select Pharmacy") !!} </label>
-    {!! Form::select('pharmacy_id',$pharmacies??[],null,['class'=>'form-control select2','parsley-trigger'=>'change','id'=>'pharmacy_id','placeholder'=>__('Pharmacies')]) !!}
-    @error('pharmacy_id')
-    <span class="invalid-feedback d-block" role="alert">
-     <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-</div>
 
 <div class="form-group">
     <label for="name">{!! __("Name") !!} *</label>

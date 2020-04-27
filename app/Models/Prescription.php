@@ -3,11 +3,13 @@
 namespace App\Models;
 
 use App\Traits\ModelHasLogs;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Prescription extends Model
 {
-use ModelHasLogs;
+    use ModelHasLogs;
+
     protected $table = 'prescriptions';
     public $timestamps = true;
     protected $fillable = array('reservation_id', 'doctor_id', 'code', 'diagnosis', 'description', 'phramacy_id', 'patient_id', 'phramacy_rep_id', 'phramacy_took_at');
@@ -16,6 +18,7 @@ use ModelHasLogs;
     {
         return $this->belongsTo('App\Models\Reservation');
     }
+
     public function doctor()
     {
         return $this->belongsTo('App\Models\Doctor');
@@ -42,4 +45,13 @@ use ModelHasLogs;
         return $this->hasMany(PrescriptionItem::class, 'prescription_id');
     }
 
+    //scopes
+
+    public function scopeOfCivilId(Builder $builder, $value): void
+    {
+
+        $builder->whereHas('patient', function (Builder $patient) use ($value) {
+            $patient->where('civil_id', $value);
+        });
+    }
 }
