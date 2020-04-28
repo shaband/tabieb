@@ -52,7 +52,7 @@
                 </a>
                 <form action="{{ route('admin.pharmacy-reps.destroy',$pharmacy_rep->id) }}" method="POST"
                       style="display: none;"
-                      id="destroy-destroy-pharmacy-reps-{!! $pharmacy_rep->id !!}">
+                      id="destroy-pharmacy-reps-{!! $pharmacy_rep->id !!}">
                     {!! csrf_field() !!}
                     @method('delete')
                 </form>

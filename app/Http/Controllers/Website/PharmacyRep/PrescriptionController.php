@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Website\PharmacyRep;
 
 use App\Repositories\interfaces\PrescriptionRepository;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Admin\MainController as Controller;
 
@@ -101,14 +102,25 @@ class PrescriptionController extends Controller
 
     public function search(Request $request)
     {
-        $inputs = $request->validate([
+        $this->validate($request, [
             'civil_id' => 'required|numeric|exists:patients,civil_id',
             'code' => 'required|numeric|exists:prescriptions,code',
         ]);
 
-        return view('website.pharmacy_rep.prescriptions.index', [
-            'prescription' => $this->repo->where('code', $inputs['code'])->ofCivilId($inputs['civil_id'])->first(),
-            'inputs' => $inputs]);
+        return view('website.pharmacy_rep.prescriptions.search', [
+            'prescription' => $this->repo->getOneSearchByCivilAndCode($request->code, $request->civil_id),
+        ]);
 
+    }
+
+    public function FinishPrescription($id)
+    {
+        \Validator::make(['id' => $id], [
+            'id' => 'required|integer|exists:prescriptions,id',
+        ])->validate();
+
+        $this->repo->finishPrescription($id);
+
+        return redirect()->route('pharmacy.dashboard');
     }
 }

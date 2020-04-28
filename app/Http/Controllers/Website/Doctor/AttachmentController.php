@@ -41,7 +41,7 @@ class AttachmentController extends Controller
     {
 
         $this->validate($request, [
-            'file' => 'required|file|mimes:|mimes:jpeg,bmp,png,jpg,svg,pdf,doc,docx',
+            'file' => 'required|file|mimes:jpeg,bmp,png,jpg,svg,pdf,doc,docx',
             'name' => 'required|string|max:191'
         ]);
 

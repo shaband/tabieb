@@ -33,6 +33,9 @@ Route::group([
     Route::middleware(['pharmacy_rep.auth:pharmacy_rep'])->name('pharmacy.')->group(function () {
         Route::resource('pharmacy-reps', 'PharmacyRepController');
         Route::get('prescriptions/search', 'PrescriptionController@search')->name('prescriptions.search');
+        Route::match(['post', 'patch', 'post'], 'prescriptions/{id}/finish', 'PrescriptionController@FinishPrescription')->name('prescription.finish');
+
+
     });
 
 });

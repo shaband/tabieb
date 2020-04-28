@@ -29,7 +29,7 @@ class AttachmentController extends Controller
     public function create(Request $request)
     {
         $this->validate($request, [
-            'file' => 'required|file|image',
+            'file' => 'required|file|mimes:jpeg,bmp,png,jpg,svg,pdf,doc,docx',
             'name' => 'required|string|max:191'
         ]);
 

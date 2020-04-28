@@ -26,7 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('website.pharmacy_rep.prescriptions.index');
+        return view('website.pharmacy_rep.prescriptions.search');
     }
 
 }

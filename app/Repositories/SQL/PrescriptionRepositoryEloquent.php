@@ -3,9 +3,11 @@
 namespace App\Repositories\SQL;
 
 use App\Repositories\SQL\BaseRepository;
+use Carbon\Carbon;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\interfaces\PrescriptionRepository;
 use App\Models\Prescription;
+
 // use App\Validators\PrescriptionValidator;
 
 /**
@@ -25,7 +27,6 @@ class PrescriptionRepositoryEloquent extends BaseRepository implements Prescript
         return Prescription::class;
     }
 
-    
 
     /**
      * Boot up the repository, pushing criteria
@@ -35,4 +36,24 @@ class PrescriptionRepositoryEloquent extends BaseRepository implements Prescript
         $this->pushCriteria(app(RequestCriteria::class));
     }
 
+    public function getOneSearchByCivilAndCode($code, $civil_id)
+    {
+        return $this->where('code', $code)
+            ->whereNull('phramacy_took_at')
+            ->whereNull('phramacy_rep_id')
+            ->ofCivilId($civil_id)
+            ->first();
+    }
+
+    public function finishPrescription($id)
+    {
+
+        return $this->query()->where('id', $id)
+            ->update(
+                [
+                    'phramacy_took_at' => Carbon::now(),
+                    'phramacy_rep_id' => auth()->id(),
+                    'phramacy_id' => auth()->user()->pharmacy_id,
+                ]);;
+    }
 }

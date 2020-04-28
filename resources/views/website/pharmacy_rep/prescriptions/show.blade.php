@@ -46,3 +46,30 @@
     </tbody>
 </table>
 
+
+<a class="btn btn-success text-white col-md-12 w-100"
+   onclick="
+       Swal.fire({
+       title: '{!! __('Are you sure?') !!}',
+       text: '{!! __('You Will Not be able to revert this!') !!}',
+       icon: 'warning',
+       showCancelButton: true,
+       confirmButtonColor: '#3085d6',
+       cancelButtonColor: '#d33',
+       confirmButtonText: '{!! __('Yes, Finish it!') !!}'
+       }).then((result) => {
+       if (result.value) {document.getElementById('finish-prescription-{!! $prescription->id !!}').submit();}
+       });event.preventDefault()">
+    <i class=" fas fa-check"></i>
+
+    {{ __("Finish")}}
+</a>
+<form action="{{ route('pharmacy.prescription.finish',$prescription->id) }}" method="POST"
+      style="display: none;"
+      id="finish-prescription-{!! $prescription->id !!}">
+    {!! csrf_field() !!}
+    @method('patch')
+</form>
+
+
+
