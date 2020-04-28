@@ -66,7 +66,7 @@ class PharmacyRepRepositoryEloquent extends BaseRepository implements PharmacyRe
 
         if ($request->image != null) {
 
-            $image_data = $this->saveFile($request->file('image'), '$pharmacy_reps');
+            $image_data = $this->saveFile($request->file('image'), 'pharmacy_reps');
             $pharmacy_rep->image()->updateOrCreate(['type' => $image_data['type']], $image_data);
         }
         DB::commit();

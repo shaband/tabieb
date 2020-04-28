@@ -32,6 +32,8 @@ class PatientResource extends JsonResource
             'blocked_at' => $this->blocked_at,
             'blocked_reason' => $this->blocked_reason,
             'birthdate' => $this->birthdate,
+            'img' => fileUrl($this->img),
+
             'age' => $this->birthdate ? Carbon::now()->diffInYears($this->birthdate) : null,
             //   'district_id' => $this->district_id,
             //   'area_id' => $this->area_id,

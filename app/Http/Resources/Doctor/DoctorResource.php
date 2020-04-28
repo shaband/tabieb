@@ -36,12 +36,15 @@ class DoctorResource extends JsonResource
             'price' => $this->price,
             'period' => $this->period,
             'civil_id' => $this->civil_id,
+            'license_number' => $this->license_number,
             'gender' => $this->gender == Doctor::GENDER_MALE ? __("Male") : __("Female"),
-            //      'email_verified_at' => $this->email_verified_at,
             'phone_verified_at' => $this->phone_verified_at,
-            'img' => $this->img,
+            'img' => fileUrl($this->img),
+            'logo' => fileUrl($this->logo),
             'token' => null,
             'verfication_code' => $this->verification_code,
+
+            //relashions
             'category' => new CategoryResource($this->whenLoaded('category')),
             'sub_categories' => CategoryResource::collection($this->whenLoaded('sub_categories')),
             'schedules' => $this->when($this->resource->relationLoaded('schedules'), $this->weakly_schedules),

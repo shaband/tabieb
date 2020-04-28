@@ -12,7 +12,7 @@ function responseJson($data = null, ?string $msg = null, int $status = 200)
     $response = [
         'status' => ($status == 200) ? 1 : 0,
         'message' => $msg,
-        'data' =>  $data,
+        'data' => $data,
     ];
     return response()->json($response, $status);
 }
@@ -29,7 +29,17 @@ function days()
         7 => __("Fri")];
 }
 
-function setActive($routeName,$active="active")
+function setActive($routeName, $active = "active")
 {
-    return request()->routeIs($routeName)?'active':null;
+    return request()->routeIs($routeName) ? 'active' : null;
+}
+
+
+function fileUrl($image)
+{
+
+    if (strpos($image, 'http://') === false) {
+        $image = asset($image);
+    }
+    return $image;
 }

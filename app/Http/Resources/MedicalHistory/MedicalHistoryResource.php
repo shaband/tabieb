@@ -21,6 +21,7 @@ class MedicalHistoryResource extends JsonResource
             'date' => $this->date,
             'description' => $this->description,
             'creator_type' => $this->creator_type,
+            'image' => fileUrl($this->img),
             //relations
             /*
             'creator_id',

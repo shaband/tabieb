@@ -19,9 +19,11 @@ class AttachmentController extends Controller
 
     public function index()
     {
-        $papers = auth()->user()->papers;
-        $attachment = AttachmentResource::collection($papers);
-        return responseJson(compact('attachment'), __("Loaded Successfully"));
+        return responseJson(
+            [
+                'attachment' => AttachmentResource::collection(auth()->user()->papers)
+            ]
+            , __("Loaded Successfully"));
     }
 
     public function create(Request $request)

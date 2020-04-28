@@ -35,7 +35,7 @@ class Doctor extends Authenticatable implements JWTSubject
         'first_name_en', 'last_name_en', 'last_name_ar', 'first_name_ar',
         'title_ar', 'title_en'
     ];
-    protected $fillable = array('first_name_en', 'last_name_en', 'last_name_ar', 'first_name_ar', 'description_ar', 'description_en', 'title_ar', 'title_en', 'email', 'password', 'phone', 'category_id', 'price', 'period', 'last_login', 'email_verified_at', 'phone_verified_at', 'civil_id', 'verification_code', 'remember_token', 'gender', 'blocked_at', 'blocked_reason',);
+    protected $fillable = array('first_name_en', 'last_name_en', 'last_name_ar', 'first_name_ar', 'description_ar', 'description_en', 'title_ar', 'title_en', 'email', 'password', 'phone', 'category_id', 'price', 'period', 'last_login', 'email_verified_at', 'phone_verified_at', 'civil_id', 'verification_code', 'remember_token', 'gender', 'blocked_at', 'blocked_reason', 'license_number');
 
 
     /**
@@ -206,6 +206,8 @@ class Doctor extends Authenticatable implements JWTSubject
         $available = $this->available_on;
         return collect($available['times'])->first() ?? [];
     }
+
+
 
     /*scopes*/
 

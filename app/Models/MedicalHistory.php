@@ -53,4 +53,9 @@ class MedicalHistory extends Model
 
         $this->attributes['date'] = Carbon::parse($value);
     }
+
+    public function getImgAttribute()
+    {
+        return optional($this->image)->file;
+    }
 }

@@ -100,6 +100,9 @@ class DoctorController extends Controller
             ', 'max:191', new CheckPassword('doctors', auth()->user()->email)],
             'phone' => 'nullable|numeric|unique:doctors,phone,' . auth()->id(),
             'image' => 'nullable|image',
+            'logo' => 'nullable|image',
+            'license_number' => 'nullable|integer',
+
         ];
 
         \Validator::make($request->all(), $rules)->validate();

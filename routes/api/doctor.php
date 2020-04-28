@@ -42,7 +42,7 @@ Route::middleware(['auth:doctor_api'])->group(function () {
     Route::post('chat/messages', 'ChatController@addMessage');
 
 
-    Route::post('attachments', 'AttachmentController@index');
+    Route::get('attachments', 'AttachmentController@index');
     Route::post('attachments/create', 'AttachmentController@create');
     Route::post('attachments/edit', 'AttachmentController@edit');
     Route::post('attachments/delete', 'AttachmentController@delete');

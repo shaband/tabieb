@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Doctors\DoctorRequest;
 use App\Http\Resources\Doctor\DoctorResource;
 use App\Http\Resources\patients\PatientResource;
+use App\Models\Attachment;
 use App\Models\Patient;
 use App\Repositories\interfaces\DoctorRepository;
 use App\Rules\CheckPassword;
@@ -23,7 +24,7 @@ class AuthController extends Controller
 
     public function __construct(DoctorRepository $repo)
     {
-        $this->middleware('auth:doctor_api', ['except' => ['login', 'verify','resendVerification']]);
+        $this->middleware('auth:doctor_api', ['except' => ['login', 'verify', 'resendVerification']]);
         auth()->setDefaultDriver('doctor_api');
 
         $this->repo = $repo;
@@ -56,6 +57,8 @@ class AuthController extends Controller
             ', 'max:191', new CheckPassword('doctors', auth()->user()->email)],
             'phone' => 'nullable|numeric|unique:doctors,phone,' . auth()->id(),
             'image' => 'nullable|image',
+            'logo' => 'nullable|image',
+            'license_number' => 'nullable|integer',
         ];
 
         \Validator::make($request->all(), $rules)->validate();
@@ -64,6 +67,10 @@ class AuthController extends Controller
         if ($request->image != null) {
             $image_data = $this->repo->saveFile($request->file('image'), 'doctors');
             $doctor->image()->updateOrCreate(['type' => $image_data['type']], $image_data);
+        }
+        if ($request->logo != null) {
+            $logo_data = $this->repo->saveFile($request->file('logo'), 'doctors', Attachment::DOCTOR_Logo);
+            $doctor->logo()->updateOrCreate(['type' => $image_data['type']], $logo_data);
         }
 
         $response = (new DoctorResource($doctor));
