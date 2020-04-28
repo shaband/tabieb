@@ -64,12 +64,11 @@
 
     {{ __("Finish")}}
 </a>
-<form action="{{ route('pharmacy.prescription.finish',$prescription->id) }}" method="POST"
-      style="display: none;"
-      id="finish-prescription-{!! $prescription->id !!}">
-    {!! csrf_field() !!}
-    @method('patch')
-</form>
-
-
-
+@if($prescription->phramacy_id==null)
+    <form action="{{ route('pharmacy.prescription.finish',$prescription->id) }}" method="POST"
+          style="display: none;"
+          id="finish-prescription-{!! $prescription->id !!}">
+        {!! csrf_field() !!}
+        @method('patch')
+    </form>
+@endif

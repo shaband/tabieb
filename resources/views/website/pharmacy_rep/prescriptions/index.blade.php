@@ -1,6 +1,6 @@
 @extends('website.pharmacy_rep.layouts.app')
 
-@section('title') {!! __("Pharmacy Reps") !!} @endsection
+@section('title') {!! __("Prescriptions") !!} @endsection
 
 @section('content')
 
@@ -12,37 +12,12 @@
 
                 <div class="mt-0 header-title float-right d-inline">
 
-
+                    <a class="btn btn-info text-white" href="{!! route('pharmacy.dashboard') !!}">
+                        <i class="fas fa-plus"></i> {!! __("New")!!}</a>
                 </div>
                 <div class="pt-4">
-                    <form method="get" action="{!! route('pharmacy.prescriptions.search') !!}">
-                        <div class="row">
 
-
-                            <div class="form-group col-md-5 col-sm-12">
-                                <label>{!! __("Patient Civil id") !!} </label>
-                                <input name="civil_id" type="number" required
-                                       value="{!!old('civil_id') ?? request()->civil_id !!}"
-                                       placeholder="{!! __("Patient Civil id") !!}" class="form-control">
-                            </div>
-
-                            <div class="form-group col-md-5 col-sm-12">
-                                <label>{!! __("Prescription Code") !!} </label>
-                                <input name="code" type="number" placeholder="{!! __("Prescription Code") !!}"
-                                       class="form-control" value="{!! old('code')??request()->code !!}">
-                            </div>
-
-                            <div class="form-group text-right mb-0 col-md-2  col-sm-2">
-                                <button class="btn btn-primary waves-effect waves-light mr-1" type="submit"
-                                        style="margin-top: 1.8rem!important;">
-                                    {!! __("Search") !!}
-                                </button>
-                            </div>
-                        </div>
-
-                    </form>
-
-                    @includeWhen(isset($prescription) &&!empty($prescription),'website.pharmacy_rep.prescriptions.show')
+                    @include('website.pharmacy_rep.prescriptions._table')
                 </div>
             </div>
         </div>
