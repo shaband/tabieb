@@ -1,5 +1,3 @@
-
-
 <div class="form-group">
     <label for="name">{!! __("Name") !!} *</label>
     {!! Form::text('name',null,['class'=>'form-control','parsley-trigger'=>'change','id'=>'name','required','placeholder'=>__('Enter Name')]) !!}
@@ -30,7 +28,8 @@
 </div>
 <div class="form-group">
     <label for="pass1">{!! __("Password") !!} @if(!isset($admin)) * @endif</label>
-    <input id="pass1" name="password" type="password" placeholder="{!! __("Password") !!}" @if(!isset($pharmacy_rep)) required
+    <input id="pass1" name="password" type="password" placeholder="{!! __("Password") !!}"
+           @if(!isset($pharmacy_rep)) required
            @endif
            class="form-control">
     @error('password')
@@ -41,10 +40,22 @@
 </div>
 <div class="form-group">
     <label for="passWord2">{!! __("Confirm Password") !!} @if(!isset($admin)) * @endif</label>
-    <input data-parsley-equalto="#pass1" name="password_confirmation" type="password" @if(!isset($pharmacy_rep)) required
+    <input data-parsley-equalto="#pass1" name="password_confirmation" type="password"
+           @if(!isset($pharmacy_rep)) required
            @endif
            placeholder="{!! __("Confirm Password") !!}" class="form-control" id="passWord2">
 </div>
+
+<div class="form-group">
+    <label for="role">{!! __("Role") !!} </label>
+    {!! Form::select('role',$roles??[],null,['class'=>'form-control select2','parsley-trigger'=>'change','id'=>'role','placeholder'=>__('role')]) !!}
+    @error('role')
+    <span class="invalid-feedback d-block" role="alert">
+     <strong>{{ $message }}</strong>
+    </span>
+    @enderror
+</div>
+
 <div class="form-group">
     <label for="image">{!!__("image")  !!}</label>
     <input type="file" name="image" class="dropify"
@@ -55,3 +66,4 @@
                                     </span>
     @enderror
 </div>
+

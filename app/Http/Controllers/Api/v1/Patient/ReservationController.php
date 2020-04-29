@@ -58,9 +58,10 @@ class ReservationController extends Controller
     {
         $reservation = $this->repo->query()->where('patient_id', auth()->id())
             ->whereDate('date', '>=', Carbon::now())
+            ->with('doctor')
             ->whereIn('status', $this->repo::status())->get();
 
-        $reservation = ReservationResource::collection($reservation->load('doctor'));
+        $reservation = ReservationResource::collection($reservation);
 
 
         return responseJson(compact('reservation'), __('Loaded Successfully'));
@@ -73,6 +74,8 @@ class ReservationController extends Controller
     public function previous(Request $request)
     {
         $reservation = $this->repo->query()
+            ->with('doctor')
+
             ->whereDate('date', '<', Carbon::now())
             //   ->whereTime('from_time', '<', Carbon::now())
             ->get();

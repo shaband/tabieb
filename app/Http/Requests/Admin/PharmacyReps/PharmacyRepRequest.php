@@ -41,6 +41,7 @@ class PharmacyRepRequest extends FormRequest
             'password' => 'nullable|required_without:_method|string|max:191|confirmed',
             'phone' => '|required_without:_method|required|numeric|unique:pharmacy_reps,phone,' . $this->pharmacy_rep,
             'image' => 'nullable|image',
+            'role' => 'nullable|integer',
         ];
     }
 }

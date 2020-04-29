@@ -29,7 +29,7 @@
 
                 </div>
             </div>
-            <p class="text-muted">{!! optional(auth()->user())->role!!}</p>
+            <p class="text-muted">{!! optional(auth()->user())->role==1?__("Manger"):__("Rep")!!}</p>
 
         </div>
 
@@ -47,15 +47,25 @@
                     </a>
                 </li>
 
+                @if(auth()->user()->role==1)
 
                 <li>
-
-                    <a href="{!! route('admin.pharmacy-reps.index') !!}">
+                    <a href="{!! route('pharmacy.prescriptions.index') !!}">
                         <i class="mdi mdi-view-dashboard"></i>
-                        <span> {!! __('Pharmacy Reps') !!} </span>
+                        <span> {!! __('Prescriptions') !!} </span>
                     </a>
                 </li>
 
+                @endif
+
+                @if(auth()->user()->role==1)
+                    <li>
+                        <a href="{!! route('pharmacy.pharmacy-reps.index') !!}">
+                            <i class="mdi mdi-view-dashboard"></i>
+                            <span> {!! __('Pharmacy Reps') !!} </span>
+                        </a>
+                    </li>
+                @endif
 
             </ul>
 

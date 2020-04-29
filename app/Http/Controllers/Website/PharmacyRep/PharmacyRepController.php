@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Website\PharmacyRep;
 
-use App\Http\Controllers\Admin\MainController as Controller;
+use App\Http\Controllers\Website\PharmacyRep\MainController as Controller;
 use App\Http\Requests\Admin\PharmacyReps\PharmacyRepRequest;
 use App\Repositories\interfaces\PharmacyRepRepository;
 
@@ -12,14 +12,15 @@ class PharmacyRepController extends Controller
     protected $repo;
     protected $routeName = 'pharmacy.pharmacy-reps.';
     protected $viewPath = 'website.pharmacy_rep.pharmacy_reps.';
-    protected $roleName="";
+    protected $roleName = "";
 
     public function __construct(PharmacyRepRepository $repo)
     {
         $this->repo = $repo;
 
-        parent::__construct($repo,$this->roleName);
+        parent::__construct($repo, $this->roleName);
 
+        $this->middleware('pharmacy.manger')->except('show', 'update');
     }
 
     /**
@@ -27,7 +28,7 @@ class PharmacyRepController extends Controller
      */
     public function index()
     {
-        $pharmacy_reps = $this->repo->findWhere(['pharmacy_id'=>auth()->user()->pharmacy_id]);
+        $pharmacy_reps = $this->repo->findWhere(['pharmacy_id' => auth()->user()->pharmacy_id]);
         return view($this->viewPath . 'index', compact('pharmacy_reps'));
     }
 
@@ -38,7 +39,9 @@ class PharmacyRepController extends Controller
     {
 
 
-        return view($this->viewPath . 'create');
+        return view($this->viewPath . 'create', [
+            'roles' => $this->repo::getConstantsFlipped('ROLE')
+        ]);
     }
 
     /**
@@ -60,8 +63,13 @@ class PharmacyRepController extends Controller
      */
     public function edit($id)
     {
-        $pharmacy_rep = $this->repo->find($id);
-        return view($this->viewPath . 'edit', compact('pharmacy_rep'));
+        if (auth()->user()->role != 1 && auth()->id() != $id) {
+            abort(404);
+        }
+        return view($this->viewPath . 'edit', [
+            'pharmacy_rep' => $this->repo->find($id),
+            'roles' => $this->repo::getConstantsFlipped('ROLE')
+        ]);
     }
 
     /**
@@ -72,6 +80,9 @@ class PharmacyRepController extends Controller
     public function update(PharmacyRepRequest $request, $id)
     {
 
+        if (auth()->user()->role != 1 && auth()->id() != $id) {
+            abort(404);
+        }
         $pharmacy_rep = $this->repo->UpdatePharmacyRep($request, $id);
 
         toast(__("Updated successfully"), 'success');

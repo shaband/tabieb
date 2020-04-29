@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Website\PharmacyRep;
 use App\Repositories\interfaces\PrescriptionRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Admin\MainController as Controller;
+use App\Http\Controllers\Website\PharmacyRep\MainController as Controller;
 
 
 class PrescriptionController extends Controller
@@ -25,13 +25,15 @@ class PrescriptionController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        //
+        return view('website.pharmacy_rep.prescriptions.index',
+            [
+                'prescriptions' => $this->repo->findByField('phramacy_id', auth()->user()->pharmacy_id)
+            ]
+        );
     }
 
     /**
@@ -56,14 +58,16 @@ class PrescriptionController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
     {
-        //
+        return view('website.pharmacy_rep.prescriptions.show_page',
+            [
+                'prescription' => $this->repo->find($id)
+            ]
+        );
     }
 
     /**

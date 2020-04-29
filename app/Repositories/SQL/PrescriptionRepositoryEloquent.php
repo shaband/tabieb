@@ -39,8 +39,7 @@ class PrescriptionRepositoryEloquent extends BaseRepository implements Prescript
     public function getOneSearchByCivilAndCode($code, $civil_id)
     {
         return $this->where('code', $code)
-            ->whereNull('phramacy_took_at')
-            ->whereNull('phramacy_rep_id')
+            ->available()
             ->ofCivilId($civil_id)
             ->first();
     }

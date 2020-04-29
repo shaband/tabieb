@@ -54,4 +54,19 @@ class Prescription extends Model
             $patient->where('civil_id', $value);
         });
     }
+
+    public function scopeAvailable(Builder $builder): void
+    {
+        $builder->whereNull('phramacy_took_at')
+            ->whereNull('phramacy_rep_id')
+            ->whereNull('phramacy_id');
+    }
+
+
+    //attributes()
+    public function getIsAvailableAttribute()
+    {
+        return ($this->phramacy_took_at == null && $this->phramacy_rep_id == null && $this->phramacy_id == null);
+
+    }
 }

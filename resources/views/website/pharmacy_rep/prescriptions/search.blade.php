@@ -1,6 +1,6 @@
 @extends('website.pharmacy_rep.layouts.app')
 
-@section('title') {!! __("Pharmacy Reps") !!} @endsection
+@section('title') {!! __("Search") !!} @endsection
 
 @section('content')
 
@@ -43,6 +43,8 @@
                     </form>
 
                     @includeWhen(isset($prescription) &&!empty($prescription),'website.pharmacy_rep.prescriptions.show')
+
+
                 </div>
             </div>
         </div>

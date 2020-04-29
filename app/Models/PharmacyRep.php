@@ -18,9 +18,12 @@ class PharmacyRep extends Authenticatable
 
     use  HashPassword, ModelHasImage, HasVerificationCode, ModelHasLogs, CausesActivity, UsersOnlineTrait;
 
+    const  ROLE_MANGER = 1;
+    const ROLE_REP = 2;
+
     protected $table = 'pharmacy_reps';
     public $timestamps = true;
-    protected $fillable = array('name', 'email', 'password', 'phone', 'blocked_at', 'blocked_reason', 'pharmacy_id', 'email_verified_at', 'phone_verified_at', 'verification_code','role');
+    protected $fillable = array('name', 'email', 'password', 'phone', 'blocked_at', 'blocked_reason', 'pharmacy_id', 'email_verified_at', 'phone_verified_at', 'verification_code', 'role');
 
 
     use Notifiable;

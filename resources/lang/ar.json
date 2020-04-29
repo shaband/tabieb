@@ -467,5 +467,7 @@
     "show prescription file": "عرض ملف الوصفة الطبية",
     "add new medical": "أضف طبي جديد",
     "disease name": "اسم المرض",
-    "date": "تاريخ"
+    "date": "تاريخ",
+    "ROLE_MANGER": "مدير",
+    "ROLE_REP": "مندوب"
 }
