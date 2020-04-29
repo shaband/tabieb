@@ -2,7 +2,6 @@
     <ul class="list-unstyled topnav-menu float-right mb-0">
 
 
-
         <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#"
                role="button" aria-haspopup="false" aria-expanded="false">
@@ -17,12 +16,11 @@
                 <div class="dropdown-header noti-title">
                     <h6 class="text-overflow m-0">{!! __("Welcome !") !!}</h6>
                 </div>
-                {{--
-                                <!-- item-->
-                                <a href="{!! route('admin.admins.edit',auth()->id()) !!}" class="dropdown-item notify-item">
-                                    <i class="fe-user"></i>
-                                    <span> {!! __("My Account") !!}</span>
-                                </a>--}}
+                <!-- item-->
+                <a href="{!! route('pharmacy.pharmacy-reps.edit',auth()->id()) !!}" class="dropdown-item notify-item">
+                    <i class="fe-user"></i>
+                    <span> {!! __("My Account") !!}</span>
+                </a>
 
 
                 <div class="dropdown-divider"></div>
