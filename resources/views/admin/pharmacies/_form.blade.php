@@ -69,7 +69,7 @@
 </div>
 
 
-<div class="form-group">
+{{--<div class="form-group">
     <label for="category_id">{!! __("Select District") !!} </label>
     {!! Form::select('district_id',$districts??[],null,['class'=>'form-control
     select2','parsley-trigger'=>'change','id'=>'district_id','placeholder'=>__('Districts'),'onChange'=>'getAreasOptions(this.value)'])
@@ -105,7 +105,7 @@
         <strong>{{ $message }}</strong>
     </span>
     @enderror
-</div>
+</div>--}}
 
 
 <div class="form-group">
@@ -119,6 +119,7 @@
     @enderror
 </div>
 
+{{--
 <script>
     function getAreasOptions(district_id) {
         $.ajax({
@@ -151,3 +152,4 @@
     }
 
 </script>
+--}}

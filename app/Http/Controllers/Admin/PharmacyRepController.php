@@ -13,18 +13,19 @@ class PharmacyRepController extends Controller
     protected $repo;
     protected $routeName = 'admin.pharmacy-reps.';
     protected $viewPath = 'admin.pharmacy_reps.';
-    protected  $roleName='Pharmacyrep';
+    protected $roleName = 'Pharmacyrep';
 
     public function __construct(PharmacyRepRepository $repo)
     {
         $this->repo = $repo;
 
-        parent::__construct($repo,$this->roleName);
+        parent::__construct($repo, $this->roleName);
 
     }
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function index()
     {
@@ -38,19 +39,23 @@ class PharmacyRepController extends Controller
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function create(PharmacyRepository $pharmacyRepo)
     {
 
         $this->authorize('Create ' . $this->roleName);
 
-        $pharmacies = $pharmacyRepo->all()->pluck('name', 'id');
-        return view($this->viewPath . 'create', compact('pharmacies'));
+        return view($this->viewPath . 'create',
+            [
+                'pharmacies' => $pharmacyRepo->all()->pluck('name', 'id')
+            ]);
     }
 
     /**
      * @param PharmacyRepRequest $request
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function store(PharmacyRepRequest $request)
     {
@@ -66,22 +71,27 @@ class PharmacyRepController extends Controller
 
     /**
      * @param $id
+     * @param PharmacyRepository $pharmacyRepo
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function edit($id, PharmacyRepository $pharmacyRepo)
     {
 
         $this->authorize('Edit ' . $this->roleName);
 
-        $pharmacies = $pharmacyRepo->all()->pluck('name', 'id');
-        $pharmacy_rep = $this->repo->find($id);
-        return view($this->viewPath . 'edit', compact('pharmacy_rep'));
+        return view($this->viewPath . 'edit',
+            [
+                'pharmacies' => $pharmacyRepo->all()->pluck('name', 'id'),
+                'pharmacy_rep' => $this->repo->find($id)
+            ]);
     }
 
     /**
      * @param PharmacyRepRequest $request
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update(PharmacyRepRequest $request, $id)
     {

@@ -2,7 +2,10 @@
 
 namespace App\Repositories\interfaces;
 
+use App\Models\Message;
 use App\Repositories\interfaces\BaseInterface;
+use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 
 /**
  * Interface ChatRepository.
@@ -11,5 +14,12 @@ use App\Repositories\interfaces\BaseInterface;
  */
 interface ChatRepository extends BaseInterface
 {
+    public function DoctorInbox();
+
+    public function PatientInbox();
+
+    public function saveMessage(array $request);
+
+    public function saveMessageFile(Message &$message, UploadedFile $file);
 
 }

@@ -38,6 +38,10 @@ function setActive($routeName, $active = "active")
 function fileUrl($image)
 {
 
+    if ($image == null) {
+        return null;
+    }
+
     if (strpos($image, 'http://') === false) {
         $image = asset($image);
     }

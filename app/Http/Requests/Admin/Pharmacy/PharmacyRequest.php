@@ -28,9 +28,9 @@ class PharmacyRequest extends FormRequest
             'name_en' => 'required|string|max:191',
             'email' => 'required|email|unique:pharmacies,email,' . $this->pharmacy,
             'phone' => 'required|numeric|unique:pharmacies,phone,' . $this->pharmacy,
-            'district_id' => 'nullable|integer|exists:districts,id',
-            'area_id' => 'nullable|integer|exists:areas,id',
-            'block_id' => 'nullable|integer|exists:blocks,id',
+            //   'district_id' => 'nullable|integer|exists:districts,id',
+            //    'area_id' => 'nullable|integer|exists:areas,id',
+            //     'block_id' => 'nullable|integer|exists:blocks,id',
             'address_ar' => 'required|string|max:191',
             'address_en' => 'required|string|max:191',
         ];

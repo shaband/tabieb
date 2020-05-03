@@ -21,18 +21,14 @@ class MedicalHistoryResource extends JsonResource
             'date' => $this->date,
             'description' => $this->description,
             'creator_type' => $this->creator_type,
-            'image' => fileUrl($this->img),
-            //relations
-            /*
-            'creator_id',
-            'reservation_id',
-            'category_id',*/
+            'image' => fileUrl($this->img ?? $this->image),
+
             'patient' => new PatientResource($this->whenLoaded('patient')),
             'category' => new CategoryResource($this->whenLoaded('category')),
-            'creator' => $this->whenLoaded('creator', function ($creator) {
+            'creator' => $this->when($this->resource->relationLoaded('creator'), function () {
                 return [
-                    'id' => $creator->id,
-                    'name' => $creator->name,
+                    'id' => $this->creator->id,
+                    'name' => $this->creator->name,
                 ];
 
             }),

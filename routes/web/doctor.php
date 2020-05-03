@@ -40,6 +40,14 @@ Route::group(['namespace' => 'Website\Doctor', 'middleware' => ['localeSessionRe
         Route::delete('documents/{id}', 'AttachmentController@delete')->name('profile.documents.destroy');
 
         Route::get('appointment/{id}/medical-history', 'MedicalHistoryController@index')->name('medical-history');
+
+        Route::get('chat/{chat_id?}', 'ChatController@inbox')->name('chat.inbox');
+
     });
 
+
 });
+
+/*Website\Doctor*/
+
+Route::post('chat/{chat_id}/message', 'Website\Doctor\ChatController@addMessage')->middleware('doctor.auth')->name('doctor.chat.message');

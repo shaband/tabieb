@@ -117,10 +117,17 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link user-self active" href="inbox.html"><i
-                                    class="fas fa-envelope"></i></a>
-                        </li>
+                        @if(auth()->guard('patient')->check())
+                            <li class="nav-item">
+                                <a class="nav-link user-self active" href="{!! route('patient.chat.inbox') !!}"><i
+                                        class="fas fa-envelope"></i></a>
+                            </li>
+                        @elseif( auth()->guard('doctor')->check())
+                            <li class="nav-item">
+                                <a class="nav-link user-self active" href="{!! route('doctor.chat.inbox') !!}"><i
+                                        class="fas fa-envelope"></i></a>
+                            </li>
+                        @endif
 
                     </ul>
                 </div>
@@ -165,7 +172,7 @@
                                         <form id="doctor-login-form" action="{!! route('doctor.login') !!}"
                                               method="post"
                                               class="basic-form form-label-inline form-secondaryLight">
-{!! csrf_field() !!}                                            @method('post')
+                                            {!! csrf_field() !!}                                            @method('post')
                                             <div class="form-group">
                                                 <label for="">{{ __('email address')}}:</label>
                                                 <input type="email" name="email" class="form-control">
@@ -305,9 +312,11 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                         @enderror
-                                    </div> <div class="form-group">
+                                    </div>
+                                    <div class="form-group">
                                         <label for="">{{ __('email address')}}:</label>
-                                        <input type="email" name="email_confirmation" class="form-control" value="{{old('email_confirmation')}}">
+                                        <input type="email" name="email_confirmation" class="form-control"
+                                               value="{{old('email_confirmation')}}">
                                         @error('email_confirmation')
                                         <span class="invalid-feedback d-block" role="alert">
                                         <strong>{{ $message }}</strong>

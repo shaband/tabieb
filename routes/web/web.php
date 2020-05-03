@@ -38,3 +38,20 @@ Route::get('/test', 'HomeController@test');
 /*social login*/
 Route::get('auth/{provider}/login/{type}', 'Auth\SocialController@redirectToProvider')->name('social.login');
 Route::get('auth/{provider}/callback', 'Auth\SocialController@handleProviderCallback');
+
+
+Route::get('/hopa', function () {
+
+    $a = event(new \App\Events\Chat\MessageSent(\App\Models\Message::first()));
+
+});
+
+
+Route::get('/pusher', function () {
+    $doctor = \App\Models\Doctor::first();
+
+    $chat = $doctor->chats()->first();
+Auth::guard('doctor')->loginUsingId($doctor->id);
+
+    return view('pusher',['chat_id'=>$chat->id,]);
+});

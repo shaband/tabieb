@@ -21,6 +21,7 @@ class AttachmentResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'file' => fileUrl($this->file),
+            'ext' => $this->ext,
             //  'model' => $this->model_type == 'doctors' ? new DoctorResource($this->whenLoaded($this->model)) : new PatientResource($this->whenLoaded($this->model))
         ];
     }

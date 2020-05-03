@@ -4,6 +4,7 @@ namespace App\Repositories\SQL;
 
 use App\Models\Attachment;
 use App\Repositories\SQL\BaseRepository;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Prettus\Repository\Criteria\RequestCriteria;
@@ -47,8 +48,15 @@ class MedicalHistoryRepositoryEloquent extends BaseRepository implements Medical
         return $this->join('reservations', 'reservations.patient_id', 'medical_histories.patient_id')
             ->where('reservations.doctor_id', auth()->id())
             ->distinct()
-            ->with('image')
+            ->with('image', 'creator')
             ->select('medical_histories.*')
+            ->addSelect(
+                [
+                    'image' => Attachment::select('file')
+                        ->whereColumn('attachments.model_id', 'medical_histories.id')
+                        ->OfModelType($this->getMorphedAlias())
+                        ->limit(1)
+                ])
             ->get();
     }
 

@@ -38,7 +38,7 @@ class PrescriptionController extends Controller
         ]);
 
         $prescription = $this->repo->findByField('reservation_id', $request->reservation_id)->first();
-        $prescription = new PrescriptionResource($prescription->load('patient', 'items'));
+        $prescription = new PrescriptionResource($prescription->load('patient', 'items', 'doctor'));
 
         return responseJson(compact('prescription'), __("Loaded Successfully"));
     }
@@ -79,7 +79,7 @@ class PrescriptionController extends Controller
         $items = $prescription->items()->createMany($request->items);
 
         DB::commit();
-        $prescription = new PrescriptionResource($prescription->fresh()->load('patient', 'items'));
+        $prescription = new PrescriptionResource($prescription->fresh()->load('patient', 'items', 'doctor'));
 
         return responseJson(compact('prescription'), __("Saved Successfully"));
     }

@@ -68,7 +68,12 @@ class ReservationController extends Controller
     public function changeReservationStatus(Request $request)
     {
         $this->validate($request, [
-            'reservation_id' => 'required|integer|exists:reservations,id,doctor_id,' . auth()->user()->id,
+            'reservation_id' => ['required', 'integer'
+                /*
+                 * TODO::remove comment and close second after calls connected open for test reason
+                 *  , Rule::exists('reservations', 'id')->where('doctor_id', auth()->user()->id)->where('status', Reservation::STATUS_ACTIVE)
+                */
+                , 'exists:reservations,id,doctor_id,' . auth()->user()->id],
             'status' => ['required', 'integer',
                 Rule::in(
                     [

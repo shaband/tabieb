@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="pusher-key" content="{{env('PUSHER_APP_KEY')}}">
+    @stack('meta')
+
     <title>{!! __(env('APP_NAME')) !!} - @yield('title') </title>
     <link rel="icon" href="{!! asset('design/images/favicon.png') !!}" type="image/png">
     <link rel="stylesheet"
@@ -46,7 +50,10 @@
             charset="UTF-8"></script>
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ar.min.js"></script>
+    <script src="https://js.pusher.com/6.0/pusher.min.js"></script>
+
     <script src="{!! asset('design/js/scripts.js')!!}"></script>
+
 
     @stack('header')
 </head>

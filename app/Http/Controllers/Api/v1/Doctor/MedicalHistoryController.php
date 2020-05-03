@@ -25,6 +25,7 @@ class MedicalHistoryController extends Controller
     {
         $this->validate($request, ['patient_id' => 'required|integer|exists:patients,id']);
 
+//        dd($this->repo->getMedicalHistoryForDoctor($request->patient_id));
         return responseJson([
             'medical_histories' => MedicalHistoryResource::collection($this->repo->getMedicalHistoryForDoctor($request->patient_id))
         ],

@@ -44,7 +44,6 @@ class ChatController extends Controller
             ->update(['seen_at' => Carbon::now()]);
         $chat = new ChatResource($chat->load('messages', 'doctor'));
 
-        return $chat;
         return responseJson(compact('chat'), __("Loaded Successfully"));
     }
 

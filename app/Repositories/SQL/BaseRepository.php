@@ -6,6 +6,7 @@ use App\Models\Attachment;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Prettus\Repository\Eloquent\BaseRepository as MainRepository;
@@ -56,9 +57,9 @@ abstract class BaseRepository extends MainRepository implements BaseInterface
      * @param UploadedFile $file
      * @param string $path
      * @param null $type
-     * @return iterable
+     * @return array
      */
-    public function saveFile(UploadedFile $file, string $path = '', $type = null): iterable
+    public function saveFile(UploadedFile $file, string $path = '', $type = null): array
     {
 
 
@@ -132,6 +133,29 @@ abstract class BaseRepository extends MainRepository implements BaseInterface
 
         return array_flip($constants);
 
+    }
+
+
+    /*
+     * get all alias with  it's reference models
+     */
+    public function getAliasReference(): array
+    {
+        return array_flip(Relation::morphMap());
+
+    }
+
+    /**
+     * get model alias
+     * @param null $model
+     * @return string
+     */
+    public function getMorphedAlias($model = null): string
+    {
+
+        $model = $model ?? $this->model();
+
+        return $this->getAliasReference()[$model] ?? $model;
     }
 
 }

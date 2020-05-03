@@ -46,5 +46,7 @@ Route::middleware(['auth:patient_api'])->group(function () {
     Route::post('patient-questions/answers', 'PatientQuestionController@patientAnswers');
 
 
+
+
 });
 

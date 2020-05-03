@@ -36,5 +36,12 @@ Route::group(['namespace' => 'Website\Patient', 'middleware' => ['localeSessionR
         Route::get('medical-histories', 'MedicalHistoryController@index')->name('profile.medicalHistory');
         Route::post('medical-histories', 'MedicalHistoryController@store');
 
+        Route::get('chat/{chat_id?}', 'ChatController@inbox')->name('chat.inbox');
+
     });
+
+
 });
+
+Route::post('chat/{chat_id}/message', 'Website\Patient\ChatController@inbox')->middleware('patient.auth')->name('patient.chat.message');
+
