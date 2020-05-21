@@ -18,6 +18,29 @@ class ReservationController extends Controller
         $this->repo = $repo;
     }
 
+
+    public function createWithoutBilling(Request $request)
+    {
+
+        $inputs = $request->validate([
+            'doctor_id' => 'required|integer|exists:doctors,id',
+            //   'date' => 'required|date|date_format:Y-m-d',
+            'start' => ['required'],
+            'end' => ['required'],
+            'has_reservation' => 'required|integer|eq:0',
+            'schedule_id' => 'required|integer|exists:schedules,id',
+
+            //   'communication_type' => 'required|integer|min:1|max:2',
+            //   'description' => 'nullable|string',
+        ]);
+
+
+        $reservation = $this->repo->store($request);
+        $reservation = new ReservationResource($reservation);
+        return responseJson(compact('reservation'), __("Saved Successfully"));
+    }
+
+
     public function create(Request $request)
     {
 
@@ -75,7 +98,6 @@ class ReservationController extends Controller
     {
         $reservation = $this->repo->query()
             ->with('doctor')
-
             ->whereDate('date', '<', Carbon::now())
             //   ->whereTime('from_time', '<', Carbon::now())
             ->get();

@@ -31,19 +31,27 @@ class ReservationResource extends JsonResource
             'status_label' => self::getStatus($this->status),
             'status' => $this->status,
             'description' => $this->description,
-
+            'session_id' => $this->session_id,
+            'is_quick' => $this->is_quick,
 
             //relations
 
 
-            'doctor' => new DoctorResource($this->whenLoaded('doctor')),
+            'doctor' => /*new DoctorResource(*/ $this->whenLoaded('doctor', function () {
+
+                return [
+                    'name' => $this->doctor->name,
+                    'id' => $this->doctor_id,
+                    'img' => fileUrl($this->doctor->img)
+                ];
+            }, null)/*)*/,
             'schedule' => new DoctorResource($this->whenLoaded('schedule')),
             'patient' => /*new PatientResource(*/ $this->whenLoaded('patient', function () {
 
                 return [
                     'name' => $this->patient->name,
                     'id' => $this->patient_id,
-                    'img' => $this->patient->img
+                    'img' => fileUrl($this->patient->img)
                 ];
             })/*)*/,
         ];
@@ -51,13 +59,13 @@ class ReservationResource extends JsonResource
 
     public static function getCommunicationType($type)
     {
-        $status = app(ReservationRepository::class)->getConstantsFlipped('COMMUNICATION_TYPE')[$type];
+        $status = app(ReservationRepository::class)->getConstantsFlipped('COMMUNICATION_TYPE')[$type] ?? $type;
         return __($status);
     }
 
     public static function getStatus($status)
     {
-        $status = app(ReservationRepository::class)->getConstantsFlipped('STATUS')[$status];
+        $status = app(ReservationRepository::class)->getConstantsFlipped('STATUS')[$status]??$status;
         return __($status);
     }
 }

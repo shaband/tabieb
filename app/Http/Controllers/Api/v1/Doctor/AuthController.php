@@ -24,7 +24,7 @@ class AuthController extends Controller
 
     public function __construct(DoctorRepository $repo)
     {
-        $this->middleware('auth:doctor_api', ['except' => ['login', 'verify', 'resendVerification']]);
+        $this->middleware('auth:doctor_api', ['except' => ['login', 'verify', 'resendVerification', 'sendResetPassCode', 'resetPassword']]);
         auth()->setDefaultDriver('doctor_api');
 
         $this->repo = $repo;
@@ -70,11 +70,12 @@ class AuthController extends Controller
         }
         if ($request->logo != null) {
             $logo_data = $this->repo->saveFile($request->file('logo'), 'doctors', Attachment::DOCTOR_Logo);
-            $doctor->logo()->updateOrCreate(['type' => $image_data['type']], $logo_data);
+            $doctor->logo_image()->updateOrCreate(['type' => $logo_data['type']], $logo_data);
         }
 
-        $response = (new DoctorResource($doctor));
+        $response = (new DoctorResource($doctor))->jsonSerialize();
         $response['token'] = auth()->refresh();
+        $doctor->setCache(config('session.lifetime') * 60);
 
         return responseJson(['doctor' => $response]);
     }
@@ -94,7 +95,7 @@ class AuthController extends Controller
             'device.token' => 'nullable|string',
             'device.token_type' => 'nullable|integer'
         ];
-        $this->validate($request, $roles);
+        $this->validate($request, $roles, ['email.exists:' . __("Email or Password is incorrect")]);
         $credentials = request(['email', 'password']);
         $doctor = $this->repo->findWhere(request()->only('email'))->first();
 
@@ -104,8 +105,10 @@ class AuthController extends Controller
         }
 
         if (!$token = auth()->attempt($credentials)) {
-            return $this->UnauthorizedResponse(__('Unauthorized'));
+            return $this->UnauthorizedResponse(__('Password is incorrect'));
         }
+        auth()->user()->setCache(config('session.lifetime') * 60);
+
         $this->repo->AddFCM($request, $doctor);
 
 
@@ -125,6 +128,7 @@ class AuthController extends Controller
      */
     public function logout()
     {
+        auth()->user()->pullCache();
         auth()->logout();
 
         return responseJson(null, __("Successfully logged out"));
@@ -144,10 +148,11 @@ class AuthController extends Controller
 
         }
 
+        auth()->user()->setCache(config('session.lifetime') * 60);
+
         return responseJson(
             ['doctor' =>
-                (new DoctorResource($doctor->fresh()))->jsonSerialize()
-                + ['token' => $token]
+                ['token' => $token] + (new DoctorResource($doctor->fresh()))->jsonSerialize()
 
             ], __("Verified Successfully"));
     }
@@ -191,5 +196,30 @@ class AuthController extends Controller
                 'data' => null
 
             ], 401);
+    }
+
+
+    public function sendResetPassCode(Request $request)
+    {
+
+        $this->validate($request, [
+            'email' => 'required|email|exists:doctors,email',
+        ]);
+        $code = $this->repo->generateResetCode();
+        $this->repo->where('email', $request->email)->update(['reset_password_code' => $code]);
+
+        return responseJson(['code' => $code], __("Code Sent"));
+    }
+
+    public function resetPassword(Request $request)
+    {
+
+        $this->validate($request, [
+            'code' => 'required|integer|exists:doctors,reset_password_code',
+            'password' => 'required|string|confirmed'
+        ]);
+        $this->repo->where('reset_password_code', $request->code)->update(['password' => \Hash::make($request->password), 'reset_password_code' => null]);
+
+        return responseJson(null, __("Password Updated"));
     }
 }

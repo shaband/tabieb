@@ -9,11 +9,11 @@ use Prettus\Repository\Contracts\CriteriaInterface;
 use Prettus\Repository\Contracts\RepositoryInterface;
 
 /**
- * Class DoctorSearchCriteriaCriteria.
+ * Class DoctorSearchCriteria.
  *
  * @package namespace App\Criteria;
  */
-class DoctorSearchCriteriaCriteria implements CriteriaInterface
+class DoctorSearchCriteria implements CriteriaInterface
 {
     /**
      * @var Request
@@ -21,7 +21,7 @@ class DoctorSearchCriteriaCriteria implements CriteriaInterface
     private $request;
 
     /**
-     * DoctorSearchCriteriaCriteria constructor.
+     * DoctorSearchCriteria constructor.
      * @param Request $request
      */
     public function __construct(Request $request)

@@ -79,9 +79,18 @@
                                                 documents')}}</a>
 
                                             <br>
-                                            <a href="#" class="doc-book-btn btn btn-secondary"><img
+                                            <form action="{!! route('quick-call') !!}" method="get"
+                                                  id="doctor-{!! $doctor->id !!}-quickcall" target="_blank">
+                                                {!! csrf_field() !!}
+                                                <input name="patient_id" value="{{ auth()->guard('patient')->id()}}"
+                                                       type="hidden">
+                                                <input name="doctor_id" value="{!! $doctor->id !!}" type="hidden">
+                                                <input name="communication_type" value="3" type="hidden">
+                                            </form>
+                                            <button form="doctor-{!! $doctor->id !!}-quickcall"
+                                                    class="doc-book-btn btn btn-secondary"><img
                                                     src="{{asset('design/images/icons/phone-White.png')}}"> {{ __('quick call')}}
-                                            </a>
+                                            </button>
                                             <a href="#" class="doc-book-btn btn btn-thirdly"><img
                                                     src="{{ asset('design/images/icons/tag.png')}}"> {{ __('book now')}}
                                             </a>
@@ -185,9 +194,12 @@
                                                     {{$schedule['day']->format('M') }}
                                                 </div>
                                                 @foreach($schedule['times'] as $time)
-                                                    <div class="single-day-times">
+                                                    <div
+                                                        class="single-day-times "
+                                                        data-item='{!! json_encode($time + ['doctor_id'=>$doctor->id],true); !!} '
+                                                        onclick="timeChoosed(this)">
                                                         <div class="single-time
-                    @if($time['has_reservation']!=0) disabled @endif ">
+                    @if($time['has_reservation']!=0) disabled @endif">
                                                             <span>{{$time['start']->format("H:i")}}</span>
 
                                                         </div>
@@ -197,11 +209,22 @@
                                         </div>
                                 @endforeach
                                 <!-- END Doctor Available Dates and Times Container -->
-                                    <div class="doc-appointments-controls mt-3 text-center">
-                                        <a href="#" class="btn btn-thirdly btn-sm text-capitalize">{{ __('book &
+
+                                </div>
+
+                                <form id="reservation-form" action="{!! route('reservation.reserve') !!}">
+                                    {!! csrf_field() !!}
+                                    <input name="schedule_id" type="hidden">
+                                    <input name="doctor_id" type="hidden">
+                                    <input name="start" type="hidden">
+                                    <input name="has_reservation" type="hidden">
+                                    <input name="end" type="hidden">
+                                </form>
+                                <div class="doc-appointments-controls mt-3 text-center">
+                                    <button type="submit" form="reservation-form"
+                                            class="btn btn-thirdly btn-sm text-capitalize">{{ __('book &
                                                 proceed to
-                                                payment')}}</a>
-                                    </div>
+                                                payment')}}</button>
                                 </div>
                                 <!-- END Doctor Available Dates and Times Block -->
                             </div>
@@ -211,4 +234,35 @@
                     <!-- END Single Doctor -->
                 </div>
             </div>
-@endsection
+            @endsection
+
+            @push('scripts')
+                <script>
+                    function timeChoosed(el) {
+                        var data = JSON.parse(el.dataset.item);
+                        pushReservationInfoInToForm(data);
+                        var active_period = $(el).find('.single-time');
+                        addActiveToPeriod(active_period)
+
+                    }
+
+                    function pushReservationInfoInToForm(data) {
+                        for (datum in data) {
+                            try {
+                                $('input[name="' + datum + '"]').val(data[datum]);
+
+                            } catch (e) {
+                                debugger;
+                                //  console.error(e.mess)
+                            }
+                        }
+
+                    }
+
+                    function addActiveToPeriod(period) {
+                        $('.single-time').removeClass('active');
+                        period.addClass('active');
+                    }
+
+                </script>
+    @endpush

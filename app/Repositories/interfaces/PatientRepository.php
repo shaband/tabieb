@@ -35,4 +35,9 @@ interface PatientRepository extends BaseInterface
 
     public function AddFCM(Request $request,Patient $patient):void ;
 
+    /**
+     * generate unique reset code
+     * @return int
+     */
+    public  function  generateResetCode():int ;
 }

@@ -77,6 +77,7 @@ class Kernel extends HttpKernel
         'pharmacy.manger' => \App\Http\Middleware\EnsureRepIsManger::class,
 
         'apiLocalization' => \App\Http\Middleware\ApiLang::class,
+        'website.auth' => \App\Http\Middleware\AddClientSideMiddleware::class,
 
 
         /**** localization MIDDLEWARE ****/

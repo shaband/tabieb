@@ -61,4 +61,6 @@ interface DoctorRepository extends BaseInterface
     public static function DoctorMobileRelations(): array;
 
     public function MobileDoctor(): Builder;
+
+    public function generateResetCode(): int;
 }

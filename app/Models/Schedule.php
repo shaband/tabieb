@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Schedule extends Model
 {
     use  ModelHasLogs, SoftDeletes;
+
     const DAY_SAT = 1;
     const DAY_SUN = 2;
     const DAY_MON = 3;
@@ -51,25 +52,27 @@ class Schedule extends Model
         if ($today > $schedule_day) {
             $schedule_day += 6;
         }
-        $date =  CarbonImmutable::now()->addDays($schedule_day - $today);
+        $date = CarbonImmutable::now()->addDays($schedule_day - $today);
         $period = optional($this->doctor)->period ?? 30;
         $anchor = CarbonImmutable::parse($this->from_time);
         $to = Carbon::parse($this->to_time);
         $times = [];
 
         while ($anchor->isBefore($to)) {
-            $end =   $anchor->addMinutes($period);
+            $end = $anchor->addMinutes($period);
             if ($end->isAfter($to)) {
                 $end = $to;
             }
 
             $has_reservation = $this->reservations->where('status', Reservation::STATUS_ACCEPTED)
-                ->filter(function ($reservation)  use ($date, $anchor, $end) {
+                ->filter(function (Reservation $reservation) use ($date, $anchor, $end) {
                     $whereDate = Carbon::parse($reservation->date)->equalTo($date);
                     $whereFromDate = Carbon::parse($reservation->from_time)->lessThanOrEqualTo($anchor);
                     $wheretoDate = Carbon::parse($reservation->to_time)->greaterThanOrEqualTo($end);
 
+                    //    $reservation->hasReservation($date,  $anchor,  $end)
                     return ($whereDate && $whereFromDate && $wheretoDate);
+
                 })
                 // ->whereDate('date', $date)
                 // ->whereTime('from_time', '<=', $anchor)
@@ -79,6 +82,7 @@ class Schedule extends Model
             $schedule_period = [
                 'start' => $anchor,
                 'end' => $end,
+                'schedule_id' => $this->id,
                 'has_reservation' => $has_reservation
             ];
             $times[] = $schedule_period;
@@ -87,6 +91,7 @@ class Schedule extends Model
 
         return $times;
     }
+
     public function setFromTimeAttribute($value): void
     {
         $value = str_replace(" : ", ":", $value);
@@ -104,5 +109,13 @@ class Schedule extends Model
     {
         $builder->whereTime('from_time', '<=', $value);
         $builder->whereTime('to_time', '>=', $value);
+    }
+
+    public function scopeOfDay(Builder $builder, $value): void
+    {
+
+        if ($value != null) {
+            $builder->where('day', $value);
+        }
     }
 }

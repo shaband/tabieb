@@ -115,7 +115,7 @@ class DoctorController extends Controller
         }
         if ($request->logo != null) {
             $logo_data = $this->repo->saveFile($request->file('logo'), 'doctors', $attachmentRepo::getConstants()['DOCTOR_Logo']);
-            $doctor->logo()->updateOrCreate(['type' => $image_data['type']], $logo_data);
+            $doctor->logo_image()->updateOrCreate(['type' => $logo_data['type']], $logo_data);
         }
 
         toast(__("Updated Successfully"), 'success');

@@ -2,13 +2,19 @@
 
 namespace App\Repositories\SQL;
 
+use App\Criteria\OrderReservationByDateCriteria;
+use App\Events\CallStarted;
+use App\Models\Chat;
 use App\Repositories\interfaces\ScheduleRepository;
+use App\Services\Contracts\TokBoxContract;
+use App\Services\Drivers\TokBoxDriver;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
+use OpenTok\OutputMode;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\interfaces\ReservationRepository;
 use App\Models\Reservation;
@@ -39,7 +45,9 @@ class ReservationRepositoryEloquent extends BaseRepository implements Reservatio
      */
     public function boot()
     {
-        $this->pushCriteria(app(RequestCriteria::class));
+        Parent::boot();
+        $this->pushCriteria(app(OrderReservationByDateCriteria::class));
+
     }
 
     public function store(Request $request): Reservation
@@ -100,6 +108,22 @@ class ReservationRepositoryEloquent extends BaseRepository implements Reservatio
 
     }
 
+    public function storeQuickCall(array $data): Reservation
+    {
+        return $this->create($data + [
+                'is_quick' => true,
+                'date' => Carbon::now(),
+            ]);
+
+    }
+
+
+    public function makeQuickCall(Request $request): array
+    {
+        $reservation = $this->storeQuickCall($request->only('patient_id', 'doctor_id', 'communication_type'));
+
+        return $this->startCall($reservation->id, 'doctor');
+    }
 
     public function getDoctorReservationByStatus($doctor_id, $status, $date = null)
     {
@@ -115,5 +139,50 @@ class ReservationRepositoryEloquent extends BaseRepository implements Reservatio
             ->where('status', $status)->orderBy(DB::raw('date'), 'asc')->get();
 
     }
+
+
+    public function startCall(string $reservation_id, $subscriber = 'patient')
+    {
+        $opentok = app(TokBoxContract::class);
+
+        $reservation = $this->find($reservation_id);
+        if ($reservation->sessionId == null) {
+            $sessionId = $opentok->defaultSession()->getSessionId();
+            $reservation->fill(['session_id' => $sessionId])->save();
+
+        } else {
+            $sessionId = $reservation->sessionId;
+        }
+
+        $token = $opentok->generateToken($sessionId);
+        event(new CallStarted($reservation, $subscriber));
+
+        return ['sessionId' => $sessionId, 'token' => $token];
+
+    }
+
+    public function archiveCall(Request $request)
+    {
+        // Create a simple archive of a session
+        $opentok = app(TokBoxContract::class);
+
+        $archive = $opentok->startArchive($request->sessionId);
+
+
+        // Create an archive using custom options
+        $archiveOptions = array(
+            'name' => 'call',     // default: null
+            'hasAudio' => true,                     // default: true
+            'hasVideo' => true,                     // default: true
+            'outputMode' => OutputMode::COMPOSED,   // default: OutputMode::COMPOSED
+            'resolution' => '1280x720'              // default: '640x480'
+        );
+        $archive = $opentok->startArchive($request->sessionId, $archiveOptions);
+
+        // Store this archiveId in the database for later use
+        $archiveId = $archive->id;
+        return $archiveId;
+    }
+
 
 }

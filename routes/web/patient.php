@@ -38,6 +38,9 @@ Route::group(['namespace' => 'Website\Patient', 'middleware' => ['localeSessionR
 
         Route::get('chat/{chat_id?}', 'ChatController@inbox')->name('chat.inbox');
 
+
+        Route::post('quick-call', 'ChatController@inbox')->name('chat.inbox');
+
     });
 
 

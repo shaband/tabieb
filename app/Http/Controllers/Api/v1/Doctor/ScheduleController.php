@@ -16,9 +16,11 @@ class ScheduleController extends Controller
         $this->repo = $repo;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $schedules = $this->repo->findByField('doctor_id', auth()->id());
+        $this->validate($request,['day'=>'nullable|integer|min:1|max:7']);
+        $schedules = $this->repo->query()->where('doctor_id', auth()->id())
+            ->ofDay($request->day)/*->with('reservations')*/->get();
         $schedules = ScheduleResource::collection($schedules);
         return responseJson(compact('schedules'), __("Loaded Successfully"));
     }

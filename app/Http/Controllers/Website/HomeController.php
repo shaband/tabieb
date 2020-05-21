@@ -31,7 +31,7 @@ class HomeController extends Controller
         $categories = $this->category_repo->getMainCategory()->keyBy('id');
 
 
-        $doctors = $this->doctor_repo->query()->withCount('reservation')->with('ratings:rate', 'image:file')->where('blocked_at', null)->limit(4)->get()->sortBy(function (Doctor $doctor) {
+        $doctors = $this->doctor_repo->query()->withCount('reservation')->with('ratings:rate')->where('blocked_at', null)->limit(4)->get()->sortBy(function (Doctor $doctor) {
             return $doctor->reservation_count;
         });
 

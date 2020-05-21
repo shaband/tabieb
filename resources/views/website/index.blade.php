@@ -43,7 +43,7 @@
                             <div class="col-lg-3 col-md-4 col-sm-6">
                                 <div class="doc-item" data-aos="fade-in">
                                     <div class="doc-img">
-                                        <img src="{!! url($doctor->img) !!}">
+                                        <img src="{!! $doctor->img !!}">
                                         <div class="doc-price">{!! $doctor->price !!} {!! __("rs/h") !!}</div>
                                     </div>
                                     <div class="doc-dets">

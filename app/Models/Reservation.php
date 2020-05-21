@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 class Reservation extends Model
 {
     use  ModelHasLogs;
+
     public const COMMUNICATION_TYPE_AUDIO = 1;
     public const COMMUNICATION_TYPE_VIDEO = 2;
     public const COMMUNICATION_TYPE_BOTH = 3;
@@ -22,7 +23,7 @@ class Reservation extends Model
 
     protected $table = 'reservations';
     public $timestamps = true;
-    protected $fillable = array('doctor_id', 'patient_id', 'schedule_id', 'date', 'from_time', 'to_time', 'communication_type', 'status_changed_at', 'status', 'description');
+    protected $fillable = array('doctor_id', 'patient_id', 'schedule_id', 'date', 'from_time', 'to_time', 'communication_type', 'status_changed_at', 'status', 'description', 'session_id', 'is_quick');
 
     protected $casts = [
         'communication_type' => 'integer',
@@ -117,6 +118,15 @@ class Reservation extends Model
                 $str = __("Finished");
         }
         return $str;
+    }
+
+    public function hasReservation(Carbon $date, Carbon $anchor, Carbon $end)
+    {
+
+        $whereDate = Carbon::parse($this->date)->equalTo($date);
+        $whereFromDate = Carbon::parse($this->from_time)->lessThanOrEqualTo($anchor);
+        $wheretoDate = Carbon::parse($this->to_time)->greaterThanOrEqualTo($end);
+        return ($whereDate && $whereFromDate && $wheretoDate);
 
     }
 }

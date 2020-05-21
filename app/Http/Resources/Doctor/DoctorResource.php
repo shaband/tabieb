@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Doctor;
 
+use App\Http\Resources\attachment\AttachmentResource;
 use App\Http\Resources\Category\CategoryResource;
 use App\Http\Resources\Rating\RatingResource;
 use App\Http\Resources\Schedule\ScheduleResource;
@@ -29,9 +30,9 @@ class DoctorResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            "first_name_ar" =>$this->first_name_ar,
+            "first_name_ar" => $this->first_name_ar,
             "last_name_ar" => $this->last_name_ar,
-            "first_name_en" =>$this->first_name_en,
+            "first_name_en" => $this->first_name_en,
             "last_name_en" => $this->last_name_en,
 
             "description_ar" => $this->description_ar,
@@ -63,6 +64,7 @@ class DoctorResource extends JsonResource
             'is_online' => $this->isOnline(),
             'reviews' => RatingResource::collection($this->whenLoaded('ratings')),
             'rating' => round($this->ratings->avg('rate') ?? 0, 0),
+            'papers' => AttachmentResource::collection($this->whenLoaded('papers')),
 
 
         ];

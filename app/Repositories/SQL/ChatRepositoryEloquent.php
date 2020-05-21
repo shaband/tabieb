@@ -7,6 +7,7 @@ use App\Models\Attachment;
 use App\Models\Message;
 use App\Repositories\interfaces\MessageRepository;
 use App\Repositories\SQL\BaseRepository;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
@@ -63,6 +64,25 @@ class ChatRepositoryEloquent extends BaseRepository implements ChatRepository
             ->get();
     }
 
+
+    public function getSelectedOrFirst($chats, ?int $chat_id = null)
+    {
+        if ($chat_id) {
+            $chat = $this->with(['patient',
+                'messages' => function (Builder $message) {
+                    $message->with('sender');
+                }, 'doctor'])
+                ->find($chat_id)
+                ->setRelation('doctor', auth()->user());
+        } else {
+            $chat = optional($chats->first())->load('messages');
+        }
+
+        return $chat;
+
+    }
+
+
     public function saveMessage(array $inputs)
     {
 
@@ -72,6 +92,8 @@ class ChatRepositoryEloquent extends BaseRepository implements ChatRepository
             $this->saveMessageFile($message, $inputs['file']);
         }
         DB::commit();
+        MessageSent::dispatch($message->load('sender'));
+
         return $message;
     }
 

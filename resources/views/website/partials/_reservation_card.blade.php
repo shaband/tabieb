@@ -42,12 +42,12 @@
         @if(\Carbon\Carbon::now()->gt($reservation->from_date))
             <div>
                 <b>{{ __('call summary')}}:</b>
-                <span>11 hours / 20 minutes / 30 seconds</span>
+                <span>{!! $reservation->doctor->period !!}</span>
             </div>
 
             {{--    <div class="app-remove"><a><i class="fas fa-trash-alt"></i></a></div>--}}
         @endif
-        @if(!\Carbon\Carbon::now()->gt($reservation->from_date) &&$reservation->status==$reservation::STATUS_ACTIVE)
+        @if(\Carbon\Carbon::now()->gt($reservation->from_date) &&$reservation->status==$reservation::STATUS_ACTIVE)
             <div class="app-control">
                 <a class="btn btn-secondary btn-sm text-capitalize" onclick="
                     Swal.fire({

@@ -98,8 +98,9 @@ class ReservationController extends Controller
     {
         $reservation = $this->repo->query()
             ->whereDate('date', '<', Carbon::now())
-            ->whereIn('status', $this->repo::getConstants('STATUS_ACCEPTED'))->get();
-        $reservation = ReservationResource::collection($reservation);
+            //->whereIn('status', $this->repo::getConstants('STATUS_ACCEPTED'))
+            ->get();
+        $reservation = ReservationResource::collection($reservation->load('patient'));
 
         return responseJson(compact('reservation'), __('Loaded Successfully'));
     }

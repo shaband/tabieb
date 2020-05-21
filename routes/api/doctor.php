@@ -20,10 +20,14 @@ Route::post('auth/logout', 'AuthController@logout');
 Route::post('auth/verify', 'AuthController@verify');
 Route::post('auth/verification/resend', 'AuthController@resendVerification');
 Route::post('auth/profile', 'AuthController@Profile');
+Route::post('auth/reset-password/send', 'AuthController@sendResetPassCode');
+Route::post('auth/reset-password', 'AuthController@resetPassword');
+
 
 
 Route::middleware(['auth:doctor_api'])->group(function () {
     Route::post('reservations/upcoming', 'ReservationController@upcoming');
+    Route::post('reservations/previous', 'ReservationController@previous');
     Route::post('reservations/upcoming/type', 'ReservationController@ReservationsByType');
 
     Route::post('medical-histories', 'MedicalHistoryController@index');
@@ -33,8 +37,6 @@ Route::middleware(['auth:doctor_api'])->group(function () {
 
     Route::post('reservations/prescription/create', 'PrescriptionController@create');
     Route::post('reservations/prescription', 'PrescriptionController@index');
-
-
 
 
     Route::post('chats', 'ChatController@inbox');

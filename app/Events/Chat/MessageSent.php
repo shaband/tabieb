@@ -2,6 +2,7 @@
 
 namespace App\Events\Chat;
 
+use App\Http\Resources\Chat\MessageResource;
 use App\Models\Message;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Queue\SerializesModels;
@@ -28,21 +29,11 @@ class MessageSent implements ShouldBroadcast
      * @param bool $include_html
      * @throws \Throwable
      */
-    public function __construct(Message $message, string $type = null, bool $include_html = false)
+    public function __construct(Message $message)
     {
-
         $this->chat_id = $message->chat_id;
-
-        if (!$include_html) {
-            $this->message = $message;
-        } elseif ($include_html) {
-            $this->msg_html = view('website.partials._chat_message',
-                [
-                    'message' => $message,
-                    'type' => $type
-                ])->render();
-        }
-
+        $this->loadMessage($message);
+        $this->loadHtml($message);
     }
 
     public function broadcastOn()
@@ -53,5 +44,20 @@ class MessageSent implements ShouldBroadcast
     public function broadcastAs()
     {
         return 'new-message';
+    }
+
+    public function loadHtml($message)
+    {
+        $this->msg_html = view('website.partials._chat_message',
+            [
+                'message' => $message,
+                'type' => 'doctor'
+            ])->render();
+
+    }
+
+    public function loadMessage($message)
+    {
+        $this->message = (new MessageResource($message))->jsonSerialize();
     }
 }

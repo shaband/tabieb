@@ -18,12 +18,21 @@ class MessageResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'chat' => new ChatResource($this->whenLoaded('chat')),
+            'id' => $this->id,
+            'chat_id' => $this->chat_id,
             'message' => $this->message,
-            'sender_type' => $this->sender_type,
-            'sender' => $this->sender_type == 'patients' ? new PatientResource($this->whenLoaded('sender')) : new DoctorResource($this->whenLoaded('sender')),
             'seen_at' => $this->seen_at,
-            'file' => new AttachmentResource($this->whenLoaded('file'))
+            'sender_type' => $this->sender_type,
+            'sender' => $this->when($this->resource->relationLoaded('sender'), function () {
+                return [
+                    'id' => $this->sender->id,
+                    'name' => $this->sender->name,
+                    'img' => $this->sender->img,
+                ];
+            }),
+            'chat' => new ChatResource($this->whenLoaded('chat')),
+            'attachment_data' => new AttachmentResource($this->whenLoaded('file')),
+            'attachment' => $this->attachment
         ];
     }
 

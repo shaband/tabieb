@@ -26,7 +26,8 @@ function days()
         4 => __("Tue"),
         5 => __("Wen"),
         6 => __("Thr"),
-        7 => __("Fri")];
+        7 => __("Fri")
+    ];
 }
 
 function setActive($routeName, $active = "active")
@@ -46,4 +47,15 @@ function fileUrl($image)
         $image = asset($image);
     }
     return $image;
+}
+
+/**
+ * generate random number
+ * @param int $digits
+ * @return int
+ */
+function randNumber(int $digits=5):int
+{
+
+    return  rand(pow(10, $digits - 1), pow(10, $digits) - 1);
 }

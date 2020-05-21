@@ -21,7 +21,8 @@ Route::post('auth/verify', 'AuthController@verify');
 Route::post('auth/profile', 'AuthController@Profile');
 Route::post('auth/verification/resend', 'AuthController@resendVerification');
 
-
+Route::post('auth/reset-password/send', 'AuthController@sendResetPassCode');
+Route::post('auth/reset-password', 'AuthController@resetPassword');
 
 
 Route::post('home', 'DoctorController@index');
@@ -46,6 +47,9 @@ Route::middleware(['auth:patient_api'])->group(function () {
     Route::post('patient-questions/answers', 'PatientQuestionController@patientAnswers');
 
 
+    Route::post('medical-histories', 'MedicalHistoryController@index');
+    Route::post('medical-histories/create', 'MedicalHistoryController@store');
+    Route::post('medical-histories/delete', 'MedicalHistoryController@destroy');
 
 
 });

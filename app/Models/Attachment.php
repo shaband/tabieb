@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Repositories\interfaces\AttachmentRepository;
 use App\Traits\ColumnTranslation;
 use App\Traits\ModelHasLogs;
 use Illuminate\Database\Eloquent\Builder;
@@ -29,6 +30,19 @@ class Attachment extends Model
     {
 
         $builder->where('model_type', $value);
+    }
+
+
+    public function scopeOfUserImage(Builder $builder, Model $model, $column, $type = 1): void
+    {
+        $builder->limit(1)
+            ->select('file')
+            ->OfModelType(app(AttachmentRepository::class)
+                ->getMorphedAlias((new \ReflectionClass($model))->getName()))
+            ->where('type', $type)
+            ->whereColumn('model_id', $column)
+            ->latest();
+
     }
 
 

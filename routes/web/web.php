@@ -31,6 +31,14 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     Route::get('/profile/{id}/doctor', 'ReservationController@doctorProfile')->name('reservation.doctor');
     Route::get('/certifications/{id}/doctor', 'ReservationController@doctorCertifications')->name('reservation.doctor.certification');
 
+    //just for  نمشى الشغل  لسه فيه ال biling يارب العميل ينجز
+    //TODO::show biling form  with comming data  and remove  reserve direct
+    Route::get('reservation/reserve', 'ReservationController@createWithoutBilling')->name('reservation.reserve')->middleware(['patient.auth']);
+
+
+    Route::get('/quick-call', 'ReservationController@QuickCall')->middleware(['patient.auth'])->name('quick-call');
+    Route::get('/quick-call/respond', 'ReservationController@QuickCallRespond')->middleware(['doctor.auth'])->name('quick-call.respond');
+
 });
 Route::get('/test', 'HomeController@test');
 
@@ -40,18 +48,3 @@ Route::get('auth/{provider}/login/{type}', 'Auth\SocialController@redirectToProv
 Route::get('auth/{provider}/callback', 'Auth\SocialController@handleProviderCallback');
 
 
-Route::get('/hopa', function () {
-
-    $a = event(new \App\Events\Chat\MessageSent(\App\Models\Message::first()));
-
-});
-
-
-Route::get('/pusher', function () {
-    $doctor = \App\Models\Doctor::first();
-
-    $chat = $doctor->chats()->first();
-Auth::guard('doctor')->loginUsingId($doctor->id);
-
-    return view('pusher',['chat_id'=>$chat->id,]);
-});

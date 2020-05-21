@@ -53,13 +53,15 @@ class PatientController extends Controller
 
         $user = auth()->user();
 
-        $reservations = $reservationRepo->findWhere(
-            [
-                'patient_id' => auth()->id(),
-                'status' => $reservationRepo->getConstants()['STATUS_ACCEPTED'],
-                'date' => [DB::raw('CONCAT(`date`,`from_time`)'), '>=', Carbon::now()]
-            ]
-        );
+        $reservations = $reservationRepo
+            //->orderBy(DB::raw('DATE(date)'), 'asc')
+            ->findWhere(
+                [
+                    'patient_id' => auth()->id(),
+                    'status' => $reservationRepo->getConstants()['STATUS_ACCEPTED'],
+                    'date' => [DB::raw('CONCAT(`date`,`from_time`)'), '>=', Carbon::now()]
+                ]
+            );
         return view('website.patient.profile.appointments', compact('user', 'reservations'));
     }
 
@@ -68,13 +70,15 @@ class PatientController extends Controller
 
         $user = auth()->user();
 
-        $reservations = $reservationRepo->findWhere(
-            [
-                'patient_id' => auth()->id(),
-                //         'status' => $reservationRepo->getConstants()['STATUS_ACCEPTED'],
-                'date' => [DB::raw('CONCAT(`date`,`from_time`)'), '<=', Carbon::now()]
-            ]
-        );
+        $reservations = $reservationRepo
+            //->orderBy(DB::raw('DATE(date)'), 'asc')
+            ->findWhere(
+                [
+                    'patient_id' => auth()->id(),
+                    //         'status' => $reservationRepo->getConstants()['STATUS_ACCEPTED'],
+                    'date' => [DB::raw('CONCAT(`date`,`from_time`)'), '<=', Carbon::now()]
+                ]
+            );
         return view('website.patient.profile.histories', compact('user', 'reservations'));
     }
 

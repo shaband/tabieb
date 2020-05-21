@@ -29,3 +29,13 @@ Broadcast::channel('App.notifications.{id}', function ($user, $id) {
 
     return (int)$user->id === (int)$id;
 });
+/*'App.calls.' . $this->subscriber . '.' . $this->getSubscriberId()*/
+
+Broadcast::channel('App.calls.doctor.{id}', function ($user, $id) {
+
+    return (int)$user->id === (int)$id;
+});
+Broadcast::channel('App.calls.patient.{id}', function ($user, $id) {
+
+    return (int)$user->id === (int)$id;
+});

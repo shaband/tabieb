@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 trait ModelHasImage
 {
 
+    use PushImage;
+
     /**
      * Model $this
      * @return MorphOne
@@ -25,6 +27,8 @@ trait ModelHasImage
 
     public function getImgAttribute()
     {
-        return optional($this->image)->file ?? 'https://www.shankarainfra.com/img/avatar.png';
+        return $this->attributes['img'] ??
+           // optional($this->image()->select('file')->first())->file ??
+            'https://www.shankarainfra.com/img/avatar.png';
     }
 }

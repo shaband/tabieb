@@ -46,6 +46,16 @@ class DoctorController extends Controller
         ], __("Loaded Successfully"));
     }
 
+    public function show()
+    {
+        return responseJson([
+            'doctor' => new DoctorResource ($this->repo->with([])->find('id'))
+        ], __("Loaded Successfully"));;
+
+
+    }
+
+
     /**
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse

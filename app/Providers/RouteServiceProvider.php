@@ -85,7 +85,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapPatientRoutes(): void
     {
         Route::prefix(\LaravelLocalization::setLocale() . '/patient')
-            ->middleware('web')
+            ->middleware(['web', 'website.auth'])
             ->namespace($this->namespace)
             ->group(base_path('routes/web/patient.php'));
     }
@@ -100,7 +100,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapDoctorRoutes(): void
     {
         Route::prefix(\LaravelLocalization::setLocale() . '/doctor')
-            ->middleware('web')
+            ->middleware(['web', 'website.auth'])
             ->namespace($this->namespace)
             ->group(base_path('routes/web/doctor.php'));
     }
@@ -129,7 +129,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes(): void
     {
-        Route::middleware('web')
+        Route::middleware(['web', 'website.auth'])
             ->namespace($this->namespace)
             ->group(base_path('routes/web/web.php'));
     }

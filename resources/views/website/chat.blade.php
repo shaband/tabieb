@@ -1,7 +1,6 @@
 @extends('website.layouts.app')
 
 @push('meta')
-    <meta name="authEndpoint" content="{{url($type.'/broadcasting/auth')}}">
     <meta name="channel" content="private-App.chat.{{$chat->id}}">
 @endpush
 
@@ -204,25 +203,16 @@
         });
 
 
-        // Enable pusher logging - don't include this in production
-        Pusher.logToConsole = true;
 
-        var pusher = new Pusher($('meta[name="pusher-key"]').attr('content'), {
-            cluster: 'eu',
-            authEndpoint: $('meta[name="authEndpoint"]').attr('content'),
-            auth: {
-                headers: {
-                    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-                }
+        var messenger = pusher.subscribe($('meta[name="channel"]').attr('content'));
+
+        messenger.bind('new-message', function (data) {
+            var type = '{{$type}}';
+            if (data.message['sender_type'] !== type + 's') {
+                var msg = data['msg_html'].replace('msg-sent', 'msg-received')
             }
-        });
-
-
-        var channel = pusher.subscribe($('meta[name="channel"]').attr('content'));
-
-        channel.bind('new-message', function (data) {
-            var msg = data['msg_html']
-            $('.inbox-msgs-container').append(msg).scrollTop(9999999999);
+            $('.inbox-msgs-container').append(msg);
+            $('.inbox-msgs-body').scrollTop(999999999)
         });
 
     </script>

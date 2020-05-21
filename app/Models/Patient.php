@@ -8,6 +8,7 @@ use App\Traits\HashPassword;
 use App\Traits\HasVerificationCode;
 use App\Traits\ModelHasImage;
 use App\Traits\ModelHasLogs;
+use App\Traits\PushImage;
 use HighIdeas\UsersOnline\Traits\UsersOnlineTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -23,7 +24,7 @@ class Patient extends Authenticatable implements JWTSubject
 
     public $timestamps = true;
 
-    protected $fillable = array('username', 'first_name', 'last_name', 'email', 'phone', 'password', 'civil_id', 'social_security_id', 'blocked_at', 'blocked_reason', 'birthdate', 'social_security_expired_at', 'district_id', 'area_id', 'block_id', 'email_verified_at', 'phone_verified_at', 'verification_code', 'last_login', 'gender', 'fb_token', 'google_token',);
+    protected $fillable = array('username', 'first_name', 'last_name', 'email', 'phone', 'password', 'civil_id', 'social_security_id', 'blocked_at', 'blocked_reason', 'birthdate', 'social_security_expired_at', 'district_id', 'area_id', 'block_id', 'email_verified_at', 'phone_verified_at', 'verification_code', 'last_login', 'gender', 'fb_token', 'google_token', 'reset_password_code');
 
 
     /**

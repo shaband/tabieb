@@ -207,6 +207,7 @@ class DoctorRepositoryEloquent extends BaseRepository implements DoctorRepositor
             'category',
             'sub_categories',
             'schedules',
+            'papers',
             'ratings' => function ($rating) {
                 $rating->with(
                     ['patient' => function ($patient) {
@@ -224,4 +225,18 @@ class DoctorRepositoryEloquent extends BaseRepository implements DoctorRepositor
             ->where('blocked_at', null)
             ->limit(10);
     }
+
+    public function generateResetCode(): int
+    {
+
+        $code = randNumber();
+
+        if ($this->count(['reset_password_code' => $code]) != 0) {
+
+            $this->generateResetCode();
+        }
+        return $code;
+
+    }
+
 }

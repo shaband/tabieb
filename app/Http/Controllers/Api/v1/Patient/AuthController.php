@@ -22,7 +22,7 @@ class AuthController extends Controller
 
     public function __construct(PatientRepository $repo)
     {
-        $this->middleware('auth:patient_api', ['except' => ['login', 'register', 'verify', 'resendVerification']]);
+        $this->middleware('auth:patient_api', ['except' => ['login', 'register', 'verify', 'resendVerification', 'sendResetPassCode', 'resetPassword']]);
         auth()->setDefaultDriver('patient_api');
 
         $this->repo = $repo;
@@ -100,6 +100,7 @@ class AuthController extends Controller
         }
 
         $response = (new PatientResource($patient))->jsonSerialize();
+        $patient->setCache(config('session.lifetime') * 60);
 
         $response['token'] = auth()->refresh();
         return responseJson(['patient' => $response]);
@@ -120,12 +121,14 @@ class AuthController extends Controller
             'device.token' => 'nullable|string',
             'device.token_type' => 'nullable|integer'
         ];
-        $this->validate($request, $roles);
+        $this->validate($request, $roles, [
+            'email.exists:' . __("Email or Password is incorrect")
+        ]);
         $credentials = request(['email', 'password']);
         $patient = $this->repo->findWhere(request()->only('email'))->first();
 
         if (!Hash::check($request->password, $patient->password)) {
-            return $this->UnauthorizedResponse(__('Wrong Password'));
+            return $this->UnauthorizedResponse(__('Password is incorrect'));
 
         }
         if ($patient->phone_verified_at == null) {
@@ -139,6 +142,7 @@ class AuthController extends Controller
             return $this->UnauthorizedResponse(__('Unauthorized'));
 
         }
+        auth()->user()->setCache(config('session.lifetime') * 60);
 
         return responseJson(['patient' =>
                 ['token' => $token]
@@ -155,6 +159,7 @@ class AuthController extends Controller
      */
     public function logout()
     {
+        auth()->user()->pullCache();
         auth()->logout();
 
         return responseJson(null, __("Successfully logged out"));
@@ -200,6 +205,7 @@ class AuthController extends Controller
             return $this->UnauthorizedResponse(__('Unauthorized'));
 
         }
+        auth()->user()->setCache(config('session.lifetime') * 60);
 
         return responseJson(
             [
@@ -229,4 +235,29 @@ class AuthController extends Controller
 
             ], 401);
     }
+
+    public function sendResetPassCode(Request $request)
+    {
+
+        $this->validate($request, [
+            'email' => 'required|email|exists:patients,email',
+        ]);
+        $code = $this->repo->generateResetCode();
+        $this->repo->where('email', $request->email)->update(['reset_password_code' => $code]);
+
+        return responseJson(['code' => $code], __("Code Sent"));
+    }
+
+    public function resetPassword(Request $request)
+    {
+
+        $this->validate($request, [
+            'code' => 'required|integer|exists:patients,reset_password_code',
+            'password' => 'required|string|confirmed'
+        ]);
+        $this->repo->where('reset_password_code', $request->code)->update(['password' => Hash::make($request->password), 'reset_password_code' => null]);
+
+        return responseJson(null, __("Password Updated"));
+    }
+
 }

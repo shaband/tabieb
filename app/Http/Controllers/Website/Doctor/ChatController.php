@@ -11,6 +11,7 @@ use App\Models\Attachment;
 use App\Repositories\interfaces\ChatRepository;
 use App\Repositories\interfaces\MessageRepository;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -29,17 +30,9 @@ class ChatController extends Controller
             $chat->setRelation('doctor', auth()->user());
         });
 
-        $chat = optional($inbox->first())->load('messages');
-
-        if ($chat_id) {
-            $chat = $this->repo->with(['patient', 'messages', 'doctor'])
-                ->find($chat_id)
-                ->setRelation('doctor', auth()->user());
-        }
-
         return view('website.chat', [
             'inbox' => $inbox,
-            'chat' => $chat,
+            'chat' => $this->repo->getSelectedOrFirst($inbox, $chat_id),
             'type' => 'doctor'
         ]);
     }
@@ -52,7 +45,6 @@ class ChatController extends Controller
                 'chat_id' => $id,
             ];
         $message = $this->repo->saveMessage($inputs);
-        MessageSent::dispatch($message->load('sender'), 'doctor', true);
         return responseJson([
             'message' => new MessageResource($message)
         ], __("Loaded Successfully"));

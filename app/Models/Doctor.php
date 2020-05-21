@@ -8,7 +8,6 @@ use App\Traits\ColumnTranslation;
 use App\Traits\HashPassword;
 use App\Traits\ModelHasImage;
 use App\Traits\ModelHasLogs;
-use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -21,11 +20,11 @@ use Illuminate\Notifications\Notifiable;
 use Spatie\Activitylog\Traits\CausesActivity;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use \HighIdeas\UsersOnline\Traits\UsersOnlineTrait;
-use stdClass;
 
 class Doctor extends Authenticatable implements JWTSubject
 {
     use Notifiable, ColumnTranslation, ModelHasImage, HashPassword, ModelHasLogs, CausesActivity, UsersOnlineTrait;
+
 
     const  GENDER_MALE = 1;
     const  GENDER_FEMALE = 2;
@@ -35,7 +34,9 @@ class Doctor extends Authenticatable implements JWTSubject
         'first_name_en', 'last_name_en', 'last_name_ar', 'first_name_ar',
         'title_ar', 'title_en'
     ];
-    protected $fillable = array('first_name_en', 'last_name_en', 'last_name_ar', 'first_name_ar', 'description_ar', 'description_en', 'title_ar', 'title_en', 'email', 'password', 'phone', 'category_id', 'price', 'period', 'last_login', 'email_verified_at', 'phone_verified_at', 'civil_id', 'verification_code', 'remember_token', 'gender', 'blocked_at', 'blocked_reason', 'license_number');
+    protected $fillable = array('first_name_en', 'last_name_en', 'last_name_ar', 'first_name_ar', 'description_ar', 'description_en', 'title_ar', 'title_en', 'email', 'password', 'phone', 'category_id', 'price', 'period', 'last_login', 'email_verified_at', 'phone_verified_at', 'civil_id', 'verification_code', 'remember_token', 'gender', 'blocked_at', 'blocked_reason', 'license_number'
+    , 'reset_password_code'
+    );
 
 
     /**
@@ -158,7 +159,8 @@ class Doctor extends Authenticatable implements JWTSubject
 
     public function getLogoAttribute()
     {
-        return optional($this->logo_image)->file ?? asset('design/images/doctor-logo.png');
+
+        return $this->logo_image()->select('file')->first('file')->file ?? asset('design/images/doctor-logo.png');
     }
 
     public function getNameAttribute()
@@ -206,7 +208,6 @@ class Doctor extends Authenticatable implements JWTSubject
         $available = $this->available_on;
         return collect($available['times'])->first() ?? [];
     }
-
 
 
     /*scopes*/

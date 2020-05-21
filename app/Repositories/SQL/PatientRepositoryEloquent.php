@@ -118,4 +118,16 @@ class PatientRepositoryEloquent extends BaseRepository implements PatientReposit
         }
     }
 
+    public function generateResetCode(): int
+    {
+        $code = randNumber();
+
+        if ($this->count(['reset_password_code' => $code]) != 0) {
+
+            $this->generateResetCode();
+        }
+        return $code;
+
+    }
+
 }

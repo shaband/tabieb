@@ -22,4 +22,6 @@ interface ChatRepository extends BaseInterface
 
     public function saveMessageFile(Message &$message, UploadedFile $file);
 
+    public function getSelectedOrFirst($chats, ?int $chat_id = null);
+
 }

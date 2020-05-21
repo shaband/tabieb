@@ -16,7 +16,9 @@ trait  HasVerificationCode
     {
 
         static::creating(function (Model $model) {
-            $model->verification_code = rand(00000, 99999);
+
+            $model->verification_code = randNumber();
+
         });
 
 
