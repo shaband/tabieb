@@ -47,7 +47,7 @@ class PrescriptionRepositoryEloquent extends BaseRepository implements Prescript
     public function finishPrescription($id)
     {
 
-        return $this->query()->where('id', $id)
+        return $this->where('id', $id)
             ->update(
                 [
                     'phramacy_took_at' => Carbon::now(),

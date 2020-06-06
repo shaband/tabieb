@@ -17,4 +17,13 @@ interface CategoryRepository extends BaseInterface
 
     public function getSubCategoriesForMainCategory(int $category_id): Collection;
     public function OpenCategoriesList();
+
+       /**
+     * Delete a entity in repository by id
+     *
+     * @param $id
+     *
+     * @return int
+     */
+    public function delete($id);
 }

@@ -6,15 +6,8 @@
 
         var call_channel = $('meta[name="calls"]').attr('content')
         var calls = pusher.subscribe(call_channel);
-
         calls.bind('new-call', function (data) {
-
             var audio = new Audio('{{url('tokbox/ring.mp3')}}');
-            /*audio.addEventListener('ended', function() {
-                this.currentTime = 0;
-                this.play();
-            }, false);
-    */
             audio.play();
             Swal.fire({
                 //       position: 'top-end',
@@ -40,10 +33,16 @@
                     method: 'get',
                     url: route('quick-call.respond'),
                     data: {
-                        status: status
+                        status: status,
+                        reservation_id: data.reservation.id,
                     },
                     success: function (data) {
-                        debugger;
+                        if (status === 2) {
+                            window.open(route('quick-call.accept', {
+                                reservation_id: data.id,
+                            }), '_blank')
+                        }
+
                     }
                 })
 

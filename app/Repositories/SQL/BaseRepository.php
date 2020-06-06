@@ -24,6 +24,8 @@ abstract class BaseRepository extends MainRepository implements BaseInterface
 {
 
 
+    protected $per_page = 10;
+
     /**
      * Boot up the repository, pushing criteria
      */
@@ -32,11 +34,52 @@ abstract class BaseRepository extends MainRepository implements BaseInterface
         $this->pushCriteria(app(RequestCriteria::class));
     }
 
+
+    /**
+     * Find data by multiple fields
+     *
+     * @param array $where
+     * @param array $columns
+     *
+     * @param bool $pagination
+     * @return mixed
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
+     */
+    public function findWhere(array $where, $pagination = false, $columns = ['*'])
+    {
+        $this->applyCriteria();
+        $this->applyScope();
+
+        $this->applyConditions($where);
+        $model = $this->model->select($columns);
+        if ($pagination) {
+            $model = $model->paginate($this->per_page);
+        } else {
+            $model = $model->get();
+        }
+        $this->resetModel();
+
+        return $this->parserResult($model);
+
+    }
+
+    /**
+     * @param array $attributes
+     * @param array $values
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection|mixed
+     */
+    public function firstOrCreate(array $attributes = [], $values = [])
+    {
+        return $this->model->firstOrCreate($attributes, $values);
+
+    }
+
     /**
      * @return mixed
      * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
-    public function cursor()
+    public
+    function cursor()
     {
         $this->applyCriteria();
         $this->applyScope();
@@ -59,7 +102,8 @@ abstract class BaseRepository extends MainRepository implements BaseInterface
      * @param null $type
      * @return array
      */
-    public function saveFile(UploadedFile $file, string $path = '', $type = null): array
+    public
+    function saveFile(UploadedFile $file, string $path = '', $type = null): array
     {
 
 
@@ -82,7 +126,8 @@ abstract class BaseRepository extends MainRepository implements BaseInterface
      * @return Model
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function Block(Request $request, int $id)
+    public
+    function Block(Request $request, int $id)
     {
         $fields = [
             'blocked_at' => $request->block ? Carbon::now() : null,
@@ -96,7 +141,8 @@ abstract class BaseRepository extends MainRepository implements BaseInterface
      * @return ReflectionClass
      * @throws \ReflectionException
      */
-    public static function getReflection(): ReflectionClass
+    public
+    static function getReflection(): ReflectionClass
     {
         $model = app(get_called_class())->model();
 
@@ -109,7 +155,8 @@ abstract class BaseRepository extends MainRepository implements BaseInterface
      * @return array|int
      * @throws \ReflectionException
      */
-    public static function getConstants($keyContains = null, $returnCount = false)
+    public
+    static function getConstants($keyContains = null, $returnCount = false)
     {
         // Get all constants
         $constants = self::getReflection()->getConstants();
@@ -127,7 +174,8 @@ abstract class BaseRepository extends MainRepository implements BaseInterface
     }
 
 
-    public static function getConstantsFlipped($keyContains = null, $returnCount = false)
+    public
+    static function getConstantsFlipped($keyContains = null, $returnCount = false)
     {
         $constants = self::getConstants($keyContains, $returnCount);
 
@@ -139,7 +187,8 @@ abstract class BaseRepository extends MainRepository implements BaseInterface
     /*
      * get all alias with  it's reference models
      */
-    public function getAliasReference(): array
+    public
+    function getAliasReference(): array
     {
         return array_flip(Relation::morphMap());
 
@@ -150,7 +199,8 @@ abstract class BaseRepository extends MainRepository implements BaseInterface
      * @param null $model
      * @return string
      */
-    public function getMorphedAlias($model = null): string
+    public
+    function getMorphedAlias($model = null): string
     {
 
         $model = $model ?? $this->model();

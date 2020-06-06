@@ -18,11 +18,14 @@ class ScheduleController extends Controller
 
     public function index(Request $request)
     {
-        $this->validate($request,['day'=>'nullable|integer|min:1|max:7']);
-        $schedules = $this->repo->query()->where('doctor_id', auth()->id())
-            ->ofDay($request->day)/*->with('reservations')*/->get();
-        $schedules = ScheduleResource::collection($schedules);
-        return responseJson(compact('schedules'), __("Loaded Successfully"));
+        $this->validate($request, ['day' => 'nullable|integer|min:1|max:7']);
+        $schedules = $this->repo->where('doctor_id', auth()->id())
+            ->ofDay($request->day)/*->with('reservations')*/ ->get();
+        $schedules_by_days = [];
+        foreach ($this->repo::getConstants('DAY') as $day) {
+            $schedules_by_days[$day] = ScheduleResource::collection($schedules->where('day', $day));
+        }
+        return responseJson(['schedules' => $schedules_by_days], __("Loaded Successfully"));
     }
 
     public function create(Request $request)

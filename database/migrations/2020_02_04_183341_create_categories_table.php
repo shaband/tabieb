@@ -14,7 +14,7 @@ class CreateCategoriesTable extends Migration {
 			$table->bigInteger('category_id')->unsigned()->index()->nullable();
 			$table->text('description_ar')->nullable();
 			$table->text('description_en')->nullable();
-			$table->timestamp('blocked_at');
+			$table->timestamp('blocked_at')->default(null)->nullable();
 			$table->timestamps();
 		});
 	}

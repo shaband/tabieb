@@ -1,6 +1,11 @@
 <?php
 
 
+function heading_line()
+{
+    return asset('design/images/heading-after.png');
+}
+
 /**
  * @param int $status
  * @param string|null $msg
@@ -54,8 +59,9 @@ function fileUrl($image)
  * @param int $digits
  * @return int
  */
-function randNumber(int $digits=5):int
+function randNumber(int $digits = 5): int
 {
 
-    return  rand(pow(10, $digits - 1), pow(10, $digits) - 1);
+    return rand(pow(10, $digits - 1), pow(10, $digits) - 1);
 }
+

@@ -33,7 +33,7 @@ class ContactController extends MainController
     {
         $this->authorize('View ' . $this->roleName);
 
-        $this->repo->query()->where('seen_at', null)->update(['seen_at' => Carbon::now(), 'seen_by' => auth()->id()]);
+        $this->repo->where('seen_at', null)->update(['seen_at' => Carbon::now(), 'seen_by' => auth()->id()]);
         $contacts = $this->repo->orderBy('seen_at', 'desc')->all();
 
 

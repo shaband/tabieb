@@ -3,14 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Admins\AdminRequest;
 use App\Http\Requests\Admin\categories\CategoryRequest;
 use App\Repositories\interfaces\CategoryRepository;
 
 class CategoryController extends Controller
 {
     protected $repo;
-    protected $roleName='Category';
+    protected $roleName = 'Category';
 
     public function __construct(CategoryRepository $repo)
     {
@@ -24,9 +23,10 @@ class CategoryController extends Controller
     {
         $this->authorize('View ' . $this->roleName);
 
-        $categories = $this->repo->all();
+        $categories = $this->repo->main()->paginate(10);
+        $sub_categories = $this->repo->sub()->paginate(10);
 
-        return view('admin.categories.index', compact('categories'));
+        return view('admin.categories.index', compact('categories', 'sub_categories'));
     }
 
     /**
@@ -48,7 +48,7 @@ class CategoryController extends Controller
     {
         $this->authorize('Create ' . $this->roleName);
 
-        $category = $this->repo->create($request->all());
+        $this->repo->create($request->all());
         toast(__("Added successfully"), 'success');
 
         return redirect()->route('admin.categories.index');
@@ -63,7 +63,6 @@ class CategoryController extends Controller
     public function show($id)
     {
         $this->authorize('View ' . $this->roleName);
-
     }
 
     /**
@@ -90,7 +89,7 @@ class CategoryController extends Controller
     {
         $this->authorize('Edit ' . $this->roleName);
 
-        $category = $this->repo->update($request->all(), $id);
+        $this->repo->update($request->all(), $id);
 
         toast(__("Updated successfully"), 'success');
 
@@ -105,10 +104,10 @@ class CategoryController extends Controller
     {
         $this->authorize('Delete ' . $this->roleName);
 
+
         $this->repo->delete($id);
         toast(__("Deleted successfully"), 'success');
 
         return back();
-
     }
 }

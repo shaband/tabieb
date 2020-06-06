@@ -79,15 +79,26 @@ class ReservationController extends Controller
      */
     public function upcoming(Request $request)
     {
-        $reservation = $this->repo->query()->where('patient_id', auth()->id())
+        $reservation = $this->repo->where('patient_id', auth()->id())
             ->whereDate('date', '>=', Carbon::now())
             ->with('doctor')
-            ->whereIn('status', $this->repo::status())->get();
+            ->whereIn('status', $this->repo::status())
+            ->paginate(2);
 
-        $reservation = ReservationResource::collection($reservation);
+//TODO::add pagination
+        /*
+        $collection = ReservationResource::collection($reservation)->resource;
 
+                $pagination = $reservation->toArray();
+                $reservations=$pagination['data'];
+                unset($pagination['data']);
+                dd($pagination);
+        */
 
-        return responseJson(compact('reservation'), __('Loaded Successfully'));
+        return responseJson([
+            'reservation' => ReservationResource::collection($reservation),
+            //'pagination'=>$pagination
+        ], __('Loaded Successfully'));
     }
 
     /**
@@ -96,7 +107,7 @@ class ReservationController extends Controller
      */
     public function previous(Request $request)
     {
-        $reservation = $this->repo->query()
+        $reservation = $this->repo
             ->with('doctor')
             ->whereDate('date', '<', Carbon::now())
             //   ->whereTime('from_time', '<', Carbon::now())

@@ -1,5 +1,71 @@
 @extends('website.layouts.app')
+{{--
+@push('header')
+    <style>
 
+
+        input.star {
+            display: none;
+        }
+
+        label.star {
+            float: right;
+            padding: 10px;
+            font-size: 36px;
+            color: #444;
+            transition: all .2s;
+        }
+
+        input.star:checked ~ label.star:before {
+            content: '\f005';
+            color: #FD4;
+            transition: all .25s;
+        }
+
+
+        input.star-5:checked ~ label.star:before {
+            color: #FE7;
+            text-shadow: 0 0 20px #952;
+        }
+
+        input.star-1:checked ~ label.star:before {
+            color: #F62;
+        }
+
+        label.star:hover {
+            transform: rotate(-15deg) scale(1.3);
+        }
+
+        label.star:before {
+            content: '\f005';
+            font-family: Font Awesome 5 Free;
+        }
+
+        .rev-box {
+            overflow: hidden;
+            height: 0;
+            width: 100%;
+            transition: all .25s;
+        }
+
+        textarea.review {
+            width: 100%;
+        }
+
+        label.review {
+            display: block;
+            transition: opacity .25s;
+        }
+
+
+        input.star:checked ~ .rev-box {
+            height: 125px;
+            overflow: visible;
+        }
+
+    </style>
+@endpush
+--}}
 @section('title')
     {!! env("APP_NAME",'tabayib') !!}
 @endsection
@@ -43,7 +109,7 @@
                             <div class="col-lg-3 col-md-4 col-sm-6">
                                 <div class="doc-item" data-aos="fade-in">
                                     <div class="doc-img">
-                                        <img src="{!! $doctor->img !!}">
+                                        <img src="{!! asset($doctor->img) !!}">
                                         <div class="doc-price">{!! $doctor->price !!} {!! __("rs/h") !!}</div>
                                     </div>
                                     <div class="doc-dets">

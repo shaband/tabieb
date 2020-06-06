@@ -21,6 +21,22 @@ interface BaseInterface extends RepositoryInterface
     // public function firstByField($field, $value, $columns = ['*']);
 
     /**
+     * @param array $where
+     * @param string[] $columns
+     * @param bool $pagination
+     * @return mixed
+     */
+
+    public function findWhere(array $where, $pagination = false, $columns = ['*']);
+
+    /**
+     * @param array $attributes
+     * @param array $values
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection|mixed
+     */
+    public function firstOrCreate(array $attributes = [], array $values=[]);
+
+    /**
      * @return mixed
      */
     public function cursor();

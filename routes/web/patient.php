@@ -39,7 +39,12 @@ Route::group(['namespace' => 'Website\Patient', 'middleware' => ['localeSessionR
         Route::get('chat/{chat_id?}', 'ChatController@inbox')->name('chat.inbox');
 
 
-        Route::post('quick-call', 'ChatController@inbox')->name('chat.inbox');
+        Route::match(['post', 'get'], 'reservation/{reservation_id}/call', 'ReservationController@BeginCall')->name('reservation.rate');
+
+        Route::post('reservation/{reservation_id}/rate', 'ReservationController@rate')->name('reservation.rate');
+
+        Route::view('notifications', 'website.notifications')->name('notifications');
+
 
     });
 

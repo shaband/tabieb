@@ -29,7 +29,7 @@ Route::group(['namespace' => 'Website\Doctor', 'middleware' => ['localeSessionRe
 
         Route::get('change-password', 'DoctorController@changePassword')->name('profile.change-password');
         Route::match(['put', 'patch', 'post'], 'profile', 'DoctorController@update')->name('profile.update');
-        Route::post('schedules', 'DoctorController@storeSchedule')->name('profile.schedules');
+        Route::match(['get', 'post'], 'schedules', 'DoctorController@storeSchedule')->name('profile.schedules');
 
         Route::get('appointments', 'ReservationController@myAppointment')->name('profile.appointments');
         Route::get('requests', 'ReservationController@myRequests')->name('profile.requests');
@@ -43,6 +43,17 @@ Route::group(['namespace' => 'Website\Doctor', 'middleware' => ['localeSessionRe
 
         Route::get('chat/{chat_id?}', 'ChatController@inbox')->name('chat.inbox');
 
+
+        Route::post('reservation/{reservation_id}/call', 'ReservationController@BeginCall')->name('reservation.rate');
+
+
+        Route::get('prescription/{reservation_id}', 'PrescriptionController@show')->name('prescription.show');
+
+        Route::get('prescription/{reservation_id}/create', 'PrescriptionController@create')->name('prescription.create');
+
+        Route::post('prescription/{reservation_id}/create', 'PrescriptionController@store');
+
+        Route::view('notifications', 'website.notifications')->name('notifications');
     });
 
 

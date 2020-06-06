@@ -24,7 +24,6 @@ class ModelServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
     }
 
     /**
@@ -41,9 +40,11 @@ class ModelServiceProvider extends ServiceProvider
             'pharmacies' => Pharmacy::class,
             'Pharmacy_reps' => PharmacyRep::class,
             'medical_histories' => MedicalHistory::class,
+            'prescriptions' => Prescription::class,
+            'reservations' => Reservation::class,
         ]);
 
         Prescription::observe(prescriptionObserver::class);
-      //  Message::observe(PushMessageNotificationObserver::class);
+        //  Message::observe(PushMessageNotificationObserver::class);
     }
 }

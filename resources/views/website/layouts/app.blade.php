@@ -155,6 +155,7 @@
     @stack('scripts')
 
     @include('website.pusher_script._call_script')
+    @include('website.pusher_script._notifications_script')
 </div>
 
 

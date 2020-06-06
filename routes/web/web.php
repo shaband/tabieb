@@ -10,7 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['prefix' => LaravelLocalization::setLocale(),
+
+use App\Models\Patient;
+use App\Notifications\PrescriptionAdded;
+
+Route::group([
+    'prefix' => LaravelLocalization::setLocale(),
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
     'namespace' => 'Website'
 ], function () {
@@ -20,7 +25,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     try {
         view()->share('settings', \App\Models\Setting::pluck('value', 'name'));
     } catch (Exception $e) {
-
     }
     Route::get('/home', 'HomeController@index')->name('home');
     Route::view('/about', 'website.about')->name('about');
@@ -35,10 +39,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     //TODO::show biling form  with comming data  and remove  reserve direct
     Route::get('reservation/reserve', 'ReservationController@createWithoutBilling')->name('reservation.reserve')->middleware(['patient.auth']);
 
-
-    Route::get('/quick-call', 'ReservationController@QuickCall')->middleware(['patient.auth'])->name('quick-call');
-    Route::get('/quick-call/respond', 'ReservationController@QuickCallRespond')->middleware(['doctor.auth'])->name('quick-call.respond');
-
+    Route::match(['get', 'post'], '/quick-call', 'ReservationController@QuickCall')->middleware(['patient.auth'])->name('quick-call');
+    Route::match(['get', 'post'], '/quick-call/response/{reservation_id}', 'ReservationController@QuickCall')->middleware(['doctor.auth'])->name('quick-call.accept');
+    Route::match(['get', 'post'], '/quick-call/respond', 'ReservationController@QuickCallRespond')->middleware(['doctor.auth'])->name('quick-call.respond');
 });
 Route::get('/test', 'HomeController@test');
 
@@ -47,4 +50,11 @@ Route::get('/test', 'HomeController@test');
 Route::get('auth/{provider}/login/{type}', 'Auth\SocialController@redirectToProvider')->name('social.login');
 Route::get('auth/{provider}/callback', 'Auth\SocialController@handleProviderCallback');
 
+Route::get('push', function () {
 
+    $user = Patient::where('email', 'mahmoudshaband@gmail.com')->first();
+    $prescription = $user->prescription()->latest()->first();
+
+    $user->notify(new PrescriptionAdded($prescription));
+    dd($user, $prescription);
+});

@@ -7,6 +7,56 @@
 @endpush
 
 @push('header')
+    <style>
+        input.star {
+            display: none;
+        }
+
+        label.star {
+            float: right;
+            padding: 10px;
+            font-size: 36px;
+            color: #444;
+            transition: all .2s;
+        }
+
+        input.star:checked ~ label.star:before {
+            content: '\f005';
+            color: #FD4;
+            transition: all .25s;
+        }
+
+
+        input.star-5:checked ~ label.star:before {
+            color: #FE7;
+            text-shadow: 0 0 20px #952;
+        }
+
+        input.star-1:checked ~ label.star:before {
+            color: #F62;
+        }
+
+        label.star:hover {
+            transform: rotate(-15deg) scale(1.3);
+        }
+
+        label.star:before {
+            content: '\f005';
+            font-family: Font Awesome 5 Free;
+        }
+
+
+        label.review {
+            display: block;
+            transition: opacity .25s;
+        }
+
+
+        input.star:checked ~ .rev-box {
+            height: 125px;
+            overflow: visible;
+        }
+    </style>
 
     <script src="https://static.opentok.com/v2/js/opentok.min.js"></script>
 @endpush
@@ -19,10 +69,10 @@
     <!-- background-color: #f3fffb; -->
     <div id="call-pg">
         <div class="container">
-            <div id="call-container">
+            <div id="call-container hidden-chat">
                 <div class="call-inner-container">
                     <!-- <div class="row">
-                            <div class="col-md-8"> -->
+                                <div class="col-md-8"> -->
                     <div class="call-blk">
                         <div class="call-header">
                             <a id="toggle-fs" class="call-icon btn"><i class="fas fa-compress"></i></a>
@@ -30,10 +80,10 @@
                         <div class="call-body">
                             <div id="subscriber" class="call-wrapper">
                                 {{--     <img src="images/doc-02.png">
-                                         --}}</div>
+                                             --}}</div>
                             <div id="publisher" class="transmitter-wrapper">
                                 {{--         <img src="images/doc-03.png">
-                                     --}} </div>
+                                         --}} </div>
                         </div>
                         <div class="call-footer">
                             <a id="microphone" class="call-icon btn" onClick="toggleAudio()">
@@ -44,167 +94,179 @@
                                 <i class="fas fa-video aval"></i>
                                 <i class="fas fa-video-slash unaval"></i>
                             </a>
-                            <a id="toggle-chat" class="call-icon btn">
-                                <i class="fas fa-comment aval"></i>
-                                <i class="fas fa-comment-slash unaval"></i>
-                            </a>
-                            <a id="finish-class" class="call-icon btn btn-danger"><i class="fas fa-phone"></i></a>
+                            {{-- <a id="toggle-chat" class="call-icon btn">
+                                     <i class="fas fa-comment aval"></i>
+                                     <i class="fas fa-comment-slash unaval"></i>
+                                 </a>--}}
+                            <a id="finish-class" class="call-icon btn btn-danger" onclick="finishCall()"><i
+                                    class="fas fa-phone"></i></a>
                         </div>
                     </div>
                     <!-- </div>
-                            <div class="col-md-4"> -->
-                    <div class="chat-blk">
-                        <div class="chat-header">
-                            <div class="recipient-data">
-                                <img class="usr-ico" src="images/doc-02.png">
-                                <div class="rec-tit">
-                                    <h6>user name 1</h6>
-                                    <div class="usr-status active">available</div>
-                                </div>
-                            </div>
-                            <div class="chat-close">
-                                <a id="hide-chat"><i class="fas fa-times"></i></a>
-                            </div>
-                        </div>
-                        <div class="chat-body">
-                            <div class="chat-item">
-                                <img class="usr-ico" src="images/doc-03.png">
-                                <div class="chat-item-dets">
-                                    <h6>user name 2</h6>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                </div>
-                            </div>
-                            <div class="chat-item">
-                                <img class="usr-ico" src="images/doc-03.png">
-                                <div class="chat-item-dets">
-                                    <h6>user name 1</h6>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit
-                                        amet
-                                        consectetur adipisicing elit.</p>
-                                </div>
-                            </div>
-                            <div class="chat-item">
-                                <img class="usr-ico" src="images/doc-03.png">
-                                <div class="chat-item-dets">
-                                    <h6>user name 2</h6>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                </div>
-                            </div>
-                            <div class="chat-item">
-                                <img class="usr-ico" src="images/doc-03.png">
-                                <div class="chat-item-dets">
-                                    <h6>user name 1</h6>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit
-                                        amet
-                                        consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing
-                                        elit.</p>
-                                </div>
-                            </div>
-                            <div class="chat-item">
-                                <img class="usr-ico" src="images/doc-03.png">
-                                <div class="chat-item-dets">
-                                    <h6>user name 1</h6>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit
-                                        amet
-                                        consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing
-                                        elit.</p>
-                                </div>
-                            </div>
-                            <div class="chat-item">
-                                <img class="usr-ico" src="images/doc-03.png">
-                                <div class="chat-item-dets">
-                                    <h6>user name 1</h6>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit
-                                        amet
-                                        consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing
-                                        elit.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="chat-footer">
-                            <form>
-                                <input class="form-control" placeholder="write your message...">
-                            </form>
-                        </div>
-                    </div>
-                    <!-- </div>
+                                <div class="col-md-4"> -->
+                {{--         <div class="chat-blk">
+                             <div class="chat-header">
+                                 <div class="recipient-data">
+                                     <img class="usr-ico" src="images/doc-02.png">
+                                     <div class="rec-tit">
+                                         <h6>user name 1</h6>
+                                         <div class="usr-status active">available</div>
+                                     </div>
+                                 </div>
+                                 <div class="chat-close">
+                                     <a id="hide-chat"><i class="fas fa-times"></i></a>
+                                 </div>
+                             </div>
+                             <div class="chat-body">
+                                 <div class="chat-item">
+                                     <img class="usr-ico" src="images/doc-03.png">
+                                     <div class="chat-item-dets">
+                                         <h6>user name 2</h6>
+                                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                     </div>
+                                 </div>
+                                 <div class="chat-item">
+                                     <img class="usr-ico" src="images/doc-03.png">
+                                     <div class="chat-item-dets">
+                                         <h6>user name 1</h6>
+                                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit
+                                             amet
+                                             consectetur adipisicing elit.</p>
+                                     </div>
+                                 </div>
+                                 <div class="chat-item">
+                                     <img class="usr-ico" src="images/doc-03.png">
+                                     <div class="chat-item-dets">
+                                         <h6>user name 2</h6>
+                                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                     </div>
+                                 </div>
+                                 <div class="chat-item">
+                                     <img class="usr-ico" src="images/doc-03.png">
+                                     <div class="chat-item-dets">
+                                         <h6>user name 1</h6>
+                                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit
+                                             amet
+                                             consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing
+                                             elit.</p>
+                                     </div>
+                                 </div>
+                                 <div class="chat-item">
+                                     <img class="usr-ico" src="images/doc-03.png">
+                                     <div class="chat-item-dets">
+                                         <h6>user name 1</h6>
+                                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit
+                                             amet
+                                             consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing
+                                             elit.</p>
+                                     </div>
+                                 </div>
+                                 <div class="chat-item">
+                                     <img class="usr-ico" src="images/doc-03.png">
+                                     <div class="chat-item-dets">
+                                         <h6>user name 1</h6>
+                                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit
+                                             amet
+                                             consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing
+                                             elit.</p>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="chat-footer">
+                                 <form>
+                                     <input class="form-control" placeholder="write your message...">
+                                 </form>
+                             </div>
+                         </div>
+                --}}
+                <!-- </div>
                         </div> -->
                 </div>
             </div>
         </div>
     </div>
-    </section>
     <!-- END Main Content -->
+    @if($client_type=='patient')
+        <!-- Modal -->
 
+        <div class="modal fade" id="ratingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            {!! Form::open(['method'=>'post','route'=>['patient.reservation.rate',$reservation->id]]) !!}
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">{{ __('Rate Reservation')}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="d-flex justify-content-center flex-row-reverse">
+                            <input class="star star-5" id="star-5-2" type="radio" value="5" name="rate"/>
+                            <label class="star star-5 fas fa-star" for="star-5-2"></label>
+                            <input class="star star-4 " id="star-4-2" type="radio" value="4" name="rate"/>
+                            <label class="star star-4 fas fa-star" for="star-4-2"></label>
+                            <input class="star star-3 " id="star-3-2" type="radio" value="3" name="rate"/>
+                            <label class="star star-3 fas fa-star" for="star-3-2"></label>
+                            <input class="star star-2 " id="star-2-2" type="radio" value="2" name="rate"/>
+                            <label class="star star-2 fas fa-star" for="star-2-2"></label>
+                            <input class="star star-1" id="star-1-2" type="radio" value="1" name="rate"/>
+                            <label class="star star-1 fas fa-star" for="star-1-2"></label>
+                        </div>
+                        <div {{--class="rev-box"--}}>
+                            <textarea class="{{--review--}} form-control" name="description"
+                                      placeholder="{!! __("Enter Your Notes") !!}"></textarea>
 
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Close')}}</button>
+                        <button type="submit" class="btn btn-success">{{ __("Add Rate")}}</button>
+                    </div>
+                </div>
+            </div>
+            {!! Form::close() !!}
+        </div>
+    @endif
 @endsection
 
 @push('scripts')
     <script>
-        $('form').submit(function (e) {
-            e.preventDefault(); // prevents page reloading
-            var form = $('#message-form');
-            var data = new FormData(form[0])
+        /* //chat
+             $('form').submit(function (e) {
+                 e.preventDefault(); // prevents page reloading
+                 var form = $('#message-form');
+                 var data = new FormData(form[0])
 
-            $.ajax({
-                method: 'POST',
-                url: form.attr('action'),
-                cache: false,
-                contentType: false,
-                data: data,
-                processData: false,
-                enctype: 'multipart/form-data',
-                success: function (data) {
+                 $.ajax({
+                     method: 'POST',
+                     url: form.attr('action'),
+                     cache: false,
+                     contentType: false,
+                     data: data,
+                     processData: false,
+                     enctype: 'multipart/form-data',
+                     success: function (data) {
 
-                    $('input[name="message"]').val('');
-                    var file_input = $('input[name="image"]')
-                    file_input.replaceWith(file_input.val('').clone(true));
-                },
-                fail: function (err) {
-                }
-            })
-            return false;
-        });
+                         $('input[name="message"]').val('');
+                         var file_input = $('input[name="image"]')
+                         file_input.replaceWith(file_input.val('').clone(true));
+                     },
+                     fail: function (err) {
+                     }
+                 })
+                 return false;
+             });
 
-  /*      var pusher = new Pusher($('meta[name="pusher-key"]').attr('content'), {
-            cluster: 'eu',
-            authEndpoint: $('meta[name="authEndpoint"]').attr('content'),
-            auth: {
-                headers: {
-                    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-                }
-            }
-        });
-
-
-        var channel = pusher.subscribe($('meta[name="channel"]').attr('content'));
-
-        channel.bind('new-message', function (data) {
-            var type = '{{$type}}';
-            if (data.message['sender_type'] !== type + 's') {
-                var msg = data['msg_html'].replace('msg-sent', 'msg-received')
-            }
-            $('.inbox-msgs-container').append(msg);
-            $('.inbox-msgs-body').scrollTop(999999999)
-        });
-
-*/
-        /* eslint-disable no-unused-vars */
-        // Make a copy of this file and save it as config.js (in the js directory).
-
-        // Set this to the base URL of your sample server, such as 'https://your-app-name.herokuapp.com'.
-        // Do not include the trailing slash. See the README for more information:
-
-
-        // OR, if you have not set up a web server that runs the learning-opentok-php code,
-        // set these values to OpenTok API key, a valid session ID, and a token for the session.
-        // For test purposes, you can obtain these from https://tokbox.com/account.
-
+             //end chat*/
+        var client_type = '{{$client_type}}';
         var API_KEY = '{!!config('services.tokbox.key') !!}';
         var SESSION_ID = '{!! $sessionId !!}';
         var TOKEN = '{!! $token !!}';
         var callAudio = true;
         var callVideo = true;
+        var session, publisher, sub;
 
         function handleError(error) {
             if (error) {
@@ -212,10 +274,6 @@
             }
         }
 
-        var session;
-
-        var publisher;
-        var sub;
 
         function initializeSession() {
             session = OT.initSession(apiKey, sessionId);
@@ -226,18 +284,28 @@
                     insertMode: 'append',
                     width: '100%',
                     height: '100%',
-         //           subscribeToAudio: true,
+                    //           subscribeToAudio: true,
                     // convert to false for audio calls
                     //   subscribeToVideo:true
 
                 };
                 sub = session.subscribe(event.stream, 'subscriber', subscriberOptions, handleError);
+
+                sub.on('disconnected destroyed', function ($e) {
+
+                })
             });
 
             session.on('sessionDisconnected', function sessionDisconnected(event) {
+                // debugger;
+                redirectionAfterEnd()
+
                 console.log('You were disconnected from the session.', event.reason);
             });
 
+            session.on("c~onnectionDestroyed", function (event) {
+                redirectionAfterEnd()
+            });
             // initialize the publisher
             var publisherOptions = {
                 insertMode: 'append',
@@ -267,36 +335,31 @@
             initializeSession();
         }
 
-        /*  else if (SAMPLE_SERVER_BASE_URL) {
-            // Make an Ajax request to get the OpenTok API key, session ID, and token from the server
-            fetch(SAMPLE_SERVER_BASE_URL + '/session').then(function fetch(res) {
-                return res.json();
-            }).then(function fetchJson(json) {
-                apiKey = json.apiKey;
-                sessionId = json.sessionId;
-                token = json.token;
-
-                initializeSession();
-            }).catch(function catchErr(error) {
-                handleError(error);
-                alert('Failed to get opentok sessionId and token. Make sure you have updated the config.js file.');
-            });
-        }
-     */
-
 
         function toggleAudio() {
             callAudio = !callAudio;
-
             publisher.publishAudio(callVideo)
         }
 
         function toggleCamera() {
             callVideo = !callVideo;
-
-            publisher.publishAudio(callVideo)
+            publisher.publishVideo(callVideo)
         }
 
+        function finishCall() {
+            session.disconnect();
+        }
+
+
+        function redirectionAfterEnd() {
+            if (client_type === 'doctor') {
+                window.location.replace(route('doctor.prescription.create',{!! $reservation->id !!}));
+            } else {
+                $("#ratingModal").modal('toggle')
+            }
+
+
+        }
     </script>
 
 @endpush

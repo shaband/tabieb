@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Website\Doctor;
 
 use App\Http\Controllers\Controller;
+use App\Models\Chat;
 use App\Repositories\interfaces\ReservationRepository as ReservationRepositoryAlias;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -99,6 +100,28 @@ class ReservationController extends Controller
 
         toast('Updated Successfully', 'success');
         return back();
+    }
+
+
+    public function BeginCall($reservation_id)
+    {
+
+        [
+            'sessionId' => $sessionId,
+            'token' => $token,
+            'reservation' => $reservation,
+        ] =
+            $this->repo->startCall($reservation_id, 'patient', $ring = true);
+
+        return view('call', [
+                'token' => $token,
+                'sessionId' => $sessionId,
+                'type' => 'patient',
+                'reservation' => $reservation,
+                'status' => $this->repo::getConstants()['STATUS_ACTIVE'],
+                'chat' => new Chat()
+            ]
+        );
     }
 
 }

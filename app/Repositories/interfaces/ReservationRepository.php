@@ -29,7 +29,7 @@ interface ReservationRepository extends BaseInterface
 
     public function makeQuickCall(Request $request): array;
 
-    public function startCall(string $reservation_id);
+    public function startCall(string $reservation_id, ?string $type = "patient",$ring=true);
 
     public function archiveCall(Request $request);
 

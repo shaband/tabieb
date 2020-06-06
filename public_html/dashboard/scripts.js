@@ -7,10 +7,11 @@ $.ajaxSetup({
 
 $(".datatable-buttons").DataTable(
     {
-        responsive: true,
-        lengthChange: !1,
+        // responsive: true,
+        //  lengthChange: !1,
+        paging: false,
         buttons: ["copy", "excel", "pdf"],
-        keys: !0
+        //   keys: !0
     }
 );
 

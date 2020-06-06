@@ -174,4 +174,9 @@ class Patient extends Authenticatable implements JWTSubject
         return $this->first_name . ' ' . $this->last_name;
     }
 
+
+    public function receivesBroadcastNotificationsOn()
+    {
+        return 'App.notifications.patient.'. $this->id;
+    }
 }

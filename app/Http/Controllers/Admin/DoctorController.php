@@ -20,7 +20,7 @@ class DoctorController extends Controller
     public function __construct(DoctorRepository $repo)
     {
         $this->repo = $repo;
-        parent::__construct($repo,$this->roleName);
+        parent::__construct($repo, $this->roleName);
     }
 
     /**
@@ -30,8 +30,8 @@ class DoctorController extends Controller
     {
         $this->authorize('View ' . $this->roleName);
 
-        $open_doctors = $this->repo->findWhere(['blocked_at' => null]);
-        $blocked_doctors = $this->repo->findWhere([['blocked_at', '!=', null]]);
+        $open_doctors = $this->repo->findWhere(['blocked_at' => null], true);
+        $blocked_doctors = $this->repo->findWhere([['blocked_at', '!=', null]], true);
 
         return view($this->viewPath . 'index', compact('open_doctors', 'blocked_doctors'));
     }

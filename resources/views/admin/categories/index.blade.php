@@ -30,12 +30,12 @@
                         <div class="tab-pane fade show active" id="main-category" role="tabpanel"
                              aria-labelledby="main-cat-tab`">
 
-                            @include('admin.categories._table',['categories'=>$categories->where('category_id',null),'type'=>'main'])
+                            @include('admin.categories._table',['categories'=>$categories,'type'=>'main'])
 
                         </div>
                         <div class="tab-pane fade" id="sub-category" role="tabpanel" aria-labelledby="sub-cat-tab">
 
-                            @include('admin.categories._table',['categories'=>$categories->where('category_id','!=',null),'type'=>'sub'])
+                            @include('admin.categories._table',['categories'=>$sub_categories,'type'=>'sub'])
 
                         </div>
                     </div>

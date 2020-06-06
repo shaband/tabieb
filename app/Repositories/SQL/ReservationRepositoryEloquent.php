@@ -110,7 +110,7 @@ class ReservationRepositoryEloquent extends BaseRepository implements Reservatio
 
     public function storeQuickCall(array $data): Reservation
     {
-        return $this->create($data + [
+        return $this->firstOrcreate(['id' => \request()->reservation_id], $data + [
                 'is_quick' => true,
                 'date' => Carbon::now(),
             ]);
@@ -122,14 +122,13 @@ class ReservationRepositoryEloquent extends BaseRepository implements Reservatio
     {
         $reservation = $this->storeQuickCall($request->only('patient_id', 'doctor_id', 'communication_type'));
 
-        return $this->startCall($reservation->id, 'doctor');
+        $subscriber= auth()->guard('doctor')->check() ? null : 'doctor';
+        return $this->startCall($reservation->id,$subscriber,($subscriber != null || \request()->reservation_id == null));
     }
 
     public function getDoctorReservationByStatus($doctor_id, $status, $date = null)
     {
-
-
-        return $this->query()->with(['patient' => function ($patient) {
+        return $this->with(['patient' => function ($patient) {
             $patient->with('image:file');
         }])->where('doctor_id', $doctor_id)
             ->when($date != null,
@@ -141,23 +140,25 @@ class ReservationRepositoryEloquent extends BaseRepository implements Reservatio
     }
 
 
-    public function startCall(string $reservation_id, $subscriber = 'patient')
+    public function startCall(string $reservation_id, ?string $subscriber = 'patient',$ring=true)
     {
         $opentok = app(TokBoxContract::class);
 
         $reservation = $this->find($reservation_id);
-        if ($reservation->sessionId == null) {
+        if ($reservation->session_id == null) {
+
             $sessionId = $opentok->defaultSession()->getSessionId();
             $reservation->fill(['session_id' => $sessionId])->save();
 
         } else {
-            $sessionId = $reservation->sessionId;
+            $sessionId = $reservation->session_id;
         }
 
         $token = $opentok->generateToken($sessionId);
-        event(new CallStarted($reservation, $subscriber));
-
-        return ['sessionId' => $sessionId, 'token' => $token];
+        if ($ring) {
+            event(new CallStarted($reservation, $subscriber));
+        }
+        return ['sessionId' => $sessionId, 'token' => $token, 'reservation' => $reservation];
 
     }
 

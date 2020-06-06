@@ -27,7 +27,7 @@ class ReservationController extends Controller
      */
     public function upcoming(Request $request)
     {
-        $reservation = $this->repo->query()->where('doctor_id', auth()->id())
+        $reservation = $this->repo->where('doctor_id', auth()->id())
             ->whereDate('date', '>=', Carbon::now())
             ->whereIn('status', $this->repo::getConstants('STATUS_ACCEPTED'))->get();
 

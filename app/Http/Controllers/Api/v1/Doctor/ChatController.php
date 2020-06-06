@@ -22,7 +22,7 @@ class ChatController extends Controller
 
     public function inbox()
     {
-        $chats = $this->repo->query()->with('patient')->Where('doctor_id', auth()->id())->get();
+        $chats = $this->repo->with('patient')->Where('doctor_id', auth()->id())->get();
 
         $chats = ChatResource::collection($chats);
         return responseJson(compact('chats'), __("Loaded Successfully"));

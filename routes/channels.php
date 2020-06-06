@@ -25,7 +25,11 @@ Broadcast::channel('App.inbox.{id}', function ($user, $id) {
     return (int)$user->id === (int)$id;
 });
 
-Broadcast::channel('App.notifications.{id}', function ($user, $id) {
+Broadcast::channel('App.notifications.doctor.{id}', function ($user, $id) {
+
+    return (int)$user->id === (int)$id;
+});
+Broadcast::channel('App.notifications.patient.{id}', function ($user, $id) {
 
     return (int)$user->id === (int)$id;
 });

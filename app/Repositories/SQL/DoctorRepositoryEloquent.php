@@ -128,7 +128,7 @@ class DoctorRepositoryEloquent extends BaseRepository implements DoctorRepositor
 
     public function searchInDoctors(Request $request): Collection
     {
-        $model = $this->query()->with(static::DoctorMobileRelations());
+        $model = $this->with(static::DoctorMobileRelations());
 
         $model = $model->when($request->category_id, function (Builder $builder) use ($request) {
             $builder->where('category_id', $request->category_id);
@@ -163,7 +163,7 @@ class DoctorRepositoryEloquent extends BaseRepository implements DoctorRepositor
     public function Available(): Collection
     {
 
-        $doctors = $this->query()->Available()->get();
+        $doctors = $this->Available()->get();
 
         return $doctors;
     }

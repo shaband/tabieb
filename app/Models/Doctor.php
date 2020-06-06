@@ -260,4 +260,9 @@ class Doctor extends Authenticatable implements JWTSubject
             });
         });
     }
+
+    public function receivesBroadcastNotificationsOn()
+    {
+        return 'App.notifications.doctor.'. $this->id;
+    }
 }

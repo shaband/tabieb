@@ -11,6 +11,10 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class PatientResource extends JsonResource
 {
+
+
+
+
     /**
      * Transform the resource into an array.
      *

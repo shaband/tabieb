@@ -45,7 +45,7 @@ class ScheduleRepositoryEloquent extends BaseRepository implements ScheduleRepos
 
         $day = CarbonImmutable::parse($date)->weekday();
 
-        $schedule = $this->query()
+        $schedule = $this
             ->OfDateInPeriod(CarbonImmutable::parse($from))
             ->OfDateInPeriod(CarbonImmutable::parse($to))
             ->where('day', $day + 1)
@@ -85,7 +85,7 @@ class ScheduleRepositoryEloquent extends BaseRepository implements ScheduleRepos
     public function deleteDoctorScheduleIfNotExistsInIds(int $doctor_id, array $ids = []): void
     {
 
-        $this->query()->where('doctor_id', $doctor_id)->whereNotIn('id', $ids)->delete();
+        $this->where('doctor_id', $doctor_id)->whereNotIn('id', $ids)->delete();
     }
 
 }

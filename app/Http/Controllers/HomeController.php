@@ -38,6 +38,9 @@ class HomeController extends Controller
     public function test(Request $request)
     {
 
+        
+
+
         $opentok = new TokBoxDriver();
 
         if (!$request->sessionId) {

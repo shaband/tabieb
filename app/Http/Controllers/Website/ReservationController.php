@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Website;
 
 use App\Criteria\DoctorSearchCriteria;
+use App\Events\NotifyUser;
 use App\Http\Controllers\Controller;
 
 use App\Http\Resources\Reservation\ReservationResource;
@@ -20,15 +21,15 @@ class ReservationController extends Controller
     /**
      * @var ScheduleRepository
      */
-    private $scheduleRepo;
+    protected $scheduleRepo;
     /**
      * @var ReservationRepository
      */
-    private $reservationRepo;
+    protected $reservationRepo;
     /**
      * @var DoctorRepository
      */
-    private $doctorRepo;
+    protected $doctorRepo;
 
     /**
      * ReservationController constructor.
@@ -92,8 +93,7 @@ class ReservationController extends Controller
         $inputs['from_time'] = Carbon::parse($inputs['start']);
         $inputs['to_time'] = Carbon::parse($inputs['end']);
         $inputs['patient_id'] = auth()->guard('patient')->user()->id;
-        $inputs['status'] = $this->reservationRepo::getConstants()['STATUS_ACTIVE'];
-;
+        $inputs['status'] = $this->reservationRepo::getConstants()['STATUS_ACTIVE'];;
 
 
         $reservation = $this->reservationRepo->create($inputs);
@@ -115,7 +115,8 @@ class ReservationController extends Controller
 
         [
             'sessionId' => $sessionId,
-            'token' => $token
+            'token' => $token,
+            'reservation' => $reservation,
         ]
             =
             $this->reservationRepo->makeQuickCall($request);
@@ -125,6 +126,7 @@ class ReservationController extends Controller
                 'token' => $token,
                 'sessionId' => $sessionId,
                 'type' => 'patient',
+                'reservation' => $reservation,
                 'status' => $this->reservationRepo::getConstants()['STATUS_ACTIVE'],
                 'chat' => new Chat()
             ]
@@ -133,8 +135,35 @@ class ReservationController extends Controller
 
     public function QuickCallRespond(Request $request)
     {
-
+        $reservation = $this->reservationRepo->find($request->reservation_id)->fill([
+            'status' => $request->status]);
+        if ($request->status == 4) {
+            event(new NotifyUser($reservation->patient, 'patient', 'call-refused'));
+        }
+        $reservation->save();
+        return $reservation;
 
     }
+
+    public function receiveCall(Request $request)
+    {
+
+        [
+            'sessionId' => $sessionId,
+            'token' => $token,
+            'reservation' => $reservation
+        ] =
+            $this->reservationRepo->startCall($request->reservation_id, null,false);
+        return view('call', [
+            'token' => $token,
+            'sessionId' => $sessionId,
+            'type' => 'patient',
+            'reservation' => $reservation,
+            'status' => $this->reservationRepo::getConstants()['STATUS_ACTIVE'],
+            'chat' => new Chat()
+        ]);
+
+    }
+
 
 }
