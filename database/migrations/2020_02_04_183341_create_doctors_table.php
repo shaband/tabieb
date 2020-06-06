@@ -24,8 +24,8 @@ class CreateDoctorsTable extends Migration
             $table->bigInteger('category_id')->unsigned();
             $table->char('price')->nullable();
             $table->timestamp('last_login')->nullable();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->timestamp('phone_verified_at')->nullable();
+            $table->timestamp('email_verified_at')->default('current_timestamp()')->nullable();
+            $table->timestamp('phone_verified_at')->default('current_timestamp()')->nullable();
             $table->timestamp('blocked_at')->nullable();
             $table->longText('blocked_reason')->nullable();
             $table->string('civil_id')->unique()->nullable();
