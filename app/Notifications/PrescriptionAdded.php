@@ -65,11 +65,11 @@ class PrescriptionAdded extends Notification
 
     public function notificationData(array $additional = [])
     {
-
         return [
                 'title' => 'Prescription Added',
                 'Message' => 'You Have Got New Prescription From ' . $this->prescription->doctor->name,
                 'image' => url("/design/images/notification2.png"),
+                'url' => route('patient.prescription.show', $this->prescription->reservation_id),
                 'data_id' => $this->prescription->id,
                 'date' => $this->prescription->created_at,
             ] + $additional;

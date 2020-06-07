@@ -5,6 +5,6 @@
         <p>{!! $Message !!} <span></span>
 
         </p>
-        <p><i class="far fa-clock"></i> {!!$date->diffForHumans() !!}</p>
+        <p><i class="far fa-clock"></i> {!!$date->format('H:i A') !!}</p>
     </div>
 </div>

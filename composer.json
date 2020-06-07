@@ -38,6 +38,7 @@
     "require": {
         "php": "^7.2",
         "arcanedev/log-viewer": "5.x",
+        "barryvdh/laravel-snappy": "^0.4.7",
         "barryvdh/laravel-translation-manager": "^0.5.7",
         "bmatovu/multi-auth": "^8.0",
         "doctrine/dbal": "^2.10",

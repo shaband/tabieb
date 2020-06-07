@@ -45,6 +45,7 @@ Route::group(['namespace' => 'Website\Patient', 'middleware' => ['localeSessionR
 
         Route::view('notifications', 'website.notifications')->name('notifications');
 
+        Route::get('prescription/{reservation_id}', 'PrescriptionController@show')->name('prescription.show');
 
     });
 

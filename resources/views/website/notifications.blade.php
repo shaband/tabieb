@@ -12,7 +12,7 @@
             <div class="container">
                 @foreach($notifications as $notification)
                     <div class="doc-single-about doc-single-blk" data-aos="fade-in">
-                        <a>
+                        <a href="{!! route($notification->data['url']??'#') !!}">
                             {!!  $notification->data['html']??null !!}
                         </a>
                     </div>

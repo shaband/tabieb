@@ -5,6 +5,7 @@ namespace App\Repositories\SQL;
 use App\Criteria\OrderReservationByDateCriteria;
 use App\Events\CallStarted;
 use App\Models\Chat;
+use App\Notifications\Patient\ReservationAccepted;
 use App\Repositories\interfaces\ScheduleRepository;
 use App\Services\Contracts\TokBoxContract;
 use App\Services\Drivers\TokBoxDriver;
@@ -82,7 +83,9 @@ class ReservationRepositoryEloquent extends BaseRepository implements Reservatio
             'status_changed_at' => Carbon::now(),
         ];
         $reservation = app(ReservationRepository::class)->update($attributes, $reservation_id);
-
+        if ($status == static::getConstants()['STATUS_ACCEPTED']) {
+            $reservation->patient->notify(new ReservationAccepted($reservation));
+        }
         return $reservation;
     }
 

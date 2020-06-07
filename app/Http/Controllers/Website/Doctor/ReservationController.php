@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Website\Doctor;
 
 use App\Http\Controllers\Controller;
 use App\Models\Chat;
+use App\Notifications\Patient\ReservationAccepted;
 use App\Repositories\interfaces\ReservationRepository as ReservationRepositoryAlias;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -97,6 +98,7 @@ class ReservationController extends Controller
         $requests['reservation_id'] = $id;
         $this->repo->validate($requests);
         $reservation = $this->repo->updateStatus($request->reservation_id, $request->status);
+
 
         toast('Updated Successfully', 'success');
         return back();
