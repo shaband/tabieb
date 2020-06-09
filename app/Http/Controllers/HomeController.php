@@ -5,12 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Chat;
 use App\Services\Drivers\TokBoxDriver;
 use Illuminate\Http\Request;
-use OpenTok\ArchiveMode;
-use OpenTok\MediaMode;
-use OpenTok\OpenTok;
-use OpenTok\OutputMode;
-use OpenTok\Session;
-use OpenTok\Role;
 
 
 class HomeController extends Controller
@@ -38,7 +32,7 @@ class HomeController extends Controller
     public function test(Request $request)
     {
 
-        
+
 
 
         $opentok = new TokBoxDriver();

@@ -130,4 +130,11 @@ class PatientRepositoryEloquent extends BaseRepository implements PatientReposit
 
     }
 
+    public function socialAuthentication()
+    {
+
+
+    }
+
+
 }

@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Api\v1\Patient;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Doctor\DoctorResource;
 use App\Http\Resources\patients\PatientResource;
+use App\Repositories\interfaces\AuthModelProviderRepository;
 use App\Repositories\interfaces\PatientRepository;
 use App\Rules\CheckPassword;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
@@ -260,4 +262,34 @@ class AuthController extends Controller
         return responseJson(null, __("Password Updated"));
     }
 
+
+    public function socialLogin(Request $request, AuthModelProviderRepository $providerRepo)
+    {
+
+        $this->validate($request, [
+            'provider' => 'required|string|in:facebook,google',
+            'token' => 'required|string'
+        ]);
+        $user = Socialite::driver($request->provider)->userFromToken($request->token);
+        if ($user->getEmail() == null) {
+            toast('Sorry Your Account Doesn\'t provide any email to login with');
+            return redirect()->route('home');
+        }
+        $patient = $providerRepo->storePatientAuthProvider($user, $request->provider);
+
+        if (!$token = auth()->login($patient)) {
+
+            return $this->UnauthorizedResponse(__('Unauthorized'));
+
+        }
+        auth()->user()->setCache(config('session.lifetime') * 60);
+
+        return responseJson(
+            [
+                'patient' =>
+                    ['token' => $token] + (new PatientResource($patient->fresh()))->resolve()
+            ],
+            __("Login Successfully")
+        );
+    }
 }

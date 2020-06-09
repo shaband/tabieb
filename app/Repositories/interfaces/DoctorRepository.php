@@ -21,7 +21,11 @@ interface DoctorRepository extends BaseInterface
      */
     public function store(Request $request): Doctor;
 
-
+    /**
+     * updated the docotr rules
+     *
+     * @return iterable
+     */
     public static function updateRules(): iterable;
 
     /**
@@ -63,4 +67,13 @@ interface DoctorRepository extends BaseInterface
     public function MobileDoctor(): Builder;
 
     public function generateResetCode(): int;
+
+    /**
+     * Delete a entity in repository by id
+     *
+     * @param $id
+     *
+     * @return int
+     */
+    public function delete($id);
 }

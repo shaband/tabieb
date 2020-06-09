@@ -13,8 +13,8 @@ class CreatePatientsTable extends Migration
             $table->string('username')->nullable();
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('email')->unique();
-            $table->string('phone')->unique();
+            $table->string('email')->unique()->index();
+            $table->string('phone')->unique()->nullable();
             $table->string('password');
             $table->string('civil_id')->unique()->nullable();
             $table->bigInteger('social_security_id')->unsigned()->nullable();

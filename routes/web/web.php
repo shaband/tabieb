@@ -47,14 +47,12 @@ Route::get('/test', 'HomeController@test');
 
 
 /*social login*/
-Route::get('auth/{provider}/login/{type}', 'Auth\SocialController@redirectToProvider')->name('social.login');
+Route::get('auth/{provider}/login', 'Auth\SocialController@redirectToProvider')->name('social.login');
 Route::get('auth/{provider}/callback', 'Auth\SocialController@handleProviderCallback');
 
 Route::get('push', function () {
+    $user = Socialite::driver('facebook')->userFromToken("EAAJRRXoLxYgBAOcHgxftNpDfOqkX2zUuDgW9ejeLMEe70NWB0675TH8GbTZCWwhUtIowshINifVNEmFUU7NQCDRe9JLPqj9L6RV0cXoYz0J6rmywsJEfJwwmHS2j1RjzLlluTWlTJ1dfjDOtZCVLsm3ljXGOLVlwEugYlXYMMbZCEZCWee1x");
 
-    $user = Patient::where('email', 'mahmoudshaband@gmail.com')->first();
-    $prescription = $user->prescription()->latest()->first();
+    dd($user);
 
-    $user->notify(new PrescriptionAdded($prescription));
-    dd($user, $prescription);
 });

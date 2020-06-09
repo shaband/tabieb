@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\interfaces\DoctorRepository;
+use Illuminate\Validation\ValidationException;
+use Prettus\Repository\Events\RepositoryEntityDeleted;
 
 // use App\Validators\DoctorValidator;
 
@@ -55,7 +57,6 @@ class DoctorRepositoryEloquent extends BaseRepository implements DoctorRepositor
         $this->AddFCM($request, $doctor);
         DB::commit();
         return $doctor->fresh();
-
     }
 
 
@@ -108,7 +109,6 @@ class DoctorRepositoryEloquent extends BaseRepository implements DoctorRepositor
 
         DB::commit();
         return $doctor->fresh();
-
     }
 
     /**
@@ -163,7 +163,7 @@ class DoctorRepositoryEloquent extends BaseRepository implements DoctorRepositor
     public function Available(): Collection
     {
 
-        $doctors = $this->Available()->get();
+        $doctors = $this->makeModel()->Available()->get();
 
         return $doctors;
     }
@@ -213,8 +213,10 @@ class DoctorRepositoryEloquent extends BaseRepository implements DoctorRepositor
                     ['patient' => function ($patient) {
                         $patient->with('image:file');
                         $patient->select('first_name', 'last_name');
-                    }]);
-            }];
+                    }]
+                );
+            }
+        ];
     }
 
     public function MobileDoctor(): Builder
@@ -236,7 +238,37 @@ class DoctorRepositoryEloquent extends BaseRepository implements DoctorRepositor
             $this->generateResetCode();
         }
         return $code;
-
     }
 
+    /**
+     * Delete a entity in repository by id
+     *
+     * @param $id
+     *
+     * @return int
+     */
+    public function delete($id)
+    {
+        $this->applyScope();
+
+        $temporarySkipPresenter = $this->skipPresenter;
+        $this->skipPresenter(true);
+
+        $model = $this->withCount('reservation')->find($id);
+
+
+        if ($model->reservation_count != 0) {
+            throw ValidationException::withMessages(['id' => __("Can't Delete Doctor Have Reservations before")]);
+        }
+        $originalModel = clone $model;
+
+        $this->skipPresenter($temporarySkipPresenter);
+        $this->resetModel();
+
+        $deleted = $model->delete();
+
+        event(new RepositoryEntityDeleted($this, $originalModel));
+
+        return $deleted;
+    }
 }

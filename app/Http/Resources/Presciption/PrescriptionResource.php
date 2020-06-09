@@ -28,6 +28,8 @@ class PrescriptionResource extends JsonResource
             'date' => $this->created_at->format('Y-m-d'),
             'diagnosis' => $this->diagnosis,
             'description' => $this->description,
+            'phramacy_id'=>$this->phramacy_id,
+            'status'=>$this->phramacy_id==null?"":"",
             //'phramacy'=>$this->phramacy,
             'patient' => $this->when($this->resource->relationLoaded('patient'), function () {
                 return [

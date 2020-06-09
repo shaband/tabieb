@@ -24,8 +24,8 @@ class CategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_ar' => 'required|string|unique:categories,name_ar' . $this->category,
-            'name_en' => 'required|string|unique:categories,name_en' . $this->category,
+            'name_ar' => 'required|string|unique:categories,name_ar,' . $this->category,
+            'name_en' => 'required|string|unique:categories,name_en,' . $this->category,
             'description_ar' => 'nullable|string',
             'description_en' => 'nullable|string',
             'category_id' => 'nullable|integer|exists:categories,id',

@@ -115,7 +115,7 @@ class Patient extends Authenticatable implements JWTSubject
 
     public function providers()
     {
-        return $this->morphMany(AuthModelProvider::class, 'model')->where('type', 2);
+        return $this->morphMany(AuthModelProvider::class, 'model');
     }
 
     public function medical_histories()
