@@ -2,16 +2,10 @@
 
 namespace App\Http\Controllers\Website\Patient;
 
-use App\Events\Chat\MessageSent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Website\ChatRequest;
-use App\Http\Resources\Chat\ChatResource;
 use App\Http\Resources\Chat\MessageResource;
 use App\Repositories\interfaces\ChatRepository;
-use App\Repositories\interfaces\MessageRepository;
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
 
 class ChatController extends Controller
 {

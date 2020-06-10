@@ -62,6 +62,7 @@ class DoctorResource extends JsonResource
             'available_from' => $this->when($this->resource->relationLoaded('schedules'), $available_from ?? null),
             'available_to' => $this->when($this->resource->relationLoaded('schedules'), $available_to ?? null),
             'is_online' => $this->isOnline(),
+            'is_favourite' => $this->isFavourite(),
             'reviews' => RatingResource::collection($this->whenLoaded('ratings')),
             'rating' => round($this->ratings->avg('rate') ?? 0, 0),
             'papers' => AttachmentResource::collection($this->whenLoaded('papers')),
@@ -77,6 +78,15 @@ class DoctorResource extends JsonResource
             'available_from' => optional($available_time['start'] ?? null)->format('h:i A') ?? null,
             'available_to' => optional($available_time['end'] ?? null)->format('h:i A') ?? null,
         ];
+    }
+
+    public function isFavourite()
+    {
+        if (auth()->guard('patient_api')->check()) {
+
+            return auth()->guard('patient_api')->user()->favourites()->where('doctor_id', $this->id)->exists();
+        };
+        return false;
     }
 
 }

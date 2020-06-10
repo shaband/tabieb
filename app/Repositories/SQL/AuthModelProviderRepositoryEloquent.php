@@ -56,8 +56,9 @@ class AuthModelProviderRepositoryEloquent extends BaseRepository implements Auth
         $this->storeProvider($patient, $user, $provider);
 
 
+
         DB::commit();
-        return $patient;
+        return $patient->fresh();
     }
 
 
@@ -71,10 +72,11 @@ class AuthModelProviderRepositoryEloquent extends BaseRepository implements Auth
         $pic = '/patients/' . $user->getId() . '.jpg';
         File::put(storage_path('app/public') . $pic, $fileContents);
 
-        $patient->image()->updateOrCreate(['type' => 1], [
+        $img = $patient->image()->updateOrCreate(['type' => 1], [
             'file' => '/storage' . $pic,
             'ext' => 'jpg',
         ]);
+
     }
 
     /**

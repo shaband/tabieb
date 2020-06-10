@@ -139,6 +139,12 @@ class Doctor extends Authenticatable implements JWTSubject
         return $this->MorphMany(Attachment::class, 'model')->where('type', Attachment::DOCTOR_DOCUMENT);
     }
 
+
+    public function favourites()
+    {
+        return $this->belongsToMany(Doctor::class, 'favourites', 'doctor_id', 'patient_id');
+    }
+
     /**
      * Model $this
      * @return MorphOne
@@ -209,6 +215,18 @@ class Doctor extends Authenticatable implements JWTSubject
         return collect($available['times'])->first() ?? [];
     }
 
+    public function getIsFavouriteAttribute()
+    {
+        $is_favourite = false;
+        if (auth()->guard('patient_api')->check()) {
+
+            $is_favourite = auth()->guard('patient_api')->user()->favourites()->where('doctor_id', $this->id)->exists();
+        } elseif (auth()->guard('patient')->check()) {
+            $is_favourite = auth()->guard('patient')->user()->favourites()->where('doctor_id', $this->id)->exists();
+        };
+        return $is_favourite;
+    }
+
 
     /*scopes*/
 
@@ -245,6 +263,26 @@ class Doctor extends Authenticatable implements JWTSubject
         });
     }
 
+    /**
+     *  add is_favourite  to the select of doctor
+     * @param Builder $query
+     * @param null $patient_id
+     */
+    public function scopeOfIsFavourite(Builder $query, $patient_id = null): void
+    {
+        if ($patient_id == null) {
+            if (auth()->guard('patient_api')->check()) {
+                $patient_id = auth()->guard('patient_api')->id();
+            } elseif (auth()->guard('patient')->check()) {
+                $patient_id = auth()->guard('patient')->id();
+            };
+        }
+        $query->addSelect([
+            'is_favourite' => Favourite::query()->limit(1)->selectRaw('true')->whereColumn('favourites.doctor_id', 'doctors.id')->where('favourites.patient_id', $patient_id)]);
+
+
+    }
+
     public function scopeOfBetweenTime(Builder $query, $from = null, $to = null): void
     {
         $query->when($from != null, function (Builder $builder) use ($from) {
@@ -263,6 +301,6 @@ class Doctor extends Authenticatable implements JWTSubject
 
     public function receivesBroadcastNotificationsOn()
     {
-        return 'App.notifications.doctor.'. $this->id;
+        return 'App.notifications.doctor.' . $this->id;
     }
 }

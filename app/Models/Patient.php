@@ -10,6 +10,12 @@ use App\Traits\ModelHasImage;
 use App\Traits\ModelHasLogs;
 use App\Traits\PushImage;
 use HighIdeas\UsersOnline\Traits\UsersOnlineTrait;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Activitylog\Traits\CausesActivity;
@@ -88,85 +94,90 @@ class Patient extends Authenticatable implements JWTSubject
         return [];
     }
 
-    public function district()
+    public function district():BelongsTo
     {
         return $this->belongsTo(District::class);
     }
 
-    public function area()
+    public function area():BelongsTo
     {
         return $this->belongsTo(Area::class, 'area_id');
     }
 
-    public function block()
+    public function block():BelongsTo
     {
         return $this->belongsTo(Block::class, 'block_id');
     }
 
-    public function image()
+    public function image():MorphOne
     {
         return $this->morphOne(Attachment::class, 'model')->where('type', 1);
     }
 
-    public function files()
+    public function files():MorphMany
     {
         return $this->morphMany(Attachment::class, 'model')->where('type', 2);
     }
 
-    public function providers()
+    public function providers():MorphMany
     {
         return $this->morphMany(AuthModelProvider::class, 'model');
     }
 
-    public function medical_histories()
+    public function medical_histories():HasMany
     {
         return $this->hasMany(MedicalHistory::class, 'patient_id')
             ->with(['file:file,ext', 'creator', 'category:name_ar,name_en']);
     }
 
-    public function reservations()
+    public function reservations():HasMany
     {
         return $this->hasMany(Reservation::class);
     }
 
-    public function ratings()
+    public function ratings():HasMany
     {
         return $this->hasMany(Rating::class);
     }
 
-    public function chats()
+    public function chats():HasMany
     {
         return $this->hasMany(Chat::class);
     }
 
-    public function invoices()
+    public function invoices():HasMany
     {
         return $this->hasMany(Invoice::class);
     }
 
-    public function patient_answers()
+    public function patient_answers():HasMany
     {
         return $this->hasMany(PatientAnswer::class);
     }
 
-    public function prescription()
+    public function prescription():HasOne
     {
         return $this->hasOne(Prescription::class);
     }
 
-    public function contacts()
+    public function contacts():MorphMany
     {
         return $this->morphMany(Contact::class, 'model');
     }
 
-    public function social_security()
+    public function social_security():BelongsTo
     {
         return $this->belongsTo(SocialSecurity::class);
     }
 
-    public function fcm_tokens()
+    public function fcm_tokens() :MorphMany
     {
         return $this->morphMany(Device::class, 'model')->where('device_type', Device::TOKEN_TYPE_FCM);
+    }
+
+    public function favourites() :BelongsToMany
+    {
+        return $this->belongsToMany(Doctor::class, 'favourites', 'patient_id', 'doctor_id');
     }
 
     public function getNameAttribute()
@@ -177,6 +188,6 @@ class Patient extends Authenticatable implements JWTSubject
 
     public function receivesBroadcastNotificationsOn()
     {
-        return 'App.notifications.patient.'. $this->id;
+        return 'App.notifications.patient.' . $this->id;
     }
 }

@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 
 Route::post('auth/register', 'AuthController@register');
 Route::post('auth/login', 'AuthController@login');
+Route::post('auth/social/login', 'AuthController@socialLogin');
 Route::post('auth/logout', 'AuthController@logout');
 Route::post('auth/verify', 'AuthController@verify');
 Route::post('auth/profile', 'AuthController@Profile');
@@ -50,6 +51,9 @@ Route::middleware(['auth:patient_api'])->group(function () {
     Route::post('medical-histories', 'MedicalHistoryController@index');
     Route::post('medical-histories/create', 'MedicalHistoryController@store');
     Route::post('medical-histories/delete', 'MedicalHistoryController@destroy');
+
+    Route::post('favourites', 'FavouriteController@index');
+    Route::post('favourites/toggle', 'FavouriteController@toggleFavourite');
 
 
 });

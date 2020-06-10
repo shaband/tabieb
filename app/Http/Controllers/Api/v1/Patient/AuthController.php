@@ -24,7 +24,7 @@ class AuthController extends Controller
 
     public function __construct(PatientRepository $repo)
     {
-        $this->middleware('auth:patient_api', ['except' => ['login', 'register', 'verify', 'resendVerification', 'sendResetPassCode', 'resetPassword']]);
+        $this->middleware('auth:patient_api', ['except' => ['login', 'register', 'verify', 'resendVerification', 'sendResetPassCode', 'resetPassword', 'socialLogin']]);
         auth()->setDefaultDriver('patient_api');
 
         $this->repo = $repo;
