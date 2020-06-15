@@ -24,7 +24,7 @@ class AddClientSideMiddleware
 
             view()->share('client_type', 'doctor');
             view()->share('client_id', auth()->guard('doctor')->id());
-            view()->share('notifications', auth()->guard('patient')->user()->notifications->take(5));
+            view()->share('notifications', auth()->guard('doctor')->user()->notifications->take(5));
         } else {
             view()->share('client_type', null);
             view()->share('client_id', null);

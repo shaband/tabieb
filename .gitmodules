@@ -1,0 +1,3 @@
+[submodule "public_html/Tabaieb"]
+	path = public_html/Tabaieb
+	url = git@github.com:ranaRabie/Tabaieb.git

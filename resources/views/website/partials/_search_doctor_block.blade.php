@@ -2,12 +2,15 @@
     <div class="row">
         <div class="col-md-4 col-lg-2">
             <div class="doc-img">
-                <img src="{!! asset($doctor->img) !!}">
+                <a href="{!! route('reservation.doctor',$doctor->id) !!}">
+                    <img src="{!! asset($doctor->img) !!}">
+                </a>
             </div>
         </div>
         <div class="col-md-8 col-lg-6">
             <div class="doc-dets">
-                <h6 class="doc-n">{!! $doctor->name !!}
+                <h6 class="doc-n">
+                    <a href="{!! route('reservation.doctor',$doctor->id) !!}">{!! $doctor->name !!}</a>
                     @if($doctor->is_active)
                         <span class="doc-status active"> {{ __('online now')}}</span>
                     @endif
@@ -48,15 +51,32 @@
                     </div>
                 @endif
                 <div class="doc-controls">
-                    <a href="#" class="doc-book-btn btn btn-secondary btn-sm"><img
-                            src="{{ url('design/images/icons/phone-White.png')}}">{{ __('quick call')}}
-                    </a>
-                    <a href="#" class="doc-book-btn btn btn-thirdly btn-sm"><img
-                            src="{{ url('design/images/icons/tag.png')}}"> {{ __('book now')}}</a>
 
+                    <form action="{!! route('quick-call') !!}" method="get"
+                          id="doctor-{!! $doctor->id !!}-quickcall" target="_blank">
+                        {!! csrf_field() !!}
+                        <input name="patient_id" value="{{ auth()->guard('patient')->id()}}"
+                               type="hidden">
+                        <input name="doctor_id" value="{!! $doctor->id !!}" type="hidden">
+                        <input name="communication_type" value="3" type="hidden">
+                    </form>
+                    <button form="doctor-{!! $doctor->id !!}-quickcall"
+                            class="doc-book-btn btn btn-secondary"><img
+                            src="{{asset('design/images/icons/phone-White.png')}}"> {{ __('quick voice call')}}
+                    </button>
+                    <button form="doctor-{!! $doctor->id !!}-quickcall"
+                            class="doc-book-btn btn btn btn-thirdly"><img
+                            src="{{asset('design/images/icons/phone-White.png')}}"> {{ __('quick video call')}}
+                    </button>{{--
+                    <a href="#" class="doc-book-btn btn btn-secondary btn-sm"><img
+                            src="{{ url('design/images/icons/phone-White.png')}}">{{ __('quick video call')}}
+                    </a>--}}{{--
+                    <a href="{!! route('reservation.doctor',$doctor->id) !!}"
+                       class="doc-book-btn btn btn-thirdly btn-sm"><img
+                            src="{{ url('design/images/icons/tag.png')}}"> {{ __('book now')}}</a>
+--}}
                     <a href="{{route('reservation.doctor.certification',$doctor->id)}}"
-                       class="doc-book-btn btn btn-outline-secondary btn-sm btn-xs">{{ __('medical
-                                                documents')}}</a>
+                       class="doc-book-btn btn btn-outline-secondary btn-sm btn-xs">{{ __('medical documents')}}</a>
                 </div>
             </div>
         </div>

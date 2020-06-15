@@ -87,6 +87,15 @@
     </span>
     @enderror
 </div>
+<div class="form-group">
+    <label for="license_number">{!! __("License Number") !!} *</label>
+    {!! Form::number('license_number',null,['class'=>'form-control','parsley-trigger'=>'change','id'=>'civil_id','required','placeholder'=>__('Enter License Number')]) !!}
+    @error('license_number')
+    <span class="invalid-feedback d-block" role="alert">
+        <strong>{{ $message }}</strong>
+    </span>
+    @enderror
+</div>
 
 <div class="form-group">
     <label for="price">{!! __("Price") !!} *</label>

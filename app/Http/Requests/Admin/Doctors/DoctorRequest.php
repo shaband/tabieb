@@ -35,6 +35,7 @@ class DoctorRequest extends FormRequest
             "civil_id" => "required|numeric",
             "price" => "nullable|numeric",
             "period" => "nullable|numeric",
+            "license_number" => "nullable|numeric",
             "category_id" => 'required|integer|exists:categories,id,category_id,NULL',
             "sub_category_ids" => 'nullable|array',
             "sub_category_ids.*" => 'nullable|exists:categories,id,category_id,' . $this->category_id,

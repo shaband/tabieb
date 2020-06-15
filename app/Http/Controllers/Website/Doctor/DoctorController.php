@@ -129,6 +129,7 @@ class DoctorController extends Controller
         DB::beginTransaction();
         ['ids' => $ids, 'schedules' => $schedules] = $scheduleRepo->StoreDoctorScheduleGroupedByDay(auth()->id(), $request->schedule);
         $scheduleRepo->deleteDoctorScheduleIfNotExistsInIds(auth()->id(), $ids);
+
         DB::commit();
         toast(__("Saved Successfully"), 'success');
         return back();

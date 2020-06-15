@@ -10,7 +10,7 @@
                 class="text-secondary">{{ __('information')}}</span><br><img
                 src=" {!! asset('design/images/heading-after.png') !!}"></h5>
     </div>
-    {!! Form::model($user,['class'=>'basic-form  form-label-inline','method'=>'post']) !!}
+    {!! Form::model($user,['class'=>'basic-form  form-label-inline','method'=>'post','files'=>'true']) !!}
 
     <div class="user-img-upload">
         <input id="up-user-img" name="image" type="file" onchange="readURL(this,'up-user-img-view')">
@@ -155,6 +155,19 @@
             <div class="form-group">
                 <label for="">{!! __("Price") !!}:</label>
                 {!! Form::number('price',null,['class'=>'form-control']) !!}
+
+            </div>
+
+            @error('price')
+            <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+            @enderror
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="form-group">
+                <label for="">{!! __("license number") !!}:</label>
+                {!! Form::number('license_number',null,['class'=>'form-control']) !!}
 
             </div>
 

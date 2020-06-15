@@ -5,6 +5,8 @@
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/app" isTestSource="false" packagePrefix="App\" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/tests/Unit" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/tests/Feature" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/arcanedev/log-viewer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/arcanedev/support" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/barryvdh/laravel-ide-helper" />
@@ -146,13 +148,5 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="animate" level="application" />
-    <orderEntry type="library" name="opentok" level="application" />
-    <orderEntry type="library" name="polyfill" level="application" />
-    <orderEntry type="library" name="fetch" level="application" />
-    <orderEntry type="library" name="moment-with-locales" level="application" />
-    <orderEntry type="library" name="bootstrap-datepicker3.standalone" level="application" />
-    <orderEntry type="library" name="bootstrap-datepicker" level="application" />
-    <orderEntry type="library" name="bootstrap-datepicker.ar" level="application" />
   </component>
 </module>

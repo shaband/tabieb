@@ -66,7 +66,6 @@ class ScheduleRepositoryEloquent extends BaseRepository implements ScheduleRepos
         $schedules = [];
         foreach ($days as $day) {
             $day_ids = array_column($day, 'id');
-            $ids = array_merge($ids, $day_ids);
             foreach ($day as $schedule) {
                 $schedule['doctor_id'] = auth()->id();
 
@@ -75,8 +74,13 @@ class ScheduleRepositoryEloquent extends BaseRepository implements ScheduleRepos
                     throw  new ValidationException($validator);
                 }
                 $attributes = ['id' => $schedule['id'] ?? null];
-                $schedules[] = $this->updateOrCreate($attributes, $schedule);
+
+                $action_schedule = $schedules[] = $this->updateOrCreate($attributes, $schedule);
+
+                $day_ids[] = $action_schedule->id;
             }
+
+            $ids = array_merge($ids, $day_ids);
         }
         return ['ids' => $ids, 'schedules' => $schedules];
     }

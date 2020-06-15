@@ -172,27 +172,33 @@
         action="{!! route('patient.profile.patient-questions') !!}" class="form-md form-plain">
         {!! csrf_field() !!}
         @method('put')
-        @foreach($patient_questions as $question)
-            {{--       <div class="text-primary text-capitalize font-weight-bold mb-1">{{ __('medical insurance')}}:</div>--}}
-            <div class="text-secondary text-capitalize font-weight-bold mt-2 mb-1">{{$question->name}}</div>
+        @foreach(old('answers')??$patient_questions as $question)
+
+            {{--            @dd($question['status']==1,$question['status'])--}}
+            <div class="text-secondary text-capitalize font-weight-bold mt-2 mb-1">{{$question['name']}}</div>
+            <input type="hidden" name="answers[{{$loop->iteration}}][name]"
+                   value="{!! $question['name'] !!}">
             <div class="row">
                 <div class="col-6 col-sm-3">
                     <div class="custom-control custom-radio">
-                        <input type="hidden" name="answers[{{$loop->iteration}}][question_id]" value="{!! $question->id !!}">
+                        <input type="hidden" name="answers[{{$loop->iteration}}][question_id]"
+                               value="{!! $question['id']??null !!}">
                         <input type="radio" class="custom-control-input" id="customRadio-{{$loop->iteration}}-yes"
                                name="answers[{{$loop->iteration}}][status]" value="1"
-                               @if($question->status==1) checked @endif >
+                               @if((string)($question['status']?? "")=="1") checked @endif >
                         <label class="custom-control-label"
-                               for="customRadio-{{$question->id}}-yes"><span>{{ __('yes')}}</span></label>
+                               for="customRadio-{{$loop->iteration}}-yes"><span>{{ __('yes')}}</span></label>
                     </div>
                 </div>
                 <div class="col-6 col-sm-3">
                     <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="customRadio-{{$question->id}}-no"
-                               name="answers[{{$loop->iteration}}][status]" @if($question->status==1) checked
+                        <input type="radio" class="custom-control-input" id="customRadio-{{$loop->iteration}}-no"
+                               name="answers[{{$loop->iteration}}][status]"
+                               @if( (string) ($question['status']??"") =="0")
+                               checked
                                @endif value="0">
                         <label class="custom-control-label"
-                               for="customRadio-{{$question->id}}-no">
+                               for="customRadio-{{$loop->iteration}}-no">
                             <span>    {{ __('no')}} </span> </label>
                     </div>
                 </div>
@@ -200,10 +206,15 @@
                     <div class="d-flex align-items-center">
                         <label class="text-nowrap m-0">{{ __("Description")}}:</label>
                         <input type="text" name="answers[{{$loop->iteration}}][answer]" class="form-control py-0 h-auto"
-                               placeholder="illness name here" value="{!! $question->answer !!}">
+                               placeholder="illness name here" value="{!! $question['answer'] !!}">
                     </div>
                 </div>
             </div>
+            @error("answers.{$loop->iteration}.status")
+            <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ __("You Must Answer This Question")}}</strong>
+                                    </span>
+            @enderror
         @endforeach
 
         <div class="mt-3">
@@ -218,12 +229,12 @@
 @push('scripts')
     <script>
 
-        function readURL(input,id) {
+        function readURL(input, id) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
 
                 reader.onload = function (e) {
-                    $('#'+id)
+                    $('#' + id)
                         .attr('src', e.target.result);
                 };
 

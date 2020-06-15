@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Website\Patient\Auth;
 use App\Http\Requests\Website\PatientRegisterRequest;
 use App\Models\Patient;
 use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -90,4 +92,16 @@ class RegisterController extends Controller
         return Auth::guard('patient');
     }
 
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+        toast('SignedUp Successfully');
+        return $this->registered($request, $user)
+            ?: redirect($this->redirectPath());
+    }
 }

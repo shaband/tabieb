@@ -75,8 +75,7 @@
                                                     src="{{asset('design/images/icons/video.png')}}"> {{ __('video call')}}
                                             </a>
                                             <a href="{{route('reservation.doctor.certification',$doctor->id)}}"
-                                               class="doc-book-btn btn btn-outline-secondary btn-sm btn-xs">{{ __('medical
-                                                documents')}}</a>
+                                               class="doc-book-btn btn btn-outline-secondary btn-sm btn-xs">{{ __('medical  documents')}}</a>
 
                                             <br>
                                             <form action="{!! route('quick-call') !!}" method="get"
