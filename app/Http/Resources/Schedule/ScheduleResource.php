@@ -2,7 +2,7 @@
 
 namespace App\Http\Resources\Schedule;
 
-use App\Http\Resources\Doctor\doctorResource;
+use App\Http\Resources\Doctor\DoctorResource;
 use App\Http\Resources\Reservation\ReservationResource;
 use Carbon\CarbonImmutable;
 use Illuminate\Http\Resources\Json\JsonResource;
