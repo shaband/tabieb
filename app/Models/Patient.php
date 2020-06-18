@@ -186,6 +186,16 @@ class Patient extends Authenticatable implements JWTSubject
     }
 
 
+      
+    
+      public function setSocialSecurityExpiredAtAttribute($value): void
+    {
+        $this->attributes['social_security_expired_at'] = Carbon::parse($value);
+    }
+
+    
+    
+    
     public function receivesBroadcastNotificationsOn()
     {
         return 'App.notifications.patient.' . $this->id;
