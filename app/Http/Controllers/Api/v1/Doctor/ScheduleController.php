@@ -32,8 +32,8 @@ class ScheduleController extends Controller
     {
         $this->validate($request, [
             'day' => 'required|integer|min:1|max:7',
-            'from_time' => 'required|date_format:H:i',
-            'to_time' => 'required|date_format:H:i',
+            'from_time' => 'required',
+            'to_time' => 'required',
         ]);
 
         $inputs = $request->all();
