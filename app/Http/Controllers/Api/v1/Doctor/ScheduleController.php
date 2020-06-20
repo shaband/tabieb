@@ -48,8 +48,8 @@ class ScheduleController extends Controller
         $this->validate($request, [
             'schedule_id' => 'required|integer|exists:schedules,id,doctor_id,' . auth()->id(),
             'day' => 'required|integer|min:1|max:7',
-            'from_time' => 'required|date_format:H:i',
-            'to_time' => 'required|date_format:H:i',
+            'from_time' => 'required',
+            'to_time' => 'required',
         ]);
         $inputs = $request->all();
         $schedule = $this->repo->update($inputs, $request->schedule_id);
