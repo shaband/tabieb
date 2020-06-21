@@ -20,6 +20,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Activitylog\Traits\CausesActivity;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Carbon\Carbon;
 
 
 class Patient extends Authenticatable implements JWTSubject
@@ -186,6 +187,16 @@ class Patient extends Authenticatable implements JWTSubject
     }
 
 
+      
+    
+      public function setSocialSecurityExpiredAtAttribute($value): void
+    {
+        $this->attributes['social_security_expired_at'] = Carbon::parse($value);
+    }
+
+    
+    
+    
     public function receivesBroadcastNotificationsOn()
     {
         return 'App.notifications.patient.' . $this->id;
