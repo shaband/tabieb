@@ -10,9 +10,12 @@ use App\Models\Patient;
 use App\Models\Pharmacy;
 use App\Models\PharmacyRep;
 use App\Models\Prescription;
+use App\Models\Reservation;
 use App\Observers\prescriptionObserver;
 use App\Observers\PushMessageNotificationObserver;
+use App\Services\paytabs\PayTabs;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
 
 class ModelServiceProvider extends ServiceProvider
@@ -24,6 +27,10 @@ class ModelServiceProvider extends ServiceProvider
      */
     public function register()
     {
+
+        App::bind('payTabs',function() {
+            return new PayTabs();
+        });
     }
 
     /**

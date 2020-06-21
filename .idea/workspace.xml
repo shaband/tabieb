@@ -2,74 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6022af50-649c-423e-87fc-853c11e9da70" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitmodules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/phpunit.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public_html/Tabaieb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public_html/storage" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public_html/tokbox/ring2.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php-test-framework.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/tabieb.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/tabieb.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vagrant.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Website/Doctor/DoctorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/Doctor/DoctorController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Website/Patient/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/Patient/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/AddClientSideMiddleware.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/AddClientSideMiddleware.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/Doctors/DoctorRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/Doctors/DoctorRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/SQL/ScheduleRepositoryEloquent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/SQL/ScheduleRepositoryEloquent.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_04_183341_create_doctors_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_04_183341_create_doctors_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/$pharmacy_reps/20200225222328-5uo6oc8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/$pharmacy_reps/20200427191456-013 - JP91qvi.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/admins/20200205182737-31131_1262280236528_1215379374_30621792_7731435_n.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/admins/20200205183235-45855_144081602423836_1190073795_n.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/admins/20200205185310-41575_2358813734_465_n.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/admins/20200307120207-013 - JP91qvi.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/admins/20200307120327-011 - ooOaPWR.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/doctors/2/attachments/20200229114011-013 - JP91qvi.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/doctors/2/attachments/20200229114041-013 - JP91qvi.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/doctors/2/attachments/20200229114143-013 - JP91qvi.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/doctors/2/attachments/20200229114154-013 - JP91qvi.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/doctors/2/attachments/20200229114227-013 - JP91qvi.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/doctors/2/attachments/20200229114306-013 - JP91qvi.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/doctors/2/attachments/20200229114345-013 - JP91qvi.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/doctors/2/attachments/20200229120637-013 - JP91qvi.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/doctors/2/attachments/20200330191406-default.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/doctors/2/attachments/20200424190245-006 - wheHEf7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/doctors/2/attachments/20200424190327-013 - JP91qvi.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/doctors/20200208163416-31131_1262280236528_1215379374_30621792_7731435_n.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/doctors/20200208163512-31131_1262280236528_1215379374_30621792_7731435_n.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/doctors/20200208181230-45855_144081602423836_1190073795_n.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/doctors/20200226211049-13aasll.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/doctors/20200424190501-13aasll.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/doctors/20200424190603-13aasll.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/doctors/20200510183118-5uo6oc8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/doctors/20200510183155-5uo6oc8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/medical_histories/20200420203435-029 - UWR7exD.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/medical_histories/20200420203600-029 - UWR7exD.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/medical_histories/20200521212536-013 - JP91qvi.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/medical_histories/20200521213318-013 - JP91qvi.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/patients/20200223211008-150585_182729751741636_100000138385956_767337_4603112_n.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/patients/20200331184734-default.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/patients/3064631580248727.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/pharmacies/20200225214139-005 - 1YYtHHX.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/uploads/admins/20200205182159-31131_1262280236528_1215379374_30621792_7731435_n.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/storage/uploads/admins/20200205182335-31131_1262280236528_1215379374_30621792_7731435_n.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/tokbox/ring.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/tokbox/ring.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ar.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/doctors/_form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/doctors/_form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/doctor/profile/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/doctor/profile/profile.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/doctor/profile/profile_layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/doctor/profile/profile_layout.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Services/Contracts/TransactionContract.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Services/Drivers/PayTabService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Services/paytabs/PayTabs.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Services/paytabs/PayTabsFacade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/v1/Patient/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/v1/Patient/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/v1/Patient/DoctorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/v1/Patient/DoctorController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Website/Patient/FavouriteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/Patient/FavouriteController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Website/ReservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/ReservationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Doctor.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Doctor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Schedule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Schedule.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/ModelServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/ModelServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Scopes/ImageScope.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Scopes/ImageScope.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Traits/ModelHasImage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Traits/ModelHasImage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/vendor/pagination/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/pagination/default.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/website/doctor_page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/doctor_page.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/layouts/_header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/layouts/_header.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/website/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/website/partials/_search_doctor_block.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/partials/_search_doctor_block.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/patient/profile/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/patient/profile/profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/website/search.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/search.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web/patient.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web/patient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -258,7 +213,14 @@
       <option name="presentableId" value="Default" />
       <updated>1592157590566</updated>
       <workItem from="1592157714516" duration="4492000" />
-      <workItem from="1592237028989" duration="11530000" />
+      <workItem from="1592237028989" duration="12365000" />
+      <workItem from="1592336016996" duration="595000" />
+      <workItem from="1592505821029" duration="409000" />
+      <workItem from="1592586791818" duration="183000" />
+      <workItem from="1592587083227" duration="4272000" />
+      <workItem from="1592676831679" duration="1441000" />
+      <workItem from="1592679417513" duration="33000" />
+      <workItem from="1592680300205" duration="15554000" />
     </task>
     <servers />
   </component>
@@ -269,17 +231,29 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="412" y="154" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1592686299951">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="412" y="154" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1366.728@0.0.1366.728" timestamp="1592686299951" />
     <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1592244187759">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1592244187759" />
+    <state x="474" y="87" key="NewPhpClassDialog" timestamp="1592686308697">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="474" y="87" key="NewPhpClassDialog/0.0.1366.728@0.0.1366.728" timestamp="1592686308697" />
     <state x="390" y="97" width="585" height="534" key="find.popup" timestamp="1592241910918">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="390" y="97" width="585" height="534" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1592241910918" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1592252872127">
+    <state x="339" y="162" key="run.anything.popup" timestamp="1592776843189">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1592252872127" />
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1592776843189" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1592777427816">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1592777427816" />
   </component>
 </project>

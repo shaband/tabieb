@@ -113,9 +113,10 @@ class Doctor extends Authenticatable implements JWTSubject
 
     public function schedules(): HasMany
     {
-        return $this->hasMany(Schedule::class)->with(['reservations' => function ($reservation) {
+        return $this->hasMany(Schedule::class)
+            ->with(['reservations' => function ($reservation) {
             $reservation->where('status', Reservation::STATUS_ACCEPTED);
-        }]);
+        },'doctor']);
     }
 
     public function reservation(): HasMany

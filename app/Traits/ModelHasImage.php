@@ -27,8 +27,10 @@ trait ModelHasImage
 
     public function getImgAttribute()
     {
-        return $this->attributes['img'] ??
-            optional($this->image()->select('file')->first('file'))->file ??
+
+
+        return $this->attributes['p_img'] ??
+         //   optional($this->image()->select('file')->first('file'))->file ??
             'https://www.shankarainfra.com/img/avatar.png';
     }
 }

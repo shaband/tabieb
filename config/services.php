@@ -44,6 +44,15 @@ return [
         'client_secret' => env('GOOGLE_CLIENT_SECRET', null),
         'redirect' => env('GOOGLE_CALLBACK', null),
     ],
+
+
+    'paytabs' => [
+        'merchant_email' => env("PAYTABS_MERCHANT_EMAIL", 'mahmoudshaband@gmail.com'),
+        'merchant_id' => env("PAYTABS_MERCHANT_ID", '10043732'),
+        'secret_key' => env("PAYTABS_SECRET_KEY", '4gVvb27xiKgweYerAhIXi3ER67FKTCBXTws4zABSkSpyQE0qVIoeM25T9LD2of0hMsmm2YfnQEVHiW8eFwsszylJjZLIeL01emnh'),
+        'redirect' => env('PAYTABS_CALLBACK', "https://tabieb.test/paytabs/callback")
+    ]
+
     /*'twitter' => [
         'client_id' => env('TWITTER_CLIENT_ID',null),
         'client_secret' => env('TWITTER_CLIENT_SECRET',null),

@@ -69,10 +69,10 @@
                                         @endif
                                         <div class="doc-controls">
                                             <a href="#" class="doc-book-btn btn btn-secondaryLight btn-sm"><img
-                                                    src="{{asset('design/images/icons/phone.png')}}"> {{ __('voice call')}}
+                                              style=" height: 15px; margin-right: 5px;"      src="{{asset('design/images/icons/phone.png')}}"> {{ __('voice call')}}
                                             </a>
                                             <a href="#" class="doc-book-btn btn btn-thirdlyLight btn-sm"><img
-                                                    src="{{asset('design/images/icons/video.png')}}"> {{ __('video call')}}
+                                                    style=" height: 15px; margin-right: 5px;"                                                    src="{{asset('design/images/icons/video.png')}}"> {{ __('video call')}}
                                             </a>
                                             <a href="{{route('reservation.doctor.certification',$doctor->id)}}"
                                                class="doc-book-btn btn btn-outline-secondary btn-sm btn-xs">{{ __('medical  documents')}}</a>
@@ -87,12 +87,16 @@
                                                 <input name="communication_type" value="3" type="hidden">
                                             </form>
                                             <button form="doctor-{!! $doctor->id !!}-quickcall"
-                                                    class="doc-book-btn btn btn-secondary"><img
+                                                    class="doc-book-btn btn btn-secondary btn-sm"><img
                                                     src="{{asset('design/images/icons/phone-White.png')}}"> {{ __('quick call')}}
                                             </button>
-                                            <a href="#" class="doc-book-btn btn btn-thirdly"><img
-                                                    src="{{ asset('design/images/icons/tag.png')}}"> {{ __('book now')}}
+                                            <a href="#" class="doc-book-btn btn btn-thirdly btn-sm "><img
+                                                    style=" height: 15px; margin-right: 5px;"  src="{{ asset('design/images/icons/tag.png')}}"> {{ __('book now')}}
                                             </a>
+
+                                            <a href="#" style="cursor: pointer" onclick="toggleFavourite(this,{!! $doctor->id !!})"
+                                               class="doc-book-btn btn btn-light1 btn-sm {!! $doctor->is_favourite?'active':null !!}"><i
+                                                    class="fas fa-heart"></i></a>
                                         </div>
                                     </div>
                                 </div>

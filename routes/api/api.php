@@ -36,4 +36,10 @@ Route::post('contact', 'ContactController@send');
 Route::post('setting/{name}', 'SettingController@index');
 
 
-Route::post('doctors/timetable','DoctorController@getDoctorTimetable')->name('doctor.timetable');
+Route::post('doctors/timetable', 'DoctorController@getDoctorTimetable')->name('doctor.timetable');
+
+
+Route::post('/paytabs/callback', function (Request $request) {
+
+    dd(\App\Services\paytabs\PayTabsFacade::verify_payment($request->payment_reference));
+});

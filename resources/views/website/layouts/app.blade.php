@@ -157,6 +157,20 @@
 
     @include('website.pusher_script._call_script')
     @include('website.pusher_script._notifications_script')
+
+
+    <script>
+        function toggleFavourite(button, doctor_id) {
+            event.preventDefault();
+            $.ajax({
+                url: route('patient.favourite.toggle', doctor_id),
+                method: "post",
+                success: function (res) {
+                    $(button).toggleClass('active')
+                }
+            })
+        }
+    </script>
 </div>
 
 

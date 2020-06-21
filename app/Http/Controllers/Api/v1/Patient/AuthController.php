@@ -8,10 +8,12 @@ use App\Http\Resources\patients\PatientResource;
 use App\Repositories\interfaces\AuthModelProviderRepository;
 use App\Repositories\interfaces\PatientRepository;
 use App\Rules\CheckPassword;
+use Firebase\JWT\JWT;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
+use Lcobucci\JWT\Parsing\Decoder;
 
 class AuthController extends Controller
 {
@@ -270,6 +272,27 @@ class AuthController extends Controller
             'provider' => 'required|string|in:facebook,google',
             'token' => 'required|string'
         ]);
+        /* $key="-----BEGIN PUBLIC KEY-----
+      MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA7edwjFTS82NuGM29NNFk
+      Fvd0nGSSaCGJkM7MqXQyha1iz7DFVa2pMOboAv7NoGd9mbmwMDrAAOeP88U1WPnm
+      ybkpFIszvxidakkyHTE/UfJgtLo456ck1u18UwQXwOJprCFmkpOd9dzEbx4L2Ywx
+      WNXQzTl8k+7yRFuiJrfJrsLrxa8r+eZJAzgxVzgRQp/AyTTqRgUi9sC4p6m5BuFi
+      +2xr2/2a0Z9qgpQ6hxsSVyo2jmnVQ4rBmNdKCDIR4FBVP5NmVDlFNOpRauzwKGa2
+      VPHcbOqKVlFHRd43NGgTMXZVfsSghy5UoLr4eKYMA3LeFszcWarhNxz/+wqcwx3h
+      8wIDAQAB
+      -----END PUBLIC KEY-----
+      ";
+              $user = JWT::decode($request->token, "-----BEGIN PUBLIC KEY-----
+      MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA7edwjFTS82NuGM29NNFk
+      Fvd0nGSSaCGJkM7MqXQyha1iz7DFVa2pMOboAv7NoGd9mbmwMDrAAOeP88U1WPnm
+      ybkpFIszvxidakkyHTE/UfJgtLo456ck1u18UwQXwOJprCFmkpOd9dzEbx4L2Ywx
+      WNXQzTl8k+7yRFuiJrfJrsLrxa8r+eZJAzgxVzgRQp/AyTTqRgUi9sC4p6m5BuFi
+      +2xr2/2a0Z9qgpQ6hxsSVyo2jmnVQ4rBmNdKCDIR4FBVP5NmVDlFNOpRauzwKGa2
+      VPHcbOqKVlFHRd43NGgTMXZVfsSghy5UoLr4eKYMA3LeFszcWarhNxz/+wqcwx3h
+      8wIDAQAB
+      -----END PUBLIC KEY-----
+      ", array("RS256"));*/
+
         $user = Socialite::driver($request->provider)->userFromToken($request->token);
         if ($user->getEmail() == null) {
             toast('Sorry Your Account Doesn\'t provide any email to login with');

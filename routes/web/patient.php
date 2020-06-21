@@ -47,6 +47,9 @@ Route::group(['namespace' => 'Website\Patient', 'middleware' => ['localeSessionR
 
         Route::get('prescription/{reservation_id}', 'PrescriptionController@show')->name('prescription.show');
 
+
+        Route::post('favourite/{doctor_id}/toggle', 'FavouriteController@toggleFavourite')->name('favourite.toggle');
+        Route::get('favourites', 'FavouriteController@index')->name('favourites');
     });
 
 
