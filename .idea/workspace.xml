@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="445642ab-05e1-4213-b118-4b5c2b06b459" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Transaction.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Transaction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/_sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/_sidebar.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,7 +224,7 @@
       <workItem from="1593111715635" duration="1305000" />
       <workItem from="1593119429520" duration="756000" />
       <workItem from="1593122749298" duration="772000" />
-      <workItem from="1593275901166" duration="7676000" />
+      <workItem from="1593275901166" duration="9001000" />
     </task>
     <servers />
   </component>
@@ -272,9 +271,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1593282855851" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1593285137925">
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1593285821647">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1593285137925" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1593285821647" />
   </component>
 </project>

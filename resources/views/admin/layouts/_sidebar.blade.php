@@ -129,14 +129,14 @@
                             </li>
                         @endcan
                         <li>
-                            @can('View Question')
+                         {{--   @can('View Question')
 
                                 <a href="{!! route('admin.questions.index') !!}">
                                     <i class="fas fa-question pr-1"></i>
 
                                     {!! __("Question") !!}</a>
 
-                            @endcan
+                            @endcan--}}
                             @can('View Socialsecurity')
 
                                 <a href="{!! route('admin.social-securities.index') !!}">
