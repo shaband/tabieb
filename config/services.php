@@ -52,7 +52,6 @@ return [
         'secret_key' => env("PAYTABS_SECRET_KEY", '4gVvb27xiKgweYerAhIXi3ER67FKTCBXTws4zABSkSpyQE0qVIoeM25T9LD2of0hMsmm2YfnQEVHiW8eFwsszylJjZLIeL01emnh'),
         'redirect' => env('PAYTABS_CALLBACK', "https://tabieb.test/paytabs/callback")
     ]
-
     /*'twitter' => [
         'client_id' => env('TWITTER_CLIENT_ID',null),
         'client_secret' => env('TWITTER_CLIENT_SECRET',null),

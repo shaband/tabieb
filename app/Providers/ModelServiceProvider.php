@@ -51,7 +51,7 @@ class ModelServiceProvider extends ServiceProvider
             'reservations' => Reservation::class,
         ]);
 
-        Prescription::observe(prescriptionObserver::class);
+        Prescription::observe(PrescriptionObserver::class);
         //  Message::observe(PushMessageNotificationObserver::class);
     }
 }

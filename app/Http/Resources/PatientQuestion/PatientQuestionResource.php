@@ -17,7 +17,10 @@ class PatientQuestionResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-
+            'answer' => [
+                'status' => $this->status,
+                'answer' => $this->answer,
+            ]
         ];
     }
 }

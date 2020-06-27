@@ -9,7 +9,7 @@ use App\Models\Patient;
 class PayTabService implements \App\Services\Contracts\TransactionContract
 {
 
-    public function Checkout(Patient $patient, $price, $reference_no = 1231231, $other_charges = 0, $discount = 0, $product_name = "Call"): array
+    public function Checkout(Patient $patient, $price,array $reference_no = [], $other_charges = 0, $discount = 0, $product_name = "Call"): array
     {
 
         $result = PayTabsFacade::authentication();
@@ -35,10 +35,11 @@ class PayTabService implements \App\Services\Contracts\TransactionContract
             'quantity' => "1",
             'unit_price' => (string)$price,
             "other_charges" => (string)$other_charges,
-            'amount' => (string)$price, 'discount' => (string)$discount,
+            'amount' => (string)$price,
+            'discount' => (string)$discount,
             'currency' => "SAR",
             'title' => $patient->username, "msg_lang" => app()->getLocale(),
-            "reference_no" => $reference_no ?? "1231231",
+            "reference_no" => json_encode($reference_no) ,
             "cms_with_version" => "API USING PHP",
             "site_url" => "facebook.com",
             'return_url' => config('services.paytabs.redirect'),

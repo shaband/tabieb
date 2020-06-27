@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6022af50-649c-423e-87fc-853c11e9da70" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Services/Contracts/TransactionContract.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Services/Drivers/PayTabService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Services/paytabs/PayTabs.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Services/paytabs/PayTabsFacade.php" afterDir="false" />
+    <list default="true" id="445642ab-05e1-4213-b118-4b5c2b06b459" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Repositories/SQL/TransactionRepositoryEloquent.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Repositories/interfaces/TransactionRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Transaction.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_06_24_200629_create_transactions_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/tabieb.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/tabieb.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/v1/Doctor/PrescriptionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/v1/Doctor/PrescriptionController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/v1/Patient/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/v1/Patient/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/v1/Patient/DoctorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/v1/Patient/DoctorController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Website/Patient/FavouriteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/Patient/FavouriteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Website/ReservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/ReservationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Doctor.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Doctor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Schedule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Schedule.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/v1/Patient/PatientQuestionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/v1/Patient/PatientQuestionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/PatientQuestion/PatientQuestionResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/PatientQuestion/PatientQuestionResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Observers/PrescriptionObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Observers/PrescriptionObserver.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Providers/ModelServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/ModelServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Scopes/ImageScope.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Scopes/ImageScope.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Traits/ModelHasImage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Traits/ModelHasImage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/SQL/AuthModelProviderRepositoryEloquent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/SQL/AuthModelProviderRepositoryEloquent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/Contracts/TransactionContract.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Contracts/TransactionContract.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/Drivers/PayTabService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Drivers/PayTabService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/services.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/vendor/pagination/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/pagination/default.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/doctor_page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/doctor_page.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/partials/_search_doctor_block.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/partials/_search_doctor_block.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/search.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/search.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web/patient.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web/patient.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -178,6 +179,14 @@
       <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
       <path value="$PROJECT_DIR$/vendor/league/commonmark" />
       <path value="$PROJECT_DIR$/vendor/league/flysystem" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-snappy" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-snappy" />
+      <path value="$PROJECT_DIR$/vendor/google/apiclient-services" />
+      <path value="$PROJECT_DIR$/vendor/laracasts/utilities" />
+      <path value="$PROJECT_DIR$/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/vendor/pulkitjalan/google-apiclient" />
+      <path value="$PROJECT_DIR$/vendor/google/auth" />
+      <path value="$PROJECT_DIR$/vendor/google/apiclient" />
     </include_path>
   </component>
   <component name="ProjectId" id="1dJydqViSCTw4UXom7KvthQiABC" />
@@ -193,7 +202,12 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunManager">
@@ -207,7 +221,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="6022af50-649c-423e-87fc-853c11e9da70" name="Default Changelist" comment="" />
+      <changelist id="445642ab-05e1-4213-b118-4b5c2b06b459" name="Default Changelist" comment="" />
       <created>1592157590566</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -221,6 +235,13 @@
       <workItem from="1592676831679" duration="1441000" />
       <workItem from="1592679417513" duration="33000" />
       <workItem from="1592680300205" duration="15554000" />
+      <workItem from="1592936930164" duration="516000" />
+      <workItem from="1593016790226" duration="13000" />
+      <workItem from="1593028709379" duration="4305000" />
+      <workItem from="1593111715635" duration="1305000" />
+      <workItem from="1593119429520" duration="756000" />
+      <workItem from="1593122749298" duration="772000" />
+      <workItem from="1593275901166" duration="7010000" />
     </task>
     <servers />
   </component>
@@ -231,6 +252,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="275" y="22" key="#Deployment" timestamp="1593279414922">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="22" key="#Deployment/0.0.1366.728@0.0.1366.728" timestamp="1593279414922" />
     <state x="412" y="154" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1592686299951">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -239,21 +264,33 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1592244187759" />
+    <state x="502" y="71" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method1" timestamp="1593283794659">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="502" y="71" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method1/0.0.1366.728@0.0.1366.728" timestamp="1593283794659" />
     <state x="474" y="87" key="NewPhpClassDialog" timestamp="1592686308697">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="474" y="87" key="NewPhpClassDialog/0.0.1366.728@0.0.1366.728" timestamp="1592686308697" />
+    <state x="545" y="263" key="WebDeployment.AddServerDialog.v.1" timestamp="1593279221429">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="545" y="263" key="WebDeployment.AddServerDialog.v.1/0.0.1366.728@0.0.1366.728" timestamp="1593279221429" />
+    <state x="92" y="92" width="1182" height="544" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1593029081018">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="92" y="92" width="1182" height="544" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1366.728@0.0.1366.728" timestamp="1593029081018" />
     <state x="390" y="97" width="585" height="534" key="find.popup" timestamp="1592241910918">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="390" y="97" width="585" height="534" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1592241910918" />
-    <state x="339" y="162" key="run.anything.popup" timestamp="1592776843189">
+    <state x="339" y="162" key="run.anything.popup" timestamp="1593282855851">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1592776843189" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1592777427816">
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1593282855851" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1593284452004">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1592777427816" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1593284452004" />
   </component>
 </project>

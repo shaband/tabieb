@@ -65,26 +65,26 @@ Route::get('pay', function () {
     $result = \App\Services\paytabs\PayTabsFacade::create_pay_page(array(
         //Customer's Personal Information
 
-        'cc_first_name' => "john",          //This will be prefilled as Credit Card First Name
-        'cc_last_name' => "Doe",            //This will be prefilled as Credit Card Last Name
-        'cc_phone_number' => "00973",
-        'phone_number' => "33333333",
+        'cc_first_name' => "m",          //This will be prefilled as Credit Card First Name
+        'cc_last_name' => "m",            //This will be prefilled as Credit Card Last Name
+        'cc_phone_number' => "-",
+        "phone_number" => "123123123456",
         'email' => "customer@gmail.com",
 
         //Customer's Billing Address (All fields are mandatory)
         //When the country is selected as USA or CANADA, the state field should contain a String of 2 characters containing the ISO state code otherwise the payments may be rejected.
         //For other countries, the state can be a string of up to 32 characters.
-        'billing_address' => "manama bahrain",
-        'city' => "manama",
-        'state' => "manama",
-        'postal_code' => "00973",
-        'country' => "BHR",
+        'billing_address' => "-",
+        "city" => "Mekka",
+        "state" => "mekka",
+        "postal_code" => "-",
+        "country" => "BHR",
 
         //Customer's Shipping Address (All fields are mandatory)
-        'address_shipping' => "Juffair bahrain",
-        'city_shipping' => "manama",
-        'state_shipping' => "manama",
-        'postal_code_shipping' => "00973",
+        'address_shipping' => "-",
+        'city_shipping' => "-",
+        'state_shipping' => "-",
+        'postal_code_shipping' => "-",
         'country_shipping' => "BHR",
 
         //Product Information
@@ -99,9 +99,9 @@ Route::get('pay', function () {
 
 
         //Invoice Information
-        'title' => "John Doe",               // Customer's Name on the invoice
+        'title' => "-",               // Customer's Name on the invoice
         "msg_lang" => "en",                 //Language of the PayPage to be created. Invalid or blank entries will default to English.(Englsh/Arabic)
-        "reference_no" => "1231231",        //Invoice reference number in your system
+        "reference_no" => json_encode(['model_type'=>"patients",'model_id'=>1]),        //Invoice reference number in your system
         "cms_with_version" => "API USING PHP",
 
         //Website Information
@@ -122,3 +122,7 @@ Route::get('pay', function () {
 
 });
 
+Route::post('/paytabs/callback', function (\Illuminate\Http\Request $request) {
+
+    dd(\App\Services\paytabs\PayTabsFacade::verify_payment($request->payment_reference));
+});

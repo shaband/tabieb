@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\v1\Doctor;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Presciption\PrescriptionResource;
 use App\Models\Reservation;
+use App\Repositories\interfaces\MedicalHistoryRepository;
 use App\Repositories\interfaces\PresciptionRepository;
 use App\Repositories\interfaces\ReservationRepository;
 use Carbon\Carbon;
@@ -75,9 +76,9 @@ class PrescriptionController extends Controller
 
         $prescription = $this->repo->updateOrCreate(['reservation_id' => $request->reservation_id], $data);
 
+
         $prescription->items()->delete();
         $items = $prescription->items()->createMany($request->items);
-
         DB::commit();
         $prescription = new PrescriptionResource($prescription->fresh()->load('patient', 'items', 'doctor'));
 

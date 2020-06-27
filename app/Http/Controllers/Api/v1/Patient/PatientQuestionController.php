@@ -31,7 +31,7 @@ class PatientQuestionController extends Controller
      */
     public function questions()
     {
-        $questions = $this->repo->all();
+        $questions = $this->repo->WithAnswersOfPatient(auth()->id());
         $questions = PatientQuestionResource::collection($questions);
 
         return responseJson(compact('questions'), __("Loaded Successfully"));

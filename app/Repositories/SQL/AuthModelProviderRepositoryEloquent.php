@@ -69,7 +69,7 @@ class AuthModelProviderRepositoryEloquent extends BaseRepository implements Auth
     public function StoreAvatar(\Laravel\Socialite\Contracts\User $user, $patient): void
     {
         $fileContents = file_get_contents($user->getAvatar());
-        $pic = '/patients/' . $user->getId() . '.jpg';
+        $pic = '/patients/'.time(). $user->getId() . '.jpg';
         File::put(storage_path('app/public') . $pic, $fileContents);
 
         $img = $patient->image()->updateOrCreate(['type' => 1], [

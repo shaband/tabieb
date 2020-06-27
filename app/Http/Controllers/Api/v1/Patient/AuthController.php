@@ -13,6 +13,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
+use Laravel\Socialite\Two\User;
 use Lcobucci\JWT\Parsing\Decoder;
 
 class AuthController extends Controller
@@ -31,6 +32,8 @@ class AuthController extends Controller
 
         $this->repo = $repo;
     }
+
+
 
     /**
      * @param Request $request
@@ -268,32 +271,18 @@ class AuthController extends Controller
     public function socialLogin(Request $request, AuthModelProviderRepository $providerRepo)
     {
 
+
         $this->validate($request, [
             'provider' => 'required|string|in:facebook,google',
             'token' => 'required|string'
         ]);
-        /* $key="-----BEGIN PUBLIC KEY-----
-      MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA7edwjFTS82NuGM29NNFk
-      Fvd0nGSSaCGJkM7MqXQyha1iz7DFVa2pMOboAv7NoGd9mbmwMDrAAOeP88U1WPnm
-      ybkpFIszvxidakkyHTE/UfJgtLo456ck1u18UwQXwOJprCFmkpOd9dzEbx4L2Ywx
-      WNXQzTl8k+7yRFuiJrfJrsLrxa8r+eZJAzgxVzgRQp/AyTTqRgUi9sC4p6m5BuFi
-      +2xr2/2a0Z9qgpQ6hxsSVyo2jmnVQ4rBmNdKCDIR4FBVP5NmVDlFNOpRauzwKGa2
-      VPHcbOqKVlFHRd43NGgTMXZVfsSghy5UoLr4eKYMA3LeFszcWarhNxz/+wqcwx3h
-      8wIDAQAB
-      -----END PUBLIC KEY-----
-      ";
-              $user = JWT::decode($request->token, "-----BEGIN PUBLIC KEY-----
-      MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA7edwjFTS82NuGM29NNFk
-      Fvd0nGSSaCGJkM7MqXQyha1iz7DFVa2pMOboAv7NoGd9mbmwMDrAAOeP88U1WPnm
-      ybkpFIszvxidakkyHTE/UfJgtLo456ck1u18UwQXwOJprCFmkpOd9dzEbx4L2Ywx
-      WNXQzTl8k+7yRFuiJrfJrsLrxa8r+eZJAzgxVzgRQp/AyTTqRgUi9sC4p6m5BuFi
-      +2xr2/2a0Z9qgpQ6hxsSVyo2jmnVQ4rBmNdKCDIR4FBVP5NmVDlFNOpRauzwKGa2
-      VPHcbOqKVlFHRd43NGgTMXZVfsSghy5UoLr4eKYMA3LeFszcWarhNxz/+wqcwx3h
-      8wIDAQAB
-      -----END PUBLIC KEY-----
-      ", array("RS256"));*/
+        if ($request->provider == 'google') {
 
-        $user = Socialite::driver($request->provider)->userFromToken($request->token);
+            $user = self::FetchGoogleToken($request->token);
+
+        } else {
+            $user = Socialite::driver($request->provider)->userFromToken($request->token);
+        }
         if ($user->getEmail() == null) {
             toast('Sorry Your Account Doesn\'t provide any email to login with');
             return redirect()->route('home');
@@ -315,4 +304,25 @@ class AuthController extends Controller
             __("Login Successfully")
         );
     }
+
+    /**
+     * @param string $token
+     * @return User
+     */
+    public static function FetchGoogleToken(string $token): User
+    {
+        $jwt = explode('.', $token);
+
+        $data = json_decode(base64_decode($jwt[1]), true);
+        $user = new User();
+        $user->email = $data['email'];
+        $user->avatar = $data['picture'];
+        $user->nickname = $data['name'];
+        $user->name = $data['name'];
+        $user->setToken($token);
+        $user->setExpiresIn($data['exp']);
+        $user->setRaw($data);
+        return $user;
+    }
+
 }
