@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Transaction extends Model
 {
+
+    const PAYMENT_TYPE_DEBIT=0;
+    const PAYMENT_TYPE_CREDIT=1;
+
     protected $fillable = ['gateway',
         'invoice_id',
         'amount',
@@ -23,7 +27,6 @@ class Transaction extends Model
         'payment_type',
         'reservation_id',
         'doctor_id',
-
         ];
 
     public function model(): MorphTo

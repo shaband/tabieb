@@ -12,6 +12,7 @@ class PayTabs
     const AUTHENTICATION = "https://www.paytabs.com/apiv2/validate_secret_key";
     const PAYPAGE_URL = "https://www.paytabs.com/apiv2/create_pay_page";
     const  VERIFY_URL = "https://www.paytabs.com/apiv2/verify_payment";
+    const  VERIFY_Transaction_URL = "https://www.paytabs.com/apiv2/verify_payment_transaction";
 
     /**
      * PayTabs constructor.
@@ -58,6 +59,13 @@ class PayTabs
         $values['secret_key'] = $this->secret_key;
         $values['payment_reference'] = $payment_reference;
         return json_decode($this->runPost(self::VERIFY_URL, $values),TRUE);
+    }
+    function verify_transaction($transaction_id)
+    {
+        $values['merchant_email'] = $this->merchant_email;
+        $values['secret_key'] = $this->secret_key;
+        $values['transaction_id'] = $transaction_id;
+        return json_decode($this->runPost(self::VERIFY_Transaction_URL, $values),TRUE);
     }
 
     function runPost($url, $fields): string

@@ -13,6 +13,7 @@ use App\Models\Prescription;
 use App\Models\Reservation;
 use App\Observers\prescriptionObserver;
 use App\Observers\PushMessageNotificationObserver;
+use App\Services\Drivers\PayTabService;
 use App\Services\paytabs\PayTabs;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\App;
@@ -30,6 +31,9 @@ class ModelServiceProvider extends ServiceProvider
 
         App::bind('payTabs',function() {
             return new PayTabs();
+        });
+        App::bind('payTabsService',function() {
+            return new PayTabService();
         });
     }
 

@@ -16,7 +16,17 @@ class PrescriptionController extends Controller
         $this->repo = $repo;
     }
 
-    public function index(Request $request)
+    public function index()
+    {
+        $prescriptions = $this->repo->findByField('reservation_id', auth()->id());
+        return responseJson([
+            'prescription' => PrescriptionResource::collection($prescriptions)
+        ], __("Loaded Successfully"));
+
+
+    }
+
+    public function show(Request $request)
     {
 
         $this->validate($request, [
@@ -25,7 +35,7 @@ class PrescriptionController extends Controller
                 'exists:prescriptions,reservation_id,patient_id,' . auth()->id()
             ]
         ]);
-        $prescription = $this->repo->findByField('reservation_id', $request->reservation_id)->first();
+        $prescription = $this->repo->where('reservation_id', $request->reservation_id)->first();
 
         $prescription = new PrescriptionResource($prescription->load('doctor', 'items'));
 

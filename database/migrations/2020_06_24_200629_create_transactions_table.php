@@ -22,7 +22,6 @@ class CreateTransactionsTable extends Migration
             $table->string('transaction_id')->nullable()->index();
             $table->char('card_brand')->nullable();
             $table->char('card_first_six_digits')->nullable();
-            $table->char('card_last_six_digits')->nullable();
             $table->char('card_last_four_digits')->nullable();
             $table->smallInteger("response_code")->nullable();
             //my columns

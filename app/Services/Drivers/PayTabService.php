@@ -53,4 +53,8 @@ class PayTabService implements \App\Services\Contracts\TransactionContract
     {
         return PayTabsFacade::verify_payment($reference_code);
     }
+    public function verify_transaction($transaction_id): array
+    {
+        return PayTabsFacade::verify_transaction($transaction_id);
+    }
 }

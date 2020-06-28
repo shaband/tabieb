@@ -39,7 +39,8 @@ Route::middleware(['auth:patient_api'])->group(function () {
     Route::post('reservations/previous', 'ReservationController@previous');
     Route::post('reservation', 'ReservationController@reservation');
     Route::post('reservation/rate', 'RatingController@create');
-    Route::post('reservation/prescription', 'PrescriptionController@index');
+    Route::post('reservation/prescription', 'PrescriptionController@show');
+    Route::post('prescriptions', 'PrescriptionController@index');
     Route::post('chats', 'ChatController@inbox');
     Route::post('chats/create', 'ChatController@create');
     Route::post('chat/messages', 'ChatController@addMessage');

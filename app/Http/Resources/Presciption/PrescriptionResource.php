@@ -29,7 +29,7 @@ class PrescriptionResource extends JsonResource
             'diagnosis' => $this->diagnosis,
             'description' => $this->description,
             'phramacy_id'=>$this->phramacy_id,
-            'status'=>$this->phramacy_id==null?"":"",
+            'taken'=>$this->phramacy_id!=null,
             //'phramacy'=>$this->phramacy,
             'patient' => $this->when($this->resource->relationLoaded('patient'), function () {
                 return [

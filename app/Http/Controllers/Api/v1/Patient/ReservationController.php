@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Api\v1\Patient;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Reservation\ReservationResource;
 use App\Repositories\interfaces\ReservationRepository;
+use App\Repositories\interfaces\TransactionRepository;
+use App\Services\Facades\PayTabs;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 
 class ReservationController extends Controller
@@ -41,7 +44,7 @@ class ReservationController extends Controller
     }
 
 
-    public function create(Request $request)
+    public function create(Request $request, TransactionRepository $transactionRepo)
     {
 
         $this->validate($request, [
@@ -51,8 +54,13 @@ class ReservationController extends Controller
             'to_time' => ['required'],
             'communication_type' => 'required|integer|min:1|max:2',
             'description' => 'nullable|string',
+            'transaction_id'=>'required'
         ]);
+        DB::beginTransaction();
         $reservation = $this->repo->store($request);
+        $transactionRepo->store($request->transaction_id, $reservation);
+        PayTabs::verify_transaction($request->transaction_id);
+        DB::commit();
         $reservation = new ReservationResource($reservation);
         return responseJson(compact('reservation'), __("Saved Successfully"));
     }

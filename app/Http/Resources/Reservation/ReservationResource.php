@@ -3,9 +3,7 @@
 namespace App\Http\Resources\Reservation;
 
 use App\Http\Resources\Doctor\DoctorResource;
-use App\Http\Resources\patients\PatientResource;
-use App\Http\Resources\Schedule\ScheduleResource;
-use App\Models\Reservation;
+
 use App\Repositories\interfaces\ReservationRepository;
 use Carbon\CarbonImmutable;
 use Illuminate\Http\Resources\Json\JsonResource;
