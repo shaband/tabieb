@@ -2,6 +2,7 @@
 
 namespace App\Repositories\SQL;
 
+use App\Models\Patient;
 use App\Models\Reservation;
 use App\Repositories\SQL\BaseRepository;
 use App\Services\Facades\PayTabs;
@@ -78,8 +79,53 @@ class TransactionRepositoryEloquent extends BaseRepository implements Transactio
             'doctor_id' => $reservation->doctor_id,
         ];
 
-        return $this->create($attributes);
+        return $this->updateOrCreate([
+            'model_type' => $model_type,
+            'model_id' => $model_id,
+            'reservation_id' => $reservation->id,
+            'doctor_id' => $reservation->doctor_id,
+            'payment_type' => Transaction::PAYMENT_TYPE_CREDIT,
+        ], $attributes);
     }
+
+
+    public function PayFromWallet($amount, Reservation $reservation): Transaction
+    {
+        $attributes = [
+            'gateway' => 'wallet',
+            'amount' => $amount,
+            'currency' => "SAR",
+            'card_brand' => 'wallet',
+            'model_type' => $this->getMorphedAlias((new \ReflectionClass(Patient::class))->getName()),
+            'model_id' => $reservation->patient->id,
+            'payment_type' => Transaction::PAYMENT_TYPE_CREDIT,
+            'reservation_id' => $reservation->id,
+            'doctor_id' => $reservation->doctor_id,
+        ];
+
+        return $this->create($attributes);
+
+    }
+
+    public function PayBackToWallet(Transaction $transaction, $description = null): Transaction
+    {
+        $attributes = [
+            'gateway' => 'wallet',
+            'amount' => $transaction->amount,
+            'currency' => "SAR",
+            'card_brand' => 'wallet',
+            'model_type' => $transaction->model_type,
+            'model_id' => $transaction->model_id,
+            'payment_type' => Transaction::PAYMENT_TYPE_DEBIT,
+            'reservation_id' => $transaction->reservation_id,
+            'doctor_id' => $transaction->doctor_id,
+            'description' => $description,
+        ];
+
+        return $this->create($attributes);
+
+    }
+
 
     /**
      * decode the json of order id
@@ -95,5 +141,16 @@ class TransactionRepositoryEloquent extends BaseRepository implements Transactio
     public static function decodeOrderId($order_id)
     {
         return json_decode(str_replace('\\', '', $order_id), true);
+    }
+
+    /**
+     * @param $user
+     * @param int $payment_type
+     * @return mixed
+     */
+    public function getTotalUserTransaction($user)
+    {
+
+        return $this->model->where('model_id', $user->id)->OfUserWallet($user)->first()->total_amount;
     }
 }

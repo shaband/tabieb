@@ -11,7 +11,7 @@ use App\Models\Pharmacy;
 use App\Models\PharmacyRep;
 use App\Models\Prescription;
 use App\Models\Reservation;
-use App\Observers\prescriptionObserver;
+use App\Observers\PrescriptionObserver;
 use App\Observers\PushMessageNotificationObserver;
 use App\Services\Drivers\PayTabService;
 use App\Services\paytabs\PayTabs;

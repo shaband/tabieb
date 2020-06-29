@@ -21,7 +21,9 @@ interface TransactionRepository extends BaseInterface
      * @throws ValidationException
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function store($transaction_id,Reservation $reservation):Transaction;
+    public function store($transaction_id, Reservation $reservation): Transaction;
+
+    public function PayFromWallet($amount, Reservation $reservation): Transaction;
 
     /**
      * decode the json of order id
@@ -29,4 +31,6 @@ interface TransactionRepository extends BaseInterface
      * @return mixed
      */
     public static function decodeOrderId($payTabs_data);
+
+    public function getTotalUserTransaction($user);
 }

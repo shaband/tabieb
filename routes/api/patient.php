@@ -34,6 +34,7 @@ Route::get('categories', 'CategoryController@index');
 Route::middleware(['auth:patient_api'])->group(function () {
 
     Route::post('reservations/create', 'ReservationController@create');
+    Route::post('reservations/confirm-transactions', 'ReservationController@confirmTransaction');
     Route::post('reservations/cancel', 'ReservationController@cancel');
     Route::post('reservations/upcoming', 'ReservationController@upcoming');
     Route::post('reservations/previous', 'ReservationController@previous');

@@ -19,7 +19,7 @@ class ImageScope implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        $builder->addSelect(['p_img' => Attachment::ofUserImage($model, $model->getTable() . '.id', Attachment::PROFILE_PICTURE)])
+        $builder->addSelect(['p_img' => Attachment::query()->ofUserImage($model, $model->getTable() . '.id', Attachment::PROFILE_PICTURE)])
         ;
     }
 }

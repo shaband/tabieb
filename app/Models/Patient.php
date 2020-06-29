@@ -10,6 +10,7 @@ use App\Traits\ModelHasImage;
 use App\Traits\ModelHasLogs;
 use App\Traits\PushImage;
 use HighIdeas\UsersOnline\Traits\UsersOnlineTrait;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -95,91 +96,99 @@ class Patient extends Authenticatable implements JWTSubject
         return [];
     }
 
-    public function district():BelongsTo
+    public function district(): BelongsTo
     {
         return $this->belongsTo(District::class);
     }
 
-    public function area():BelongsTo
+    public function area(): BelongsTo
     {
         return $this->belongsTo(Area::class, 'area_id');
     }
 
-    public function block():BelongsTo
+    public function block(): BelongsTo
     {
         return $this->belongsTo(Block::class, 'block_id');
     }
 
-    public function image():MorphOne
+    public function image(): MorphOne
     {
         return $this->morphOne(Attachment::class, 'model')->where('type', 1);
     }
 
-    public function files():MorphMany
+    public function files(): MorphMany
     {
         return $this->morphMany(Attachment::class, 'model')->where('type', 2);
     }
 
-    public function providers():MorphMany
+    public function providers(): MorphMany
     {
         return $this->morphMany(AuthModelProvider::class, 'model');
     }
 
-    public function medical_histories():HasMany
+    public function medical_histories(): HasMany
     {
         return $this->hasMany(MedicalHistory::class, 'patient_id')
             ->with(['file:file,ext', 'creator', 'category:name_ar,name_en']);
     }
 
-    public function reservations():HasMany
+    public function reservations(): HasMany
     {
         return $this->hasMany(Reservation::class);
     }
 
-    public function ratings():HasMany
+    public function ratings(): HasMany
     {
         return $this->hasMany(Rating::class);
     }
 
-    public function chats():HasMany
+    public function chats(): HasMany
     {
         return $this->hasMany(Chat::class);
     }
 
-    public function invoices():HasMany
+    public function invoices(): HasMany
     {
         return $this->hasMany(Invoice::class);
     }
 
-    public function patient_answers():HasMany
+    public function patient_answers(): HasMany
     {
         return $this->hasMany(PatientAnswer::class);
     }
 
-    public function prescription():HasOne
+    public function prescription(): HasOne
     {
         return $this->hasOne(Prescription::class);
     }
 
-    public function contacts():MorphMany
+    public function contacts(): MorphMany
     {
         return $this->morphMany(Contact::class, 'model');
     }
 
-    public function social_security():BelongsTo
+    public function social_security(): BelongsTo
     {
         return $this->belongsTo(SocialSecurity::class);
     }
 
-    public function fcm_tokens() :MorphMany
+    public function fcm_tokens(): MorphMany
     {
         return $this->morphMany(Device::class, 'model')->where('device_type', Device::TOKEN_TYPE_FCM);
     }
 
-    public function favourites() :BelongsToMany
+    public function favourites(): BelongsToMany
     {
         return $this->belongsToMany(Doctor::class, 'favourites', 'patient_id', 'doctor_id');
     }
+
+    public function transactions(): MorphMany
+    {
+        return $this->morphMany(Transaction::class, 'model');
+    }
+
+
+    //attributes
 
     public function getNameAttribute()
     {
@@ -187,16 +196,33 @@ class Patient extends Authenticatable implements JWTSubject
     }
 
 
-      
-    
-      public function setSocialSecurityExpiredAtAttribute($value): void
+    public function setSocialSecurityExpiredAtAttribute($value): void
     {
         $this->attributes['social_security_expired_at'] = Carbon::parse($value);
     }
 
-    
-    
-    
+
+    //scopes
+
+    public function scopeWithWallet(Builder $builder)
+    {
+        $builder->addSelect([
+            'wallet_balance' => Transaction::OfUserTransactions($this, $this->getTable() . '.id', Transaction::PAYMENT_TYPE_CREDIT)
+        ]);
+
+    }
+
+    public function scopeWithTotalPaid(Builder $builder)
+    {
+
+        $builder->addSelect([
+            'wallet_balance' => Transaction::OfUserWallet($this)
+                ->whereColumn('model_id', $this->getTable() . '.id')
+        ]);
+
+    }
+
+
     public function receivesBroadcastNotificationsOn()
     {
         return 'App.notifications.patient.' . $this->id;

@@ -6,6 +6,8 @@ use App\Traits\ModelHasLogs;
 use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Reservation extends Model
 {
@@ -29,29 +31,29 @@ class Reservation extends Model
         'communication_type' => 'integer',
     ];
 
-    public function doctor()
+    public function doctor(): BelongsTo
     {
         return $this->belongsTo('App\Models\Doctor');
     }
 
-    public function patient()
+    public function patient(): BelongsTo
     {
         return $this->belongsTo('App\Models\Patient');
     }
 
-    public function schedule()
+    public function schedule(): BelongsTo
     {
         return $this->belongsTo('App\Models\Schedule')->withDefault(new Schedule());
     }
 
-    public function prescription()
+    public function prescription(): HasOne
     {
         return $this->hasOne(Prescription::class)->withDefault(new Prescription(['reservation_id' => $this->id, 'doctor_id' => $this->doctor_id, 'patient_id' => $this->patient_id,]));
     }
 
-    public function invoices()
+    public function transaction(): HasOne
     {
-        return $this->hasMany('App\Models\Invoice');
+        return $this->hasOne(Transaction::class);
     }
 
     public function rating()

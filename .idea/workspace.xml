@@ -2,19 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="445642ab-05e1-4213-b118-4b5c2b06b459" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Services/Facades/PayTabs.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Resources/Transaction/TransactionResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_06_29_155605_update_transactions_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/v1/Patient/PrescriptionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/v1/Patient/PrescriptionController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/v1/Patient/ReservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/v1/Patient/ReservationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Presciption/PrescriptionResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Presciption/PrescriptionResource.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Resources/Reservation/ReservationResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Reservation/ReservationResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Attachment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Attachment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Doctor.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Doctor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Patient.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Patient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Reservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Reservation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Transaction.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Transaction.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Providers/ModelServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/ModelServiceProvider.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Repositories/SQL/TransactionRepositoryEloquent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/SQL/TransactionRepositoryEloquent.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Repositories/interfaces/TransactionRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/interfaces/TransactionRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/Drivers/PayTabService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Drivers/PayTabService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/paytabs/PayTabs.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/paytabs/PayTabs.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_24_200629_create_transactions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_24_200629_create_transactions_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Scopes/ImageScope.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Scopes/ImageScope.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api/patient.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/patient.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -199,6 +200,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -238,7 +240,7 @@
       <workItem from="1593122749298" duration="772000" />
       <workItem from="1593275901166" duration="9001000" />
       <workItem from="1593287659928" duration="858000" />
-      <workItem from="1593360094561" duration="11068000" />
+      <workItem from="1593360094561" duration="25974000" />
     </task>
     <servers />
   </component>
@@ -253,6 +255,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="275" y="22" key="#Deployment/0.0.1366.728@0.0.1366.728" timestamp="1593279414922" />
+    <state x="488" y="46" key="#com.intellij.ide.util.MemberChooser" timestamp="1593450888954">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="488" y="46" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1593450888954" />
     <state x="412" y="154" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1592686299951">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -261,10 +267,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="487" y="123" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1593367796743" />
-    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1593371685628">
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1593447875425">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1593371685628" />
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1593447875425" />
     <state x="502" y="138" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method0" timestamp="1593371455397">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -273,6 +279,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="502" y="71" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method1/0.0.1366.728@0.0.1366.728" timestamp="1593283794659" />
+    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1593450980955">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1593450980955" />
     <state x="474" y="87" key="NewPhpClassDialog" timestamp="1593367782248">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -289,13 +299,13 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="390" y="97" width="585" height="534" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1592241910918" />
-    <state x="339" y="162" key="run.anything.popup" timestamp="1593282855851">
+    <state x="339" y="162" key="run.anything.popup" timestamp="1593446723774">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1593282855851" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1593372386265">
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1593446723774" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1593461117826">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1593372386265" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1593461117826" />
   </component>
 </project>

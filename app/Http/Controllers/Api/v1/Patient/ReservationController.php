@@ -4,12 +4,15 @@ namespace App\Http\Controllers\Api\v1\Patient;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Reservation\ReservationResource;
+use App\Models\Transaction;
+use App\Repositories\interfaces\DoctorRepository;
 use App\Repositories\interfaces\ReservationRepository;
 use App\Repositories\interfaces\TransactionRepository;
 use App\Services\Facades\PayTabs;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
 
 
 class ReservationController extends Controller
@@ -44,7 +47,7 @@ class ReservationController extends Controller
     }
 
 
-    public function create(Request $request, TransactionRepository $transactionRepo)
+    public function create(Request $request, TransactionRepository $transactionRepo, DoctorRepository $doctor_rep)
     {
 
         $this->validate($request, [
@@ -54,12 +57,23 @@ class ReservationController extends Controller
             'to_time' => ['required'],
             'communication_type' => 'required|integer|min:1|max:2',
             'description' => 'nullable|string',
-            'transaction_id'=>'required'
+            'is_wallet' => 'required|boolean',
+            'transaction_id' => 'nullable|integer|unique:transactions,transaction_id',
         ]);
         DB::beginTransaction();
         $reservation = $this->repo->store($request);
-        $transactionRepo->store($request->transaction_id, $reservation);
-        PayTabs::verify_transaction($request->transaction_id);
+        if ($request->is_wallet) {
+            $wallet = $transactionRepo->getTotalUserTransaction(auth()->user());
+            $doctor_price = $doctor_rep->select('price')->find($request->doctor_id)->price;
+            if ($wallet < $doctor_price) {
+                throw ValidationException::withMessages(['doctor_id' => __("Sorry, You Don't Have Enough Amount In Your Wallet To Make Reservation")]);
+            };
+            $transactionRepo->PayFromWallet($doctor_price, $reservation);
+
+        } elseif($request->is_wallet==0  &&$request->transaction_id!=null) {
+            $transactionRepo->store($request->transaction_id, $reservation);
+
+        }
         DB::commit();
         $reservation = new ReservationResource($reservation);
         return responseJson(compact('reservation'), __("Saved Successfully"));
@@ -142,4 +156,19 @@ class ReservationController extends Controller
         return responseJson(compact('reservation'), __("Loaded successfully"));
     }
 
+
+    public function confirmTransaction(Request $request, TransactionRepository $transactionRepo)
+    {
+        $request->validate([
+            'reservation_id' => 'required|integer|exists:reservations,id,patient_id,' . auth()->user()->id,
+            'transaction_id' => 'required|integer|unique:transactions,transaction_id'
+        ]);
+        $reservation = $this->repo->find($request->reservation_id);
+        $transaction = $transactionRepo->store($request->transaction_id, $reservation);
+        $reservation->setRelation('transaction', $transaction);
+        return responseJson([
+            'reservation' => new ReservationResource($reservation),
+        ], __("Paid Sucessfully")
+        );
+    }
 }

@@ -37,8 +37,9 @@ class Attachment extends Model
     {
         $builder->limit(1)
             ->select('file')
-            ->OfModelType(app(AttachmentRepository::class)
-                ->getMorphedAlias((new \ReflectionClass($model))->getName()))
+            ->OfModelType(
+                app(AttachmentRepository::class)->getMorphedAlias((new \ReflectionClass($model))->getName())
+            )
             ->where('type', $type)
             ->whereColumn('model_id', $column)
             ->latest();

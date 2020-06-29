@@ -115,8 +115,8 @@ class Doctor extends Authenticatable implements JWTSubject
     {
         return $this->hasMany(Schedule::class)
             ->with(['reservations' => function ($reservation) {
-            $reservation->where('status', Reservation::STATUS_ACCEPTED);
-        },'doctor']);
+                $reservation->where('status', Reservation::STATUS_ACCEPTED);
+            }, 'doctor']);
     }
 
     public function reservation(): HasMany
@@ -159,6 +159,11 @@ class Doctor extends Authenticatable implements JWTSubject
     public function fcm_tokens()
     {
         return $this->morphMany(Device::class, 'model')->where('device_type', Device::TOKEN_TYPE_FCM);
+    }
+
+    public function transactions(): HasMany
+    {
+        return $this->hasMany(Transaction::class, 'doctor_id');
     }
 
 

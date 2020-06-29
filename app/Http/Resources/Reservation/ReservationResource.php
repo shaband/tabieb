@@ -4,6 +4,7 @@ namespace App\Http\Resources\Reservation;
 
 use App\Http\Resources\Doctor\DoctorResource;
 
+use App\Http\Resources\Transaction\TransactionResource;
 use App\Repositories\interfaces\ReservationRepository;
 use Carbon\CarbonImmutable;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -51,7 +52,8 @@ class ReservationResource extends JsonResource
                     'id' => $this->patient_id,
                     'img' => fileUrl($this->patient->img)
                 ];
-            })/*)*/,
+            }),
+         'transaction'=>$this->whenLoaded('transaction',new TransactionResource($this->transaction))
         ];
     }
 
