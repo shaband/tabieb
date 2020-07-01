@@ -20,10 +20,6 @@ use App\Models\Transaction;
  */
 class TransactionRepositoryEloquent extends BaseRepository implements TransactionRepository
 {
-    /**
-     * @param $payTabs_data
-     * @return mixed
-     */
 
 
     /**
@@ -56,36 +52,10 @@ class TransactionRepositoryEloquent extends BaseRepository implements Transactio
     {
         $payTabs_data = PayTabs::verify_transaction($transaction_id);
 
-        try {
-            ['model_type' => $model_type, 'model_id' => $model_id] = self::decodeOrderId($payTabs_data['order_id']);
-        } catch (\Exception $e) {
-            throw ValidationException::withMessages(['transaction_id' => __("Wrong Order Id Encoding")]);
 
-        }
-        $attributes = [
-            'gateway' => 'payTabs',
-            'invoice_id' => $payTabs_data['pt_invoice_id'],
-            'amount' => $payTabs_data['amount'],
-            'currency' => $payTabs_data['currency'],
-            'transaction_id' => $payTabs_data['transaction_id'],
-            'card_brand' => $payTabs_data['card_brand'],
-            'card_first_six_digits' => $payTabs_data['card_first_six_digits'],
-            'card_last_four_digits' => $payTabs_data['card_last_four_digits'],
-            'response_code' => $payTabs_data['response_code'],
-            'model_type' => $model_type,
-            'model_id' => $model_id,
-            'payment_type' => Transaction::PAYMENT_TYPE_CREDIT,
-            'reservation_id' => $reservation->id,
-            'doctor_id' => $reservation->doctor_id,
-        ];
+        ['model_type' => $model_type, 'model_id' => $model_id, 'reservation_id' => $reservation_id] = self::decodeOrderId($payTabs_data['order_id']);
 
-        return $this->updateOrCreate([
-            'model_type' => $model_type,
-            'model_id' => $model_id,
-            'reservation_id' => $reservation->id,
-            'doctor_id' => $reservation->doctor_id,
-            'payment_type' => Transaction::PAYMENT_TYPE_CREDIT,
-        ], $attributes);
+        return $this->CreatePayTabTransaction($payTabs_data, $model_type, $model_id, $reservation);
     }
 
 
@@ -132,15 +102,20 @@ class TransactionRepositoryEloquent extends BaseRepository implements Transactio
      * @param $payTabs_data
      * @return mixed
      */
-
-    /**
-     * decode the json of order id
-     * @param $payTabs_data
-     * @return mixed
-     */
     public static function decodeOrderId($order_id)
     {
-        return json_decode(str_replace('\\', '', $order_id), true);
+        $data = json_decode(str_replace('\\', '', $order_id), true);
+        //if is decode null set default auth value and set reservation it to order_id (عشان خاطر حب الحبايب )
+        if (!is_array($data)) {
+            $data = [
+                'model_id' => auth()->id(),
+                'model_type' => 'patients',
+                'reservation_id' => $order_id
+
+            ];
+
+        }
+        return $data;
     }
 
     /**
@@ -151,6 +126,38 @@ class TransactionRepositoryEloquent extends BaseRepository implements Transactio
     public function getTotalUserTransaction($user)
     {
 
-        return $this->model->where('model_id', $user->id)->OfUserWallet($user)->first()->total_amount;
+        return $this->model->groupBy('model_id')->where('model_id', $user->id)->OfUserWallet($user)->first()->total_amount ?? 0;
+    }
+
+    /**
+     * @param $payTabs_data
+     * @param $model_type
+     * @param $model_id
+     * @param Reservation $reservation
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection|mixed
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
+     */
+    public function CreatePayTabTransaction($payTabs_data, $model_type, $model_id, Reservation $reservation): Transaction
+    {
+        $attributes = [
+            'gateway' => 'payTabs',
+            'invoice_id' => $payTabs_data['pt_invoice_id'],
+            'amount' => $payTabs_data['amount'],
+            'currency' => $payTabs_data['currency'],
+            'transaction_id' => $payTabs_data['transaction_id'],
+            'card_brand' => $payTabs_data['card_brand'],
+            'card_first_six_digits' => $payTabs_data['card_first_six_digits'],
+            'card_last_four_digits' => $payTabs_data['card_last_four_digits'],
+            'response_code' => $payTabs_data['response_code'],
+            'model_type' => $model_type,
+            'model_id' => $model_id,
+            'payment_type' => Transaction::PAYMENT_TYPE_CREDIT,
+            'reservation_id' => $reservation->id,
+            'doctor_id' => $reservation->doctor_id,
+        ];
+
+        return $this->updateOrCreate(
+            collect($attributes)->only('model_type', 'model_id', 'reservation_id', 'doctor_id', 'payment_type')->toArray()
+            , $attributes);
     }
 }

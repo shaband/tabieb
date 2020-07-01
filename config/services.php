@@ -47,10 +47,11 @@ return [
 
 
     'paytabs' => [
-        'merchant_email' => env("PAYTABS_MERCHANT_EMAIL", 'mahmoudshaband@gmail.com'),
-        'merchant_id' => env("PAYTABS_MERCHANT_ID", '10043732'),
-        'secret_key' => env("PAYTABS_SECRET_KEY", '4gVvb27xiKgweYerAhIXi3ER67FKTCBXTws4zABSkSpyQE0qVIoeM25T9LD2of0hMsmm2YfnQEVHiW8eFwsszylJjZLIeL01emnh'),
-        'redirect' => env('PAYTABS_CALLBACK', "https://tabieb.test/paytabs/callback")
+        'merchant_email' => env("PAYTABS_MERCHANT_EMAIL", 'info@tabayib.com'),
+        'merchant_id' => env("PAYTABS_MERCHANT_ID", '10063929'),
+        'secret_key' => env("PAYTABS_SECRET_KEY", 'CsV6Rq0BHam50so4SEisW6F2R3A2U6zxyvDqWE2DPpIPR6UKLddHjSJbVkePqNnZj0qfFtSuSBkKIeutsHaMzUXvfblGZIGiJ6yo'),
+        'redirect' => env('PAYTABS_CALLBACK', "https://tabayib.com/paytabs/callback"),
+        'site_url'=>env("PAYTABS_SITE_URL",'tabayib.com')
     ]
     /*'twitter' => [
         'client_id' => env('TWITTER_CLIENT_ID',null),

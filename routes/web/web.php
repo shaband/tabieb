@@ -59,70 +59,33 @@ Route::get('push', function () {
 
 Route::get('pay', function () {
 
+    $patient = Patient::find(6);
+    $reservation = $patient->reservations()->doesnthave('transaction')->first();
 
-    $result = \App\Services\paytabs\PayTabsFacade::authentication();
+    $price = $reservation->doctor->price;
+    $reference = [
+        'model_id' => $patient->id,
+        'model_type' => 'patients',
+        'reservation_id' => $reservation->id
+    ];
+    $checkout = \App\Services\Facades\PayTabs::Checkout($patient, $price, $reference);
 
-    $result = \App\Services\paytabs\PayTabsFacade::create_pay_page(array(
-        //Customer's Personal Information
-
-        'cc_first_name' => "m",          //This will be prefilled as Credit Card First Name
-        'cc_last_name' => "m",            //This will be prefilled as Credit Card Last Name
-        'cc_phone_number' => "-",
-        "phone_number" => "123123123456",
-        'email' => "customer@gmail.com",
-
-        //Customer's Billing Address (All fields are mandatory)
-        //When the country is selected as USA or CANADA, the state field should contain a String of 2 characters containing the ISO state code otherwise the payments may be rejected.
-        //For other countries, the state can be a string of up to 32 characters.
-        'billing_address' => "-",
-        "city" => "Mekka",
-        "state" => "mekka",
-        "postal_code" => "-",
-        "country" => "BHR",
-
-        //Customer's Shipping Address (All fields are mandatory)
-        'address_shipping' => "-",
-        'city_shipping' => "-",
-        'state_shipping' => "-",
-        'postal_code_shipping' => "-",
-        'country_shipping' => "BHR",
-
-        //Product Information
-        "products_per_title" => "Product1",   //Product title of the product. If multiple products then add “||” separator
-        'quantity' => "1",                                    //Quantity of products. If multiple products then add “||” separator
-        'unit_price' => "6",                                  //Unit price of the product. If multiple products then add “||” separator.
-        "other_charges" => "91.00",                                     //Additional charges. e.g.: shipping charges, taxes, VAT, etc.
-
-        'amount' => "97.00",                                          //Amount of the products and other charges, it should be equal to: amount = (sum of all products’ (unit_price * quantity)) + other_charges
-        'discount' => "1",                                                //Discount of the transaction. The Total amount of the invoice will be= amount - discount
-        'currency' => "USD",                                            //Currency of the amount stated. 3 character ISO currency code
-
-
-        //Invoice Information
-        'title' => "-",               // Customer's Name on the invoice
-        "msg_lang" => "en",                 //Language of the PayPage to be created. Invalid or blank entries will default to English.(Englsh/Arabic)
-        "reference_no" => json_encode(['model_type'=>"patients",'model_id'=>1]),        //Invoice reference number in your system
-        "cms_with_version" => "API USING PHP",
-
-        //Website Information
-        "site_url" => "facebook.com",      //The requesting website be exactly the same as the website/URL associated with your PayTabs Merchant Account
-        'return_url' => config('services.paytabs.redirect'),
-        "paypage_info" => "1"
-    ));
-
-    echo "FOLLOWING IS THE RESPONSE: <br />";
-
-    dd($result);
-    print_r($result);
-// echo '<script type="text/javascript">
-//            window.location = "'.$result->payment_url.'"
-//       </script>';
-// $_SESSION['paytabs_api_key'] = $result->secret_key;
-
+    if ($checkout['response_code'] == 4012) {
+        return redirect($checkout['payment_url']);
+    } else {
+        Log::error($checkout["result"], $checkout);
+        throw \Illuminate\Validation\ValidationException::withMessages([$checkout["result"]]);
+    }
+    //    dd($patient);
 
 });
 
 Route::post('/paytabs/callback', function (\Illuminate\Http\Request $request) {
 
-    dd(\App\Services\paytabs\PayTabsFacade::verify_payment($request->payment_reference));
+    $paytabs_data = \App\Services\paytabs\PayTabsFacade::verify_payment($request->payment_reference);
+
+    $transactionRepo = app(\App\Repositories\interfaces\TransactionRepository::class);
+    ['model_type' => $model_type, 'model_id' => $model_id, 'reservation_id' => $reservation_id] = $transactionRepo::decodeOrderId($paytabs_data['reference_no']);
+    $reservation = \App\Models\Reservation::find($reservation_id);
+    $transactionRepo->CreatePayTabTransaction($paytabs_data, $model_type, $model_id, $reservation);
 });

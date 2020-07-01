@@ -52,6 +52,8 @@ class ReservationController extends Controller
 
         $this->validate($request, [
             'doctor_id' => 'required|integer|exists:doctors,id',
+            'schedule_id' => 'required|integer|exists:schedules,id',
+
             'date' => 'required|date|date_format:Y-m-d',
             'from_time' => ['required'],
             'to_time' => ['required'],
@@ -168,7 +170,7 @@ class ReservationController extends Controller
         $reservation->setRelation('transaction', $transaction);
         return responseJson([
             'reservation' => new ReservationResource($reservation),
-        ], __("Paid Sucessfully")
+        ], __("Paid Successfully")
         );
     }
 }

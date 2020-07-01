@@ -33,4 +33,7 @@ interface TransactionRepository extends BaseInterface
     public static function decodeOrderId($payTabs_data);
 
     public function getTotalUserTransaction($user);
+
+    public function CreatePayTabTransaction($payTabs_data, $model_type, $model_id, Reservation $reservation): Transaction;
+
 }

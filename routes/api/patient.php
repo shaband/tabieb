@@ -57,6 +57,5 @@ Route::middleware(['auth:patient_api'])->group(function () {
     Route::post('favourites', 'FavouriteController@index');
     Route::post('favourites/toggle', 'FavouriteController@toggleFavourite');
 
-
 });
 

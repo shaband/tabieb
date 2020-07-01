@@ -41,7 +41,7 @@ class PayTabService implements \App\Services\Contracts\TransactionContract
             'title' => $patient->username, "msg_lang" => app()->getLocale(),
             "reference_no" => json_encode($reference_no) ,
             "cms_with_version" => "API USING PHP",
-            "site_url" => "facebook.com",
+            "site_url" => config('services.paytabs.site_url'),
             'return_url' => config('services.paytabs.redirect'),
             "paypage_info" => "1"
         ));
@@ -53,6 +53,7 @@ class PayTabService implements \App\Services\Contracts\TransactionContract
     {
         return PayTabsFacade::verify_payment($reference_code);
     }
+
     public function verify_transaction($transaction_id): array
     {
         return PayTabsFacade::verify_transaction($transaction_id);
