@@ -125,6 +125,7 @@ class ReservationController extends Controller
         ], __('Loaded Successfully'));
     }
 
+
     /**
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
