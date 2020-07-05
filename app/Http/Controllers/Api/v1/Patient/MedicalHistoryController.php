@@ -53,6 +53,22 @@ class MedicalHistoryController extends Controller
         );
     }
 
+    public function update(MedicalHistoryRequest $request)
+    {
+        $this->validate($request, [
+            'medical_history_id' => ['required', 'integer', Rule::exists('medical_histories', 'id')->where('creator_type', 'patients')
+            ],
+        ]);
+        $inputs = $request->all();
+        $medical_history = $this->repo->update($inputs, $request->medical_history_id);
+        return responseJson(
+            [
+                'medical_histories' => new  MedicalHistoryResource($medical_history)
+            ],
+            __("Loaded Successfully")
+        );
+    }
+
     public function destroy(Request $request)
     {
         $this->validate($request, [

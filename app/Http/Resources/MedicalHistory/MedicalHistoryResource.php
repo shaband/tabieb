@@ -4,6 +4,7 @@ namespace App\Http\Resources\MedicalHistory;
 
 use App\Http\Resources\Category\CategoryResource;
 use App\Http\Resources\patients\PatientResource;
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class MedicalHistoryResource extends JsonResource
@@ -19,7 +20,7 @@ class MedicalHistoryResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'date' => $this->date,
+            'date' => $this->date->toDateString(),
             'description' => $this->description,
             'creator_type' => $this->creator_type,
             'image' => fileUrl($this->img ?? $this->image),

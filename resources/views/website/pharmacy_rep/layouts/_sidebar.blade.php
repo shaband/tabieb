@@ -7,9 +7,9 @@
             <img src="{!! asset(auth()->user()->img )!!}" alt="user-img" title="Mat Helme"
                  class="rounded-circle img-thumbnail avatar-lg">
             <div class="dropdown">
-                <a href="{!! route('admin.admins.edit',auth()->id())!!}"
+                <a href="{!! route('pharmacy.pharmacy-reps.edit',auth()->id()) !!}"
                    class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block"
-                   data-toggle="dropdown">{!! auth()->guard('admin')->user()->name !!}</a>
+                   data-toggle="dropdown">{!! auth()->guard('pharmacy_rep')->user()->name !!}</a>
                 <div class="dropdown-menu user-pro-dropdown">
 
                     <!-- item-->

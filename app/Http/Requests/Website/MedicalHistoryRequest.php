@@ -56,8 +56,6 @@ class MedicalHistoryRequest extends FormRequest
             'category_id' => 'nullable|integer|exists:categories,id',
             'image' => 'nullable|mimes:jpeg,bmp,png,jpg,svg,pdf',
             'date' => 'nullable|date',
-
-
         ];
     }
 }

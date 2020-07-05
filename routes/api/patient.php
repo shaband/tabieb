@@ -52,6 +52,7 @@ Route::middleware(['auth:patient_api'])->group(function () {
 
     Route::post('medical-histories', 'MedicalHistoryController@index');
     Route::post('medical-histories/create', 'MedicalHistoryController@store');
+    Route::post('medical-histories/update', 'MedicalHistoryController@update');
     Route::post('medical-histories/delete', 'MedicalHistoryController@destroy');
 
     Route::post('favourites', 'FavouriteController@index');
