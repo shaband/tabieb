@@ -8,6 +8,9 @@
         <li class="{!! setActive('patient.profile.appointments') !!}">
             <a href="{!! route('patient.profile.appointments') !!}">{{ __('appointments')}}</a>
         </li>
+        <li class="{!! setActive('patient.favourites') !!}">
+            <a href="{!! route('patient.favourites') !!}">{{ __('appointments')}}</a>
+        </li>
         <li class="{!! setActive('patient.profile.history') !!} ">
             <a href="{!! route('patient.profile.history') !!}">{{ __('history')}}</a>
         </li>

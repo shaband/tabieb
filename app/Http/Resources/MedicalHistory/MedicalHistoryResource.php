@@ -20,7 +20,7 @@ class MedicalHistoryResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'date' => $this->date->toDateString(),
+            'date' => ($this->date instanceof Carbon) ? $this->date->toDateString() : $this->date,
             'description' => $this->description,
             'creator_type' => $this->creator_type,
             'image' => fileUrl($this->img ?? $this->image),

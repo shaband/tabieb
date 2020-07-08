@@ -10,6 +10,7 @@ class MedicalHistory extends Model
 {
     use ModelHasLogs;
 
+
     protected $fillable = [
         'patient_id',
         'creator_type',

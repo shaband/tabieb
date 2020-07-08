@@ -175,6 +175,12 @@ class Doctor extends Authenticatable implements JWTSubject
         return $this->logo_image()->select('file')->first('file')->file ?? asset('design/images/doctor-logo.png');
     }
 
+    public function getIsOnCallAttribute()
+    {
+
+        return $this->reservation()->where('status', Reservation::STATUS_ON_CALL)->count();
+    }
+
     public function getNameAttribute()
     {
         if (app()->getLocale() == 'ar') {

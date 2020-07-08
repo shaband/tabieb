@@ -51,7 +51,6 @@ Route::group(['namespace' => 'Website\Patient', 'middleware' => ['localeSessionR
         Route::post('favourite/{doctor_id}/toggle', 'FavouriteController@toggleFavourite')->name('favourite.toggle');
         Route::get('favourites', 'FavouriteController@index')->name('favourites');
 
-        Route::post('/paytabs/callback','TransactionController');
 
     });
 

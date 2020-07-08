@@ -70,10 +70,11 @@
     <div id="call-pg">
         <div class="container">
             <div id="call-container hidden-chat">
-                <div class="call-inner-container">
+                <div class="call-inner-container ">
                     <!-- <div class="row">
                                 <div class="col-md-8"> -->
-                    <div class="call-blk">
+                    <div class="call-blk" style="    width: 100% !important;
+    flex: auto !important;">
                         <div class="call-header">
                             <a id="toggle-fs" class="call-icon btn"><i class="fas fa-compress"></i></a>
                         </div>
@@ -260,10 +261,10 @@
              });
 
              //end chat*/
-        var client_type = '{{$client_type}}';
-        var API_KEY = '{!!config('services.tokbox.key') !!}';
-        var SESSION_ID = '{!! $sessionId !!}';
-        var TOKEN = '{!! $token !!}';
+            {{--var client_type = '{{$client_type}}';--}}
+        var API_KEY = Api_key;
+        var SESSION_ID = sessionId;
+        var TOKEN = token;
         var callAudio = true;
         var callVideo = true;
         var session, publisher, sub;

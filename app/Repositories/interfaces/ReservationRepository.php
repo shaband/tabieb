@@ -5,6 +5,7 @@ namespace App\Repositories\interfaces;
 use App\Models\Reservation;
 use App\Repositories\interfaces\BaseInterface;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 use phpDocumentor\Reflection\Types\Integer;
 
 /**
@@ -29,8 +30,28 @@ interface ReservationRepository extends BaseInterface
 
     public function makeQuickCall(Request $request): array;
 
-    public function startCall(string $reservation_id, ?string $type = "patient",$ring=true);
+    public function startCall(string $reservation_id, ?string $type = "patient", $ring = true);
 
     public function archiveCall(Request $request);
 
+    /**
+     * @param Reservation $reservation
+     * @param $opentok
+     * @return mixed
+     */
+    public static function getSessionId(Reservation $reservation, $opentok);
+
+    /**
+     * @param string|null $subscriber
+     * @param Reservation $reservation
+     * @throws ValidationException
+     */
+    public static function isSubscriberBusy(?string $subscriber, Reservation $reservation): void;
+
+    /**
+     * @param string|null $subscriber
+     * @param Reservation $reservation
+     * @throws ValidationException
+     */
+    public static function IsSubscriberOffline(?string $subscriber, Reservation $reservation): void;
 }

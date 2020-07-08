@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\HasTransaction;
 use App\Traits\ModelHasLogs;
 use Carbon\Carbon;
 use Carbon\CarbonImmutable;
@@ -11,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Reservation extends Model
 {
-    use  ModelHasLogs;
+    use  ModelHasLogs,HasTransaction;
 
     public const COMMUNICATION_TYPE_AUDIO = 1;
     public const COMMUNICATION_TYPE_VIDEO = 2;
@@ -22,6 +23,7 @@ class Reservation extends Model
     public const STATUS_REFUSED = 3;
     public const STATUS_CANCELED = 4;
     public const STATUS_FINISHED = 5;
+    public const STATUS_ON_CALL = 6;
 
     protected $table = 'reservations';
     public $timestamps = true;

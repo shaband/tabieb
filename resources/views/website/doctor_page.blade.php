@@ -69,10 +69,12 @@
                                         @endif
                                         <div class="doc-controls">
                                             <a href="#" class="doc-book-btn btn btn-secondaryLight btn-sm"><img
-                                              style=" height: 15px; margin-right: 5px;"      src="{{asset('design/images/icons/phone.png')}}"> {{ __('voice call')}}
+                                                    style=" height: 15px; margin-right: 5px;"
+                                                    src="{{asset('design/images/icons/phone.png')}}"> {{ __('voice call')}}
                                             </a>
                                             <a href="#" class="doc-book-btn btn btn-thirdlyLight btn-sm"><img
-                                                    style=" height: 15px; margin-right: 5px;"                                                    src="{{asset('design/images/icons/video.png')}}"> {{ __('video call')}}
+                                                    style=" height: 15px; margin-right: 5px;"
+                                                    src="{{asset('design/images/icons/video.png')}}"> {{ __('video call')}}
                                             </a>
                                             <a href="{{route('reservation.doctor.certification',$doctor->id)}}"
                                                class="doc-book-btn btn btn-outline-secondary btn-sm btn-xs">{{ __('medical  documents')}}</a>
@@ -91,10 +93,12 @@
                                                     src="{{asset('design/images/icons/phone-White.png')}}"> {{ __('quick call')}}
                                             </button>
                                             <a href="#" class="doc-book-btn btn btn-thirdly btn-sm "><img
-                                                    style=" height: 15px; margin-right: 5px;"  src="{{ asset('design/images/icons/tag.png')}}"> {{ __('book now')}}
+                                                    style=" height: 15px; margin-right: 5px;"
+                                                    src="{{ asset('design/images/icons/tag.png')}}"> {{ __('book now')}}
                                             </a>
 
-                                            <a href="#" style="cursor: pointer" onclick="toggleFavourite(this,{!! $doctor->id !!})"
+                                            <a href="#" style="cursor: pointer"
+                                               onclick="toggleFavourite(this,{!! $doctor->id !!})"
                                                class="doc-book-btn btn btn-light1 btn-sm {!! $doctor->is_favourite?'active':null !!}"><i
                                                     class="fas fa-heart"></i></a>
                                         </div>
@@ -215,7 +219,8 @@
 
                                 </div>
 
-                                <form id="reservation-form" action="{!! route('reservation.reserve') !!}">
+                                <form id="reservation-form" action="{!! route('reservation.reserve') !!}" method="post">
+                                    @method('post')
                                     {!! csrf_field() !!}
                                     <input name="schedule_id" type="hidden">
                                     <input name="doctor_id" type="hidden">

@@ -23,7 +23,10 @@ Route::group([
     Route::get('/', 'HomeController@index');
 
     try {
-        view()->share('settings', \App\Models\Setting::pluck('value', 'name'));
+        $settings = cache()->remember('settings', 60 * 60 , function () {
+            return \App\Models\Setting::pluck('value', 'name');
+        });
+        view()->share('settings', $settings);
     } catch (Exception $e) {
     }
     Route::get('/home', 'HomeController@index')->name('home');
@@ -37,11 +40,11 @@ Route::group([
 
     //just for  نمشى الشغل  لسه فيه ال biling يارب العميل ينجز
     //TODO::show biling form  with comming data  and remove  reserve direct
-    Route::get('reservation/reserve', 'ReservationController@createWithoutBilling')->name('reservation.reserve')->middleware(['patient.auth']);
+    Route::post('reservation/reserve', 'ReservationController@reserve')->name('reservation.reserve')->middleware(['patient.auth']);
 
     Route::match(['get', 'post'], '/quick-call', 'ReservationController@QuickCall')->middleware(['patient.auth'])->name('quick-call');
     Route::match(['get', 'post'], '/quick-call/response/{reservation_id}', 'ReservationController@QuickCall')->middleware(['doctor.auth'])->name('quick-call.accept');
-    Route::match(['get', 'post'], '/quick-call/respond', 'ReservationController@QuickCallRespond')->middleware(['doctor.auth'])->name('quick-call.respond');
+    Route::match(['get', 'post'], '/quick-call/respond', 'ReservationController@receiveCall')->middleware(['doctor.auth'])->name('quick-call.respond');
 });
 Route::get('/test', 'HomeController@test');
 
@@ -50,12 +53,6 @@ Route::get('/test', 'HomeController@test');
 Route::get('auth/{provider}/login', 'Auth\SocialController@redirectToProvider')->name('social.login');
 Route::get('auth/{provider}/callback', 'Auth\SocialController@handleProviderCallback');
 
-Route::get('push', function () {
-    $user = Socialite::driver('facebook')->userFromToken("EAAJRRXoLxYgBAOcHgxftNpDfOqkX2zUuDgW9ejeLMEe70NWB0675TH8GbTZCWwhUtIowshINifVNEmFUU7NQCDRe9JLPqj9L6RV0cXoYz0J6rmywsJEfJwwmHS2j1RjzLlluTWlTJ1dfjDOtZCVLsm3ljXGOLVlwEugYlXYMMbZCEZCWee1x");
-
-    dd($user);
-
-});
 
 Route::get('pay', function () {
 
@@ -63,11 +60,7 @@ Route::get('pay', function () {
     $reservation = $patient->reservations()->doesnthave('transaction')->first();
 
     $price = $reservation->doctor->price;
-    $reference = [
-        'model_id' => $patient->id,
-        'model_type' => 'patients',
-        'reservation_id' => $reservation->id
-    ];
+    $reference = $reservation->id;
     $checkout = \App\Services\Facades\PayTabs::Checkout($patient, $price, $reference);
 
     if ($checkout['response_code'] == 4012) {
@@ -80,12 +73,5 @@ Route::get('pay', function () {
 
 });
 
-Route::post('/paytabs/callback', function (\Illuminate\Http\Request $request) {
-
-    $paytabs_data = \App\Services\paytabs\PayTabsFacade::verify_payment($request->payment_reference);
-
-    $transactionRepo = app(\App\Repositories\interfaces\TransactionRepository::class);
-    ['model_type' => $model_type, 'model_id' => $model_id, 'reservation_id' => $reservation_id] = $transactionRepo::decodeOrderId($paytabs_data['reference_no']);
-    $reservation = \App\Models\Reservation::find($reservation_id);
-    $transactionRepo->CreatePayTabTransaction($paytabs_data, $model_type, $model_id, $reservation);
-});
+Route::post('paytabs/callback','Website\Patient\TransactionController@reservationCallback')->middleware(['patient.auth'])->name('patient.reservation.transaction');
+Route::post('paytabs/quick-call/callback','Website\Patient\TransactionController@quickCallCallback')->middleware(['patient.auth'])->name('patient.quick-call.transaction');

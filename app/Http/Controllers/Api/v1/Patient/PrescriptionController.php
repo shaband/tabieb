@@ -18,7 +18,7 @@ class PrescriptionController extends Controller
 
     public function index()
     {
-        $prescriptions = $this->repo->findByField('reservation_id', auth()->id());
+        $prescriptions = $this->repo->findByField('patient_id', auth()->id());
         return responseJson([
             'prescription' => PrescriptionResource::collection($prescriptions)
         ], __("Loaded Successfully"));

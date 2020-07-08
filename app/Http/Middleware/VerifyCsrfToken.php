@@ -19,6 +19,8 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        'patient/paytabs/callback'
+        'patient/paytabs/callback',
+        'paytabs/callback',
+        'paytabs/quick-call/callback'
     ];
 }

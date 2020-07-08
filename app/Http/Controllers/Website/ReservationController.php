@@ -8,11 +8,13 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Resources\Reservation\ReservationResource;
 use App\Models\Chat;
+use App\Models\Reservation;
 use App\Repositories\interfaces\AttachmentRepository;
 use App\Repositories\interfaces\CategoryRepository;
 use App\Repositories\interfaces\DoctorRepository;
 use App\Repositories\interfaces\ReservationRepository;
 use App\Repositories\interfaces\ScheduleRepository;
+use App\Services\Facades\PayTabs;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -68,14 +70,14 @@ class ReservationController extends Controller
             ->with(['ratings' => function ($rating) {
                 $rating->with('patient');
                 $rating->orderBy('rate');
-            },  'category', 'sub_categories', 'schedules'])
+            }, 'category', 'sub_categories', 'schedules'])
             ->find($id)->setRelation('category', $categories['category_id'] ?? $categoryRepo->query());
 
         return view('website.doctor_page', compact('doctor', 'categories'));
     }
 
 
-    public function createWithoutBilling(Request $request)
+    public function reserve(Request $request)
     {
 
         $inputs = $request->validate([
@@ -95,10 +97,16 @@ class ReservationController extends Controller
         $inputs['patient_id'] = auth()->guard('patient')->user()->id;
         $inputs['status'] = $this->reservationRepo::getConstants()['STATUS_ACTIVE'];;
 
-
         $reservation = $this->reservationRepo->create($inputs);
-        toast('Add Successfully Waiting for Doctor Approval', 'success');
-        return back();
+        $price = $reservation->doctor->price;
+
+        $checkout = PayTabs::Checkout(auth()->user(), $price, $reservation->id);
+        if ($checkout['response_code'] == 4012) {
+            return redirect($checkout['payment_url']);
+        } else {
+            \Log::error($checkout["result"], $checkout);
+            throw \Illuminate\Validation\ValidationException::withMessages([$checkout["result"]]);
+        }
     }
 
 
@@ -111,20 +119,43 @@ class ReservationController extends Controller
 
     public function QuickCall(Request $request)
     {
+        $reservation = $this->reservationRepo->storeQuickCall($request->only('patient_id', 'doctor_id', 'communication_type'));
 
+        $checkout = PayTabs::Checkout(auth()->user(), $reservation->doctor->price, $reservation->id, route('patient.quick-call.transaction'), 0, 0, "Quick Call");
 
-        [
-            'sessionId' => $sessionId,
-            'token' => $token,
-            'reservation' => $reservation,
-        ]
-            =
-            $this->reservationRepo->makeQuickCall($request);
+        if ($checkout['response_code'] == 4012) {
+            return redirect($checkout['payment_url']);
+        } else {
+            \Log::error($checkout["result"], $checkout);
+            throw \Illuminate\Validation\ValidationException::withMessages([$checkout["result"]]);
+        }
 
-
-        return view('call', [
+        /*return view('call', [
                 'token' => $token,
                 'sessionId' => $sessionId,
+                'type' => 'patient',
+                'reservation' => $reservation,
+                'status' => $this->reservationRepo::getConstants()['STATUS_ACTIVE'],
+                'chat' => new Chat()
+            ]
+        );*/
+    }
+    public function CallAccepted(Request $request)
+    {
+        $reservation = $this->reservationRepo->storeQuickCall($request->only('patient_id', 'doctor_id', 'communication_type'));
+/*
+        $checkout = PayTabs::Checkout(auth()->user(), $reservation->doctor->price, $reservation->id, route('patient.quick-call.transaction'), 0, 0, "Quick Call");
+
+        if ($checkout['response_code'] == 4012) {
+            return redirect($checkout['payment_url']);
+        } else {
+            \Log::error($checkout["result"], $checkout);
+            throw \Illuminate\Validation\ValidationException::withMessages([$checkout["result"]]);
+        }*/
+
+        return view('call', [
+        //        'token' => $token,
+        //        'sessionId' => $sessionId,
                 'type' => 'patient',
                 'reservation' => $reservation,
                 'status' => $this->reservationRepo::getConstants()['STATUS_ACTIVE'],
@@ -133,7 +164,7 @@ class ReservationController extends Controller
         );
     }
 
-    public function QuickCallRespond(Request $request)
+    public function CallRefused(Request $request)
     {
         $reservation = $this->reservationRepo->find($request->reservation_id)->fill([
             'status' => $request->status]);
@@ -147,19 +178,24 @@ class ReservationController extends Controller
 
     public function receiveCall(Request $request)
     {
-
+        /** @var Reservation $reservation */
+        /** @var string $sessionId */
+        /** @var string $token */
         [
             'sessionId' => $sessionId,
             'token' => $token,
             'reservation' => $reservation
         ] =
-            $this->reservationRepo->startCall($request->reservation_id, null,false);
+            $this->reservationRepo->startCall($request->reservation_id, 'doctor', false);
+
+        $reservation->fill(['status' => $reservation::STATUS_ON_CALL])->save();
+
         return view('call', [
             'token' => $token,
             'sessionId' => $sessionId,
             'type' => 'patient',
             'reservation' => $reservation,
-            'status' => $this->reservationRepo::getConstants()['STATUS_ACTIVE'],
+            'status' => $this->reservationRepo::getConstants()['STATUS_ON_CALL'],
             'chat' => new Chat()
         ]);
 

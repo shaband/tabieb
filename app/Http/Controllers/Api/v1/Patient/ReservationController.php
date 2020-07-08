@@ -42,6 +42,7 @@ class ReservationController extends Controller
 
 
         $reservation = $this->repo->store($request);
+
         $reservation = new ReservationResource($reservation);
         return responseJson(compact('reservation'), __("Saved Successfully"));
     }
@@ -53,7 +54,6 @@ class ReservationController extends Controller
         $this->validate($request, [
             'doctor_id' => 'required|integer|exists:doctors,id',
             'schedule_id' => 'required|integer|exists:schedules,id',
-
             'date' => 'required|date|date_format:Y-m-d',
             'from_time' => ['required'],
             'to_time' => ['required'],
@@ -92,6 +92,8 @@ class ReservationController extends Controller
         $reservation = $this->repo->update(['canceled_at' => Carbon::now()], $request->reservation_id);
 
         $reservation = new ReservationResource($reservation);
+
+
 
 
         return responseJson(compact('reservation'), __('Canceled Successfully'));
@@ -166,7 +168,7 @@ class ReservationController extends Controller
             'reservation_id' => 'required|integer|exists:reservations,id,patient_id,' . auth()->user()->id,
             'transaction_id' => 'required|integer|unique:transactions,transaction_id'
         ]);
-        $reservation = $this->repo->find($request->reservation_id);
+        $reservation = $this->repo->withoutGlobalScope('hasTransaction')->find($request->reservation_id);
         $transaction = $transactionRepo->store($request->transaction_id, $reservation);
         $reservation->setRelation('transaction', $transaction);
         return responseJson([

@@ -5,6 +5,8 @@ namespace App\Repositories\SQL;
 use App\Criteria\OrderReservationByDateCriteria;
 use App\Events\CallStarted;
 use App\Models\Chat;
+use App\Models\Doctor;
+use App\Models\Patient;
 use App\Notifications\Patient\ReservationAccepted;
 use App\Repositories\interfaces\ScheduleRepository;
 use App\Services\Contracts\TokBoxContract;
@@ -30,6 +32,8 @@ use App\Models\Reservation;
 class ReservationRepositoryEloquent extends BaseRepository implements ReservationRepository
 
 {
+
+
     /**
      * Specify Model class name
      *
@@ -125,8 +129,8 @@ class ReservationRepositoryEloquent extends BaseRepository implements Reservatio
     {
         $reservation = $this->storeQuickCall($request->only('patient_id', 'doctor_id', 'communication_type'));
 
-        $subscriber= auth()->guard('doctor')->check() ? null : 'doctor';
-        return $this->startCall($reservation->id,$subscriber,($subscriber != null || \request()->reservation_id == null));
+        $subscriber = auth()->guard('doctor')->check() ? null : 'doctor';
+        return $this->startCall($reservation->id, $subscriber, false);
     }
 
     public function getDoctorReservationByStatus($doctor_id, $status, $date = null)
@@ -143,24 +147,26 @@ class ReservationRepositoryEloquent extends BaseRepository implements Reservatio
     }
 
 
-    public function startCall(string $reservation_id, ?string $subscriber = 'patient',$ring=true)
+    public function startCall(string $reservation_id, ?string $subscriber = 'patient', $ring = true)
     {
         $opentok = app(TokBoxContract::class);
-
+        /** @var Reservation $reservation */
         $reservation = $this->find($reservation_id);
-        if ($reservation->session_id == null) {
 
-            $sessionId = $opentok->defaultSession()->getSessionId();
-            $reservation->fill(['session_id' => $sessionId])->save();
+        self::isSubscriberBusy($subscriber, $reservation);
+        self::IsSubscriberOffline($subscriber, $reservation);
 
-        } else {
-            $sessionId = $reservation->session_id;
-        }
-
+        $sessionId = self::getSessionId($reservation, $opentok);
         $token = $opentok->generateToken($sessionId);
         if ($ring) {
             event(new CallStarted($reservation, $subscriber));
         }
+        \JavaScript::put([
+            'token' => $token,
+            'sessionId' => $sessionId,
+            'type' => $subscriber = 'patient' ? 'doctor' : 'patient',
+            'Api_key' => config('services.tokbox.key')
+        ]);
         return ['sessionId' => $sessionId, 'token' => $token, 'reservation' => $reservation];
 
     }
@@ -188,5 +194,51 @@ class ReservationRepositoryEloquent extends BaseRepository implements Reservatio
         return $archiveId;
     }
 
+
+    /**
+     * @param Reservation $reservation
+     * @param $opentok
+     * @return string
+     */
+    public static function getSessionId(Reservation $reservation, $opentok)
+    {
+        if ($reservation->session_id == null) {
+
+            $sessionId = $opentok->defaultSession()->getSessionId();
+            $reservation->fill(['session_id' => $sessionId])->save();
+
+        } else {
+            $sessionId = $reservation->session_id;
+        }
+        return $sessionId;
+    }
+
+    /**
+     * @param string|null $subscriber
+     * @param Reservation $reservation
+     * @throws ValidationException
+     */
+    public static function isSubscriberBusy(?string $subscriber, Reservation $reservation): void
+    {
+        $subscriber = ($subscriber == 'patient') ? 'doctor' : 'patient';
+        if ($reservation->$subscriber->is_on_call>0) {
+            throw ValidationException::withMessages([__("Sorry,{$reservation->$subscriber->name}  Is On Another Call Please Call Him Later")])->redirectTo(route('reservation.doctor', $reservation->doctor_id));
+        }
+    }
+
+    /**
+     * @param string|null $subscriber
+     * @param Reservation $reservation
+     * @throws ValidationException
+     */
+    public static function IsSubscriberOffline(?string $subscriber, Reservation $reservation): void
+    {
+
+        $subscriber = ($subscriber == 'patient') ? 'doctor' : 'patient';
+        if (!($reservation->$subscriber->isOnline())) {
+            throw ValidationException::withMessages([__("Sorry,{$reservation->$subscriber->name}  Is On Offline Please Call Him Later")])
+                ->redirectTo(route('reservation.doctor', $reservation->doctor_id));
+        }
+    }
 
 }

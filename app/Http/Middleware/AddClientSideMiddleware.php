@@ -17,20 +17,27 @@ class AddClientSideMiddleware
     {
 
         if (auth('patient')->check()) {
-            view()->share('client_type', 'patient');
-            view()->share('client_id', auth()->guard('patient')->id());
-            view()->share('notifications', auth()->guard('patient')->user()->notifications->take(5));
+            $client_type = 'patient';
+            $client_id = auth()->guard('patient')->id();
+            $notifications = auth()->guard('patient')->user()->notifications->take(5);
         } elseif (auth('doctor')->check()) {
+            $client_type = 'doctor';
+            $client_id = auth()->guard('doctor')->id();
+            $notifications = auth()->guard('doctor')->user()->notifications->take(5);
 
-            view()->share('client_type', 'doctor');
-            view()->share('client_id', auth()->guard('doctor')->id());
-            view()->share('notifications', auth()->guard('doctor')->user()->notifications->take(5));
         } else {
-            view()->share('client_type', null);
-            view()->share('client_id', null);
-            view()->share('notifications', []);
+            $client_type = null;
+            $client_id = null;
+            $notifications = [];
         }
 
+        view()->share('client_type', $client_type);
+        view()->share('client_id', $client_id);
+        view()->share('notifications', $notifications);
+        \JavaScript::put([
+            'client_type' => $client_type,
+            'client_id' => $client_id,
+        ]);
 
         return $next($request);
     }

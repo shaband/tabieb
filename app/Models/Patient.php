@@ -195,6 +195,13 @@ class Patient extends Authenticatable implements JWTSubject
         return $this->first_name . ' ' . $this->last_name;
     }
 
+    public function getIsOnCallAttribute()
+    {
+
+        return $this->reservations()
+            ->where('status', Reservation::STATUS_ON_CALL)->count();
+    }
+
 
     public function setSocialSecurityExpiredAtAttribute($value): void
     {
