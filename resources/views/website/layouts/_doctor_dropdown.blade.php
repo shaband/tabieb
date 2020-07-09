@@ -2,8 +2,8 @@
     <a class="nav-link" href="javascript:void(0)"><i
             class="fas fa-user"></i> {!! auth()->guard('doctor')->user()->name !!}</a>
     <ul>
-        <li class=""><a
-                href="">{{ __('personal information')}}</a>
+        <li class="{!! setActive('doctor.profile.edit') !!}"><a
+                href="{!! route('doctor.profile.edit') !!}">{{ __('personal information')}}</a>
         </li>
         <li class="{!! setActive('doctor.profile.appointments') !!}">
             <a href="{!! route('doctor.profile.appointments') !!}">{{ __('my appointments')}}</a>

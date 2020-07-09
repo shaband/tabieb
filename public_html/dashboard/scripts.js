@@ -7,7 +7,7 @@ $.ajaxSetup({
 
 $(".datatable-buttons").DataTable(
     {
-        // responsive: true,
+         responsive:false,
         //  lengthChange: !1,
         paging: false,
         buttons: ["copy", "excel", "pdf"],
@@ -20,7 +20,7 @@ $("a[data-toggle=\"tab\"]").on("shown.bs.tab", function (e) {
     datatables.css('width', '100%');
     datatables.DataTable()
         .columns.adjust()
-        .responsive.recalc()
+         // .responsive.recalc()
         .draw();
 });
 

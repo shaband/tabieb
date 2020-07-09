@@ -34,9 +34,8 @@ class Doctor extends Authenticatable implements JWTSubject
         'first_name_en', 'last_name_en', 'last_name_ar', 'first_name_ar',
         'title_ar', 'title_en'
     ];
-    protected $fillable = array('first_name_en', 'last_name_en', 'last_name_ar', 'first_name_ar', 'description_ar', 'description_en', 'title_ar', 'title_en', 'email', 'password', 'phone', 'category_id', 'price', 'period', 'last_login', 'email_verified_at', 'phone_verified_at', 'civil_id', 'verification_code', 'remember_token', 'gender', 'blocked_at', 'blocked_reason', 'license_number'
-    , 'reset_password_code'
-    );
+    protected $fillable = array('username','first_name_en', 'last_name_en', 'last_name_ar', 'first_name_ar', 'description_ar', 'description_en', 'title_ar', 'title_en', 'email', 'password', 'phone', 'category_id', 'price', 'period', 'last_login', 'email_verified_at', 'phone_verified_at', 'civil_id', 'verification_code', 'remember_token', 'gender', 'blocked_at', 'blocked_reason', 'license_number'
+    , 'reset_password_code', 'price_before_discount' );
 
 
     /**

@@ -1,4 +1,4 @@
-<table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap">
+<table  class="table table-striped table-bordered dt-responsive nowrap">
     <thead>
     <tr>
         <th>{!! __("Name ") !!}</th>
