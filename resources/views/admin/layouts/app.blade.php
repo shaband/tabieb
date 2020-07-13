@@ -41,8 +41,12 @@
     <!-- App css -->
     <link href="{!! asset('dashboard/dark/assets/css/bootstrap.min.css') !!}" rel="stylesheet" type="text/css"/>
     <link href="{!! asset('dashboard/dark/assets/css/icons.min.css') !!}" rel="stylesheet" type="text/css"/>
-
+@if(app()->getLocale()=='ar')
     <link href="{!! asset('dashboard/dark/assets/css/app-rtl.min.css') !!}" rel="stylesheet" type="text/css"/>
+    @else
+        <link href="{!! asset('dashboard/dark/assets/css/app.min.css') !!}" rel="stylesheet" type="text/css"/>
+
+    @endif
     @stack('header')
 
 </head>

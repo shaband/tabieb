@@ -54,24 +54,6 @@ Route::get('auth/{provider}/login', 'Auth\SocialController@redirectToProvider')-
 Route::get('auth/{provider}/callback', 'Auth\SocialController@handleProviderCallback');
 
 
-Route::get('pay', function () {
-
-    $patient = Patient::find(6);
-    $reservation = $patient->reservations()->doesnthave('transaction')->first();
-
-    $price = $reservation->doctor->price;
-    $reference = $reservation->id;
-    $checkout = \App\Services\Facades\PayTabs::Checkout($patient, $price, $reference);
-
-    if ($checkout['response_code'] == 4012) {
-        return redirect($checkout['payment_url']);
-    } else {
-        Log::error($checkout["result"], $checkout);
-        throw \Illuminate\Validation\ValidationException::withMessages([$checkout["result"]]);
-    }
-    //    dd($patient);
-
-});
 
 Route::post('paytabs/callback','Website\Patient\TransactionController@reservationCallback')->middleware(['patient.auth'])->name('patient.reservation.transaction');
 Route::post('paytabs/quick-call/callback','Website\Patient\TransactionController@quickCallCallback')->middleware(['patient.auth'])->name('patient.quick-call.transaction');

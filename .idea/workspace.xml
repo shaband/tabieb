@@ -2,17 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="445642ab-05e1-4213-b118-4b5c2b06b459" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_07_09_161203_add_username_to_doctors_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_07_13_154613_update_patient_last_name_to_patients_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/public_html.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/v1/Patient/ReservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/v1/Patient/ReservationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/v1/Doctor/ReservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/v1/Doctor/ReservationController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Doctor.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Doctor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/SettingsSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/SettingsSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/dashboard/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/dashboard/scripts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ar.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/doctors/_table.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/doctors/_table.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/layouts/_doctor_dropdown.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/layouts/_doctor_dropdown.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/partials/_weakly_schedule.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/partials/_weakly_schedule.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/SQL/PrescriptionRepositoryEloquent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/SQL/PrescriptionRepositoryEloquent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/_header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/_header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/website/chat.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/chat.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/website/layouts/_header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/layouts/_header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/website/layouts/_patient_dropdown.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/layouts/_patient_dropdown.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/website/notifications.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/notifications.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/website/partials/_reservation_card.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/partials/_reservation_card.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web/pharmacy_rep.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web/pharmacy_rep.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,7 +219,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="add_unversioned_files" value="$PROJECT_DIR$/.env" />
+    <property name="add_unversioned_files" value="$PROJECT_DIR$/.env&#10;D:/work/wael/tabieb/vendor/prettus/l5-repository/src/Prettus/Repository/Eloquent/BaseRepository.php" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
@@ -271,7 +276,8 @@
       <workItem from="1594230630598" duration="481000" />
       <workItem from="1594232934308" duration="299000" />
       <workItem from="1594233404712" duration="4434000" />
-      <workItem from="1594309406044" duration="4466000" />
+      <workItem from="1594309406044" duration="9853000" />
+      <workItem from="1594654068207" duration="6583000" />
     </task>
     <servers />
   </component>
@@ -440,9 +446,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="339" y="162" width="672" height="677" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1594311422375" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1594316521380">
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1594664198222">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1594316521380" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1594664198222" />
   </component>
 </project>

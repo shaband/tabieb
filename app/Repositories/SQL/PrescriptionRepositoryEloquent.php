@@ -12,7 +12,6 @@ use App\Models\Prescription;
 
 /**
  * Class PrescriptionRepositoryEloquent.
- *
  * @package namespace App\Repositories\SQL;
  */
 class PrescriptionRepositoryEloquent extends BaseRepository implements PrescriptionRepository

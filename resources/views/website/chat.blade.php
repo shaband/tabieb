@@ -1,7 +1,7 @@
 @extends('website.layouts.app')
 
 @push('meta')
-    <meta name="channel" content="private-App.chat.{{$chat->id}}">
+    <meta name="channel" content="private-App.chat.{{optional($chat)->id}}">
 @endpush
 
 @section('title')
@@ -77,14 +77,15 @@
                         </div>
                         <div class="col-md-8">
                             <!-- START Inbox Chat Messages -->
+                       @if(!is_null($chat))
                             <div class="inbox-msgs">
                                 <!-- START Inbox Messages Header -->
                                 <div class="inbox-msgs-header
-@if($type=='doctor'&& auth()->guard('doctor')->check())
-                                {!! $item->patient->isOnline()?'active':null!!}
+                                    @if($type=='doctor'&& auth()->guard('doctor')->check())
+                                {!! $chat->patient->isOnline()?'active':null!!}
 
                                 @else
-                                {!! $item->doctor->isOnline()?'active':null!!}
+                                {!! $chat->doctor->isOnline()?'active':null!!}
                                 @endif
                                     ">
                                     <div class="back-control">
@@ -164,6 +165,9 @@
                                 <!-- END Inbox Messages Body -->
                             </div>
                             <!-- END Inbox Chat Messages -->
+                            @else
+                           <h3 class="red"> {!! __("There is No Chats") !!}</h3>
+                           @endif
                         </div>
                     </div>
                 </div>
@@ -201,7 +205,6 @@
             })
             return false;
         });
-
 
 
         var messenger = pusher.subscribe($('meta[name="channel"]').attr('content'));

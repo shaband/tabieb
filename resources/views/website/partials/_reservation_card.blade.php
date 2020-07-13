@@ -19,7 +19,7 @@
         </div>
         <div>
             <b>{{ __('appointment time')}}:</b>
-            <span>{!! $reservation->from_date->diffForHumans() !!}</span>
+            <span>{!! $reservation->from_date->format("D d-F h:m") !!}</span>
         </div>
         <div>
             <b>{{ __('appointment way')}}:</b>

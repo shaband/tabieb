@@ -96,8 +96,7 @@ class ReservationController extends Controller
      */
     public function previous(Request $request)
     {
-        $reservation = $this->repo->query()
-            ->whereDate('date', '<', Carbon::now())
+        $reservation = $this->repo->whereDate('date', '<', Carbon::now())
             //->whereIn('status', $this->repo::getConstants('STATUS_ACCEPTED'))
             ->get();
         $reservation = ReservationResource::collection($reservation->load('patient'));

@@ -21,3 +21,5 @@ yarn-error.log
 /www
 jsvalidation
 /public_html/design/.git
+.idea/workspace.xml
+

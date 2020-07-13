@@ -43,9 +43,7 @@
                         <li class="nav-item">
                             <ul>
                                 @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-
-                                    {{-- @dump($localeCode,App()->getLocale(),$localeCode != App()->getLocale())
-                                        --}} @if($localeCode !=App()->getLocale())
+                                    @if($localeCode !=App()->getLocale())
                                         <a class="nav-link" rel="alternate" hreflang="{{ $localeCode }}"
                                            href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
                                             <i class="fas fa-globe"></i> {{ $properties['native'] }}
@@ -81,12 +79,12 @@
                             </li>
                         @endif
 
-                        @if(auth()->guard('patient')->check())
+                        @if(auth()->guard('patient')->check() && auth()->guard('patient')->user()->chats()->count()!=0)
                             <li class="nav-item">
                                 <a class="nav-link user-self active" href="{!! route('patient.chat.inbox') !!}"><i
                                         class="fas fa-envelope"></i></a>
                             </li>
-                        @elseif( auth()->guard('doctor')->check())
+                        @elseif( auth()->guard('doctor')->check() && auth()->guard('doctor')->user()->chats()->count()!=0)
                             <li class="nav-item">
                                 <a class="nav-link user-self active" href="{!! route('doctor.chat.inbox') !!}"><i
                                         class="fas fa-envelope"></i></a>
@@ -200,7 +198,10 @@
                                             </div>
                                             <div class="social-logins my-3">
 
-                                                <a href="{{route('social.login','facebook')}}" class="btn btn-light font-weight-bold text-initial w-100 text-capitalize btn-sm mb-1"><i class="fab fa-facebook-f mx-1" style="color:#3b5998"></i> login with facebook account</a>
+                                                <a href="{{route('social.login','facebook')}}"
+                                                   class="btn btn-light font-weight-bold text-initial w-100 text-capitalize btn-sm mb-1"><i
+                                                        class="fab fa-facebook-f mx-1" style="color:#3b5998"></i> login
+                                                    with facebook account</a>
                                                 <a href="{{route('social.login','google')}}"
                                                    class="btn btn-light font-weight-bold text-initial w-100 text-capitalize btn-sm"><i
                                                         class="fab fa-google mx-1" style="color:#db3236"></i> {{ __('login

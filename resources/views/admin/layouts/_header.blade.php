@@ -79,9 +79,22 @@
                 </a>
 
 
+
+                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                    @if($localeCode !=App()->getLocale())
+                        <a class="dropdown-item notify-item" rel="alternate" hreflang="{{ $localeCode }}"
+                           href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                            <i class="fas fa-globe"></i>
+                            <span> {!! $properties['native']!!}</span>
+
+                        </a>
+                    @endif
+                @endforeach
                 <div class="dropdown-divider"></div>
 
-                <!-- item-->
+
+
+            <!-- item-->
                 <a class="dropdown-item notify-item" href="{{ route('admin.logout') }}"
                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
