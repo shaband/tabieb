@@ -123,6 +123,12 @@ class ReservationController extends Controller
     {
         $reservation = $this->reservationRepo->storeQuickCall($request->only('patient_id', 'doctor_id', 'communication_type'));
 
+           [
+            'sessionId' => $sessionId,
+            'token' => $token,
+            'reservation' => $reservation
+        ] =
+            $this->reservationRepo->startCall($reservation->id, 'patient',true);
 //         $checkout = PayTabs::Checkout(auth()->user(), $reservation->doctor->price, $reservation->id, route('patient.quick-call.transaction'), 0, 0, "Quick Call");
 
 //         if ($checkout['response_code'] == 4012) {
@@ -132,7 +138,7 @@ class ReservationController extends Controller
 //             throw \Illuminate\Validation\ValidationException::withMessages([$checkout["result"]]);
 //         }
 
-        /*return view('call', [
+        return view('call', [
                 'token' => $token,
                 'sessionId' => $sessionId,
                 'type' => 'patient',
@@ -140,7 +146,7 @@ class ReservationController extends Controller
                 'status' => $this->reservationRepo::getConstants()['STATUS_ACTIVE'],
                 'chat' => new Chat()
             ]
-        );*/
+        );
     }
     public function CallAccepted(Request $request)
     {
@@ -154,6 +160,7 @@ class ReservationController extends Controller
             \Log::error($checkout["result"], $checkout);
             throw \Illuminate\Validation\ValidationException::withMessages([$checkout["result"]]);
         }*/
+        
 
         return view('call', [
         //        'token' => $token,
