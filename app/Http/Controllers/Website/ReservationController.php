@@ -100,13 +100,15 @@ class ReservationController extends Controller
         $reservation = $this->reservationRepo->create($inputs);
         $price = $reservation->doctor->price;
 
-        $checkout = PayTabs::Checkout(auth()->user(), $price, $reservation->id);
-        if ($checkout['response_code'] == 4012) {
-            return redirect($checkout['payment_url']);
-        } else {
-            \Log::error($checkout["result"], $checkout);
-            throw \Illuminate\Validation\ValidationException::withMessages([$checkout["result"]]);
-        }
+    //    $checkout = PayTabs::Checkout(auth()->user(), $price, $reservation->id);
+//         if ($checkout['response_code'] == 4012) {
+//             return redirect($checkout['payment_url']);
+//         } else {
+//             \Log::error($checkout["result"], $checkout);
+//             throw \Illuminate\Validation\ValidationException::withMessages([$checkout["result"]]);
+//         }
+        alert('success','reserved sucessfully');
+        return back();
     }
 
 
@@ -121,14 +123,14 @@ class ReservationController extends Controller
     {
         $reservation = $this->reservationRepo->storeQuickCall($request->only('patient_id', 'doctor_id', 'communication_type'));
 
-        $checkout = PayTabs::Checkout(auth()->user(), $reservation->doctor->price, $reservation->id, route('patient.quick-call.transaction'), 0, 0, "Quick Call");
+//         $checkout = PayTabs::Checkout(auth()->user(), $reservation->doctor->price, $reservation->id, route('patient.quick-call.transaction'), 0, 0, "Quick Call");
 
-        if ($checkout['response_code'] == 4012) {
-            return redirect($checkout['payment_url']);
-        } else {
-            \Log::error($checkout["result"], $checkout);
-            throw \Illuminate\Validation\ValidationException::withMessages([$checkout["result"]]);
-        }
+//         if ($checkout['response_code'] == 4012) {
+//             return redirect($checkout['payment_url']);
+//         } else {
+//             \Log::error($checkout["result"], $checkout);
+//             throw \Illuminate\Validation\ValidationException::withMessages([$checkout["result"]]);
+//         }
 
         /*return view('call', [
                 'token' => $token,
